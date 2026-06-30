@@ -63,7 +63,7 @@ class WebPage extends \Ease\TWB5\WebPage
     {
         $user = \Ease\Shared::user();
         if (!$user->getSettingValue('admin')) {
-            $user->addStatusMessage(_('Please sign in as admin first'), 'warning');
+            $user->addStatusMessage(\gettext('Please sign in as admin first'), 'warning');
             $this->redirect($loginPage);
             exit;
         }
@@ -73,13 +73,13 @@ class WebPage extends \Ease\TWB5\WebPage
     {
         $user = \Ease\Shared::user();
         if (get_class($user) !== 'ClientZone\User') {
-            \Ease\Shared::webPage()->addStatusMessage(_('Please sign in as user first'), 'warning');
+            $this->addStatusMessage(\gettext('Please sign in as user first'), 'warning');
             $this->redirect($loginPage);
             exit;
         }
     }
 
-    public function onlyForLogged(string $loginPage = 'login.php', ?string $message = null): mixed
+    public function onlyForLogged($loginPage = 'login.php', $message = null)
     {
         return parent::onlyForLogged($loginPage.'?backurl='.urlencode($_SERVER['REQUEST_URI']), $message);
     }

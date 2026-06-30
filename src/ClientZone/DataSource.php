@@ -81,7 +81,7 @@ class DataSource extends \Ease\Brick
         $this->handledObejct = $handledObejct;
         parent::__construct();
         $this->setBackUrl($fallBackUrl);
-        $this->webPage       = \Ease\Shared::webPage();
+        $this->webPage       = \Ease\WebPage::singleton();
         $this->title         = $this->webPage->getRequestValue('title');
         if ($this->title) {
             $this->filename = preg_replace('/[^0-9^a-z^A-Z^_^.]/', '',
@@ -492,7 +492,7 @@ class DataSource extends \Ease\Brick
         if (is_null($queryRaw)) {
             $queryRaw = $this->handledObejct->getListingQuerySelect();
         }
-        switch (\Ease\Shared::webPage()->getRequestValue('export')) {
+        switch (\Ease\WebPage::singleton()->getRequestValue('export')) {
             case 'csv':
                 $this->getCsv($queryRaw);
                 break;
@@ -627,7 +627,7 @@ class DataSource extends \Ease\Brick
      */
     public function controlDeleteColumns()
     {
-        $id = \Ease\Shared::webPage()->getRequestValue($this->keyColumn);
+        $id = \Ease\WebPage::singleton()->getRequestValue($this->keyColumn);
         if ($id) {
             $this->setMyKey($id);
 

@@ -74,8 +74,8 @@ class OrderListingItem extends \Ease\TWB5\Row
         }
 
         switch (get_class(\Ease\Shared::user())) {
-            case 'ClientZone\ClientZone\User':
-                $links[] = new \Ease\Html\ATag(constant('FLEXIBEE_URL').'/c/'.constant('FLEXIBEE_COMPANY').'/'.$evidence.'/'.$itemdata['id'],
+            case 'ClientZone\User':
+                $links[] = new \Ease\Html\ATag(constant('ABRAFLEXI_URL').'/c/'.constant('ABRAFLEXI_COMPANY').'/'.$evidence.'/'.$itemdata['id'],
                     new \Ease\Html\ImgTag('images/flexibee.png', _('FlexiBee'),
                     ['height' => '20px']), 'success', ['title' => _('FlexiBee')]);
 

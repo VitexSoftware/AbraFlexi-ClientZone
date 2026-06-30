@@ -178,7 +178,7 @@ class ColumnsForm extends \Ease\TWB5\Form
         }
     }
 
-    public function finalize()
+    public function finalize(): void
     {
         $recordID = $this->engine->getId();
         $this->addItem(new \Ease\Html\InputHiddenTag('class',
@@ -188,8 +188,8 @@ class ColumnsForm extends \Ease\TWB5\Form
                 $recordID));
         }
         $this->addItem($this->savers);
-        \Ease\Shared::webPage()->includeJavaScript('js/jquery.validate.js');
-        \Ease\Shared::webPage()->includeJavaScript('js/messages_cs.js');
+        \Ease\WebPage::singleton()->includeJavaScript('js/jquery.validate.js');
+        \Ease\WebPage::singleton()->includeJavaScript('js/messages_cs.js');
 
         return parent::finalize();
     }

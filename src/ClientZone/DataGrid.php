@@ -87,7 +87,7 @@ class DataGrid extends \Ease\Html\TableTag
      */
     public function __construct($name, $datasource, $properties = null)
     {
-        $wp = \Ease\Shared::webPage();
+        $wp = \Ease\WebPage::singleton();
 
 //        $options = new DBFOptions();
 //        $this->showKeyColumn = $options->getDataValue('tableids');
@@ -496,8 +496,9 @@ class DataGrid extends \Ease\Html\TableTag
     /**
      * Vložení skriptu.
      */
-    public function finalize()
+    public function finalize(): void
     {
+        parent::finalize();
 
         //Patch Grid Responisive
         $grid_js = '
@@ -562,13 +563,13 @@ class DataGrid extends \Ease\Html\TableTag
 
         $this->options['onSuccess']    = 'function() { addGrid($("#'.$grid_id.'"), this)}';
         $this->options['getGridClass'] = 'function(g) { this.g=g; return g; }';
-        \Ease\Shared::webPage()->addJavaScript("\n"
+        \Ease\WebPage::singleton()->addJavaScript("\n"
             .'$(\'#'.$grid_id.'\').flexigrid({ '.\Ease\JQuery\Part::partPropertiesToString($this->options).' }); '.$grid_js,
             null, true);
 
-        \Ease\Shared::webPage()->includeJavaScript('js/jquery.visible.js');
-        \Ease\Shared::webPage()->includeJavaScript('js/flexithfloat.js');
+        \Ease\WebPage::singleton()->includeJavaScript('js/jquery.visible.js');
+        \Ease\WebPage::singleton()->includeJavaScript('js/flexithfloat.js');
 
-//        \Ease\Shared::webPage()->addCSS(' .shown { position: absolute; top: 200; z-index: 1; }');
+//        \Ease\WebPage::singleton()->addCSS(' .shown { position: absolute; top: 200; z-index: 1; }');
     }
 }

@@ -30,7 +30,7 @@ class OrderFormHtml extends \Ease\TWB5\Form
     /**
      * Draw Form
      */
-    public function finalize()
+    public function finalize(): void
     {
         $service = $this->order->getDataValue('service');
         $this->addInput($this->productList(), _('Service Requested'));

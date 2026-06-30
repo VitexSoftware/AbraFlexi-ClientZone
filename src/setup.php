@@ -11,7 +11,9 @@ namespace ClientZone;
 require_once 'includes/Init.php';
 
 if (!empty($shared->getConfigValue('CONFIGURED'))) {
-    die(_('Already Configured'));
+    $oPage->redirect('index.php');
+    $oPage->draw();
+    exit;
 }
 
 
@@ -42,9 +44,9 @@ $oPage->addItem(new ui\PageTop(_('ClientZone Setup')));
 $setupRow = new \Ease\TWB5\Row();
 $setupRow->addColumn(4, $cfgForm);
 
-if (!empty($shared->getConfigValue('FLEXIBEE_URL')) &&
-    !empty($shared->getConfigValue('FLEXIBEE_LOGIN')) &&
-    !empty($shared->getConfigValue('FLEXIBEE_PASSWORD'))
+if (!empty($shared->getConfigValue('ABRAFLEXI_URL')) &&
+    !empty($shared->getConfigValue('ABRAFLEXI_LOGIN')) &&
+    !empty($shared->getConfigValue('ABRAFLEXI_PASSWORD'))
 ) {
 
     $statuser = new \AbraFlexi\ui\TWB5\StatusInfoBox();
@@ -79,20 +81,20 @@ if (!empty($shared->getConfigValue('FLEXIBEE_URL')) &&
             new \Ease\Html\PreTag($cfg->getJson($cfg->getAppData()))));
 
     $statusBlock->addItem(new \Ease\Html\FieldSet(_('FlexiBee Config File Preview'),
-            new \Ease\Html\PreTag($cfg->getJson($cfg->getFlexiBeeData()))));
+            new \Ease\Html\PreTag($cfg->getJson($cfg->getAbraFlexiData()))));
 
 
     $setupRow->addColumn(4,
-        new \Ease\Html\FieldSet(_('FlexiBee Connection Status'), $statusBlock));
+        new \Ease\Html\FieldSet(_('AbraFlexi Connection Status'), $statusBlock));
 } else {
     $setupRow->addColumn(4,
-        new \Ease\Html\FieldSet(_('FlexiBee Connection Status'),
+        new \Ease\Html\FieldSet(_('AbraFlexi Connection Status'),
             new \Ease\TWB5\LinkButton(null, _('Connection not set'), 'warning')));
 }
 
 
 
-$oPage->container->addItem(new \Ease\TWB5\Panel(_('FlexiBee setup'), 'warning',
+$oPage->container->addItem(new \Ease\TWB5\Panel(_('AbraFlexi Setup'), 'warning',
         $setupRow));
 
 

@@ -27,6 +27,6 @@ class HtmlInvoice extends \Ease\Container
                 $initialContent);
         }
         parent::__construct($initialContent);
-        //   \Ease\Shared::webPage()->includeCss('css/flexibee.css');
+        //   \Ease\WebPage::singleton()->includeCss('css/flexibee.css');
     }
 }

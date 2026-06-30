@@ -66,8 +66,9 @@ class PageBottom extends \Ease\Html\FooterTag
     /**
      * Zobrazí přehled právě přihlášených a spodek stránky.
      */
-    public function finalize()
+    public function finalize(): void
     {
+        parent::finalize();
         if (isset($this->webPage->heroUnit) && !count($this->webPage->heroUnit->pageParts)) {
             unset($this->webPage->container->pageParts['\Ease\Html\DivTag@heroUnit']);
         }

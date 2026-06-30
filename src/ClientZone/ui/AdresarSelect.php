@@ -10,13 +10,14 @@ namespace ClientZone\ui;
 
 class AdresarSelect extends \Ease\Html\InputTextTag
 {
-    public function finalize()
+    public function finalize(): void
     {
+        parent::finalize();
         $this->setTagID('AdresarSelect');
-        \Ease\Shared::webPage()->includeJavaScript('js/handlebars.js');
-        \Ease\Shared::webPage()->includeJavaScript('js/typeahead.bundle.js');
+        \Ease\WebPage::singleton()->includeJavaScript('js/handlebars.js');
+        \Ease\WebPage::singleton()->includeJavaScript('js/typeahead.bundle.js');
 
-        \Ease\Shared::webPage()->addJavaScript('
+        \Ease\WebPage::singleton()->addJavaScript('
 
 
 var addresses = new Bloodhound({

@@ -17,13 +17,14 @@ class FXPreloader extends \Ease\Html\Div
             ['class' => 'loader', 'data-initialize' => 'loader', 'id' => $id]);
     }
 
-    public function finalize()
+    public function finalize(): void
     {
-        \Ease\Shared::webPage()->includeCss('twitter-bootstrap/css/fuelux.css',
+        parent::finalize();
+        \Ease\WebPage::singleton()->includeCss('twitter-bootstrap/css/fuelux.css',
             true);
-        \Ease\Shared::webPage()->includeJavascript('/javascript/twitter-bootstrap/fuelux.js');
-        \Ease\Shared::webPage()->addJavascript("$('#".$this->getTagID()."').loader();");
-        \Ease\Shared::webPage()->addCSS('
+        \Ease\WebPage::singleton()->includeJavascript('/javascript/twitter-bootstrap/fuelux.js');
+        \Ease\WebPage::singleton()->addJavascript("$('#".$this->getTagID()."').loader();");
+        \Ease\WebPage::singleton()->addCSS('
 #'.$this->getTagID().'{
     position: absolute;
     top: 50%;

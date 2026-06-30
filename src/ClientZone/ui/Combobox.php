@@ -55,11 +55,12 @@ class Combobox extends \Ease\Html\Div
             $this->value, ['class' => 'form-control']));
     }
 
-    public function finalize()
+    public function finalize(): void
     {
-        \Ease\Shared::webPage()->includeCss('twitter-bootstrap/css/fuelux.css',
+        parent::finalize();
+        \Ease\WebPage::singleton()->includeCss('twitter-bootstrap/css/fuelux.css',
             true);
-        \Ease\Shared::webPage()->includeJavascript('/javascript/twitter-bootstrap/fuelux.js');
+        \Ease\WebPage::singleton()->includeJavascript('/javascript/twitter-bootstrap/fuelux.js');
 
         $dropDown = $this->addItem(
             new \Ease\Html\DivTag(

@@ -37,7 +37,7 @@ class History extends \Ease\Html\DivTag
 
         $currentUrl = $_SERVER['REQUEST_URI'];
         if (!count($_SESSION['history']) || current(end($_SESSION['history'])) != $currentUrl) {
-            $_SESSION['history'][] = ['url' => $currentUrl, 'title' => \Ease\Shared::webPage()->pageTitle];
+            $_SESSION['history'][] = ['url' => $currentUrl, 'title' => \Ease\WebPage::singleton()->pageTitle];
         }
 
     }

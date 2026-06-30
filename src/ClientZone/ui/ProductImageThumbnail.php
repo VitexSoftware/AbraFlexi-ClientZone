@@ -23,7 +23,7 @@ class ProductImageThumbnail extends \Ease\Html\ATag
             new ProductImage($product, 'thumbnail', $tagProperties));
     }
 
-    public function finalize()
+    public function finalize(): void
     {
         $imager = new \ClientZone\ProductImager($this->product['id']);
         if ($imager->imageExists('image', 'jpg') || $imager->imageExists('image',

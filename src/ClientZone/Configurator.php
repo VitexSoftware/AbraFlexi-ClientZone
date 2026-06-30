@@ -42,10 +42,10 @@ class Configurator extends \Ease\Brick
         "DEBUG" => 'boolean',
         "CONFIGURED" => 'boolean',
         "EASE_LOGGER" => 'string',
-        "FLEXIBEE_URL" => 'string',
-        "FLEXIBEE_LOGIN" => 'string',
-        "FLEXIBEE_PASSWORD" => 'string',
-        "FLEXIBEE_COMPANY" => 'string'
+        "ABRAFLEXI_URL" => 'string',
+        "ABRAFLEXI_LOGIN" => 'string',
+        "ABRAFLEXI_PASSWORD" => 'string',
+        "ABRAFLEXI_COMPANY" => 'string'
     ];
 
     /**
@@ -196,35 +196,54 @@ class Configurator extends \Ease\Brick
     }
 
     /**
+     * Serialise data as KEY=value .env lines
+     */
+    public function getEnv(array $data = []): string
+    {
+        if (empty($data)) {
+            $data = $this->getData();
+        }
+        $lines = [];
+        foreach ($data as $key => $value) {
+            $escaped = str_replace('"', '\\"', (string) $value);
+            $lines[] = $key.'="'.$escaped.'"';
+        }
+        return implode("\n", $lines)."\n";
+    }
+
+    /**
      * Save Configuration to file
-     *  
+     *
      * @return boolean
      */
-    public function saveDataFile(array $data, $configFile)
+    public function saveDataFile(array $data, string $configFile): bool
     {
-        if (file_put_contents($configFile, $this->getJson($data))) {
+        $content = str_ends_with($configFile, '.env')
+            ? $this->getEnv($data)
+            : $this->getJson($data);
+        if (file_put_contents($configFile, $content)) {
             $this->addStatusMessage(sprintf(_('Configuration file %s was saved'),
                     $configFile), 'success');
             return true;
-        } else {
-            $this->addStatusMessage(sprintf(_('Configuration file %s was not saved'),
-                    $configFile), 'error');
         }
+        $this->addStatusMessage(sprintf(_('Configuration file %s was not saved'),
+                $configFile), 'error');
+        return false;
     }
 
     public function getAppData()
     {
         return array_filter($this->getData(),
             function($k) {
-            return !strstr($k, 'FLEXIBEE_');
+            return !strstr($k, 'ABRAFLEXI_');
         }, ARRAY_FILTER_USE_KEY);
     }
 
-    public function getFlexiBeeData()
+    public function getAbraFlexiData()
     {
         return array_filter($this->getData(),
             function($k) {
-            return strstr($k, 'FLEXIBEE_');
+            return strstr($k, 'ABRAFLEXI_');
         }, ARRAY_FILTER_USE_KEY);
     }
 
@@ -243,19 +262,21 @@ class Configurator extends \Ease\Brick
      *  
      * @return boolean
      */
-    public function saveFlexiBeeConfig()
+    public function saveAbraFlexiConfig(): bool
     {
-        return $this->saveDataFile($this->getFlexiBeeData(),
-                '/etc/flexibee/client.json');
+        $envFile = file_exists('/etc/abraflexi/clientzone.env')
+            ? '/etc/abraflexi/clientzone.env'
+            : \dirname(__DIR__, 3).'/.env';
+        return $this->saveDataFile($this->getAbraFlexiData(), $envFile);
     }
 
     /**
      * Save All data
-     * 
+     *
      * @return boolean
      */
-    public function saveConfig()
+    public function saveConfig(): bool
     {
-        return $this->saveAppConfig() && $this->saveFlexiBeeConfig();
+        return $this->saveAppConfig() && $this->saveAbraFlexiConfig();
     }
 }

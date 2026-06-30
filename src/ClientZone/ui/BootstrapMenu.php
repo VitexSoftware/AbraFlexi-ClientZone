@@ -18,10 +18,10 @@ class BootstrapMenu extends \Ease\TWB5\Navbar
         $brand = new \Ease\Html\ATag('index.php', [
             new \Ease\Html\ImgTag(
                 'images/clientzone-logo.svg',
-                constant('EASE_APPNAME'),
+                \Ease\Shared::appName(),
                 ['height' => 32, 'width' => 32, 'class' => 'me-2']
             ),
-            new \Ease\Html\SpanTag(constant('EASE_APPNAME'), ['class' => 'fw-semibold text-white']),
+            new \Ease\Html\SpanTag(\Ease\Shared::appName(), ['class' => 'fw-semibold text-white']),
         ], ['class' => 'navbar-brand d-flex align-items-center text-decoration-none']);
 
         parent::__construct($brand, 'clientzone-navbar', ['class' => 'cz-navbar sticky-top']);
@@ -99,15 +99,14 @@ class BootstrapMenu extends \Ease\TWB5\Navbar
 
     public function draw(): void
     {
-        $webPage = \Ease\Shared::webPage();
-        $statusMessages = $webPage->getStatusMessagesAsHtml();
-        if ($statusMessages) {
-            $this->addItem(new \Ease\Html\DivTag($statusMessages, [
-                'id'    => 'StatusMessages',
-                'class' => 'alert alert-dismissible fade show mb-0',
-                'role'  => 'alert',
-            ]));
-            $webPage->cleanMessages();
+        $messagesBlock = \Ease\WebPage::singleton()->getStatusMessagesBlock([
+            'id'    => 'StatusMessages',
+            'class' => 'alert alert-dismissible fade show mb-0',
+            'role'  => 'alert',
+        ]);
+        if (!$messagesBlock->isEmpty()) {
+            $this->addItem($messagesBlock);
+            \Ease\Shared::logger()->cleanMessages();
         }
         parent::draw();
     }

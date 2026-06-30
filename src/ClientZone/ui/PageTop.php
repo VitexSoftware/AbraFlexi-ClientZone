@@ -28,19 +28,20 @@ class PageTop extends \Ease\Html\DivTag
     public function __construct($pageTitle = null)
     {
         parent::__construct();
-        if (!is_null($pageTitle)) {
-            \Ease\Shared::webPage()->setPageTitle($pageTitle);
+        if (!is_null($pageTitle) && isset($GLOBALS['oPage'])) {
+            $GLOBALS['oPage']->setPageTitle($pageTitle);
         }
     }
 
     /**
      * Vloží vršek stránky a hlavní menu.
      */
-    public function finalize()
+    public function finalize(): void
     {
+        parent::finalize();
         $this->addItem(new MainMenu());
 
-        if (get_class(\Ease\Shared::user()) == 'ClientZone\ClientZone\User') {
+        if (get_class(\Ease\Shared::user()) == 'ClientZone\User') {
             $this->addItem(new History());
         }
     }

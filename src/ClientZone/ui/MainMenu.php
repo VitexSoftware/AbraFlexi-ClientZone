@@ -48,7 +48,7 @@ class MainMenu extends \Ease\Html\NavTag
     /**
      * Vložení menu.
      */
-    public function afterAdd()
+    public function afterAdd(): void
     {
         $nav    = $this->addItem(new BootstrapMenu());
         $user   = \Ease\Shared::user();
@@ -75,16 +75,16 @@ class MainMenu extends \Ease\Html\NavTag
     /**
      * Přidá do stránky javascript pro skrývání oblasti stavových zpráv.
      */
-    public function finalize()
+    public function finalize(): void
     {
+        parent::finalize();
         $this->addCss('body {
                 padding-top: 60px;
                 padding-bottom: 40px;
             }');
 
-        \Ease\JQuery\Part::jQueryze($this);
-        \Ease\Shared::webPage()->addCss('.dropdown-menu { overflow-y: auto } ');
-        \Ease\Shared::webPage()->addJavaScript("$('.dropdown-menu').css('max-height',$(window).height()-100);",
+        \Ease\WebPage::singleton()->addCss('.dropdown-menu { overflow-y: auto } ');
+        \Ease\WebPage::singleton()->addJavaScript("$('.dropdown-menu').css('max-height',$(window).height()-100);",
             null, true);
         $this->includeJavaScript('js/slideupmessages.js');
     }

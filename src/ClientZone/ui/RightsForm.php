@@ -11,8 +11,9 @@ class RightsForm extends \Ease\TWB5\Form
 {
     public $allUsers;
 
-    public function finalize()
+    public function finalize(): void
     {
+        parent::finalize();
         $rights         = [];
         $this->allUsers = \Ease\Shared::user()->getAllFromSQL();
 

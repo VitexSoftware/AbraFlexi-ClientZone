@@ -24,7 +24,7 @@ class FlexiBeeLoginForm extends \Ease\TWB5\Form
         $this->addItem(new \Ease\TWB5\SubmitButton(_('Sign In')));
     }
 
-    public function finalize()
+    public function finalize(): void
     {
         $this->addStatusMessage(_('Please enter your Login and Password'),
             'info');

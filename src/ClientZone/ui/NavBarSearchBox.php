@@ -27,7 +27,7 @@ class NavBarSearchBox extends \Ease\TWB5\Form
     {
         parent::__construct($formName, $formAction, $formMethod, $formContents,
             $tagProperties);
-        $term = \Ease\Shared::webPage()->getRequestValue('search', 'string');
+        $term = \Ease\WebPage::singleton()->getRequestValue('search', 'string');
 
         $this->setTagProperties(['class' => 'navbar-form', 'role' => 'search']);
         $group   = $this->addItem(
@@ -51,13 +51,14 @@ class NavBarSearchBox extends \Ease\TWB5\Form
             ['type' => 'submit', 'class' => 'btn btn-default btn-sm ']));
     }
 
-    public function finalize()
+    public function finalize(): void
     {
-        \Ease\Shared::webPage()->includeJavaScript('js/handlebars.js');
-        \Ease\Shared::webPage()->includeJavaScript('js/typeahead.bundle.js');
+        parent::finalize();
+        \Ease\WebPage::singleton()->includeJavaScript('js/handlebars.js');
+        \Ease\WebPage::singleton()->includeJavaScript('js/typeahead.bundle.js');
 
         /*
-          \Ease\Shared::webPage()->addCss('
+          \Ease\WebPage::singleton()->addCss('
 
           .tt-hint {
           }
@@ -102,7 +103,7 @@ class NavBarSearchBox extends \Ease\TWB5\Form
           ');
 
          */
-        \Ease\Shared::webPage()->addJavaScript('
+        \Ease\WebPage::singleton()->addJavaScript('
 
 
 var bestPictures = new Bloodhound({

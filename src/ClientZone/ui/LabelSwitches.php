@@ -44,8 +44,9 @@ class LabelSwitches extends \Ease\Html\DivTag
         }
     }
 
-    public function finalize()
+    public function finalize(): void
     {
+        parent::finalize();
         // TWB5 bootstrapization is automatic
         $this->addJavaScript('
 
