@@ -18,7 +18,7 @@ $evidence = $oPage->getRequestValue('evidence');
 
 $flexiBee = new \AbraFlexi\RO(null, ['evidence' => $evidence]);
 
-$oPage->addItem(new ui\PageTop(_('Label').': '.$label));
+$oPage->addToHeader(new ui\PageTop(_('Label').': '.$label));
 
 
 //        $operationsMenu = $contact->operationsMenu();

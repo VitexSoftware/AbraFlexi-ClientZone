@@ -30,7 +30,7 @@ if ($login) {
     $oUser = \Ease\Shared::user(new \Ease\Anonym());
 }
 
-$oPage->addItem(new ui\PageTop(_('Sign In')));
+$oPage->addToHeader(new ui\PageTop(_('Sign In')));
 
 $loginFace = new \Ease\Html\DivTag(null, ['id' => 'LoginFace']);
 
@@ -71,7 +71,7 @@ $passRecoveryColumn->additem(new \Ease\TWB5\LinkButton('newcustomer.php',
 
 }
 
-$oPage->container->addItem(new \Ease\TWB5\Form('Login', null, 'POST', $loginRow));
+$oPage->container->addItem(new \Ease\TWB5\Form(['name' => 'Login', 'method' => 'POST'], [], $loginRow));
 
 $oPage->addItem(new ui\PageBottom());
 

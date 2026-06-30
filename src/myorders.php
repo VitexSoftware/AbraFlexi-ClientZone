@@ -12,7 +12,7 @@ require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
 
-$oPage->addItem(new ui\PageTop(_('My Orders')));
+$oPage->addToHeader(new ui\PageTop(_('My Orders')));
 
 $evidencies = ['faktura-vydana'=>_('Invoices'), 'objednavka-prijata'=>_('Orders')];
 $fetcher    = new \AbraFlexi\RO();

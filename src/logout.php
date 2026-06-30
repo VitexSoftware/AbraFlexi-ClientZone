@@ -16,7 +16,7 @@ $oUser->logout();
 $oUser->addStatusMessages($messagesBackup);
 
 
-$oPage->addItem(new ui\PageTop(_('Sign Off')));
+$oPage->addToHeader(new ui\PageTop(_('Sign Off')));
 
 $oPage->container->addItem('<br/><br/><br/><br/>');
 $oPage->container->addItem(new \Ease\Html\DivTag(new \Ease\Html\ATag('login.php',

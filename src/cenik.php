@@ -22,7 +22,7 @@ $item = new \AbraFlexi\Cenik(is_numeric($id) ? intval($id) : $id);
 
 
 
-$oPage->addItem(new ui\PageTop($item->getDataValue('nazev')));
+$oPage->addToHeader(new ui\PageTop($item->getDataValue('nazev')));
 
 $oPage->container->addItem(new ui\ProductEditor($item));
 

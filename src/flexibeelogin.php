@@ -13,7 +13,7 @@ require_once 'includes/Init.php';
 $username = $oPage->getRequestValue('username');
 $password = $oPage->getRequestValue('password');
 
-$oPage->addItem(new ui\PageTop(_('Sign In')));
+$oPage->addToHeader(new ui\PageTop(_('Sign In')));
 
 if (empty($username) || empty($password)) {
     $oPage->container->addItem(new \Ease\TWB5\Panel(_('I already have an customer number'),

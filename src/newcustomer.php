@@ -136,7 +136,7 @@ if ($oPage->isPosted()) {
     }
 }
 
-$oPage->addItem(new ui\PageTop(_('Sign On')));
+$oPage->addToHeader(new ui\PageTop(_('Sign On')));
 $oPage->addPageColumns();
 
 $oPage->columnI->addItem(new \Ease\Html\H2Tag(_('Welcome')));

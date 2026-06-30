@@ -48,7 +48,7 @@ switch ($action) {
         break;
 }
 
-$oPage->addItem(new ui\PageTop(_('Pokladna')));
+$oPage->addToHeader(new ui\PageTop(_('Pokladna')));
 
 $action = $oPage->getRequestValue('action');
 

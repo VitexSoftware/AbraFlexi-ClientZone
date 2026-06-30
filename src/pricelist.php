@@ -10,7 +10,7 @@ namespace ClientZone;
  */
 require_once 'includes/Init.php';
 
-$oPage->addItem(new ui\PageTop(_('Pricelist')));
+$oPage->addToHeader(new ui\PageTop(_('Pricelist')));
 
 $oPage->container->addItem(new ui\Pricelist(1, ['ESHOP', 'AKTIVNI']));
 

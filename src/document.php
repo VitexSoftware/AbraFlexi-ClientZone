@@ -18,7 +18,7 @@ $evidence = $oPage->getRequestValue('evidence');
 $document = new \AbraFlexi\RO(is_numeric($id) ? intval($id) : $id,
     ['evidence' => $evidence]);
 
-$oPage->addItem(new ui\PageTop($document->getEvidence().' '.$document));
+$oPage->addToHeader(new ui\PageTop($document->getEvidence().' '.$document));
 
 $embed = new \AbraFlexi\ui\TWB5\EmbedResponsivePDF($document);
 $embed->setTagCss(['min-height'=>'100vh','width'=>'100%']);

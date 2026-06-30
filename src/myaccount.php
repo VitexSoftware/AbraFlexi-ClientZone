@@ -25,7 +25,7 @@ if ($oPage->getGetValue('delete', 'bool') == 'true') {
     }
 }
 
-$oPage->addItem(new ui\PageTop(_('Address').': '.$address->getDataValue('nazev')));
+$oPage->addToHeader(new ui\PageTop(_('Address').': '.$address->getDataValue('nazev')));
 
 $addressRow = new \Ease\TWB5\Row();
 $infoColumn = $addressRow->addColumn(4,

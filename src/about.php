@@ -12,7 +12,7 @@ require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
 
-$oPage->addItem(new ui\PageTop(_('About')));
+$oPage->addToHeader(new ui\PageTop(_('About')));
 
 $infoBlock = $oPage->container->addItem(
     new \Ease\TWB5\Panel(

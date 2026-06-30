@@ -42,7 +42,7 @@ if ($oPage->getGetValue('delete', 'bool') == 'true') {
     }
 }
 
-$oPage->addItem(new ui\PageTop(_('Contact').' '.$contact->getDataValue('id')));
+$oPage->addToHeader(new ui\PageTop(_('Contact').' '.$contact->getDataValue('id')));
 
 switch ($oPage->getRequestValue('action')) {
     case 'delete':

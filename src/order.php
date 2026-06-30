@@ -16,7 +16,7 @@ $invoiceID = $oPage->getRequestValue('id', 'int');
 if ($invoiceID) {
     $proforma = new \AbraFlexi\FakturaVydana($invoiceID);
 
-    $oPage->addItem(new ui\PageTop(_('Order').' '.$proforma->getDataValue('kod')));
+    $oPage->addToHeader(new ui\PageTop(_('Order').' '.$proforma->getDataValue('kod')));
 
 
     $oPage->addItem(

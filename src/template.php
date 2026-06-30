@@ -12,7 +12,7 @@ require_once './includes/Init.php';
 
 $oPage->onlyForLogged();
 
-$oPage->addItem(new ui\PageTop(_('Spoje.Net')));
+$oPage->addToHeader(new ui\PageTop(_('Spoje.Net')));
 
 $oPage->addItem(new ui\PageBottom());
 

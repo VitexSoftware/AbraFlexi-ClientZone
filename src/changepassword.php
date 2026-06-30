@@ -48,7 +48,7 @@ if (!isset($_POST['CurrentPassword'])) {
     }
 }
 
-$oPage->addItem(new ui\PageTop(_('User password change')));
+$oPage->addToHeader(new ui\PageTop(_('User password change')));
 $oPage->addPageColumns();
 
 if ($formOK && $oPage->isPosted()) {

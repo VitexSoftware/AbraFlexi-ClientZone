@@ -15,7 +15,7 @@ require_once 'includes/Init.php';
 $evidence = $oPage->getRequestValue('evidence');
 $query    = $oPage->getRequestValue('search');
 
-$oPage->addItem(new ui\PageTop(_('Search results').': '.$query));
+$oPage->addToHeader(new ui\PageTop(_('Search results').': '.$query));
 
 if (strlen($query) > 1) {
     $searcher = new Searcher($evidence);

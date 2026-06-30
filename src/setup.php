@@ -37,7 +37,7 @@ if ($oPage->isPosted()) {
 $cfgForm = new ui\SetupForm();
 $cfgForm->fillUp($cfg->getData());
 
-$oPage->addItem(new ui\PageTop(_('ClientZone Setup')));
+$oPage->addToHeader(new ui\PageTop(_('ClientZone Setup')));
 
 
 

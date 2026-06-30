@@ -23,7 +23,7 @@ if (!is_null($delete)) {
     $oPage->redirect('cart.php');
 }
 
-$oPage->addItem(new ui\PageTop(_('Spoje.Net Order Form')));
+$oPage->addToHeader(new ui\PageTop(_('Spoje.Net Order Form')));
 
 $oPage->container->addItem(new ui\CartForm(isset($_SESSION['cart']) ? $_SESSION['cart']
             : []));

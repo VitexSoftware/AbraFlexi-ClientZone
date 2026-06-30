@@ -124,7 +124,7 @@ if ($oPage->isPosted()) {
     }
 }
 
-$oPage->addItem(new ui\PageTop(_('Sign On')));
+$oPage->addToHeader(new ui\PageTop(_('Sign On')));
 
 $regFace = $oPage->container->addItem(new \Ease\TWB5\Panel(_('Sign On')));
 

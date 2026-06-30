@@ -11,7 +11,7 @@ namespace ClientZone;
 require_once 'includes/Init.php';
 
 
-$oPage->addItem(new ui\PageTop(_('clientzone')));
+$oPage->addToHeader(new ui\PageTop(_('clientzone')));
 
 $mainMenu = $oPage->container->addItem(new ui\MainPageMenu());
 

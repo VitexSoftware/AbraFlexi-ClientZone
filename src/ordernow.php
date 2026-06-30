@@ -13,7 +13,7 @@ $oPage->onlyForLogged('login.php',
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  2017 VitexSoftware v.s.cz
  */
-$oPage->addItem(new ui\PageTop(_('Spoje.Net Order Form')));
+$oPage->addToHeader(new ui\PageTop(_('Spoje.Net Order Form')));
 
 
 $order    = new Order(isset($_SESSION['cart']) ? $_SESSION['cart'] : []);
