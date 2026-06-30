@@ -72,23 +72,23 @@ if ($formOK && $oPage->isPosted()) {
 } else {
     $loginForm = new \Ease\Html\Form(NULL);
 
-    $loginForm->addItem(new \Ease\TWB\FormGroup(_('Current password'),
+    $loginForm->addItem(new \Ease\TWB5\FormGroup(_('Current password'),
         new \Ease\Html\InputPasswordTag('CurrentPassword'), NULL
     ));
 
-    $loginForm->addItem(new \Ease\TWB\FormGroup(_('New Password'),
+    $loginForm->addItem(new \Ease\TWB5\FormGroup(_('New Password'),
         new \Ease\Html\InputPasswordTag('password'), NULL
     ));
 
-    $loginForm->addItem(new \Ease\TWB\FormGroup(_('Password confirm'),
+    $loginForm->addItem(new \Ease\TWB5\FormGroup(_('Password confirm'),
         new \Ease\Html\InputPasswordTag('passwordConfirm'), NULL
     ));
 
-    $loginForm->addItem(new \Ease\TWB\SubmitButton(_('Change password')));
+    $loginForm->addItem(new \Ease\TWB5\SubmitButton(_('Change password')));
 
     $loginForm->fillUp($_POST);
 
-    $oPage->columnII->addItem(new \Ease\TWB\Panel(_('Password change'),
+    $oPage->columnII->addItem(new \Ease\TWB5\Panel(_('Password change'),
         'default', $loginForm));
 }
 

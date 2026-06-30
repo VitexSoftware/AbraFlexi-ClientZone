@@ -12,11 +12,11 @@ namespace ClientZone\ui;
  *
  * @author vitex
  */
-class AdminPricelist extends \Ease\TWB\Panel
+class AdminPricelist extends \Ease\TWB5\Panel
 {
     /**
      *
-     * @var \FlexiPeeHP\Cenik
+     * @var \AbraFlexi\Cenik
      */
     public $pricer = null;
 
@@ -36,12 +36,12 @@ class AdminPricelist extends \Ease\TWB\Panel
             $category  .= ' and '.$labelCond;
         }
 
-        $this->pricer = new \FlexiPeeHP\Cenik();
+        $this->pricer = new \AbraFlexi\Cenik();
         $items        = $this->pricer->getColumnsFromFlexibee('info',
             ['(in subtree '.$category.')']);
 
         parent::__construct(_('Pricelist'), 'info', null,
-            new \Ease\TWB\Label('info',
+            new \Ease\TWB5\Badge('info',
             sprintf(_('%s items found'), count($items))));
 
         if (count($items)) {
@@ -60,7 +60,7 @@ class AdminPricelist extends \Ease\TWB\Panel
 
     public function pricelistRow($pricelistItemData)
     {
-        $row = new \Ease\TWB\Row();
+        $row = new \Ease\TWB5\Row();
         $this->pricer->setMyKey($pricelistItemData['id']);
         $row->addColumn(1,
             new ProductImageThumbnail($this->pricer,
@@ -68,7 +68,7 @@ class AdminPricelist extends \Ease\TWB\Panel
         $row->addColumn(2, $pricelistItemData['nazev']);
         $row->addColumn(2, $pricelistItemData['cenaZakl']);
         $row->addColumn(2,
-            new \Ease\TWB\LinkButton('cenik.php?id='.$pricelistItemData['id'],
+            new \Ease\TWB5\LinkButton('cenik.php?id='.$pricelistItemData['id'],
             _('Edit'), 'success'));
 
         return $row;

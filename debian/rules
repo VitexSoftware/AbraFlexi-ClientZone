@@ -1,13 +1,31 @@
 #!/usr/bin/make -f
 
+PKG_VERSION := $(shell dpkg-parsechangelog -S Version | sed 's/~.*//')
+PKG_SOURCE  := $(shell jq -r '.name' composer.json)
+PKG_TYPE    := $(shell jq -r '.type' composer.json)
+
 %:
-	dh $@  --with=systemd
+	dh $@
+
+override_dh_auto_test:
+	appstreamcli validate --pedantic --no-net \
+	    debian/abraflexi-clientzone.metainfo.xml
 
 override_dh_install:
 	dh_install
-	sed -i -e 's/..\//.\//g' debian/clientzone/usr/share/clientzone/about.php
-	sed -i -e 's/..\/vendor/\/var\/lib\/clientzone/g' debian/clientzone/usr/share/clientzone/includes/Init.php
-	sed -i -e 's/..\/clientzone.json/\/etc\/flexibee\/clientzone.json/g' debian/clientzone/usr/share/clientzone/includes/Init.php
-	sed -i -e 's/..\/clientzone.json/\/etc\/flexibee\/clientzone.json/g' debian/clientzone/usr/share/clientzone/setup.php
-	sed -i -e 's/..\/i18n/\/usr\/share\/locale/g' debian/clientzone/usr/share/clientzone/includes/Init.php
-	./debian/fixversion.sh
+	install -m 644 debian/autoload.php \
+	    debian/abraflexi-clientzone/usr/share/abraflexi-clientzone/autoload.php
+	sed -i "1a defined('APP_NAME') || define('APP_NAME', '$(PKG_SOURCE)');" \
+	    debian/abraflexi-clientzone/usr/share/abraflexi-clientzone/autoload.php
+	sed -i "s|'unknown'|'$(PKG_SOURCE)'|" \
+	    debian/abraflexi-clientzone/usr/share/abraflexi-clientzone/autoload.php
+	sed -i "s|'0.0.0'|'$(PKG_VERSION)'|" \
+	    debian/abraflexi-clientzone/usr/share/abraflexi-clientzone/autoload.php
+	sed -i "s|'library'|'$(PKG_TYPE)'|g" \
+	    debian/abraflexi-clientzone/usr/share/abraflexi-clientzone/autoload.php
+	sed -i "2a defined('APP_VERSION') || define('APP_VERSION', '$(PKG_VERSION)');" \
+	    debian/abraflexi-clientzone/usr/share/abraflexi-clientzone/autoload.php
+	sed -i -e 's/..\/clientzone.json/\/etc\/abraflexi\/clientzone.json/g' \
+	    debian/abraflexi-clientzone/usr/share/abraflexi-clientzone/setup.php
+	sed -i -e 's/..\/i18n/\/usr\/share\/locale/g' \
+	    debian/abraflexi-clientzone/usr/share/abraflexi-clientzone/includes/Init.php 2>/dev/null || true

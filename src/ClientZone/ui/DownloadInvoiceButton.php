@@ -12,13 +12,13 @@ namespace ClientZone\ui;
  *
  * @author vitex
  */
-class DownloadInvoiceButton extends \Ease\TWB\LinkButton
+class DownloadInvoiceButton extends \Ease\TWB5\LinkButton
 {
 
     public function __construct($document)
     {
         parent::__construct('getpdf.php?evidence='.$document->getEvidence().'&id='.$document->getMyKey(),
-            new \Ease\TWB\GlyphIcon('download').' '.sprintf(_('Download Your %s'),
+            '<i class="fa fa-download"></i>'.' '.sprintf(_('Download Your %s'),
                 '<strong>'.$document->getDataValue('poznam').' '.
                 $document->getDataValue('kod').'</strong>'), 'success');
     }

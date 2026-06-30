@@ -15,7 +15,7 @@ $oPage->onlyForLogged();
 $oPage->addItem(new ui\PageTop(_('My Orders')));
 
 $evidencies = ['faktura-vydana'=>_('Invoices'), 'objednavka-prijata'=>_('Orders')];
-$fetcher    = new \FlexiPeeHP\FlexiBeeRO();
+$fetcher    = new \AbraFlexi\RO();
 foreach ($evidencies as $evidence=>$evCaption) {
     $fetcher->setEvidence($evidence);
     $oPage->container->addItem(new ui\OrdersListing($fetcher,

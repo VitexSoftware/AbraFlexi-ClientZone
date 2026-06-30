@@ -1,7 +1,8 @@
 {
-    "name": "vitexsoftware/clientzone",
-    "description": "eShop for FlexiBee",
-    "version": "1.1",
+    "name": "vitexsoftware/abraflexi-clientzone",
+    "description": "Client Zone for AbraFlexi",
+    "version": "2.0",
+    "type": "project",
     "authors": [
         {
             "name": "Vítězslav Dvořák",
@@ -9,12 +10,18 @@
         }
     ],
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
-        "spoje.net/flexipeehp": "dev-master",
-        "vitexsoftware/ease-framework": "dev-master",
-        "robmorgan/phinx": "*",
-        "vitexsoftware/ease-bricks": "dev-master",
-        "vitexsoftware/flexipeehp-bricks": "dev-master"
+        "php": ">=8.4",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "spojenet/flexibee": "^3.7",
+        "vitexsoftware/ease-core": "^1.50",
+        "vitexsoftware/ease-twbootstrap5": ">=1.2.0",
+        "vitexsoftware/abraflexi-bricks": ">=1.5.0",
+        "vitexsoftware/ease-bootstrap5-widgets-abraflexi": "dev-main",
+        "vitexsoftware/ease-html-widgets": "dev-main",
+        "robmorgan/phinx": "*"
     },
     "autoload": {
         "psr-4": {
@@ -25,8 +32,8 @@
         }
     },
     "require-dev": {
-        "phpunit/php-token-stream": "~1.2",
-        "phpunit/phpunit": "5.6.3",
-        "phpunit/phpunit-skeleton-generator": "*"
+        "phpunit/phpunit": "^11",
+        "phpstan/phpstan": "*",
+        "friendsofphp/php-cs-fixer": "^3"
     }
 }

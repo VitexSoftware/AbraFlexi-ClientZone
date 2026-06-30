@@ -12,7 +12,7 @@ namespace ClientZone\ui;
  *
  * @author vitex
  */
-class RecordsWithLabel extends \Ease\TWB\Container
+class RecordsWithLabel extends \Ease\TWB5\Container
 {
     public $label = '';
     public $engine = null;
@@ -33,7 +33,7 @@ class RecordsWithLabel extends \Ease\TWB\Container
 
                 $evidence = $this->engine->getEvidence();
 
-                $recordToShow['flexiBee'] = new \Ease\TWB\LinkButton($engine->getEvidenceURL().'/'.$record['id'],
+                $recordToShow['flexiBee'] = new \Ease\TWB5\LinkButton($engine->getEvidenceURL().'/'.$record['id'],
                     new \Ease\Html\ImgTag('images/flexibee.png', 'FlexiBee',
                     ['width' => '20px']).' '.$record['kod'], 'info');
                 $recordToShow['nazev']    = '<a href="'.$evidence.'.php?id='.$record['id'].'"><strong>'.$record['nazev'].'</strong></a>';

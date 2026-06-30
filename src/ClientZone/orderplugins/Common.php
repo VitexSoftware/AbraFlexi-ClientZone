@@ -40,8 +40,8 @@ class Common extends \ClientZone\OrderPlugin
     /**
      * Add Product Fields to Form
      *
-     * @param Ease\TWB\Form $form
-     * @return Ease\TWB\Form
+     * @param Ease\TWB5\Form $form
+     * @return Ease\TWB5\Form
      */
     public function formFields($form)
     {
@@ -102,7 +102,7 @@ class Common extends \ClientZone\OrderPlugin
         if (empty($code)) {
             $ok = false;
         } else {
-            $pricelister = new \FlexiPeeHP\Cenik('code:'.$code);
+            $pricelister = new \AbraFlexi\Cenik('code:'.$code);
             if (empty($pricelister->getMyKey())) {
                 $this->addStatusMessage(sprintf(_('Producet with code %s does not exist'),
                         $code), 'warning');

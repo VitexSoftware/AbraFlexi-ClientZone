@@ -21,7 +21,7 @@ if ($order->checkInput()) {
 
 $orderForm = new ui\OrderFormHtml($order);
 
-$oPage->container->addItem(new \Ease\TWB\Container(new \Ease\TWB\Panel(_('Order'),
+$oPage->container->addItem(new \Ease\TWB5\Container(new \Ease\TWB5\Panel(_('Order'),
     'info', $orderForm)));
 
 

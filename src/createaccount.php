@@ -126,7 +126,7 @@ if ($oPage->isPosted()) {
 
 $oPage->addItem(new ui\PageTop(_('Sign On')));
 
-$regFace = $oPage->container->addItem(new \Ease\TWB\Panel(_('Sign On')));
+$regFace = $oPage->container->addItem(new \Ease\TWB5\Panel(_('Sign On')));
 
 $regForm = $regFace->addItem(new ui\ColumnsForm(new User()));
 if ($oUser->getUserID()) {

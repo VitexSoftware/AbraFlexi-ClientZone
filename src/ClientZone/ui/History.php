@@ -31,7 +31,7 @@ class History extends \Ease\Html\DivTag
 
         foreach ($_SESSION['history'] as $bookmark) {
             $this->addItem(new \Ease\Html\Span(new \Ease\Html\ATag($bookmark['url'],
-                [new \Ease\TWB\GlyphIcon('bookmark'), ' '.$bookmark['title']]),
+                [new \Ease\Html\SpanTag('', ['class' => 'fa fa-bookmark']), ' '.$bookmark['title']]),
                 ['class' => 'hitem']));
         }
 

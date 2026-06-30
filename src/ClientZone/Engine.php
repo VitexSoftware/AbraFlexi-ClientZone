@@ -170,7 +170,7 @@ class Engine extends \Ease\Brick
                 }
                 $engine->takeData($_POST);
                 if (isset($engine->evidence)) {
-                    $saveResult = $engine->insertToFlexiBee();
+                    $saveResult = $engine->insertToAbraFlexi();
                 } else {
                     $saveResult = $engine->saveToSQL();
                 }
@@ -294,10 +294,10 @@ class Engine extends \Ease\Brick
                             $row[$key] = '<em>NULL</em>';
                         } else {
                             if ($value === '0') {
-                                $row[$key] = \Ease\TWB\Part::glyphIcon('unchecked')->__toString();
+                                $row[$key] = '<i class="fa fa-square-o"></i>';
                             } else {
                                 if ($value === '1') {
-                                    $row[$key] = \Ease\TWB\Part::glyphIcon('check')->__toString();
+                                    $row[$key] = '<i class="fa fa-check"></i>';
                                 }
                             }
                         }
@@ -330,7 +330,7 @@ class Engine extends \Ease\Brick
                                     if ($id) {
                                         $values[$id] = '<a title="'.$table.'" href="'.$target.'?'.$idcolumn.'='.$id.'">'.$name.'</a>';
                                     } else {
-                                        $values[$id] = '<a title="'.$table.'" href="search.php?search='.$name.'&table='.$table.'&column='.$searchColumn.'">'.$name.'</a> '.\Ease\TWB\Part::glyphIcon('search');
+                                        $values[$id] = '<a title="'.$table.'" href="search.php?search='.$name.'&table='.$table.'&column='.$searchColumn.'">'.$name.'</a> '.'<i class="fa fa-search"></i>';
                                     }
                                 }
                             }
@@ -342,7 +342,7 @@ class Engine extends \Ease\Brick
                         if (isset($this->keywordsInfo[$key]['refdata']) && strlen(trim($value))) {
                             $table        = $this->keywordsInfo[$key]['refdata']['table'];
                             $searchColumn = $this->keywordsInfo[$key]['refdata']['captioncolumn'];
-                            $row[$key]    = '<a title="'.$table.'" href="search.php?search='.$value.'&table='.$table.'&column='.$searchColumn.'">'.$value.'</a> '.\Ease\TWB\Part::glyphIcon('search');
+                            $row[$key]    = '<a title="'.$table.'" href="search.php?search='.$value.'&table='.$table.'&column='.$searchColumn.'">'.$value.'</a> '.'<i class="fa fa-search"></i>';
                         }
                         if (strstr($key, 'image') && strlen(trim($value))) {
                             $row[$key] = '<img title="'.$value.'" src="logos/'.$value.'" class="gridimg">';
@@ -457,18 +457,28 @@ class Engine extends \Ease\Brick
     /**
      * Místní nabídka objektu.
      *
-     * @return \\Ease\TWB\ButtonDropdown
+     * @return \Ease\TWB5\ButtonGroup
      */
     public function operationsMenu()
     {
-        $id     = $this->getId();
-        $menu[] = new \Ease\Html\ATag($this->keyword.'.php?action=delete&'.$this->keyColumn.'='.$id,
-            \Ease\TWB\Part::glyphIcon('remove').' '._('Smazat'));
-        $menu[] = new \Ease\Html\ATag($this->keyword.'.php?'.$this->keyColumn.'='.$id,
-            \Ease\TWB\Part::glyphIcon('edit').' '._('Modify'));
-
-        return new \Ease\TWB\ButtonDropdown(\Ease\TWB\Part::glyphIcon('cog'),
-            'warning', '', $menu);
+        $id = $this->getId();
+        $dropdown = new \Ease\Html\DivTag(null, ['class' => 'btn-group', 'role' => 'group']);
+        $toggleBtn = $dropdown->addItem(new \Ease\Html\ButtonTag(
+            '<i class="fa fa-cog"></i>',
+            ['class' => 'btn btn-warning dropdown-toggle', 'data-bs-toggle' => 'dropdown', 'aria-expanded' => 'false']
+        ));
+        $menu = $dropdown->addItem(new \Ease\Html\UlTag(null, ['class' => 'dropdown-menu']));
+        $menu->addItem(new \Ease\Html\LiTag(new \Ease\Html\ATag(
+            $this->keyword.'.php?action=delete&'.$this->keyColumn.'='.$id,
+            '<i class="fa fa-times"></i>'.' '._('Smazat'),
+            ['class' => 'dropdown-item']
+        )));
+        $menu->addItem(new \Ease\Html\LiTag(new \Ease\Html\ATag(
+            $this->keyword.'.php?'.$this->keyColumn.'='.$id,
+            '<i class="fa fa-edit"></i>'.' '._('Modify'),
+            ['class' => 'dropdown-item']
+        )));
+        return $dropdown;
     }
 
     /**

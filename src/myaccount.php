@@ -14,7 +14,7 @@ $oPage->onlyForLogged();
 
 $address = Engine::doThings($oPage);
 if (is_null($address)) {
-    $address = new \FlexiPeeHP\Adresar($oUser->adresar->getRecordIdent(),
+    $address = new \AbraFlexi\Adresar($oUser->adresar->getRecordIdent(),
         ['defaultUrlParams' => ['relations' => 'kontakt']]);
 }
 
@@ -27,7 +27,7 @@ if ($oPage->getGetValue('delete', 'bool') == 'true') {
 
 $oPage->addItem(new ui\PageTop(_('Address').': '.$address->getDataValue('nazev')));
 
-$addressRow = new \Ease\TWB\Row();
+$addressRow = new \Ease\TWB5\Row();
 $infoColumn = $addressRow->addColumn(4,
     [/* new ui\ZewlScoreLabel($address), */new ui\InvoicesOfAddresButton($address)]);
 
@@ -35,24 +35,24 @@ $infoColumn = $addressRow->addColumn(4,
 switch ($oPage->getRequestValue('action')) {
     case 'delete':
 
-        $confirmBlock = new \Ease\TWB\Well();
+        $confirmBlock = new \Ease\TWB5\Card();
 
         $confirmBlock->addItem($address);
 
-        $confirmator = $confirmBlock->addItem(new \Ease\TWB\Panel(_('Delete ?')),
+        $confirmator = $confirmBlock->addItem(new \Ease\TWB5\Panel(_('Delete ?')),
             'danger');
-        $confirmator->addItem(new \Ease\TWB\LinkButton('addresar.php?id='.$address->getId(),
-            _('No').' '.\Ease\TWB\Part::glyphIcon('ok'), 'success'));
-        $confirmator->addItem(new \Ease\TWB\LinkButton('?delete=true&'.$address->keyColumn.'='.$address->getID(),
-            _('Yes').' '.\Ease\TWB\Part::glyphIcon('remove'), 'danger'));
+        $confirmator->addItem(new \Ease\TWB5\LinkButton('addresar.php?id='.$address->getId(),
+            _('No').' '.'<i class="fa fa-check"></i>', 'success'));
+        $confirmator->addItem(new \Ease\TWB5\LinkButton('?delete=true&'.$address->keyColumn.'='.$address->getID(),
+            _('Yes').' '.'<i class="fa fa-times"></i>', 'danger'));
 
-        $headerRow = new \Ease\TWB\Row();
+        $headerRow = new \Ease\TWB5\Row();
         $headerRow->addColumn(8,
             '<strong>'.$address->getContactName().'</strong>');
         $headerRow->addColumn(4,
             new ui\LinkToFlexiBeeButton($address, ['style' => 'width: 20px']));
         $addressRow->addColumn(8,
-            new \Ease\TWB\Panel($headerRow, 'info', $confirmBlock));
+            new \Ease\TWB5\Panel($headerRow, 'info', $confirmBlock));
         break;
     default :
 
@@ -61,14 +61,14 @@ switch ($oPage->getRequestValue('action')) {
 //        $operationsMenu->dropdown->addTagClass('pull-right');
         $operationsMenu = [];
 
-        $headerRow = new \Ease\TWB\Row();
+        $headerRow = new \Ease\TWB5\Row();
         $headerRow->addColumn(8,
             '<strong>'.$address->getDataValue('kod').' - '.$address->getDataValue('nazev').'</strong>');
         $headerRow->addColumn(4,
             new ui\LinkToFlexiBeeButton($address, ['style' => 'width: 20px']));
 
         $addressRow->addColumn(8,
-            new \Ease\TWB\Panel($headerRow, 'info',
+            new \Ease\TWB5\Panel($headerRow, 'info',
             new ui\AddressForm($address),
             [new ui\AddressContactsLinks($address)]));
 

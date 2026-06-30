@@ -13,7 +13,7 @@ class HtmlInvoice extends \Ease\Container
     /**
      * Gives you html FlexiBee invoice
      * 
-     * @param \FlexiPeeHP\FlexiBeeRO $invoice
+     * @param \AbraFlexi\RO $invoice
      */
     public function __construct($invoice)
     {

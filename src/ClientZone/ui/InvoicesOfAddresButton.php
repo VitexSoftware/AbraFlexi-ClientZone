@@ -12,13 +12,13 @@ namespace ClientZone\ui;
  *
  * @author vitex
  */
-class InvoicesOfAddresButton extends \Ease\TWB\LinkButton
+class InvoicesOfAddresButton extends \Ease\TWB5\LinkButton
 {
 
     /**
      * Link Button to Cutomer's invoices
      * 
-     * @param \FlexiPeeHP\Adresar $address
+     * @param \AbraFlexi\Adresar $address
      */
     public function __construct($address)
     {

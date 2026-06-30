@@ -14,7 +14,7 @@ $oPage->onlyForUser();
 
 $oPage->addItem(new ui\PageTop(_('Settings')));
 
-$oPage->container->addItem(new \Ease\TWB\LinkButton('changepassword.php',
+$oPage->container->addItem(new \Ease\TWB5\LinkButton('changepassword.php',
     _('Change Password'), 'warning'));
 
 $oPage->addItem(new ui\PageBottom());

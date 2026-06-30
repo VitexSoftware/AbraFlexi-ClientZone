@@ -12,18 +12,18 @@ namespace ClientZone\ui;
  *
  * @author vitex
  */
-class LinkToFlexiBeeButton extends \Ease\TWB\LinkButton
+class LinkToFlexiBeeButton extends \Ease\TWB5\LinkButton
 {
 
     /**
      *
-     * @param \FlexiPeeHP\FlexiBeeRO $flexibee
+     * @param \AbraFlexi\RO $flexibee
      */
     public function __construct($flexibee, $properties = [])
     {
-        parent::__construct($flexibee->getFlexiBeeURL(),
+        parent::__construct($flexibee->getAbraFlexiURL(),
             [new \Ease\Html\ImgTag('images/flexibee.png', _('Open in FlexiBee'),
-        $properties), ' ', \FlexiPeeHP\EvidenceList::$name[$flexibee->getEvidence()].' <strong>'.str_replace('code:',
+        $properties), ' ', \AbraFlexi\EvidenceList::$name[$flexibee->getEvidence()].' <strong>'.str_replace('code:',
                 '', $flexibee).'</strong>'], 'warning');
     }
 

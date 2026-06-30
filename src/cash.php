@@ -62,7 +62,7 @@ switch ($action) {
         $cashForm    = new ui\SettleForm($transaction);
         $cashForm->addSubmitSaveAndList();
         $cashForm->addSubmitSaveAndNext();
-        $oPage->container->addItem(new \Ease\TWB\Panel(_('Úhrada faktury'),
+        $oPage->container->addItem(new \Ease\TWB5\Panel(_('Úhrada faktury'),
             'success', $cashForm, $coder->getNextRecordCode('SRO')));
         break;
 
@@ -72,7 +72,7 @@ switch ($action) {
         $cashForm = new ui\CashForm($transaction);
         $cashForm->addSubmitSaveAndList();
         $cashForm->addSubmitSaveAndNext();
-        $oPage->container->addItem(new \Ease\TWB\Panel(_('Příjem'), 'success',
+        $oPage->container->addItem(new \Ease\TWB5\Panel(_('Příjem'), 'success',
             $cashForm, $coder->getNextRecordCode('SRO')));
         break;
     case 'outcome':
@@ -82,13 +82,13 @@ switch ($action) {
         $cashForm = new ui\CashForm($transaction);
         $cashForm->addSubmitSaveAndList();
         $cashForm->addSubmitSaveAndNext();
-        $oPage->container->addItem(new \Ease\TWB\Panel(_('Výdej'), 'danger',
+        $oPage->container->addItem(new \Ease\TWB5\Panel(_('Výdej'), 'danger',
             $cashForm, $coder->getNextRecordCode('SRO')));
         break;
 
     default:
 
-        $cashTabs = new \Ease\TWB\Tabs('cashTabs');
+        $cashTabs = new \Ease\TWB5\Tabs('cashTabs');
         $opTab    = $cashTabs->addTab(_('Operace Pokladny'));
 
         $mainMenu = $opTab->addItem(new ui\MainPageMenu());

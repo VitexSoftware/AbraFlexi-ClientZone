@@ -14,17 +14,17 @@ $oPage->onlyForLogged();
 $invoiceID = $oPage->getRequestValue('id', 'int');
 
 if ($invoiceID) {
-    $proforma = new \FlexiPeeHP\FakturaVydana($invoiceID);
+    $proforma = new \AbraFlexi\FakturaVydana($invoiceID);
 
     $oPage->addItem(new ui\PageTop(_('Order').' '.$proforma->getDataValue('kod')));
 
 
     $oPage->addItem(
-        new \Ease\TWB\Container(
-        new \Ease\TWB\Panel(_('Order').' '.$proforma->getDataValue('kod'),
+        new \Ease\TWB5\Container(
+        new \Ease\TWB5\Panel(_('Order').' '.$proforma->getDataValue('kod'),
         'success', new ui\HtmlInvoice($proforma),
-        new \Ease\TWB\LinkButton('getpdf.php?id='.$invoiceID,
-        new \Ease\TWB\GlyphIcon('download').' '.sprintf(_('Download Your Proforma #%s Here'),
+        new \Ease\TWB5\LinkButton('getpdf.php?id='.$invoiceID,
+        '<i class="fa fa-download"></i>'.' '.sprintf(_('Download Your Proforma #%s Here'),
             $proforma->getDataValue('kod')), 'success')
     )));
 }

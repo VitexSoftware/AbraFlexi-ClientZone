@@ -8,7 +8,7 @@
 
 namespace ClientZone\ui;
 
-class KontaktForm extends \Ease\TWB\Form
+class KontaktForm extends \Ease\TWB5\Form
 {
     /**
      * Otázky.
@@ -45,7 +45,7 @@ class KontaktForm extends \Ease\TWB\Form
             get_class($contact)));
 //        $this->addItem(new \Ease\Html\InputHiddenTag('enquiry_id', $contact->getDataValue('enquiry_id')));
 
-        $this->addItem(new \Ease\Html\DivTag(new \Ease\TWB\SubmitButton(_('Uložit'),
+        $this->addItem(new \Ease\Html\DivTag(new \Ease\TWB5\SubmitButton(_('Uložit'),
             'success'), ['style' => 'text-align: right']));
 
         if (!is_null($contactID)) {

@@ -7,12 +7,12 @@ namespace ClientZone\ui;
  *
  * @author vitex
  */
-class ZewlScoreLabel extends \Ease\TWB\Label
+class ZewlScoreLabel extends \Ease\TWB5\Badge
 {
 
     public function __construct($address)
     {
-        $engine    = new \FlexiPeeHP\Bricks\Upominac();
+        $engine    = new \AbraFlexi\Bricks\Upominac();
         $zewlScore = $engine->getCustomerScore($address->getMyKey());
 
         switch ($zewlScore) {

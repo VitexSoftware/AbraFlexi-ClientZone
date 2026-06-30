@@ -16,7 +16,7 @@ $label    = $oPage->getRequestValue('label');
 $evidence = $oPage->getRequestValue('evidence');
 
 
-$flexiBee = new \FlexiPeeHP\FlexiBeeRO(null, ['evidence' => $evidence]);
+$flexiBee = new \AbraFlexi\RO(null, ['evidence' => $evidence]);
 
 $oPage->addItem(new ui\PageTop(_('Label').': '.$label));
 
@@ -26,11 +26,11 @@ $oPage->addItem(new ui\PageTop(_('Label').': '.$label));
 //        $operationsMenu->dropdown->addTagClass('pull-right');
 $operationsMenu = '';
 
-$topRow = new \Ease\TWB\Row();
+$topRow = new \Ease\TWB5\Row();
 $topRow->addColumn(4,
     _('Label').': <strong>'.$label.'</strong>');
 
-$oPage->container->addItem(new \Ease\TWB\Panel($topRow, 'info',
+$oPage->container->addItem(new \Ease\TWB5\Panel($topRow, 'info',
     new ui\RecordsWithLabel($flexiBee, $label)));
 
 $oPage->addItem(new ui\PageBottom());

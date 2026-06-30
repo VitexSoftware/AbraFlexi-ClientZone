@@ -15,10 +15,10 @@ $documentID = $oPage->getRequestValue('id');
 
 
 if (!empty($documentID) && !empty($evidence)) {
-    $fetcher = new \FlexiPeeHP\FlexiBeeRO(is_numeric($documentID) ? intval($documentID)
+    $fetcher = new \AbraFlexi\RO(is_numeric($documentID) ? intval($documentID)
             : $documentID, ['evidence' => $evidence]);
 
-    $kod = \FlexiPeeHP\FlexiBeeRO::uncode($fetcher->getRecordCode());
+    $kod = \AbraFlexi\RO::uncode($fetcher->getRecordCode());
 
     $documentURI = dirname(\Ease\Page::getUri()).'/getpdf.php?id='.$documentID.'&evidence='.$evidence.'&embed=true';
 

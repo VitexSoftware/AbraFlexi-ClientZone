@@ -7,7 +7,7 @@ namespace ClientZone\ui;
  *
  * @author vitex
  */
-class OrderListingItem extends \Ease\TWB\Row
+class OrderListingItem extends \Ease\TWB5\Row
 {
 
     public function __construct($itemdata, $evidence)
@@ -25,22 +25,22 @@ class OrderListingItem extends \Ease\TWB\Row
             $itemdata['sumCelkem'].' '.str_replace('code:', '',
                 $itemdata['mena']));
         $this->addColumn(1,
-            isset($itemdata['datSplat']) ? \FlexiPeeHP\FlexiBeeRO::flexiDateToDateTime($itemdata['datSplat'])->format('d.m.Y')
+            isset($itemdata['datSplat']) ? \AbraFlexi\RO::flexiDateToDateTime($itemdata['datSplat'])->format('d.m.Y')
                     : '' );
 
         switch ($evidence) {
             case 'faktura-vydana':
                 if (strstr($itemdata['stavUhrK'], 'stavUhr.uhrazeno')) {
-                    $column2 = new \Ease\TWB\Label('success', _('Settled'));
+                    $column2 = new \Ease\TWB5\Badge('success', _('Settled'));
                 } else {
                     $column2 = self::dueLabel($itemdata['datSplat']);
                 }
                 break;
             case 'objednavka-prijata':
                 if ($itemdata['stavUzivK'] == 'stavDoklObch.hotovo') {
-                    $column2 = new \Ease\TWB\Label('success', _('Done'));
+                    $column2 = new \Ease\TWB5\Badge('success', _('Done'));
                 } else {
-                    $column2 = new \Ease\TWB\Label('warning',
+                    $column2 = new \Ease\TWB5\Badge('warning',
                         _('Open').': '.str_replace('stavDoklObch.', '',
                             $itemdata['stavUzivK']));
                 }
@@ -97,32 +97,32 @@ class OrderListingItem extends \Ease\TWB\Row
         }
 
 
-        return new \Ease\TWB\Label($type, $content);
+        return new \Ease\TWB5\Badge($type, $content);
     }
 
     /**
      * 
      * @param DateTime|string $date
      * 
-     * @return \Ease\TWB\Label
+     * @return \Ease\TWB5\Badge
      */
     static function dueLabel($date)
     {
-        $days = \FlexiPeeHP\FakturaVydana::overdueDays($date);
+        $days = \AbraFlexi\FakturaVydana::overdueDays($date);
         if ($days < 0) {
             $type = 'success';
             $msg  = sprintf(_(' %s days to due'),
-                new \Ease\TWB\Badge(abs($days)));
+                new \Ease\TWB5\Badge(abs($days)));
         } else {
             $msg = sprintf(_(' %s days after due'),
-                new \Ease\TWB\Badge(abs($days)));
+                new \Ease\TWB5\Badge(abs($days)));
             if ($days > 14) {
                 $type = 'danger';
             } else {
                 $type = 'warning';
             }
         }
-        return new \Ease\TWB\Label($type, $msg);
+        return new \Ease\TWB5\Badge($type, $msg);
     }
 
 }

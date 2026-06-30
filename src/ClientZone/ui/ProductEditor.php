@@ -12,14 +12,14 @@ namespace ClientZone\ui;
  *
  * @author vitex
  */
-class ProductEditor extends \Ease\TWB\Panel
+class ProductEditor extends \Ease\TWB5\Panel
 {
     public $product = null;
 
     /**
      * Item editor
      *
-     * @param \FlexiPeeHP\Cenik $product
+     * @param \AbraFlexi\Cenik $product
      */
     public function __construct($product)
     {
@@ -30,13 +30,13 @@ class ProductEditor extends \Ease\TWB\Panel
         $this->imageUpload('image');
 
 
-        $editForm = new \Ease\TWB\Form('product', 'cenik.php', 'POST',
+        $editForm = new \Ease\TWB5\Form('product', 'cenik.php', 'POST',
             new \Ease\Html\InputHiddenTag('id', $product),
             ['enctype' => 'multipart/form-data']);
 
 
         $product->defaultUrlParams['detail'] = 'custom:poznam,id,stitky';
-        $allAttachments                      = \FlexiPeeHP\Priloha::getAttachmentsList($product);
+        $allAttachments                      = \AbraFlexi\Priloha::getAttachmentsList($product);
 
         $images = \Ease\Sand::reindexArrayBy($allAttachments, 'poznam');
 
@@ -56,9 +56,9 @@ class ProductEditor extends \Ease\TWB\Panel
         }
 
 
-        $editForm->addItem(new \Ease\TWB\SubmitButton(_('Save'), 'success'));
+        $editForm->addItem(new \Ease\TWB5\SubmitButton(_('Save'), 'success'));
 
-        $titlerow = new \Ease\TWB\Row();
+        $titlerow = new \Ease\TWB5\Row();
         $titlerow->addColumn(8,
             new \Ease\Html\H4Tag($product->getDataValue('nazev')));
         $titlerow->addColumn(4,
@@ -67,7 +67,7 @@ class ProductEditor extends \Ease\TWB\Panel
         parent::__construct($titlerow, 'warning', $editForm,
             new LabelGroup($product));
 
-        $labels = \FlexiPeeHP\Stitek::getLabels($product);
+        $labels = \AbraFlexi\Stitek::getLabels($product);
 
         $this->addItem(new LabelSwitches($product));
 
@@ -91,7 +91,7 @@ class ProductEditor extends \Ease\TWB\Panel
 
             $this->removeOldAttachment($field);
 
-            $result = \FlexiPeeHP\Priloha::addAttachmentFromFile($this->product,
+            $result = \AbraFlexi\Priloha::addAttachmentFromFile($this->product,
                     $attachmentFileName);
             if ($result == 201) {
                 $this->product->addStatusMessage(sprintf(_('%s File %s was attached'),
@@ -101,7 +101,7 @@ class ProductEditor extends \Ease\TWB\Panel
                 $imager->storeToCache([$_FILES[$field]['type'] => file_get_contents($attachmentFileName)],
                     $field);
             } else {
-                $this->product->addStatusMessage('Attachment '.$this->product->getFlexiBeeURL().' Failed',
+                $this->product->addStatusMessage('Attachment '.$this->product->getAbraFlexiURL().' Failed',
                     'error');
             }
             unlink($attachmentFileName);
@@ -113,7 +113,7 @@ class ProductEditor extends \Ease\TWB\Panel
         $response                                  = null;
         //Remove label with $field note
         $this->product->defaultUrlParams['detail'] = 'full';
-        $allAttachments                            = \FlexiPeeHP\Priloha::getAttachmentsList($this->product);
+        $allAttachments                            = \AbraFlexi\Priloha::getAttachmentsList($this->product);
 
         foreach ($allAttachments as $atId => $attachment) {
             if ($attachment['poznam'] == $field) {
@@ -127,10 +127,10 @@ class ProductEditor extends \Ease\TWB\Panel
     public function setNewAttachment($field)
     {
         $this->product->defaultUrlParams['detail'] = 'id';
-        $allAttachments                            = \FlexiPeeHP\Priloha::getAttachmentsList($this->product);
+        $allAttachments                            = \AbraFlexi\Priloha::getAttachmentsList($this->product);
         $attachment                                = end($allAttachments);
-        $uploader                                  = new \FlexiPeeHP\Priloha();
-        $response                                  = $uploader->insertToFlexiBee([
+        $uploader                                  = new \AbraFlexi\Priloha();
+        $response                                  = $uploader->insertToAbraFlexi([
             'id' => $attachment['id'],
             'exportNaEshop' => true,
             'poznam' => $field]);

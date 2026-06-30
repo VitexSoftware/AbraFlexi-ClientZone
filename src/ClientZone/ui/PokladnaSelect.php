@@ -29,7 +29,7 @@ class PokladnaSelect extends \Ease\Html\Select
                                 $itemsIDs = false, $properties = null)
     {
         parent::__construct($name, $items, $defaultValue, $itemsIDs, $properties);
-        $this->selector = new \FlexiPeeHP\Pokladna();
+        $this->selector = new \AbraFlexi\Pokladna();
     }
 
     /**

@@ -26,7 +26,7 @@ $oPage->addJavascript('$("#PassworRecovery").validate({
 
 if ($userEmail) {
     $customer = new Customer();
-    $customer->kontakt->loadFromFlexiBee(['email' => $userEmail]);
+    $customer->kontakt->loadFromAbraFlexi(['email' => $userEmail]);
     if ($customer->kontakt->getMyKey()) {
         $newPassword = \Ease\Sand::randomString(8);
         if ($customer->passwordChange($newPassword)) {
@@ -61,30 +61,30 @@ if ($userEmail) {
 
 $oPage->container->addItem(new ui\PageTop(_('Lost password recovery')));
 
-$row       = $oPage->container->addItem(new \Ease\TWB\Row());
-$columnI   = $row->addItem(new \Ease\TWB\Col(4));
-$columnII  = $row->addItem(new \Ease\TWB\Col(4));
-$columnIII = $row->addItem(new \Ease\TWB\Col(4));
+$row       = $oPage->container->addItem(new \Ease\TWB5\Row());
+$columnI   = $row->addItem(new \Ease\TWB5\Col(4));
+$columnII  = $row->addItem(new \Ease\TWB5\Col(4));
+$columnIII = $row->addItem(new \Ease\TWB5\Col(4));
 
 if (!$success) {
     $columnI->addItem(new \Ease\Html\H1Tag('Lost password'));
 
     $columnII->addItem(_('Forgot your password? Enter your e-mail address you entered during the registration and we will send you a new one.'));
 
-    $emailForm = $columnII->addItem(new \Ease\TWB\Form('PassworRecovery'));
+    $emailForm = $columnII->addItem(new \Ease\TWB5\Form('PassworRecovery'));
 
 
     $emailForm->addInput(new \Ease\Html\InputTextTag('Email',
         $oPage->getRequestValue('email'), ['type' => 'email']), _('Email'));
-    $emailForm->addItem(new \Ease\TWB\SubmitButton(_('Send New Password'),
+    $emailForm->addItem(new \Ease\TWB5\SubmitButton(_('Send New Password'),
         'warning'));
 
     if (isset($_POST)) {
         $emailForm->fillUp($_POST);
     }
 } else {
-    $columnII->addItem(new \Ease\TWB\Well([_('Please check your mailbox for new password')
-        , ' '._('and').' ', new \Ease\TWB\LinkButton('login.php?email='.$userEmail,
+    $columnII->addItem(new \Ease\TWB5\Card([_('Please check your mailbox for new password')
+        , ' '._('and').' ', new \Ease\TWB5\LinkButton('login.php?email='.$userEmail,
             _('Sign In'), 'success')]));
 }
 

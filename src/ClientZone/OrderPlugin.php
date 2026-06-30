@@ -36,8 +36,8 @@ abstract class OrderPlugin extends \Ease\Sand
     /**
      * Add Product Fields to Form
      *
-     * @param Ease\TWB\Form $form
-     * @return Ease\TWB\Form
+     * @param Ease\TWB5\Form $form
+     * @return Ease\TWB5\Form
      */
     public function formFields($form)
     {

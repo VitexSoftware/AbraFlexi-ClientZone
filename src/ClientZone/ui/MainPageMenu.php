@@ -24,7 +24,7 @@ class MainPageMenu extends \Ease\ui\MainPageMenu
         return $this->row->addItem(
                 new \Ease\Html\ATag(
                 $url,
-                new \Ease\TWB\Col(2,
+                new \Ease\TWB5\Col(2,
                 "$title<center><img class=\"mpicon img-responsive\" src=\"$image\" alt=\"$title\"></center>")
                 )
         );

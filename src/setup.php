@@ -39,7 +39,7 @@ $oPage->addItem(new ui\PageTop(_('ClientZone Setup')));
 
 
 
-$setupRow = new \Ease\TWB\Row();
+$setupRow = new \Ease\TWB5\Row();
 $setupRow->addColumn(4, $cfgForm);
 
 if (!empty($shared->getConfigValue('FLEXIBEE_URL')) &&
@@ -47,7 +47,7 @@ if (!empty($shared->getConfigValue('FLEXIBEE_URL')) &&
     !empty($shared->getConfigValue('FLEXIBEE_PASSWORD'))
 ) {
 
-    $statuser = new \FlexiPeeHP\ui\StatusInfoBox();
+    $statuser = new \AbraFlexi\ui\TWB5\StatusInfoBox();
 
     $statusBlock = new \Ease\Html\DivTag($statuser);
 
@@ -71,7 +71,7 @@ if (!empty($shared->getConfigValue('FLEXIBEE_URL')) &&
   }
 }');
 
-        $statusBlock->addItem(new \Ease\TWB\LinkButton('?CONFIGURED=true',
+        $statusBlock->addItem(new \Ease\TWB5\LinkButton('?CONFIGURED=true',
                 _('Finish Configuration'), 'success btn-lg glow'));
     }
 
@@ -87,12 +87,12 @@ if (!empty($shared->getConfigValue('FLEXIBEE_URL')) &&
 } else {
     $setupRow->addColumn(4,
         new \Ease\Html\FieldSet(_('FlexiBee Connection Status'),
-            new \Ease\TWB\LinkButton(null, _('Connection not set'), 'warning')));
+            new \Ease\TWB5\LinkButton(null, _('Connection not set'), 'warning')));
 }
 
 
 
-$oPage->container->addItem(new \Ease\TWB\Panel(_('FlexiBee setup'), 'warning',
+$oPage->container->addItem(new \Ease\TWB5\Panel(_('FlexiBee setup'), 'warning',
         $setupRow));
 
 

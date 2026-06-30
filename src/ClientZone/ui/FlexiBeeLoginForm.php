@@ -12,7 +12,7 @@ namespace ClientZone\ui;
  *
  * @author vitex
  */
-class FlexiBeeLoginForm extends \Ease\TWB\Form
+class FlexiBeeLoginForm extends \Ease\TWB5\Form
 {
     public function __construct()
     {
@@ -21,7 +21,7 @@ class FlexiBeeLoginForm extends \Ease\TWB\Form
             _('your email address in most of cases'));
         $this->addInput(new \Ease\Html\InputPasswordTag('password'), _('Login'),
             _('Password you recivied by email'));
-        $this->addItem(new \Ease\TWB\SubmitButton(_('Sign In')));
+        $this->addItem(new \Ease\TWB5\SubmitButton(_('Sign In')));
     }
 
     public function finalize()

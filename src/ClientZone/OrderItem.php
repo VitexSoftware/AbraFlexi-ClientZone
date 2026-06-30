@@ -13,7 +13,7 @@ namespace ClientZone;
  *
  * @author vitex
  */
-class OrderItem extends \FlexiPeeHP\FlexiBeeRW
+class OrderItem extends \AbraFlexi\RW
 {
     /**
      * Customer
@@ -23,7 +23,7 @@ class OrderItem extends \FlexiPeeHP\FlexiBeeRW
 
     /**
      * Pricelist
-     * @var \FlexiPeeHP\Cenik
+     * @var \AbraFlexi\Cenik
      */
     public $cenik = null;
 
@@ -60,7 +60,7 @@ class OrderItem extends \FlexiPeeHP\FlexiBeeRW
         parent::__construct();
         $this->takeData($formdata);
         $this->customer = new Customer();
-        $this->cenik    = new \FlexiPeeHP\Cenik();
+        $this->cenik    = new \AbraFlexi\Cenik();
         $this->loadPlugins();
     }
 
@@ -132,7 +132,7 @@ class OrderItem extends \FlexiPeeHP\FlexiBeeRW
             }
 
             if (strlen(trim($code))) {
-                $this->cenik->loadFromFlexiBee('code:'.$code);
+                $this->cenik->loadFromAbraFlexi('code:'.$code);
                 if ($this->cenik->lastResponseCode == 200) {
 //                $this->addStatusMessage($this->cenik->getDataValue('nazev'),
 //                    'success');
@@ -182,13 +182,13 @@ class OrderItem extends \FlexiPeeHP\FlexiBeeRW
      * @param float $credit
      * @param string $service
      *
-     * @return \FlexiPeeHP\FakturaVydana
+     * @return \AbraFlexi\FakturaVydana
      */
     public function makeProforma()
     {
         $polozka = $this->getServicePlugin()->processFields($this);
 
-        $proforma = new \FlexiPeeHP\FakturaVydana();
+        $proforma = new \AbraFlexi\FakturaVydana();
 
         $today = date('Y-m-d');
         $proforma->setDataValue('firma', $this->customer->adresar);
@@ -203,13 +203,13 @@ class OrderItem extends \FlexiPeeHP\FlexiBeeRW
         $proforma->setDataValue('stitky', ['SYSTEM', 'API']);
         $proforma->addArrayToBranch($polozka, 'polozkyFaktury');
         //$proforma->debug = true;
-        $proforma->insertToFlexiBee();
+        $proforma->insertToAbraFlexi();
 
-        if (\FlexiPeeHP\Priloha::addAttachment($proforma, 'order.json',
+        if (\AbraFlexi\Priloha::addAttachment($proforma, 'order.json',
                 json_encode(array_merge($polozka,
                         ['service' => $this->getDataValue('service')])),
                 'application/json') != 201) {
-            $proforma->addStatusMessage('Saving Order Details '.$proforma->getFlexiBeeURL().' Failed',
+            $proforma->addStatusMessage('Saving Order Details '.$proforma->getAbraFlexiURL().' Failed',
                 'error');
         }
 
@@ -226,7 +226,7 @@ class OrderItem extends \FlexiPeeHP\FlexiBeeRW
         $polozka            = $this->getServicePlugin()->processFields($this);
         $polozka['service'] = $this->getDataValue('service');
         if (array_key_exists('cenik', $polozka)) {
-            $this->cenik->loadFromFlexiBee($polozka['cenik']);
+            $this->cenik->loadFromAbraFlexi($polozka['cenik']);
             $polozka['icon']       = $this->cenik->getDataValue('id');
             $nazev                 = $this->cenik->getDataValue('nazev');
             $polozka['typZasobyK'] = $this->cenik->getDataValue('typZasobyK');

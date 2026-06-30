@@ -38,7 +38,7 @@ class MainMenu extends \Ease\Html\NavTag
         if ($lister) {
             foreach ($lister as $uID => $uInfo) {
                 $itemList[$source->keyword.'.php?'.$keycolumn.'='.$uInfo[$keycolumn]]
-                    = \Ease\TWB\Part::GlyphIcon($icon).'&nbsp;'.$uInfo[$namecolumn];
+                    = '<i class="fa fa-'.$icon.'"></i>'.'&nbsp;'.$uInfo[$namecolumn];
             }
         }
 
@@ -59,9 +59,9 @@ class MainMenu extends \Ease\Html\NavTag
                 $nav->addMenuItem(new NavBarSearchBox('search', 'search.php'));
                 $nav->addDropDownMenu('<img width=30 src=images/order.svg> '._('Orders'),
                     [
-                        'orderform.php' => \Ease\TWB\Part::GlyphIcon('plus').' '._('New order'),
-//                        'pricelist.php' => \Ease\TWB\Part::GlyphIcon('th-list').' '._('Pricelist'),
-                        'myorders.php' => \Ease\TWB\Part::GlyphIcon('list').'&nbsp;'._('My orders')]
+                        'orderform.php' => '<i class="fa fa-plus"></i>'.' '._('New order'),
+//                        'pricelist.php' => '<i class="fa fa-list"></i>'.' '._('Pricelist'),
+                        'myorders.php' => '<i class="fa fa-list"></i>'.'&nbsp;'._('My orders')]
                 );
 
                 break;

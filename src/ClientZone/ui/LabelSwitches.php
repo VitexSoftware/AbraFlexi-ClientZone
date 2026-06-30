@@ -18,13 +18,13 @@ class LabelSwitches extends \Ease\Html\DivTag
     /**
      * FlexiBee Label Switches
      *
-     * @param \FlexiPeeHP\FlexiBeeRW $flexibee
+     * @param \AbraFlexi\RW $flexibee
      * @param array $properties
      */
     public function __construct($flexibee, $properties = [])
     {
-        $allLabels     = \FlexiPeeHP\Stitek::getAvailbleLabels($flexibee);
-        $enabledLabels = \FlexiPeeHP\Stitek::getLabels($flexibee);
+        $allLabels     = \AbraFlexi\Stitek::getAvailbleLabels($flexibee);
+        $enabledLabels = \AbraFlexi\Stitek::getLabels($flexibee);
         if (empty($enabledLabels)) {
             $enabledLabels = [];
         }
@@ -34,7 +34,7 @@ class LabelSwitches extends \Ease\Html\DivTag
         }
         parent::__construct(null, $properties);
         foreach ($allLabels as $code => $title) {
-            $twbsw = $this->addItem(new \Ease\ui\TWBSwitch($code,
+            $twbsw = $this->addItem(new \Ease\Html\Widgets\Toggle($code,
                 array_key_exists($code, $enabledLabels), 1,
                 ['onText' => $code, 'offText' => $title, 'onColor' => 'success',
                 'offColor' => 'default', 'labelWidth' => 10, 'handleWidth' => 200
@@ -46,7 +46,7 @@ class LabelSwitches extends \Ease\Html\DivTag
 
     public function finalize()
     {
-        \Ease\TWB\Part::twBootstrapize();
+        // TWB5 bootstrapization is automatic
         $this->addJavaScript('
 
 $(\'#'.$this->getTagID().' input\').on(\'switchChange.bootstrapSwitch\', function(event, state) {

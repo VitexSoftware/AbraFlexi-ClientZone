@@ -13,7 +13,7 @@ namespace ClientZone;
  *
  * @author vitex
  */
-class Order extends \FlexiPeeHP\FlexiBeeRW
+class Order extends \AbraFlexi\RW
 {
     /**
      * Customer
@@ -50,7 +50,7 @@ class Order extends \FlexiPeeHP\FlexiBeeRW
      * @param float $credit
      * @param string $service
      *
-     * @return \FlexiPeeHP\FlexiBeeRW
+     * @return \AbraFlexi\RW
      */
     public function makeOrder($items = null)
     {
@@ -58,7 +58,7 @@ class Order extends \FlexiPeeHP\FlexiBeeRW
             $items = $this->cartData;
         }
 
-        $objednavka = new \FlexiPeeHP\FlexiBeeRW(null,
+        $objednavka = new \AbraFlexi\RW(null,
             ['evidence' => 'objednavka-prijata']);
 
         $today = date('Y-m-d');
@@ -80,11 +80,11 @@ class Order extends \FlexiPeeHP\FlexiBeeRW
             $objednavka->addArrayToBranch($polozka, 'polozkyObchDokladu');
         }
         //$proforma->debug = true;
-        $objednavka->insertToFlexiBee();
-        $objednavka->loadFromFlexiBee();
-        if (\FlexiPeeHP\Priloha::addAttachment($objednavka, 'order.json',
+        $objednavka->insertToAbraFlexi();
+        $objednavka->loadFromAbraFlexi();
+        if (\AbraFlexi\Priloha::addAttachment($objednavka, 'order.json',
                 json_encode($items), 'application/json') != 201) {
-            $objednavka->addStatusMessage('Saving Order Details '.$objednavka->getFlexiBeeURL().' Failed',
+            $objednavka->addStatusMessage('Saving Order Details '.$objednavka->getAbraFlexiURL().' Failed',
                 'error');
         }
         return $objednavka;
@@ -96,7 +96,7 @@ class Order extends \FlexiPeeHP\FlexiBeeRW
      * @param float $credit
      * @param string $service
      *
-     * @return \FlexiPeeHP\FakturaVydana
+     * @return \AbraFlexi\FakturaVydana
      */
     public function makeProforma($items = null)
     {
@@ -104,7 +104,7 @@ class Order extends \FlexiPeeHP\FlexiBeeRW
             $items = $this->cartData;
         }
 
-        $proforma = new \FlexiPeeHP\FakturaVydana();
+        $proforma = new \AbraFlexi\FakturaVydana();
 
         $today = date('Y-m-d');
         $proforma->setDataValue('firma', $this->customer->adresar);
@@ -124,11 +124,11 @@ class Order extends \FlexiPeeHP\FlexiBeeRW
             $proforma->addArrayToBranch($polozka, 'polozkyFaktury');
         }
         //$proforma->debug = true;
-        if ($proforma->insertToFlexiBee()) {
-            $proforma->loadFromFlexiBee();
-            if (\FlexiPeeHP\Priloha::addAttachment($proforma, 'order.json',
+        if ($proforma->insertToAbraFlexi()) {
+            $proforma->loadFromAbraFlexi();
+            if (\AbraFlexi\Priloha::addAttachment($proforma, 'order.json',
                     json_encode($items), 'application/json') != 201) {
-                $proforma->addStatusMessage('Saving Order Details '.$proforma->getFlexiBeeURL().' Failed',
+                $proforma->addStatusMessage('Saving Order Details '.$proforma->getAbraFlexiURL().' Failed',
                     'error');
             }
         }
@@ -141,7 +141,7 @@ class Order extends \FlexiPeeHP\FlexiBeeRW
      * @param float $credit
      * @param string $service
      *
-     * @return \FlexiPeeHP\FakturaVydana
+     * @return \AbraFlexi\FakturaVydana
      */
     public function makeInvoice($items = null)
     {
@@ -149,7 +149,7 @@ class Order extends \FlexiPeeHP\FlexiBeeRW
             $items = $this->cartData;
         }
 
-        $invoice = new \FlexiPeeHP\FakturaVydana();
+        $invoice = new \AbraFlexi\FakturaVydana();
 
         $today = date('Y-m-d');
         $invoice->setDataValue('firma', $this->customer->adresar);
@@ -167,11 +167,11 @@ class Order extends \FlexiPeeHP\FlexiBeeRW
             $invoice->addArrayToBranch($polozka, 'polozkyFaktury');
         }
         //$proforma->debug = true;
-        $invoice->insertToFlexiBee();
-        $invoice->loadFromFlexiBee();
-        if (\FlexiPeeHP\Priloha::addAttachment($invoice, 'order.json',
+        $invoice->insertToAbraFlexi();
+        $invoice->loadFromAbraFlexi();
+        if (\AbraFlexi\Priloha::addAttachment($invoice, 'order.json',
                 json_encode($items), 'application/json') != 201) {
-            $invoice->addStatusMessage('Saving Order Details '.$invoice->getFlexiBeeURL().' Failed',
+            $invoice->addStatusMessage('Saving Order Details '.$invoice->getAbraFlexiURL().' Failed',
                 'error');
         }
         return $invoice;

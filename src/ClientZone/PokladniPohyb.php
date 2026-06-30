@@ -40,7 +40,7 @@ class PokladniPohyb extends FlexiBee
         'popis' => ['title' => ('Popis')],
     ];
 
-    public function insertToFlexiBee($data = null)
+    public function insertToAbraFlexi($data = null)
     {
         if (is_null($data)) {
             $data = $this->getData();

@@ -1,3 +1,20 @@
+abraflexi-clientzone (2.0) stable; urgency=medium
+
+  * Renamed package from clientzone to abraflexi-clientzone
+  * Migrated from FlexiPeeHP to AbraFlexi (spojenet/flexibee) namespace
+  * Upgraded UI from Bootstrap 3 to Bootstrap 5 (TWB5)
+  * Replaced GlyphIcons with Font Awesome icons
+  * Replaced \Ease\TWB\Well with \Ease\TWB5\Card
+  * Updated all API methods: insertToAbraFlexi, loadFromAbraFlexi, getAbraFlexiURL
+  * SetupForm updated for new AbraFlexi\ui\TWB5\ConnectionForm API
+  * Replaced TWBSwitch with Ease\Html\Widgets\Toggle
+  * Modernized WebPage with Bootstrap 5 dark navbar and card-based layout
+  * Added AppStream metainfo for software center integration
+  * Requires PHP 8.4+
+  * Updated Debian packaging to debhelper 13 with InstalledVersions support
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Mon, 30 Jun 2024 12:00:00 +0200
+
 clientzone (1.1) UNRELEASED; urgency=medium
 
   * Final Rename Composer Package in Debian to be Composer 2.0 valid

@@ -8,7 +8,7 @@
  */
 namespace ClientZone;
 
-class RecordShow extends \Ease\TWB\Well
+class RecordShow extends \Ease\TWB5\Card
 {
     /**
      * Zobrazí přehled záznamu.
@@ -19,7 +19,7 @@ class RecordShow extends \Ease\TWB\Well
     {
         parent::__construct();
 
-        $row = new \Ease\TWB\Row();
+        $row = new \Ease\TWB5\Row();
 
         $this->addItem(new \Ease\Html\H3Tag($recordObject->getName()));
 
@@ -36,7 +36,7 @@ class RecordShow extends \Ease\TWB\Well
                 $def->addDef(
                         $kinfo['title'], $recordObject->getDataValue($keyword)
                 );
-                $row->addItem(new \Ease\TWB\Col(4, $def));
+                $row->addItem(new \Ease\TWB5\Col(4, $def));
             }
         }
 

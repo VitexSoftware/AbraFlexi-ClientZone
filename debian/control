@@ -1,15 +1,29 @@
-Source: clientzone
-Build-Depends: debhelper (>= 8), dh-systemd
-Standards-Version: 3.8.4
-Maintainer: Vítězslav Dvořák <vitex@arachne.cz>
-Uploaders: Vitex <vitex@hippy.cz>
-Priority: optional
-Homepage: https://github.com/VitexSoftware/ClientZone
+Source: abraflexi-clientzone
+Build-Depends: debhelper-compat (= 13), jq, appstream
+Standards-Version: 4.6.2
+Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
+Homepage: https://github.com/VitexSoftware/AbraFlexi-ClientZone
+Rules-Requires-Root: no
 
-Package: clientzone
-Depends: ${misc:Depends},ease-framework (>= 1.5.10),libjs-font-awesome,php5-curl|php-curl,libjs-fuelux,flexipeehp (>= 1.8.2),php-mail-mime,php-phinx,locales-all,poppler-utils,libjs-bootstrap-switch,php-cli, ease-framework-bricks,flexipeehp-bricks,php-flexibee-config  
+Package: abraflexi-clientzone
+Depends: ${misc:Depends},
+ php-spojenet-abraflexi (>= 3.7),
+ php-vitexsoftware-abraflexi-bricks,
+ php-vitexsoftware-ease-bootstrap5,
+ php-vitexsoftware-ease-bootstrap5-widgets,
+ php-vitexsoftware-ease-bootstrap5-widgets-abraflexi,
+ php-vitexsoftware-ease-html-widgets,
+ php-phinx,
+ php-mail-mime,
+ php-curl,
+ php-cli,
+ composer,
+ locales-all,
+ libjs-font-awesome,
 Architecture: all
 Section: web
 Priority: optional
-Description: Client Zone for FlexiBee
- Provide customer access to its orders and invoices
+Description: Client Zone for AbraFlexi
+ Web-based self-service portal for AbraFlexi accounting system customers.
+ Allows customers to browse the price list, place orders, view invoices,
+ download PDF documents, and manage their account details.

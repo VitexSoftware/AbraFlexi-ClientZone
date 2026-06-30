@@ -151,7 +151,7 @@ $oPage->columnI->addItem(
 
 $regFace = $oPage->columnII->addItem(new \Ease\Html\DivTag());
 
-$regForm = $regFace->addItem(new \Ease\TWB\Form('create_account',
+$regForm = $regFace->addItem(new \Ease\TWB5\Form('create_account',
     'newcustomer.php', 'POST', null, ['class' => 'form-horizontal']));
 if ($oUser->getUserID()) {
     $regForm->addItem(new \Ease\Html\InputHiddenTag('u_parent',

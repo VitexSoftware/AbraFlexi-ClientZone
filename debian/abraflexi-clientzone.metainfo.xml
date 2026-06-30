@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="web-application">
+  <id>cz.vitexsoftware.abraflexi-clientzone</id>
+  <metadata_license>MIT</metadata_license>
+  <project_license>GPL-2.0-only</project_license>
+
+  <name>AbraFlexi ClientZone</name>
+  <summary>Customer self-service portal for the AbraFlexi accounting system</summary>
+
+  <description>
+    <p>
+      AbraFlexi ClientZone is a web-based self-service portal that connects customers
+      directly to their supplier's AbraFlexi accounting system. It allows customers to
+      browse the product catalogue, place orders, view invoices and orders, download
+      PDF documents, and manage their account details — all without requiring direct
+      access to AbraFlexi.
+    </p>
+    <p>Key features:</p>
+    <ul>
+      <li>Browse and order items from the AbraFlexi price list</li>
+      <li>View and download issued invoices and orders as PDF or ISDOC</li>
+      <li>Receive invoices by e-mail directly from the portal</li>
+      <li>Customer account registration and password management</li>
+      <li>Shopping cart with configurable order item parameters</li>
+      <li>Automatic creation of proforma invoices and orders in AbraFlexi upon checkout</li>
+      <li>Administrator setup form for AbraFlexi connection and portal options</li>
+    </ul>
+  </description>
+
+  <launchable type="url">https://localhost/clientzone/</launchable>
+
+  <icon type="remote" width="256" height="256">https://raw.githubusercontent.com/VitexSoftware/AbraFlexi-ClientZone/main/src/images/clientzone-logo.svg</icon>
+
+  <categories>
+    <category>Finance</category>
+    <category>WebBrowser</category>
+    <category>Office</category>
+  </categories>
+
+  <url type="homepage">https://github.com/VitexSoftware/AbraFlexi-ClientZone</url>
+  <url type="bugtracker">https://github.com/VitexSoftware/AbraFlexi-ClientZone/issues</url>
+
+  <developer id="cz.vitexsoftware">
+    <name>VitexSoftware</name>
+  </developer>
+
+  <releases>
+    <release version="2.0" date="2024-01-01">
+      <description>
+        <p>Modernized to use AbraFlexi (formerly FlexiBee) libraries and Bootstrap 5.</p>
+        <ul>
+          <li>Migrated from FlexiPeeHP to AbraFlexi namespace</li>
+          <li>Upgraded UI from Bootstrap 3 to Bootstrap 5</li>
+          <li>Requires PHP 8.4 or later</li>
+        </ul>
+      </description>
+    </release>
+    <release version="1.1" date="2021-01-01">
+      <description>
+        <p>Initial stable release with FlexiBee integration.</p>
+      </description>
+    </release>
+  </releases>
+
+  <content_rating type="oars-1.1"/>
+</component>

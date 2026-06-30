@@ -16,7 +16,7 @@ $password = $oPage->getRequestValue('password');
 $oPage->addItem(new ui\PageTop(_('Sign In')));
 
 if (empty($username) || empty($password)) {
-    $oPage->container->addItem(new \Ease\TWB\Panel(_('I already have an customer number'),
+    $oPage->container->addItem(new \Ease\TWB5\Panel(_('I already have an customer number'),
         'info', new ui\FlexiBeeLoginForm()));
 } else {
     $customer  = new Customer(['username' => $username, 'password' => $password]);

@@ -8,7 +8,7 @@ namespace ClientZone\ui;
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  2017 VitexSoftware v.s.cz
  */
-class OrderFormHtml extends \Ease\TWB\Form
+class OrderFormHtml extends \Ease\TWB5\Form
 {
     /**
      * Order object
@@ -35,13 +35,13 @@ class OrderFormHtml extends \Ease\TWB\Form
         $service = $this->order->getDataValue('service');
         $this->addInput($this->productList(), _('Service Requested'));
         if (empty($service)) {
-            $this->addItem(new \Ease\TWB\SubmitButton(_('Enter details'),
+            $this->addItem(new \Ease\TWB5\SubmitButton(_('Enter details'),
                 'success'));
         } else {
             if (is_object($this->order->plugins[$service])) {
                 $this->order->plugins[$service]->formFields($this);
             }
-            $this->addItem(new \Ease\TWB\SubmitButton(_('Order Now'), 'success'));
+            $this->addItem(new \Ease\TWB5\SubmitButton(_('Order Now'), 'success'));
         }
         parent::finalize();
     }

@@ -12,7 +12,7 @@ namespace ClientZone;
  *
  * @author vitex
  */
-class Customer extends \FlexiPeeHP\Bricks\Customer
+class Customer extends \AbraFlexi\Bricks\Customer
 {
     /**
      * Where to look for username

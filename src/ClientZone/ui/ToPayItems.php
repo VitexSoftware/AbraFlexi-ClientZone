@@ -31,8 +31,8 @@ class ToPayItems extends MainPageMenu
                 $customer->invoicer->setMyKey((int) $invoiceInfo['id']);
                 $this->addMenuItem(
                     $customer->invoicer->getQrCodeBase64(200),
-                    $invoiceInfo['kod'].' <strong>'.$invoiceInfo['sumCelkem'].'</strong> '.\FlexiPeeHP\FlexiBeeRO::uncode($invoiceInfo['mena']),
-                    'document.php?id='.\FlexiPeeHP\FlexiBeeRO::code($invoiceId) .'&embed=true&evidence='.$customer->invoicer->getEvidence()
+                    $invoiceInfo['kod'].' <strong>'.$invoiceInfo['sumCelkem'].'</strong> '.\AbraFlexi\RO::uncode($invoiceInfo['mena']),
+                    'document.php?id='.\AbraFlexi\RO::code($invoiceId) .'&embed=true&evidence='.$customer->invoicer->getEvidence()
                 );
             }
         }

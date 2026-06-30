@@ -15,9 +15,9 @@ $oPage->onlyForLogged();
 $oPage->addItem(new ui\PageTop(_('About')));
 
 $infoBlock = $oPage->container->addItem(
-    new \Ease\TWB\Panel(
+    new \Ease\TWB5\Panel(
         _('About'), 'info', null,
-        new \Ease\TWB\LinkButton(
+        new \Ease\TWB5\LinkButton(
             'http://v.s.cz/', _('Vitex Software'), 'info'
         )
     )

@@ -18,7 +18,7 @@ class LabelGroup extends \Ease\Html\Span
     /**
      * FlexiBee
      * 
-     * @param \FlexiPeeHP\FlexiBeeRO $flexibee
+     * @param \AbraFlexi\RO $flexibee
      */
     public function __construct($flexibee)
     {
@@ -28,7 +28,7 @@ class LabelGroup extends \Ease\Html\Span
         if (count($stitky)) {
             $stitkyArr = explode(',', $stitky);
             foreach ($stitkyArr as $stitek) {
-                $this->addItem(new \Ease\TWB\Label('info',
+                $this->addItem(new \Ease\TWB5\Badge('info',
                     new \Ease\Html\ATag('labels.php?label='.trim($stitek).'&evidence='.$flexibee
                         ->getEvidence(), trim($stitek))));
             }

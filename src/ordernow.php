@@ -22,7 +22,7 @@ $finished = $order->finishOrder();
 if (count($finished)) {
 
 
-    $infobox = new \Ease\TWB\Panel(_('Order Accepted'), 'success');
+    $infobox = new \Ease\TWB5\Panel(_('Order Accepted'), 'success');
 
     foreach ($finished as $did => $document) {
 
@@ -48,7 +48,7 @@ if (count($finished)) {
                         '', $document).'</a>'), 'success');
 
             $infobox->addItem(
-                new \Ease\TWB\Panel($type.' '.str_replace('code:', '', $document),
+                new \Ease\TWB5\Panel($type.' '.str_replace('code:', '', $document),
                 'info',
                 new ui\EmbedResponsivePDF('getpdf.php?evidence='.$document->getEvidence().'&id='.$document->getMyKey().'&embed=true'),
                 new ui\DownloadInvoiceButton($document))
@@ -58,7 +58,7 @@ if (count($finished)) {
         }
     }
     if (!$infobox->isEmpty()) {
-        $oPage->container->addItem(new \Ease\TWB\Container($infobox));
+        $oPage->container->addItem(new \Ease\TWB5\Container($infobox));
     }
 } else {
     $order->addStatusMessage(_('The order is empty'), 'warning');

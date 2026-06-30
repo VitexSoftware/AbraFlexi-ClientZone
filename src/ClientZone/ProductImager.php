@@ -74,13 +74,13 @@ class ProductImager
     {
         $result      = null;
         $mime        = 'nothing/none';
-        $object      = new \FlexiPeeHP\Cenik();
+        $object      = new \AbraFlexi\Cenik();
         $object->setMyKey($this->id);
-        $fburl       = $object->getFlexiBeeURL();
+        $fburl       = $object->getAbraFlexiURL();
         $attachments = [];
 
         $object->defaultUrlParams['detail'] = 'custom:id,poznam';
-        $allAttachments                     = \FlexiPeeHP\Priloha::getAttachmentsList($object);
+        $allAttachments                     = \AbraFlexi\Priloha::getAttachmentsList($object);
 
         foreach ($allAttachments as $atId => $attachment) {
             if ($attachment['poznam'] == $type) {

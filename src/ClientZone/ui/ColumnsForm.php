@@ -8,7 +8,7 @@
 
 namespace ClientZone\ui;
 
-class ColumnsForm extends \Ease\TWB\Form
+class ColumnsForm extends \Ease\TWB5\Form
 {
     /**
      * Šířka sloupce.
@@ -20,7 +20,7 @@ class ColumnsForm extends \Ease\TWB\Form
     /**
      * Řádek.
      *
-     * @var \Ease\TWB\Row
+     * @var \Ease\TWB5\Row
      */
     public $row = null;
 
@@ -66,11 +66,11 @@ class ColumnsForm extends \Ease\TWB\Form
     /**
      * Přidá další řadu formuláře.
      *
-     * @return \Ease\TWB\Row Nově vložený řádek formuláře
+     * @return \Ease\TWB5\Row Nově vložený řádek formuláře
      */
     public function newRow()
     {
-        return $this->row = $this->addItem(new \Ease\TWB\Row());
+        return $this->row = $this->addItem(new \Ease\TWB5\Row());
     }
 
     /**
@@ -86,11 +86,11 @@ class ColumnsForm extends \Ease\TWB\Form
                              $helptext = null, $addTagClass = 'form-control')
     {
         if ($this->row->getItemsCount() > $this->itemsPerRow) {
-            $this->row = $this->addItem(new \Ease\TWB\Row());
+            $this->row = $this->addItem(new \Ease\TWB5\Row());
         }
 
-        return $this->row->addItem(new \Ease\TWB\Col($this->colsize,
-                new \Ease\TWB\FormGroup($caption, $input, $placeholder,
+        return $this->row->addItem(new \Ease\TWB5\Col($this->colsize,
+                new \Ease\TWB5\FormGroup($caption, $input, $placeholder,
                 $helptext, $addTagClass)));
     }
 

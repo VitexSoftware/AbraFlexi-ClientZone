@@ -23,12 +23,12 @@ class PageBottom extends \Ease\Html\FooterTag
         $this->SetTagID('footer');
         $this->addItem('<hr>');
 
-        $rowFluid1 = new \Ease\TWB\Row();
-        $colA      = $rowFluid1->addItem(new \Ease\TWB\Col(1));
-        $colD      = $rowFluid1->addItem(new \Ease\TWB\Col(4));
+        $rowFluid1 = new \Ease\TWB5\Row();
+        $colA      = $rowFluid1->addItem(new \Ease\TWB5\Col(1));
+        $colD      = $rowFluid1->addItem(new \Ease\TWB5\Col(4));
         $colD->addItem(new \Ease\Html\DivTag(_('Other products')));
 
-        $icorow = new \Ease\TWB\Row();
+        $icorow = new \Ease\TWB5\Row();
 
         $icorow->addColumn(6,
             new \Ease\Html\ATag('https://github.com/VitexSoftware/FlexiProxy',
@@ -41,14 +41,14 @@ class PageBottom extends \Ease\Html\FooterTag
 
         $colD->addItem($icorow);
 
-        $colE   = $rowFluid1->addItem(new \Ease\TWB\Col(2));
+        $colE   = $rowFluid1->addItem(new \Ease\TWB5\Col(2));
         $listE1 = $colE->addItem(new \Ease\Html\UlTag(_('Hosted by'),
             ['style' => 'list-style-type: none']));
         $listE1->addItemSmart(new \Ease\Html\ATag('https://spoje.net/',
             new \Ease\Html\ImgTag('images/spoje-net_logo.gif', 'Spoje.Net',
             ['class' => 'img-responsive'])));
 
-        $colF   = $rowFluid1->addItem(new \Ease\TWB\Col(2));
+        $colF   = $rowFluid1->addItem(new \Ease\TWB5\Col(2));
         $listF1 = $colF->addItem(new \Ease\Html\UlTag(_('More'),
             ['style' => 'list-style-type: none']));
         $listF1->addItemSmart(new \Ease\Html\ATag('about.php', _('About')));
@@ -57,7 +57,7 @@ class PageBottom extends \Ease\Html\FooterTag
         $listF1->addItemSmart(new \Ease\Html\ATag('https://github.com/VitexSoftware/ClientZone/issues',
             _('Issues')));
 
-        $colG = $rowFluid1->addItem(new \Ease\TWB\Col(2));
+        $colG = $rowFluid1->addItem(new \Ease\TWB5\Col(2));
         $colG->addItem(_('Version').': '.$appInfo->version.' '.'&copy; 2017-2019 <a href="https://vitexsoftware.cz/">Vitex Software</a>');
 
         $this->addItem($rowFluid1);

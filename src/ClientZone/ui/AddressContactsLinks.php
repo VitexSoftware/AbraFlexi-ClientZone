@@ -18,9 +18,9 @@ class AddressContactsLinks extends \Ease\Container
     /**
      * Show Links to Address' contacts
      *
-     * @param \FlexiPeeHP\Adresar $address Addres Object
+     * @param \AbraFlexi\Adresar $address Addres Object
      */
-    public function __construct(\FlexiPeeHP\Adresar $address)
+    public function __construct(\AbraFlexi\Adresar $address)
     {
         parent::__construct();
         $contacts = $address->getDataValue('kontakty');
@@ -29,11 +29,11 @@ class AddressContactsLinks extends \Ease\Container
                 $jmeno   = trim($contactInfo['titul'].' '.$contactInfo['jmeno'].' '.$contactInfo['prijmeni'].' '.$contactInfo['titulZa']);
                 $telefon = trim($contactInfo['tel'].' '.$contactInfo['mobil']);
                 $email   = $contactInfo['email'];
-                $this->addItem(new \Ease\TWB\LinkButton('kontakt.php?id='.$contactInfo['id'],
+                $this->addItem(new \Ease\TWB5\LinkButton('kontakt.php?id='.$contactInfo['id'],
                     trim($jmeno.' '.$email.' '.$telefon), 'info'));
             }
         }
-        $this->addItem(new \Ease\TWB\LinkButton('kontakt.php?firma='.$address->getDataValue('id').'&email='.$address->getDataValue('email'),
-            new \Ease\TWB\GlyphIcon('plus').' '._('New Contact'), 'success'));
+        $this->addItem(new \Ease\TWB5\LinkButton('kontakt.php?firma='.$address->getDataValue('id').'&email='.$address->getDataValue('email'),
+            '<i class="fa fa-plus"></i>'.' '._('New Contact'), 'success'));
     }
 }

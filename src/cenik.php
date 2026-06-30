@@ -18,7 +18,7 @@ if (is_null($id)) {
     $oPage->redirect('adminpricelist.php');
 }
 
-$item = new \FlexiPeeHP\Cenik(is_numeric($id) ? intval($id) : $id);
+$item = new \AbraFlexi\Cenik(is_numeric($id) ? intval($id) : $id);
 
 
 

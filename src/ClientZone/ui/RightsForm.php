@@ -7,7 +7,7 @@
 
 namespace ClientZone\ui;
 
-class RightsForm extends \Ease\TWB\Form
+class RightsForm extends \Ease\TWB5\Form
 {
     public $allUsers;
 

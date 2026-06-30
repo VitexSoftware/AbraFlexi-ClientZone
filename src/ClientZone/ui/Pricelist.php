@@ -12,11 +12,11 @@ namespace ClientZone\ui;
  *
  * @author vitex
  */
-class Pricelist extends \Ease\TWB\Panel
+class Pricelist extends \Ease\TWB5\Panel
 {
     /**
      *
-     * @var \FlexiPeeHP\Cenik
+     * @var \AbraFlexi\Cenik
      */
     public $pricer = null;
 
@@ -36,23 +36,23 @@ class Pricelist extends \Ease\TWB\Panel
             $category  .= ' and '.$labelCond;
         }
 
-        $this->pricer = new \FlexiPeeHP\Cenik();
+        $this->pricer = new \AbraFlexi\Cenik();
         $items        = $this->pricer->getColumnsFromFlexibee('info',
             ['(in subtree '.$category.')']);
 
         parent::__construct(_('Pricelist'), 'info', null,
-            new \Ease\TWB\Label('info',
+            new \Ease\TWB5\Badge('info',
             sprintf(_('%s items found'), count($items))));
 
         if (count($items)) {
-            $headerRow = new \Ease\TWB\Row(null);
+            $headerRow = new \Ease\TWB5\Row(null);
             $headerRow->addColumn(1);
-            $headerRow->addColumn(2, new \Ease\TWB\Label('info', _('Item name')));
+            $headerRow->addColumn(2, new \Ease\TWB5\Badge('info', _('Item name')));
             $headerRow->addColumn(2,
-                new \Ease\TWB\Label('info', _('Price without VAT')));
+                new \Ease\TWB5\Badge('info', _('Price without VAT')));
             $headerRow->addColumn(2,
-                new \Ease\TWB\Label('info', _('Price with VAT')));
-            $headerRow->addColumn(2, new \Ease\TWB\Label('info', _('Actions')));
+                new \Ease\TWB5\Badge('info', _('Price with VAT')));
+            $headerRow->addColumn(2, new \Ease\TWB5\Badge('info', _('Actions')));
             $this->addItem($headerRow);
             $this->addItem('<p><hr/></p>');
             foreach ($items as $item) {
@@ -70,7 +70,7 @@ class Pricelist extends \Ease\TWB\Panel
 
     public function pricelistRow($pricelistItemData)
     {
-        $row = new \Ease\TWB\Row();
+        $row = new \Ease\TWB5\Row();
         $this->pricer->setMyKey($pricelistItemData['id']);
         $row->addColumn(1,
             new ProductImageThumbnail($this->pricer,
@@ -80,7 +80,7 @@ class Pricelist extends \Ease\TWB\Panel
         $row->addColumn(2, round($pricelistItemData['cenaZaklVcDph']));
         if (array_key_exists('service', $pricelistItemData)) {
             $row->addColumn(2,
-                new \Ease\TWB\LinkButton('orderform.php?service='.$pricelistItemData['service'],
+                new \Ease\TWB5\LinkButton('orderform.php?service='.$pricelistItemData['service'],
                 _('Order Now'), 'success'));
         }
 

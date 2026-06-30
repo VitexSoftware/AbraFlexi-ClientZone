@@ -12,13 +12,13 @@ namespace ClientZone\ui;
  *
  * @author vitex
  */
-class OrdersListing extends \Ease\TWB\Panel
+class OrdersListing extends \Ease\TWB5\Panel
 {
 
     /**
      * Orders Listing
      *
-     * @param \FlexiPeeHP\FlexiBeeRO $fetcher     Proforma/Invoice/Order
+     * @param \AbraFlexi\RO $fetcher     Proforma/Invoice/Order
      * @param array                  $conditions  Conditions
      * @param string                 $caption     Panel caption
      */
@@ -33,7 +33,7 @@ class OrdersListing extends \Ease\TWB\Panel
                     $fetcher->getEvidence()));
                 $celkem += $orderData['sumCelkem'];
             }
-            $this->addToFooter = new \Ease\TWB\Row();
+            $this->addToFooter = new \Ease\TWB5\Row();
             $this->addToFooter->addColumn('2', count($documents));
             $this->addToFooter->addColumn('2', $celkem.' Kč');
         }

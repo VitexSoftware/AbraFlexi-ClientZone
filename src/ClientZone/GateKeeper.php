@@ -19,7 +19,7 @@ class GateKeeper extends \Ease\Sand
     /**
      * Is document accessible by user ?
      *
-     * @param \FlexiPeeHP\FlexiBeeRO $document FlexiBee documnet
+     * @param \AbraFlexi\RO $document FlexiBee documnet
      * @param Customer|User|\Ease\Anonym $user Current User
      *
      * @return boolean
@@ -44,13 +44,13 @@ class GateKeeper extends \Ease\Sand
     /**
      * Get Company code for document
      *
-     * @param \FlexiPeeHP\FlexiBeeRO $document
+     * @param \AbraFlexi\RO $document
      *
      * @return string documnent code
      */
     public static function getDocumentCompany($document)
     {
-        return $document->getDataValue('firma') ? \FlexiPeeHP\FlexiBeeRO::uncode(
+        return $document->getDataValue('firma') ? \AbraFlexi\RO::uncode(
                 $document->getDataValue('firma')) : null;
     }
 
@@ -63,7 +63,7 @@ class GateKeeper extends \Ease\Sand
      */
     public static function getCustomerCompany($customer)
     {
-        return $customer->adresar->getDataValue('kod') ? \FlexiPeeHP\FlexiBeeRO::uncode($customer->adresar->getDataValue('kod'))
+        return $customer->adresar->getDataValue('kod') ? \AbraFlexi\RO::uncode($customer->adresar->getDataValue('kod'))
                 : null;
     }
 }

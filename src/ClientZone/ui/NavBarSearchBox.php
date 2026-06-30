@@ -8,7 +8,7 @@
 
 namespace ClientZone\ui;
 
-class NavBarSearchBox extends \Ease\TWB\Form
+class NavBarSearchBox extends \Ease\TWB5\Form
 {
 
     /**

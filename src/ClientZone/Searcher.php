@@ -11,7 +11,7 @@ namespace ClientZone;
 /**
  * 
  */
-class Searcher extends \FlexiPeeHP\FlexiBeeRO
+class Searcher extends \AbraFlexi\RO
 {
     /**
      * Prohledávaný sloupeček.
@@ -37,10 +37,10 @@ class Searcher extends \FlexiPeeHP\FlexiBeeRO
         parent::__construct();
 
         if (is_null($class)) {
-//            $this->registerClass('\FlexiPeeHP\Adresar');
-//            $this->registerClass('\FlexiPeeHP\Kontakt');
-//            $this->registerClass('\FlexiPeeHP\Cenik');
-            $this->registerClass('\FlexiPeeHP\FakturaVydana',
+//            $this->registerClass('\AbraFlexi\Adresar');
+//            $this->registerClass('\AbraFlexi\Kontakt');
+//            $this->registerClass('\AbraFlexi\Cenik');
+            $this->registerClass('\AbraFlexi\FakturaVydana',
                 ['firma' => \Ease\Shared::user()->adresar]);
         } else {
             $this->registerClass($class);
@@ -129,7 +129,7 @@ class Searcher extends \FlexiPeeHP\FlexiBeeRO
      * Search evidence of class for term occurence
      *
      * @param string $term
-     * @param \FlexiPeeHP\FlexiBeeRO $classToSearch
+     * @param \AbraFlexi\RO $classToSearch
      * 
      * @return array
      */

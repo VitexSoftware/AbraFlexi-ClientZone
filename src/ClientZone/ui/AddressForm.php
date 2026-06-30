@@ -8,7 +8,7 @@
 
 namespace ClientZone\ui;
 
-class AddressForm extends \Ease\TWB\Form
+class AddressForm extends \Ease\TWB5\Form
 {
     /**
      * Otázky.
@@ -39,7 +39,7 @@ class AddressForm extends \Ease\TWB\Form
             get_class($address)));
 //        $this->addItem(new \Ease\Html\InputHiddenTag('enquiry_id', $address->getDataValue('enquiry_id')));
 
-        $this->addItem(new \Ease\Html\DivTag(new \Ease\TWB\SubmitButton(_('Uložit'),
+        $this->addItem(new \Ease\Html\DivTag(new \Ease\TWB5\SubmitButton(_('Uložit'),
             'success'), ['style' => 'text-align: right']));
 
         if (!is_null($addressID)) {
