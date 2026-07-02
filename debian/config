@@ -28,21 +28,26 @@ db_go
 db_input critical  clientzone/DEBUG || true
 db_go
 
+db_input critical  clientzone/ADMIN_LOGIN || true
+db_go
 
-if [ ! -f /etc/flexibee/clientzone.json ] ; then
-cat << EOF > /etc/flexibee/clientzone.json
-{                                                                                                                                          
-    "EASE_APPNAME": "ClientZone",                                                                                                      
-    "SEND_MAILS_FROM": "shop@syourdomain.net",                                                                                                
-    "SEND_INFO_TO": "office@yourdomain.net",                                                                                                                       
-    "EMAIL_FROM": "shop@yourdomain.net",                                                                                                                       
-    "EASE_EMAILTO": "info@vitexsoftware.cz",                                                                    
-    "SUPPRESS_EMAILS": "true",
-    "ALLOW_REGISTER": "true",
-    "SHOW_PRICELIST": "false",
-    "DEBUG": "false",
-    "EASE_LOGGER": "syslog"                                                                                                       
-}
+db_input critical  clientzone/ADMIN_PASSWORD || true
+db_go
+
+
+if [ ! -f /etc/abraflexi/clientzone.env ] ; then
+mkdir -p /etc/abraflexi
+cat << 'EOF' > /etc/abraflexi/clientzone.env
+SEND_MAILS_FROM="shop@yourdomain.net"
+SEND_INFO_TO="office@yourdomain.net"
+EMAIL_FROM="shop@yourdomain.net"
+EASE_EMAILTO="info@vitexsoftware.cz"
+SUPPRESS_EMAILS="true"
+ALLOW_REGISTER="false"
+SHOW_PRICELIST="false"
+PROD_CAT="1"
+DEBUG="false"
+EASE_LOGGER="syslog"
+CONFIGURED="false"
 EOF
 fi
-

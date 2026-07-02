@@ -51,3 +51,14 @@ Type: boolean
 Default: false
 Description: Debug
  Enable debug mode
+
+Template: clientzone/ADMIN_LOGIN
+Type: string
+Default: admin
+Description: First administrator login name
+ Username for the first local administrator account.
+
+Template: clientzone/ADMIN_PASSWORD
+Type: password
+Description: First administrator password
+ Password for the first local administrator account.

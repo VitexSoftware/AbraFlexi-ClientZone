@@ -37,8 +37,7 @@ class Pricelist extends \Ease\TWB5\Panel
         }
 
         $this->pricer = new \AbraFlexi\Cenik();
-        $items        = $this->pricer->getColumnsFromFlexibee('info',
-            ['(in subtree '.$category.')']);
+        $items        = $this->pricer->getColumnsFromAbraFlexi('info', ['(in subtree '.$category.')']);
 
         parent::__construct(_('Pricelist'), 'info', null,
             new \Ease\TWB5\Badge('info',
@@ -79,9 +78,12 @@ class Pricelist extends \Ease\TWB5\Panel
         $row->addColumn(2, $pricelistItemData['cenaZaklBezDph']);
         $row->addColumn(2, round($pricelistItemData['cenaZaklVcDph']));
         if (array_key_exists('service', $pricelistItemData)) {
+            $isAnon   = get_class(\Ease\Shared::user()) === 'Ease\Anonym';
+            $orderUrl = $isAnon
+                ? 'login.php?backurl='.urlencode('orderform.php?service='.$pricelistItemData['service'])
+                : 'orderform.php?service='.$pricelistItemData['service'];
             $row->addColumn(2,
-                new \Ease\TWB5\LinkButton('orderform.php?service='.$pricelistItemData['service'],
-                _('Order Now'), 'success'));
+                new \Ease\TWB5\LinkButton($orderUrl, _('Order Now'), 'success'));
         }
 
         return $row;

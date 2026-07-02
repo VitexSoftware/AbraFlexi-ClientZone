@@ -50,6 +50,13 @@ switch (get_class($oUser)) {
 }
 
 
+if ($shared->getConfigValue('SHOW_PRICELIST') == 'true') {
+    $oPage->container->addItem(new ui\Pricelist(
+        (int) ($shared->getConfigValue('PROD_CAT') ?: 1),
+        ['ESHOP', 'AKTIVNI']
+    ));
+}
+
 $oPage->addItem(new ui\PageBottom());
 
 $oPage->draw();

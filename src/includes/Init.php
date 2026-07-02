@@ -18,7 +18,12 @@ require_once '../vendor/autoload.php';
 new \Ease\Locale('cs_CZ', '../i18n', 'clientzone');
 
 Shared::init(
-    ['ABRAFLEXI_URL', 'ABRAFLEXI_LOGIN', 'ABRAFLEXI_PASSWORD', 'ABRAFLEXI_COMPANY'],
+    [
+        'ABRAFLEXI_URL', 'ABRAFLEXI_LOGIN', 'ABRAFLEXI_PASSWORD', 'ABRAFLEXI_COMPANY',
+        'ALLOW_REGISTER', 'SHOW_PRICELIST', 'PROD_CAT',
+        'SEND_MAILS_FROM', 'SEND_INFO_TO', 'EMAIL_FROM', 'EASE_EMAILTO',
+        'SUPPRESS_EMAILS', 'CONFIGURED', 'EASE_LOGGER', 'DEBUG',
+    ],
     file_exists('/etc/abraflexi/clientzone.env')
         ? '/etc/abraflexi/clientzone.env'
         : \dirname(__DIR__, 2).'/.env',

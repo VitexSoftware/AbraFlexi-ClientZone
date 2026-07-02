@@ -9,6 +9,18 @@ namespace ClientZone;
  * @copyright  2017 VitexSoftware v.s.cz
  */
 require_once 'includes/Init.php';
+
+if ($shared->getConfigValue('ALLOW_REGISTER') !== 'true') {
+    $oPage->addStatusMessage(
+        _('Self-registration is disabled. Please contact the administrator or register through the AbraFlexi application.'),
+        'warning'
+    );
+    $oPage->addToHeader(new ui\PageTop(_('Registration disabled')));
+    $oPage->addItem(new ui\PageBottom());
+    $oPage->draw();
+    exit;
+}
+
 $process = false;
 
 $firstname = $oPage->getRequestValue('firstname');

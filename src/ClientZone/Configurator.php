@@ -39,6 +39,7 @@ class Configurator extends \Ease\Brick
         "SUPPRESS_EMAILS" => 'boolean',
         "ALLOW_REGISTER" => 'boolean',
         "SHOW_PRICELIST" => 'boolean',
+        "PROD_CAT" => 'string',
         "DEBUG" => 'boolean',
         "CONFIGURED" => 'boolean',
         "EASE_LOGGER" => 'string',
@@ -248,35 +249,35 @@ class Configurator extends \Ease\Brick
     }
 
     /**
-     * Save ClientZone Configuration to file
-     *  
+     * Save all configuration to .env file
+     *
      * @return boolean
      */
-    public function saveAppConfig()
+    public function saveAppConfig(): bool
     {
-        return $this->saveDataFile($this->getAppData(), $this->settingsFile);
+        return $this->saveConfig();
     }
 
     /**
-     * Save FlexiBee Configuration to file
-     *  
+     * Save FlexiBee Configuration to .env file
+     *
      * @return boolean
      */
     public function saveAbraFlexiConfig(): bool
     {
-        $envFile = file_exists('/etc/abraflexi/clientzone.env')
-            ? '/etc/abraflexi/clientzone.env'
-            : \dirname(__DIR__, 3).'/.env';
-        return $this->saveDataFile($this->getAbraFlexiData(), $envFile);
+        return $this->saveConfig();
     }
 
     /**
-     * Save All data
+     * Save all configuration to .env file
      *
      * @return boolean
      */
     public function saveConfig(): bool
     {
-        return $this->saveAppConfig() && $this->saveAbraFlexiConfig();
+        $envFile = file_exists('/etc/abraflexi/clientzone.env')
+            ? '/etc/abraflexi/clientzone.env'
+            : \dirname(__DIR__, 3).'/.env';
+        return $this->saveDataFile($this->getData(), $envFile);
     }
 }

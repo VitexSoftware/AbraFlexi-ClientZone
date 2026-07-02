@@ -88,6 +88,13 @@ class MainMenu extends \Ease\Html\DivTag
                         'right',
                     );
                 }
+                if (\Ease\Shared::cfg('ALLOW_REGISTER') === 'true') {
+                    $nav->addMenuItem(
+                        new \Ease\Html\ATag('newcustomer.php', '<i class="fa fa-user-plus"></i> '._('Sign Up')),
+                        true,
+                        'right',
+                    );
+                }
                 $nav->addMenuItem(
                     new \Ease\Html\ATag('login.php', '<i class="fa fa-sign-in"></i> '._('Sign In')),
                     true,
