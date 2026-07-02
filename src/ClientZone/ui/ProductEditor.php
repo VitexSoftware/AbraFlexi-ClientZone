@@ -30,9 +30,11 @@ class ProductEditor extends \Ease\TWB5\Panel
         $this->imageUpload('image');
 
 
-        $editForm = new \Ease\TWB5\Form('product', 'cenik.php', 'POST',
+        $editForm = new \Ease\TWB5\Form(
+            ['name' => 'product', 'action' => 'cenik.php', 'method' => 'POST', 'enctype' => 'multipart/form-data'],
+            [],
             new \Ease\Html\InputHiddenTag('id', $product),
-            ['enctype' => 'multipart/form-data']);
+        );
 
 
         $product->defaultUrlParams['detail'] = 'custom:poznam,id,stitky';

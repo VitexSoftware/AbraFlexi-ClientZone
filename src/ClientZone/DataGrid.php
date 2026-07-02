@@ -130,7 +130,7 @@ class DataGrid extends \Ease\Html\TableTag
         $dataurl = null;
 
         parent::__construct($dataurl, $properties);
-        \Ease\JQuery\Part::jQueryze($this);
+        \Ease\Part::jQueryze();
 //        $wp->includeJavaScript('/javascript/jquery-cookie/jquery.cookie.js');
         $wp->includeJavaScript('js/flexigrid.js');
         $wp->includeCSS('css/flexigrid.css');
@@ -564,7 +564,7 @@ class DataGrid extends \Ease\Html\TableTag
         $this->options['onSuccess']    = 'function() { addGrid($("#'.$grid_id.'"), this)}';
         $this->options['getGridClass'] = 'function(g) { this.g=g; return g; }';
         \Ease\WebPage::singleton()->addJavaScript("\n"
-            .'$(\'#'.$grid_id.'\').flexigrid({ '.\Ease\JQuery\Part::partPropertiesToString($this->options).' }); '.$grid_js,
+            .'$(\'#'.$grid_id.'\').flexigrid({ '.\Ease\Part::partPropertiesToString($this->options).' }); '.$grid_js,
             null, true);
 
         \Ease\WebPage::singleton()->includeJavaScript('js/jquery.visible.js');

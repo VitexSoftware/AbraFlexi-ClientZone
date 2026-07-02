@@ -75,7 +75,7 @@ class OrderListingItem extends \Ease\TWB5\Row
 
         switch (get_class(\Ease\Shared::user())) {
             case 'ClientZone\User':
-                $links[] = new \Ease\Html\ATag(constant('ABRAFLEXI_URL').'/c/'.constant('ABRAFLEXI_COMPANY').'/'.$evidence.'/'.$itemdata['id'],
+                $links[] = new \Ease\Html\ATag(\Ease\Shared::cfg('ABRAFLEXI_URL').'/c/'.\Ease\Shared::cfg('ABRAFLEXI_COMPANY').'/'.$evidence.'/'.$itemdata['id'],
                     new \Ease\Html\ImgTag('images/flexibee.png', _('FlexiBee'),
                     ['height' => '20px']), 'success', ['title' => _('FlexiBee')]);
 

@@ -109,7 +109,7 @@ class Order extends \AbraFlexi\RW
         $today = date('Y-m-d');
         $proforma->setDataValue('firma', $this->customer->adresar);
         $proforma->setDataValue('typDokl', 'code:ZÁLOHA');
-        $proforma->setDataValue('uvodTxt', constant('EASE_APPNAME'));
+        $proforma->setDataValue('uvodTxt', \Ease\Shared::appName());
         $proforma->setDataValue('typDoklSkl', 'code:STANDARD');
 
 

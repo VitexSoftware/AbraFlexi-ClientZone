@@ -14,6 +14,7 @@ $success = false;
 
 $userEmail = $oPage->getPostValue('Email');
 
+\Ease\Part::jQueryze();
 $oPage->includeJavaScript('js/jquery.validate.js');
 $oPage->addJavascript('$("#PassworRecovery").validate({
   rules: {
@@ -59,7 +60,7 @@ if ($userEmail) {
     $oPage->addStatusMessage(_('Please enter your email.'));
 }
 
-$oPage->container->addItem(new ui\PageTop(_('Lost password recovery')));
+$oPage->addToHeader(new ui\PageTop(_('Lost password recovery')));
 
 $row       = $oPage->container->addItem(new \Ease\TWB5\Row());
 $columnI   = $row->addItem(new \Ease\TWB5\Col(4));
@@ -71,7 +72,7 @@ if (!$success) {
 
     $columnII->addItem(_('Forgot your password? Enter your e-mail address you entered during the registration and we will send you a new one.'));
 
-    $emailForm = $columnII->addItem(new \Ease\TWB5\Form('PassworRecovery'));
+    $emailForm = $columnII->addItem(new \Ease\TWB5\Form(['name' => 'PassworRecovery', 'method' => 'POST']));
 
 
     $emailForm->addInput(new \Ease\Html\InputTextTag('Email',

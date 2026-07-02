@@ -56,7 +56,9 @@ class ColumnsForm extends \Ease\TWB5\Form
     {
         $this->engine = $engine;
         parent::__construct(
-            get_class($engine), '', 'POST', $formContents, $tagProperties
+            ['name' => get_class($engine), 'method' => 'POST'],
+            $tagProperties ?? [],
+            $formContents,
         );
         $this->newRow();
         $this->savers = new \Ease\Html\DivTag(null,
@@ -180,7 +182,7 @@ class ColumnsForm extends \Ease\TWB5\Form
 
     public function finalize(): void
     {
-        $recordID = $this->engine->getId();
+        $recordID = $this->engine->getMyKey();
         $this->addItem(new \Ease\Html\InputHiddenTag('class',
             get_class($this->engine)));
         if (!is_null($recordID)) {
@@ -191,6 +193,6 @@ class ColumnsForm extends \Ease\TWB5\Form
         \Ease\WebPage::singleton()->includeJavaScript('js/jquery.validate.js');
         \Ease\WebPage::singleton()->includeJavaScript('js/messages_cs.js');
 
-        return parent::finalize();
+        parent::finalize();
     }
 }

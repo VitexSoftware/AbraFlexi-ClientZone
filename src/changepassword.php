@@ -59,7 +59,7 @@ if ($formOK && $oPage->isPosted()) {
         $oUser->addStatusMessage(_('Password was changed'), 'success');
 
         $email = $oPage->addItem(new \Ease\Mailer($oUser->getDataValue($oUser->mailColumn),
-        constant('EASE_APPNAME').' '._('Changed password')));
+        \Ease\Shared::appName().' '._('Changed password')));
         $email->addItem(sprintf(_('Dear user %s, your password was changed to'),
                 $oUser->getUserLogin()).":\n");
         $email->addItem(_('Password').': '.$plainPass."\n");

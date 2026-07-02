@@ -18,7 +18,7 @@ class Customer extends \AbraFlexi\Bricks\Customer
      * Where to look for username
      * @var string 
      */
-    public $loginColumn = 'email';
+    public ?string $loginColumn = 'email';
     
     public function passwordCheck($plaintext)
     {

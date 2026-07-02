@@ -119,7 +119,7 @@ if ($oPage->isPosted()) {
                 exit;
             } else {
                 $oUser->addStatusMessage(_('Error saving Contact'), 'error');
-                $email = $oPage->addItem(new Ease\Mailer(constant('SEND_ORDERS_TO'),
+                $email = $oPage->addItem(new \Ease\Mailer(constant('SEND_ORDERS_TO'),
                     'Sign on Failed'));
                 $email->addItem(serialize($newOUser->kontakt->getData()));
                 $email->send();
@@ -151,8 +151,9 @@ $oPage->columnI->addItem(
 
 $regFace = $oPage->columnII->addItem(new \Ease\Html\DivTag());
 
-$regForm = $regFace->addItem(new \Ease\TWB5\Form('create_account',
-    'newcustomer.php', 'POST', null, ['class' => 'form-horizontal']));
+$regForm = $regFace->addItem(new \Ease\TWB5\Form(
+    ['name' => 'create_account', 'action' => 'newcustomer.php', 'method' => 'POST', 'class' => 'form-horizontal'],
+));
 if ($oUser->getUserID()) {
     $regForm->addItem(new \Ease\Html\InputHiddenTag('u_parent',
         $oUser->getUserID()));
@@ -185,7 +186,7 @@ $regForm->addItem(new \Ease\Html\DivTag(
     ['title' => _('Finish'), 'class' => 'btn btn-success'])));
 
 $oPage->columnIII->addItem(new \Ease\Html\ImgTag('images/clientzone-logo.svg',
-    constant('EASE_APPNAME')));
+    \Ease\Shared::appName()));
 
 if (isset($_POST)) {
     $regForm->fillUp($_POST);

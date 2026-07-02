@@ -49,11 +49,16 @@ if (!empty($shared->getConfigValue('ABRAFLEXI_URL')) &&
     !empty($shared->getConfigValue('ABRAFLEXI_PASSWORD'))
 ) {
 
-    $statuser = new \AbraFlexi\ui\TWB5\StatusInfoBox();
+    try {
+        $statuser = new \AbraFlexi\ui\TWB5\StatusInfoBox();
+    } catch (\AbraFlexi\Exception $e) {
+        $oPage->addStatusMessage($e->getMessage(), 'error');
+        $statuser = null;
+    }
 
     $statusBlock = new \Ease\Html\DivTag($statuser);
 
-    if (($statuser->lastResponseCode == 200) && $configSaved) {
+    if ($statuser && ($statuser->lastResponseCode == 200) && $configSaved) {
 
         $oPage->addCss('.glow {
   font-size: 50px;
