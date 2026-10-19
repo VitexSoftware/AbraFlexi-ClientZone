@@ -14,17 +14,11 @@ class PageBottom extends \Ease\Html\FooterTag
     public function __construct($content = null)
     {
         $version = defined('APP_VERSION') ? APP_VERSION : 'dev';
-        $composerCandidates = ['/usr/share/abraflexi-clientzone/composer.json'];
-        if (!str_starts_with(__DIR__, '/usr/share/abraflexi-clientzone')) {
-            $composerCandidates[] = \dirname(__DIR__, 3).'/composer.json';
-        }
-        foreach ($composerCandidates as $composer) {
-            if (is_readable($composer)) {
-                $decoded = json_decode((string) file_get_contents($composer));
-                if (is_object($decoded) && !empty($decoded->version)) {
-                    $version = (string) $decoded->version;
-                }
-                break;
+        $composer = __DIR__.'/../../../composer.json';
+        if (is_readable($composer)) {
+            $decoded = json_decode((string) file_get_contents($composer));
+            if (is_object($decoded) && !empty($decoded->version)) {
+                $version = (string) $decoded->version;
             }
         }
 

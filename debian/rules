@@ -3,6 +3,7 @@
 PKG_VERSION := $(shell dpkg-parsechangelog -S Version | sed 's/~.*//')
 PKG_SOURCE  := $(shell jq -r '.name' composer.json)
 PKG_TYPE    := $(shell jq -r '.type' composer.json)
+PKG_ROOT    := debian/abraflexi-clientzone/usr/share/abraflexi-clientzone
 
 %:
 	dh $@
@@ -13,8 +14,7 @@ override_dh_auto_test:
 
 override_dh_install:
 	dh_install
-	install -m 644 debian/autoload.php \
-	    debian/abraflexi-clientzone/usr/share/abraflexi-clientzone/autoload.php
+	install -m 644 debian/autoload.php $(PKG_ROOT)/autoload.php
 	# Bake package identity into autoload without breaking declare(strict_types=1)
 	sed -i \
 	    -e "s|define('APP_NAME', 'vitexsoftware/abraflexi-clientzone')|define('APP_NAME', '$(PKG_SOURCE)')|" \
@@ -22,9 +22,20 @@ override_dh_install:
 	    -e "s|'unknown'|'$(PKG_SOURCE)'|" \
 	    -e "s|'0.0.0'|'$(PKG_VERSION)'|" \
 	    -e "s|'library'|'$(PKG_TYPE)'|g" \
-	    debian/abraflexi-clientzone/usr/share/abraflexi-clientzone/autoload.php
-	# Ensure entry points load the Debian autoloader
-	find debian/abraflexi-clientzone/usr/share/abraflexi-clientzone -name '*.php' -print0 \
+	    $(PKG_ROOT)/autoload.php
+	# Rewrite development paths to Debian install locations (same pattern as sibling packages)
+	sed -i \
+	    -e "s|__DIR__.'/../../vendor/autoload.php'|'/usr/share/abraflexi-clientzone/autoload.php'|" \
+	    -e "s|__DIR__.'/../../i18n'|'/usr/share/locale'|" \
+	    -e "s|__DIR__.'/../../.env'|'/etc/abraflexi-client-zone/.env'|" \
+	    $(PKG_ROOT)/includes/Init.php
+	sed -i \
+	    -e "s|__DIR__.'/../../.env'|'/etc/abraflexi-client-zone/.env'|" \
+	    $(PKG_ROOT)/ClientZone/Configurator.php
+	sed -i \
+	    -e "s|__DIR__.'/../../../composer.json'|'/usr/share/abraflexi-clientzone/composer.json'|" \
+	    $(PKG_ROOT)/ClientZone/ui/PageBottom.php
+	find $(PKG_ROOT) -name '*.php' -print0 \
 	    | xargs -0 sed -i \
 	    -e "s|require_once __DIR__.'/../vendor/autoload.php';|require_once '/usr/share/abraflexi-clientzone/autoload.php';|g" \
 	    -e "s|require_once '../vendor/autoload.php';|require_once '/usr/share/abraflexi-clientzone/autoload.php';|g" \

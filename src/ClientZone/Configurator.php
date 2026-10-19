@@ -285,14 +285,6 @@ class Configurator extends \Ease\Brick
      */
     public function saveConfig(): bool
     {
-        if (is_dir('/etc/abraflexi-client-zone')) {
-            $envFile = '/etc/abraflexi-client-zone/.env';
-        } elseif (file_exists('/etc/abraflexi/clientzone.env')) {
-            $envFile = '/etc/abraflexi/clientzone.env';
-        } else {
-            $envFile = \dirname(__DIR__, 3).'/.env';
-        }
-
-        return $this->saveDataFile($this->getData(), $envFile);
+        return $this->saveDataFile($this->getData(), __DIR__.'/../../.env');
     }
 }
