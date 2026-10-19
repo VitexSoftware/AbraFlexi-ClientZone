@@ -1,40 +1,58 @@
 <?php
+
+declare(strict_types=1);
+
 /**
- * clientzone - QR Payments.
+ * clientzone - Unpaid invoices with QR payment.
  *
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>
- * @copyright  2018 VitexSoftware v.s.cz
+ * @copyright  2018-2026 VitexSoftware v.s.cz
  */
 
 namespace ClientZone\ui;
 
-/**
- * Description of OrdersListing
- *
- * @author vitex
- */
-class ToPayItems extends MainPageMenu
+class ToPayItems extends \Ease\Html\DivTag
 {
-
     /**
-     * Orders Listing
-     * 
-     * @var $customer Customer
+     * @param \ClientZone\Customer $customer
      */
     public function __construct($customer)
     {
-        parent::__construct();
+        parent::__construct(null, ['class' => 'cz-topay']);
+
         $debts = $customer->getCustomerDebts();
-        if (!empty($debts)) {
-            $this->row->addItem(new \Ease\Html\H1Tag(_('Orders to pay')));
-            foreach ($debts as $invoiceId => $invoiceInfo) {
-                $customer->invoicer->setMyKey((int) $invoiceInfo['id']);
-                $this->addMenuItem(
-                    $customer->invoicer->getQrCodeBase64(200),
-                    $invoiceInfo['kod'].' <strong>'.$invoiceInfo['sumCelkem'].'</strong> '.\AbraFlexi\RO::uncode($invoiceInfo['mena']),
-                    'document.php?id='.\AbraFlexi\RO::code($invoiceId) .'&embed=true&evidence='.$customer->invoicer->getEvidence()
-                );
-            }
+        if (empty($debts)) {
+            return;
+        }
+
+        $head = $this->addItem(new \Ease\Html\DivTag(null, ['class' => 'cz-catalog-head']));
+        $head->addItem(new \Ease\Html\DivTag(_('Payments'), ['class' => 'eyebrow']));
+        $head->addItem(new \Ease\Html\H2Tag(_('Orders to pay')));
+
+        $grid = $this->addItem(new \Ease\Html\DivTag(null, ['class' => 'cz-topay-grid']));
+
+        foreach ($debts as $invoiceId => $invoiceInfo) {
+            $customer->invoicer->setMyKey((int) $invoiceInfo['id']);
+            $card = $grid->addItem(new \Ease\Html\ATag(
+                'document.php?id='.\AbraFlexi\RO::code($invoiceId)
+                    .'&embed=true&evidence='.$customer->invoicer->getEvidence(),
+                null,
+                ['class' => 'cz-topay-card'],
+            ));
+            $card->addItem(new \Ease\Html\ImgTag(
+                $customer->invoicer->getQrCodeBase64(200),
+                $invoiceInfo['kod'],
+                ['class' => 'cz-topay-qr'],
+            ));
+            $card->addItem(new \Ease\Html\DivTag(
+                $invoiceInfo['kod'],
+                ['class' => 'cz-product-sku'],
+            ));
+            $card->addItem(new \Ease\Html\DivTag(
+                '<strong>'.$invoiceInfo['sumCelkem'].'</strong> '
+                .\AbraFlexi\RO::uncode($invoiceInfo['mena']),
+                ['class' => 'cz-topay-amount'],
+            ));
         }
     }
 }

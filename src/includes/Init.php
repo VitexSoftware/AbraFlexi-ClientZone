@@ -15,7 +15,9 @@ use Ease\Shared;
 
 require_once __DIR__.'/../../vendor/autoload.php';
 
-new \Ease\Locale('cs_CZ', __DIR__.'/../../i18n', 'clientzone');
+// Must use singleton — HtmlTag later calls Locale::singleton() and would
+ // otherwise re-init from Accept-Language (en_US) and undo translations.
+\Ease\Locale::singleton('cs_CZ', __DIR__.'/../../i18n', 'clientzone');
 
 Shared::init(
     [
@@ -27,6 +29,11 @@ Shared::init(
     __DIR__.'/../../.env',
     false,
 );
+
+// Display name (package APP_NAME stays the composer id). Honour .env override.
+if (Shared::cfg('EASE_APPNAME') === null || Shared::cfg('EASE_APPNAME') === '') {
+    \define('EASE_APPNAME', _('Client Zone'));
+}
 
 if (\PHP_SAPI === 'cli') {
     if (!defined('EASE_LOGGER')) {

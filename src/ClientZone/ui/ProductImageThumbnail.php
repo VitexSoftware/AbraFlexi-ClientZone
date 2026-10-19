@@ -19,8 +19,10 @@ class ProductImageThumbnail extends \Ease\Html\ATag
     public function __construct($product, $tagProperties = [])
     {
         $this->product['id'] = $product->getMyKey();
-        parent::__construct('productimage.php?id='.$product,
-            new ProductImage($product, 'thumbnail', $tagProperties));
+        parent::__construct(
+            'productimage.php?id='.$this->product['id'],
+            new ProductImage($product, 'thumbnail', $tagProperties),
+        );
     }
 
     public function finalize(): void

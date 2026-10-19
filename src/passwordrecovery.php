@@ -1,94 +1,125 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ClientZone;
 
 /**
- * clientzone - User Class.
+ * clientzone - Obnova zapomenutého hesla.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  2017 VitexSoftware v.s.cz
+ * @copyright  2017-2026 VitexSoftware v.s.cz
  */
 require_once 'includes/Init.php';
 
 $success = false;
+$userEmail = trim((string) ($oPage->getPostValue('Email') ?: $oPage->getRequestValue('email')));
 
-$userEmail = $oPage->getPostValue('Email');
-
-\Ease\Part::jQueryze();
-$oPage->includeJavaScript('js/jquery.validate.js');
-$oPage->addJavascript('$("#PassworRecovery").validate({
-  rules: {
-    Email: {
-      required: true,
-      email: true
-    }
-  }
-});', null, true);
-
-if ($userEmail) {
-    $customer = new Customer();
-    $customer->kontakt->loadFromAbraFlexi(['email' => $userEmail]);
-    if ($customer->kontakt->getMyKey()) {
-        $newPassword = \Ease\Sand::randomString(8);
-        if ($customer->passwordChange($newPassword)) {
-            $customer->addStatusMessage(_('Password was changed'));
-
-
-            $email = $oPage->addItem(new \Ease\Mailer($userEmail,
-                _('clientzone').' - '.sprintf(_('New password for %s'),
-                    $_SERVER['SERVER_NAME'])));
-            $email->setMailHeaders(['From' => constant('EMAIL_FROM')]);
-            $email->addItem(_("Sign On informations was changed:\n"));
-
-            $email->addItem(_('Username').': '.$customer->getUserLogin()."\n");
-            $email->addItem(_('Password').': '.$newPassword."\n");
-
-            $loginUrl = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].dirname(\Ease\WebPage::getUri()).'/login.php';
-            $email->addItem("\n$loginUrl\n");
-
-            $email->send();
-
-//            $oPage->addStatusMessage(sprintf(_('Your new password was sent to %s'),
-//                    '<strong>'.$userEmail.'</strong>'));
-            $success = true;
+$isPost = ($_SERVER['REQUEST_METHOD'] ?? '') === 'POST';
+if ($isPost && $userEmail !== '') {
+    try {
+        $customer = new Customer(['email' => $userEmail]);
+        if ($customer->getUserID()) {
+            $newPassword = \Ease\Functions::randomString(10);
+            if ($customer->passwordChange($newPassword)) {
+                $email = new \Ease\Mailer(
+                    $userEmail,
+                    \Ease\Shared::appName().' — '._('New password'),
+                );
+                $email->setMailHeaders(['From' => (string) \Ease\Shared::cfg('EMAIL_FROM')]);
+                $email->addItem(_("Sign On informations was changed:\n"));
+                $email->addItem(_('Username').': '.$customer->getUserLogin()."\n");
+                $email->addItem(_('Password').': '.$newPassword."\n");
+                $loginUrl = ($_SERVER['REQUEST_SCHEME'] ?? 'https').'://'
+                    .($_SERVER['HTTP_HOST'] ?? 'localhost')
+                    .dirname((string) parse_url($_SERVER['REQUEST_URI'] ?? '/login.php', \PHP_URL_PATH))
+                    .'/login.php';
+                $email->addItem("\n".$loginUrl."\n");
+                $email->send();
+                $success = true;
+                $oPage->addStatusMessage(
+                    sprintf(_('Your new password was sent to %s'), $userEmail),
+                    'success',
+                );
+            } else {
+                $oPage->addStatusMessage(_('Password could not be changed'), 'error');
+            }
+        } else {
+            $oPage->addStatusMessage(
+                sprintf(_('unknown email address %s'), $userEmail),
+                'warning',
+            );
         }
-    } else {
-        $oPage->addStatusMessage(sprintf(_('unknown email address %s'),
-                '<strong>'.$userEmail.'</strong>'), 'warning');
+    } catch (\Throwable $exc) {
+        $oPage->addStatusMessage(_('Password recovery failed. Please try again.'), 'error');
+        if (\Ease\Shared::isDebug()) {
+            $oPage->addStatusMessage($exc->getMessage(), 'debug');
+        }
     }
-} else {
-    $oPage->addStatusMessage(_('Please enter your email.'));
+} elseif ($isPost) {
+    $oPage->addStatusMessage(_('Please enter your email.'), 'warning');
 }
 
 $oPage->addToHeader(new ui\PageTop(_('Lost password recovery')));
 
-$row       = $oPage->container->addItem(new \Ease\TWB5\Row());
-$columnI   = $row->addItem(new \Ease\TWB5\Col(4));
-$columnII  = $row->addItem(new \Ease\TWB5\Col(4));
-$columnIII = $row->addItem(new \Ease\TWB5\Col(4));
+$wrap = new \Ease\Html\DivTag(null, ['class' => 'cz-auth']);
+$card = $wrap->addItem(new \Ease\Html\DivTag(null, ['class' => 'cz-auth-card']));
+
+$brand = $card->addItem(new \Ease\Html\DivTag(null, ['class' => 'cz-auth-brand']));
+$brand->addItem(new \Ease\Html\ImgTag(
+    'images/clientzone-logo.svg',
+    \Ease\Shared::appName(),
+    ['width' => 56, 'height' => 56, 'class' => 'cz-auth-logo'],
+));
+$brand->addItem(new \Ease\Html\DivTag(_('Account'), ['class' => 'eyebrow']));
+$brand->addItem(new \Ease\Html\H1Tag(_('Lost password recovery')));
 
 if (!$success) {
-    $columnI->addItem(new \Ease\Html\H1Tag('Lost password'));
+    $brand->addItem(new \Ease\Html\PTag(
+        _('Forgot your password? Enter your e-mail address you entered during the registration and we will send you a new one.'),
+        ['class' => 'dim'],
+    ));
 
-    $columnII->addItem(_('Forgot your password? Enter your e-mail address you entered during the registration and we will send you a new one.'));
+    $form = $card->addItem(new \Ease\TWB5\Form([
+        'name' => 'PassworRecovery',
+        'method' => 'POST',
+        'class' => 'cz-auth-form',
+        'id' => 'PassworRecovery',
+    ]));
+    $form->addItem(new \Ease\Html\LabelTag('Email', _('Email'), ['class' => 'form-label']));
+    $form->addItem(new \Ease\Html\InputTextTag('Email', $userEmail, [
+        'id' => 'Email',
+        'type' => 'email',
+        'class' => 'form-control form-control-lg',
+        'placeholder' => 'name@domain.tld',
+        'required' => 'required',
+        'autocomplete' => 'email',
+    ]));
+    $form->addItem(new \Ease\Html\DivTag(
+        new \Ease\Html\ButtonTag(_('Send New Password').' <span class="arrow">→</span>', [
+            'type' => 'submit',
+            'class' => 'btn btn-glow btn-lg w-100',
+        ]),
+        ['class' => 'cz-auth-submit'],
+    ));
 
-    $emailForm = $columnII->addItem(new \Ease\TWB5\Form(['name' => 'PassworRecovery', 'method' => 'POST']));
-
-
-    $emailForm->addInput(new \Ease\Html\InputTextTag('Email',
-        $oPage->getRequestValue('email'), ['type' => 'email']), _('Email'));
-    $emailForm->addItem(new \Ease\TWB5\SubmitButton(_('Send New Password'),
-        'warning'));
-
-    if (isset($_POST)) {
-        $emailForm->fillUp($_POST);
-    }
+    $links = $card->addItem(new \Ease\Html\DivTag(null, ['class' => 'cz-auth-links']));
+    $links->addItem(new \Ease\Html\ATag(
+        'login.php'.($userEmail !== '' ? '?email='.urlencode($userEmail) : ''),
+        _('Sign In'),
+    ));
 } else {
-    $columnII->addItem(new \Ease\TWB5\Card([_('Please check your mailbox for new password')
-        , ' '._('and').' ', new \Ease\TWB5\LinkButton('login.php?email='.$userEmail,
-            _('Sign In'), 'success')]));
+    $brand->addItem(new \Ease\Html\PTag(
+        _('Please check your mailbox for new password'),
+        ['class' => 'dim'],
+    ));
+    $card->addItem(new \Ease\Html\ATag(
+        'login.php?email='.urlencode($userEmail),
+        _('Sign In').' <span class="arrow">→</span>',
+        ['class' => 'btn btn-glow btn-lg w-100'],
+    ));
 }
 
+$oPage->container->addItem($wrap);
 $oPage->addItem(new ui\PageBottom());
-
 $oPage->draw();

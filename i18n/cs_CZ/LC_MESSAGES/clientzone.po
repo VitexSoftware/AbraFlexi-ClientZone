@@ -1710,3 +1710,72 @@ msgstr "Spoje.Net"
 
 #~ msgid "Order specific"
 #~ msgstr "Order specific"
+
+msgid "Client Zone"
+msgstr "Klientská Zóna"
+
+msgid "Our products"
+msgstr "Naše produkty"
+
+msgid "Catalog"
+msgstr "Katalog"
+
+msgid "%s products"
+msgstr "%s produktů"
+
+msgid "No products are available right now."
+msgstr "Momentálně nejsou k dispozici žádné produkty."
+
+msgid "excl. VAT"
+msgstr "bez DPH"
+
+msgid "Self-service portal"
+msgstr "Samoobslužný portál"
+
+msgid "Order domains, VoIP credit and hosting services online — instantly, without waiting for a callback."
+msgstr "Objednejte domény, VoIP kredit a hosting online — ihned, bez čekání na zpětný telefonát."
+
+msgid "Browse catalog"
+msgstr "Procházet katalog"
+
+msgid "Quick actions"
+msgstr "Rychlé akce"
+
+msgid "Payments"
+msgstr "Platby"
+
+msgid "Checkout"
+msgstr "Pokladna"
+
+msgid "Total"
+msgstr "Celkem"
+
+msgid "Qty: %s"
+msgstr "Počet: %s"
+
+msgid "%s items"
+msgstr "%s položek"
+
+msgid "Sign in with your account to order services and manage invoices."
+msgstr "Přihlaste se účtem a objednávejte služby nebo spravujte faktury."
+
+msgid "Usually your email address"
+msgstr "Obvykle vaše e-mailová adresa"
+
+msgid "Invalid username or password"
+msgstr "Neplatné uživatelské jméno nebo heslo"
+
+msgid "Sign in failed. Please try again."
+msgstr "Přihlášení se nezdařilo. Zkuste to prosím znovu."
+
+msgid "New password"
+msgstr "Nové heslo"
+
+msgid "Password could not be changed"
+msgstr "Heslo se nepodařilo změnit"
+
+msgid "Password recovery failed. Please try again."
+msgstr "Obnova hesla selhala. Zkuste to prosím znovu."
+
+msgid "Account"
+msgstr "Účet"

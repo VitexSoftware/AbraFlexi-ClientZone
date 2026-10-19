@@ -1,9 +1,12 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * clientzone - Vršek stránky.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  2017-2019 VitexSoftware v.s.cz
+ * @copyright  2017-2026 VitexSoftware v.s.cz
  */
 
 namespace ClientZone\ui;
@@ -13,23 +16,16 @@ namespace ClientZone\ui;
  */
 class PageTop extends \Ease\Html\DivTag
 {
-    /**
-     * Titulek stránky.
-     *
-     * @var type
-     */
     public $pageTitle = 'Page Heading';
 
     /**
-     * Nastavuje titulek.
-     *
-     * @param string $pageTitle
+     * @param null|string $pageTitle
      */
     public function __construct($pageTitle = null)
     {
         parent::__construct();
-        if (!is_null($pageTitle) && isset($GLOBALS['oPage'])) {
-            $GLOBALS['oPage']->setPageTitle($pageTitle);
+        if ($pageTitle !== null && $pageTitle !== '') {
+            \Ease\WebPage::singleton()->setPageTitle((string) $pageTitle);
         }
     }
 
@@ -45,5 +41,4 @@ class PageTop extends \Ease\Html\DivTag
             $this->addItem(new History());
         }
     }
-
 }

@@ -32,9 +32,6 @@ override_dh_install:
 	sed -i \
 	    -e "s|__DIR__.'/../../.env'|'/etc/abraflexi-client-zone/.env'|" \
 	    $(PKG_ROOT)/ClientZone/Configurator.php
-	sed -i \
-	    -e "s|__DIR__.'/../../../composer.json'|'/usr/share/abraflexi-clientzone/composer.json'|" \
-	    $(PKG_ROOT)/ClientZone/ui/PageBottom.php
 	find $(PKG_ROOT) -name '*.php' -print0 \
 	    | xargs -0 sed -i \
 	    -e "s|require_once __DIR__.'/../vendor/autoload.php';|require_once '/usr/share/abraflexi-clientzone/autoload.php';|g" \

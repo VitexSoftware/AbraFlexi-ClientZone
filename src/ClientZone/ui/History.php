@@ -21,11 +21,11 @@ class History extends \Ease\Html\DivTag
             $properties = [];
         }
         $properties['id'] = 'history';
+        $properties['class'] = trim(($properties['class'] ?? '').' cz-history');
 
         if (!isset($_SESSION['history'])) {
             $_SESSION['history'] = [];
         }
-
 
         parent::__construct(null, $properties);
 

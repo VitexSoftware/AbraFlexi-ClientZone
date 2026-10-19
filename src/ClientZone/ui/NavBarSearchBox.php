@@ -1,135 +1,77 @@
 <?php
+
+declare(strict_types=1);
+
 /**
  * clientzone - Vyhledávací okénko hlavního menu.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  2017 VitexSoftware v.s.cz
+ * @copyright  2017-2026 VitexSoftware v.s.cz
  */
 
 namespace ClientZone\ui;
 
 class NavBarSearchBox extends \Ease\TWB5\Form
 {
-
     /**
-     * Formulář Bootstrapu.
-     *
-     * @param string $formName      jméno formuláře
-     * @param string $formAction    cíl formulář např login.php
-     * @param string $formMethod    metoda odesílání POST|GET
-     * @param mixed  $formContents  prvky uvnitř formuláře
-     * @param array  $tagProperties vlastnosti tagu například:
-     *                              array('enctype' => 'multipart/form-data')
+     * @param string $formName   form name
+     * @param string $formAction search endpoint
      */
-    public function __construct($formName, $formAction = null,
-                                $formMethod = 'post', $formContents = null,
-                                $tagProperties = null)
+    public function __construct(string $formName = 'search', string $formAction = 'search.php')
     {
-        parent::__construct($formName, $formAction, $formMethod, $formContents,
-            $tagProperties);
-        $term = \Ease\WebPage::singleton()->getRequestValue('search', 'string');
-
-        $this->setTagProperties(['class' => 'navbar-form', 'role' => 'search']);
-        $group   = $this->addItem(
-            new \Ease\Html\DivTag(new \Ease\Html\InputTextTag(
-            'search', $term,
+        parent::__construct(
             [
-            'class' => 'form-control pull-right typeahead input-sm',
-            'style' => 'width: 300px; margin-right: 35px, border: 1px solid black; background-color: #e5e5e5; height: 27px',
-            'placeholder' => _('Hledání'),
-            ]), ['class' => 'input-group'])
+                'name' => $formName,
+                'action' => $formAction,
+                'method' => 'get',
+                'class' => 'd-flex align-items-center ms-2 me-2',
+                'role' => 'search',
+            ],
+            ['class' => 'input-group input-group-sm'],
         );
-        $buttons = $group->addItem(new \Ease\Html\SpanTag(null,
-            ['class' => 'input-group-btn']));
-        $buttons->addItem(new \Ease\Html\ButtonTag(new \Ease\Html\SpanTag(
-            new \Ease\Html\SpanTag(_('Close'), ['class' => 'sr-only']),
-            ['class' => 'glyphicon glyphicon-remove']),
-            ['type' => 'reset', 'class' => 'btn btn-default btn-sm']));
-        $buttons->addItem(new \Ease\Html\ButtonTag(new \Ease\Html\SpanTag(
-            new \Ease\Html\SpanTag(_('Search'), ['class' => 'sr-only']),
-            ['class' => 'glyphicon glyphicon-search']),
-            ['type' => 'submit', 'class' => 'btn btn-default btn-sm ']));
+
+        $term = \Ease\WebPage::singleton()->getRequestValue('search', 'string');
+        $this->addItem(new \Ease\Html\InputTextTag('search', $term, [
+            'class' => 'form-control typeahead',
+            'placeholder' => _('Search'),
+            'aria-label' => _('Search'),
+            'autocomplete' => 'off',
+            'style' => 'min-width: 180px; max-width: 280px;',
+        ]));
+        $this->addItem(new \Ease\Html\ButtonTag(
+            '<i class="fa fa-search" aria-hidden="true"></i>',
+            ['type' => 'submit', 'class' => 'btn btn-line btn-sm', 'title' => _('Search')],
+        ));
     }
 
     public function finalize(): void
     {
         parent::finalize();
-        \Ease\WebPage::singleton()->includeJavaScript('js/handlebars.js');
-        \Ease\WebPage::singleton()->includeJavaScript('js/typeahead.bundle.js');
-
-        /*
-          \Ease\WebPage::singleton()->addCss('
-
-          .tt-hint {
-          }
-
-          .tt-input {
-          }
-
-          .tt-hint {
-          color: #999
-          }
-
-          .tt-dropdown-menu {
-          width: 422px;
-          margin-top: 12px;
-          padding: 8px 0;
-          background-color: #fff;
-          border: 1px solid #ccc;
-          border: 1px solid rgba(0, 0, 0, 0.2);
-          border-radius: 8px;
-          box-shadow: 0 5px 10px rgba(0,0,0,.2);
-          overflow-y: auto;
-          max-height: 500px;
-          }
-
-          .tt-suggestion {
-          padding: 3px 20px;
-          }
-
-          .tt-suggestion.tt-cursor {
-          color: #fff;
-          background-color: #0097cf;
-
-          }
-
-          .tt-suggestion.tt-cursor a {
-          color: black;
-          }
-
-          .tt-suggestion p {
-          margin: 0;
-          }
-          ');
-
-         */
-        \Ease\WebPage::singleton()->addJavaScript('
-
-
+        $page = \Ease\WebPage::singleton();
+        $page->includeJavaScript('js/handlebars.js');
+        $page->includeJavaScript('js/typeahead.bundle.js');
+        $page->addJavaScript(<<<'JS'
 var bestPictures = new Bloodhound({
     limit: 1000,
-    datumTokenizer: Bloodhound.tokenizers.obj.whitespace(\'value\'),
+    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
     queryTokenizer: Bloodhound.tokenizers.whitespace,
     remote: {
-      url: \'searcher.php?q=%QUERY\',
-      wildcard: \'%QUERY\'
+      url: 'searcher.php?q=%QUERY',
+      wildcard: '%QUERY'
     }
 });
-
 bestPictures.initialize();
-
-$(\'input[name="search"]\').typeahead(null, {
-    name: \'best-pictures\',
-    displayKey: \'name\',
+$('input[name="search"]').typeahead(null, {
+    name: 'best-pictures',
+    displayKey: 'name',
     limit: 1000,
     minLength: 3,
     highlight: true,
     source: bestPictures.ttAdapter(),
-     templates: {
-        suggestion: Handlebars.compile(\'<p><small>{{type}}</small><br><a href="{{url}}"><strong>{{name}}</strong> – {{what}}</a></p>\')
-}
+    templates: {
+        suggestion: Handlebars.compile('<p><small>{{type}}</small><br><a href="{{url}}"><strong>{{name}}</strong> – {{what}}</a></p>')
+    }
 });
-
-            ', null, true);
+JS, null, true);
     }
 }

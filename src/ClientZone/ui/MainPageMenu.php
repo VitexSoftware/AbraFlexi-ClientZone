@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 /**
- * clientzone - Main page icon menu.
+ * clientzone - Compact quick-action strip for the shop home.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  2017-2024 VitexSoftware v.s.cz
+ * @copyright  2017-2026 VitexSoftware v.s.cz
  */
 
 namespace ClientZone\ui;
@@ -13,27 +15,26 @@ class MainPageMenu extends \Ease\Html\DivTag
 {
     public \Ease\Html\DivTag $row;
 
-    public function __construct()
+    public function __construct(?string $heading = null)
     {
-        parent::__construct(null, ['class' => 'container-fluid py-3']);
-        $this->row = $this->addItem(new \Ease\Html\DivTag(null, ['class' => 'row g-3 justify-content-center']));
+        parent::__construct(null, ['class' => 'cz-quick-actions']);
+        if ($heading !== null && $heading !== '') {
+            $this->addItem(new \Ease\Html\DivTag($heading, ['class' => 'eyebrow']));
+        }
+        $this->row = $this->addItem(new \Ease\Html\DivTag(null, [
+            'class' => 'cz-quick-row',
+        ]));
     }
 
     /**
-     * Add icon tile to the main page menu.
-     *
-     * @param string $image image URL
-     * @param string $title caption
-     * @param string $url   link href
-     *
      * @return \Ease\Html\ATag
      */
     public function addMenuItem(string $image, string $title, string $url): \Ease\Html\ATag
     {
-        $col = $this->row->addItem(new \Ease\Html\DivTag(null, ['class' => 'col-6 col-sm-4 col-md-3 col-lg-2 text-center']));
-        $link = $col->addItem(new \Ease\Html\ATag($url, null, ['class' => 'text-decoration-none']));
-        $link->addItem(new \Ease\Html\ImgTag($image, $title, ['class' => 'img-fluid mb-1', 'style' => 'max-height:64px']));
-        $link->addItem(new \Ease\Html\DivTag($title, ['class' => 'small text-muted']));
+        $link = $this->row->addItem(new \Ease\Html\ATag($url, null, ['class' => 'cz-tile']));
+        $link->addItem(new \Ease\Html\ImgTag($image, $title, ['class' => 'img-fluid']));
+        $link->addItem(new \Ease\Html\DivTag($title, ['class' => 'cz-tile-label']));
+
         return $link;
     }
 }

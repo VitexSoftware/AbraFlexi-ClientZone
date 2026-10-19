@@ -1696,3 +1696,48 @@ msgstr ""
 
 #~ msgid "Order specific"
 #~ msgstr "Order specific"
+
+msgid "Client Zone"
+msgstr "Client Zone"
+
+msgid "Our products"
+msgstr "Our products"
+
+msgid "Catalog"
+msgstr "Catalog"
+
+msgid "%s products"
+msgstr "%s products"
+
+msgid "No products are available right now."
+msgstr "No products are available right now."
+
+msgid "excl. VAT"
+msgstr "excl. VAT"
+
+msgid "Self-service portal"
+msgstr "Self-service portal"
+
+msgid "Order domains, VoIP credit and hosting services online — instantly, without waiting for a callback."
+msgstr "Order domains, VoIP credit and hosting services online — instantly, without waiting for a callback."
+
+msgid "Browse catalog"
+msgstr "Browse catalog"
+
+msgid "Quick actions"
+msgstr "Quick actions"
+
+msgid "Payments"
+msgstr "Payments"
+
+msgid "Checkout"
+msgstr "Checkout"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Qty: %s"
+msgstr "Qty: %s"
+
+msgid "%s items"
+msgstr "%s items"

@@ -1,28 +1,32 @@
 <?php
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+
+declare(strict_types=1);
+
+/**
+ * clientzone - E-shop product catalog.
+ *
+ * @author     Vítězslav Dvořák <vitex@arachne.cz>
+ * @copyright  2017-2026 VitexSoftware v.s.cz
  */
 
 namespace ClientZone\ui;
 
 /**
- * Description of Pricelist
- *
- * @author vitex
+ * Product grid for the public / customer shop.
  */
-class Pricelist extends \Ease\TWB5\Panel
+class Pricelist extends \Ease\Html\DivTag
 {
-    /**
-     *
-     * @var \AbraFlexi\Cenik
-     */
-    public $pricer = null;
+    public ?\AbraFlexi\Cenik $pricer = null;
 
-    public function __construct($category, $labels = [])
+    /**
+     * @param int|string $category AbraFlexi cenik subtree id
+     * @param array      $labels   stitky codes (e.g. ESHOP, AKTIVNI)
+     */
+    public function __construct($category, array $labels = [])
     {
-        $order     = new \ClientZone\OrderItem();
+        parent::__construct(null, ['class' => 'cz-catalog', 'id' => 'catalog']);
+
+        $order = new \ClientZone\OrderItem();
         $orderable = [];
         foreach ($order->plugins as $pluginName => $plugin) {
             $orderable[$plugin->productCode] = $pluginName;
@@ -30,63 +34,96 @@ class Pricelist extends \Ease\TWB5\Panel
 
         if (count($labels)) {
             foreach ($labels as $lid => $label) {
-                $labels[$lid] = 'stitky=\'code:'.$label.'\'';
+                $labels[$lid] = "stitky='code:".$label."'";
             }
-            $labelCond = implode(' and ', $labels);
-            $category  .= ' and '.$labelCond;
+            $category .= ' and '.implode(' and ', $labels);
         }
 
         $this->pricer = new \AbraFlexi\Cenik();
-        $items        = $this->pricer->getColumnsFromAbraFlexi('info', ['(in subtree '.$category.')']);
+        $items = $this->pricer->getColumnsFromAbraFlexi('info', ['(in subtree '.$category.')']);
 
-        parent::__construct(
-            _('Pricelist'),
-            'info',
-            null,
-            new \Ease\TWB5\Badge(sprintf(_('%s items found'), count($items)), 'info'),
-        );
+        $head = $this->addItem(new \Ease\Html\DivTag(null, ['class' => 'cz-catalog-head']));
+        $head->addItem(new \Ease\Html\DivTag(_('Our products'), ['class' => 'eyebrow']));
+        $head->addItem(new \Ease\Html\H2Tag(_('Catalog')));
+        $head->addItem(new \Ease\Html\PTag(
+            sprintf(_('%s products'), count($items)),
+            ['class' => 'dim cz-catalog-count'],
+        ));
 
-        if (count($items)) {
-            $headerRow = new \Ease\TWB5\Row();
-            $headerRow->addColumn(1);
-            $headerRow->addColumn(2, new \Ease\TWB5\Badge(_('Item name'), 'info'));
-            $headerRow->addColumn(2, new \Ease\TWB5\Badge(_('Price without VAT'), 'info'));
-            $headerRow->addColumn(2, new \Ease\TWB5\Badge(_('Price with VAT'), 'info'));
-            $headerRow->addColumn(2, new \Ease\TWB5\Badge(_('Actions'), 'info'));
-            $this->addItem($headerRow);
-            $this->addItem(new \Ease\Html\HrTag());
-            foreach ($items as $item) {
+        if (!count($items)) {
+            $this->addItem(new \Ease\Html\DivTag(
+                _('No products are available right now.'),
+                ['class' => 'cz-empty'],
+            ));
 
-                if (array_key_exists($item['kod'], $orderable)) {
-                    $item['service'] = $orderable[$item['kod']];
-                } else {
-                    $item['service'] = 'Common&kod='.$item['kod'];
-                }
+            return;
+        }
 
-                $this->addItem($this->pricelistRow($item));
+        $grid = $this->addItem(new \Ease\Html\DivTag(null, ['class' => 'cz-product-grid']));
+
+        foreach ($items as $item) {
+            if (array_key_exists($item['kod'], $orderable)) {
+                $item['service'] = $orderable[$item['kod']];
+            } else {
+                $item['service'] = 'Common&kod='.$item['kod'];
             }
+            $grid->addItem($this->productCard($item));
         }
     }
 
-    public function pricelistRow($pricelistItemData)
+    /**
+     * @param array<string, mixed> $item
+     */
+    public function productCard(array $item): \Ease\Html\DivTag
     {
-        $row = new \Ease\TWB5\Row();
-        $this->pricer->setMyKey($pricelistItemData['id']);
-        $row->addColumn(1,
-            new ProductImageThumbnail($this->pricer,
-            ['class' => 'thumbnail', 'style' => 'height: 40px']));
-        $row->addColumn(2, $pricelistItemData['nazev']);
-        $row->addColumn(2, $pricelistItemData['cenaZaklBezDph']);
-        $row->addColumn(2, round($pricelistItemData['cenaZaklVcDph']));
-        if (array_key_exists('service', $pricelistItemData)) {
-            $isAnon   = get_class(\Ease\Shared::user()) === 'Ease\Anonym';
+        $this->pricer->setMyKey($item['id']);
+        $this->pricer->setDataValue('nazev', $item['nazev'] ?? '');
+
+        $priceEx = (float) ($item['cenaZaklBezDph'] ?? 0);
+        $priceInc = (float) ($item['cenaZaklVcDph'] ?? round($priceEx * 1.21));
+
+        $card = new \Ease\Html\DivTag(null, ['class' => 'cz-product reveal']);
+
+        $media = $card->addItem(new \Ease\Html\DivTag(null, ['class' => 'cz-product-media']));
+        $media->addItem(new ProductImageThumbnail($this->pricer, [
+            'class' => 'cz-product-img',
+            'loading' => 'lazy',
+        ]));
+
+        $body = $card->addItem(new \Ease\Html\DivTag(null, ['class' => 'cz-product-body']));
+        $body->addItem(new \Ease\Html\DivTag(
+            htmlspecialchars((string) ($item['kod'] ?? '')),
+            ['class' => 'cz-product-sku'],
+        ));
+        $body->addItem(new \Ease\Html\H3Tag((string) ($item['nazev'] ?? '')));
+
+        $price = $body->addItem(new \Ease\Html\DivTag(null, ['class' => 'cz-product-price']));
+        $price->addItem(new \Ease\Html\SpanTag(
+            $this->formatPrice($priceInc),
+            ['class' => 'cz-price-main'],
+        ));
+        $price->addItem(new \Ease\Html\SpanTag(
+            $this->formatPrice($priceEx).' '._('excl. VAT'),
+            ['class' => 'cz-price-sub'],
+        ));
+
+        if (array_key_exists('service', $item)) {
+            $isAnon = get_class(\Ease\Shared::user()) === 'Ease\Anonym';
             $orderUrl = $isAnon
-                ? 'login.php?backurl='.urlencode('orderform.php?service='.$pricelistItemData['service'])
-                : 'orderform.php?service='.$pricelistItemData['service'];
-            $row->addColumn(2,
-                new \Ease\TWB5\LinkButton($orderUrl, _('Order Now'), 'success'));
+                ? 'login.php?backurl='.urlencode('orderform.php?service='.$item['service'])
+                : 'orderform.php?service='.$item['service'];
+            $body->addItem(new \Ease\Html\ATag(
+                $orderUrl,
+                _('Order Now').' <span class="arrow">→</span>',
+                ['class' => 'btn btn-primary cz-product-cta'],
+            ));
         }
 
-        return $row;
+        return $card;
+    }
+
+    public function formatPrice(float $amount): string
+    {
+        return number_format($amount, $amount == floor($amount) ? 0 : 2, ',', ' ').' Kč';
     }
 }
