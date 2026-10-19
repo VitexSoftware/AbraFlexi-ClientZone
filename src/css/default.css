@@ -152,8 +152,19 @@
 
 .cz-catalog,
 .cz-cart,
-.cz-topay {
+.cz-topay,
+.cz-order-result {
     margin: 12px 0 48px;
+}
+
+.cz-order-result .cz-order-doc {
+    margin-top: 24px;
+}
+
+.cz-order-result .embed-responsive {
+    min-height: 70vh;
+    width: 100%;
+    border: 0;
 }
 
 .cz-catalog-head {

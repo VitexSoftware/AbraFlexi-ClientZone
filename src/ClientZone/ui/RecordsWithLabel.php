@@ -21,7 +21,7 @@ class RecordsWithLabel extends \Ease\TWB5\Container
     {
         $this->label  = $label;
         $this->engine = $engine;
-        $records      = $engine->getColumnsFromFlexiBee(['id', 'nazev', 'stitky',
+        $records      = $engine->getColumnsFromAbraFlexi(['id', 'nazev', 'stitky',
             'kod'], ['stitky' => $label]);
         $listing = new \Ease\Html\TableTag(null, ['class' => 'table']);
         if (count($records)) {

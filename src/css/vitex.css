@@ -236,6 +236,10 @@ body.home .site-header.navbar:not(.scrolled) { background: transparent; backdrop
 .site-header .dropdown-item img { width: 20px; height: 20px; object-fit: contain; }
 .site-header .dropdown-item:hover { background: var(--glass-2); color: var(--text); }
 .header-controls { display: flex; align-items: center; gap: 12px; margin-left: 20px; }
+.header-controls .cz-logout {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px; border-radius: 999px; font-size: .85rem; text-decoration: none;
+}
 .lang-switch { display: flex; border: 1px solid var(--border); border-radius: 999px; padding: 3px; }
 .lang-switch a { font-size: .75rem; font-weight: 500; letter-spacing: .06em; color: var(--dim); text-decoration: none; padding: 4px 9px; border-radius: 999px; }
 .lang-switch a.active { background: var(--glass-2); color: var(--text); }

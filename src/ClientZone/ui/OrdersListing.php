@@ -1,42 +1,35 @@
 <?php
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
+declare(strict_types=1);
 
 namespace ClientZone\ui;
 
 /**
- * Description of OrdersListing
+ * Listing of customer invoices / orders.
  *
  * @author vitex
  */
 class OrdersListing extends \Ease\TWB5\Panel
 {
-
     /**
-     * Orders Listing
-     *
-     * @param \AbraFlexi\RO $fetcher     Proforma/Invoice/Order
-     * @param array                  $conditions  Conditions
-     * @param string                 $caption     Panel caption
+     * @param \AbraFlexi\RO          $fetcher    Proforma/Invoice/Order fetcher
+     * @param string                 $caption    Panel caption
+     * @param array<string, mixed>   $conditions Query conditions
      */
-    public function __construct($fetcher, $conditions = [], $caption)
+    public function __construct(\AbraFlexi\RO $fetcher, string $caption, array $conditions = [])
     {
-        $documents = $fetcher->getColumnsFromFlexiBee('full', $conditions);
-        $celkem    = 0;
+        $documents = $fetcher->getColumnsFromAbraFlexi('full', $conditions);
+        $celkem = 0;
         parent::__construct($caption, 'info');
         if (!empty($documents)) {
             foreach ($documents as $orderData) {
-                $this->addItem(new OrderListingItem($orderData,
-                    $fetcher->getEvidence()));
-                $celkem += $orderData['sumCelkem'];
+                $this->addItem(new OrderListingItem($orderData, $fetcher->getEvidence()));
+                $celkem += (float) ($orderData['sumCelkem'] ?? 0);
             }
-            $this->addToFooter = new \Ease\TWB5\Row();
-            $this->addToFooter->addColumn('2', count($documents));
-            $this->addToFooter->addColumn('2', $celkem.' Kč');
+            $footer = new \Ease\TWB5\Row();
+            $footer->addColumn(2, (string) count($documents));
+            $footer->addColumn(2, $celkem.' Kč');
+            $this->footer->addItem($footer);
         }
     }
-
 }

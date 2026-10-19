@@ -1,128 +1,189 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ClientZone\ui;
 
 /**
- * Description of OrderListingItem
+ * One row in My Orders listing.
  *
  * @author vitex
  */
 class OrderListingItem extends \Ease\TWB5\Row
 {
-
-    public function __construct($itemdata, $evidence)
+    /**
+     * @param array<string, mixed> $itemdata
+     */
+    public function __construct(array $itemdata, string $evidence)
     {
         parent::__construct();
-//        $this->addColumn(2,
-//            new \Ease\Html\ATag('order.php?id='.$itemdata['id'],
-//            $itemdata['kod']));
 
-        $this->addColumn(2,
-            new \Ease\Html\StrongTag(new \Ease\Html\ATag('getpdf.php?id='.$itemdata['id'].'&evidence='.$evidence.'&embed=true',
-            $itemdata['kod'])));
+        $id = $itemdata['id'] ?? '';
+        $this->addColumn(2, new \Ease\Html\StrongTag(new \Ease\Html\ATag(
+            'document.php?id='.$id.'&evidence='.$evidence,
+            (string) ($itemdata['kod'] ?? $id),
+            ['title' => _('Show')],
+        )));
 
-        $this->addColumn(2,
-            $itemdata['sumCelkem'].' '.str_replace('code:', '',
-                $itemdata['mena']));
-        $this->addColumn(1,
-            isset($itemdata['datSplat']) ? \AbraFlexi\RO::flexiDateToDateTime($itemdata['datSplat'])->format('d.m.Y')
-                    : '' );
+        $mena = isset($itemdata['mena'])
+            ? str_replace('code:', '', self::relationValue($itemdata['mena']))
+            : 'Kč';
+        $this->addColumn(2, ($itemdata['sumCelkem'] ?? '').' '.$mena);
+        $this->addColumn(1, self::formatDate($itemdata['datSplat'] ?? null));
 
         switch ($evidence) {
             case 'faktura-vydana':
-                if (strstr($itemdata['stavUhrK'], 'stavUhr.uhrazeno')) {
-                    $column2 = new \Ease\TWB5\Badge('success', _('Settled'));
+                if (!empty($itemdata['stavUhrK']) && str_contains((string) $itemdata['stavUhrK'], 'stavUhr.uhrazeno')) {
+                    $status = new \Ease\TWB5\Badge(_('Settled'), 'success');
                 } else {
-                    $column2 = self::dueLabel($itemdata['datSplat']);
+                    $status = self::dueLabel($itemdata['datSplat'] ?? null);
                 }
                 break;
             case 'objednavka-prijata':
-                if ($itemdata['stavUzivK'] == 'stavDoklObch.hotovo') {
-                    $column2 = new \Ease\TWB5\Badge('success', _('Done'));
+                if (($itemdata['stavUzivK'] ?? '') === 'stavDoklObch.hotovo') {
+                    $status = new \Ease\TWB5\Badge(_('Done'), 'success');
                 } else {
-                    $column2 = new \Ease\TWB5\Badge('warning',
-                        _('Open').': '.str_replace('stavDoklObch.', '',
-                            $itemdata['stavUzivK']));
+                    $status = new \Ease\TWB5\Badge(
+                        _('Open').': '.str_replace('stavDoklObch.', '', (string) ($itemdata['stavUzivK'] ?? '')),
+                        'warning',
+                    );
                 }
                 break;
-            default :
-                $column2 = '';
-
+            default:
+                $status = '';
                 break;
         }
-
-        $this->addColumn(2, $column2);
+        $this->addColumn(2, $status);
 
         $links = [
-            new \Ease\Html\ATag('document.php?id='.$itemdata['id'].'&embed=true&evidence='.$evidence,
-                new \Ease\Html\ImgTag('images/oko.svg', _('Show'),
-                ['height' => '20px']), 'info', ['title' => _('Show')])
-            ,
-            new \Ease\Html\ATag('getpdf.php?id='.$itemdata['id'].'&evidence='.$evidence,
-                new \Ease\Html\ImgTag('images/download.svg', _('Download'),
-                ['height' => '20px']), 'success', ['title' => _('Download')])
-            ,
-            new \Ease\Html\ATag('maildocument.php?id='.$itemdata['id'].'&evidence='.$evidence,
-                new \Ease\Html\ImgTag('images/email.svg', _('Send'),
-                ['height' => '20px']), 'success', ['title' => _('Send')])
+            self::iconLink(
+                'document.php?id='.$id.'&evidence='.$evidence,
+                'images/oko.svg',
+                _('Show'),
+            ),
+            self::iconLink(
+                'getpdf.php?id='.$id.'&evidence='.$evidence.'&embed=true',
+                'images/download.svg',
+                _('Download'),
+            ),
+            self::iconLink(
+                'maildocument.php?id='.$id.'&evidence='.$evidence,
+                'images/email.svg',
+                _('Send'),
+            ),
         ];
 
-        if ($evidence == 'faktura-vydana') {
-            $links[] = new \Ease\Html\ATag('getisdoc.php?id='.$itemdata['id'].'&evidence='.$evidence,
-                new \Ease\Html\ImgTag('images/ISDOC.png', _('ISDOC'),
-                ['height' => '20px']), 'success', ['title' => _('ISDOC')]);
+        if ($evidence === 'faktura-vydana') {
+            $links[] = self::iconLink(
+                'getisdoc.php?id='.$id.'&evidence='.$evidence,
+                'images/ISDOC.png',
+                _('ISDOC'),
+            );
         }
 
-        switch (get_class(\Ease\Shared::user())) {
-            case 'ClientZone\User':
-                $links[] = new \Ease\Html\ATag(\Ease\Shared::cfg('ABRAFLEXI_URL').'/c/'.\Ease\Shared::cfg('ABRAFLEXI_COMPANY').'/'.$evidence.'/'.$itemdata['id'],
-                    new \Ease\Html\ImgTag('images/flexibee.png', _('FlexiBee'),
-                    ['height' => '20px']), 'success', ['title' => _('FlexiBee')]);
-
-                $links[] = new \Ease\Html\ATag('adresar.php?id='.$itemdata['firma'],
-                    new \Ease\Html\ImgTag('images/company.svg', _('Company'),
-                    ['height' => '20px', 'title' => $itemdata['firma@showAs']]),
-                    'success', ['title' => _('Company')]);
-                break;
+        if (get_class(\Ease\Shared::user()) === 'ClientZone\User') {
+            $links[] = self::iconLink(
+                \Ease\Shared::cfg('ABRAFLEXI_URL').'/c/'.\Ease\Shared::cfg('ABRAFLEXI_COMPANY').'/'.$evidence.'/'.$id,
+                'images/flexibee.png',
+                _('FlexiBee'),
+            );
+            $firma = $itemdata['firma'] ?? null;
+            $firmaShow = self::relationShowAs($firma, $itemdata['firma@showAs'] ?? null);
+            $links[] = self::iconLink(
+                'adresar.php?id='.self::relationValue($firma),
+                'images/company.svg',
+                $firmaShow !== '' ? $firmaShow : _('Company'),
+            );
         }
 
         $this->addColumn(2, $links);
     }
 
-    static function price($data)
-    {
-        switch ($data['']) {
-            case '':
-                break;
-        }
-
-
-        return new \Ease\TWB5\Badge($type, $content);
+    /**
+     * Icon action link for order row.
+     *
+     * @param array<string, string> $imgProperties
+     */
+    public static function iconLink(
+        string $href,
+        string $img,
+        string $title,
+        array $imgProperties = ['height' => '20px'],
+    ): \Ease\Html\ATag {
+        return new \Ease\Html\ATag(
+            $href,
+            new \Ease\Html\ImgTag($img, $title, $imgProperties),
+            ['title' => $title, 'class' => 'cz-order-action'],
+        );
     }
 
     /**
-     * 
-     * @param DateTime|string $date
-     * 
-     * @return \Ease\TWB5\Badge
+     * Scalar value from AbraFlexi Relation or plain field.
      */
-    static function dueLabel($date)
+    public static function relationValue(mixed $value): string
     {
-        $days = \AbraFlexi\FakturaVydana::overdueDays($date);
-        if ($days < 0) {
-            $type = 'success';
-            $msg  = sprintf(_(' %s days to due'),
-                new \Ease\TWB5\Badge(abs($days)));
-        } else {
-            $msg = sprintf(_(' %s days after due'),
-                new \Ease\TWB5\Badge(abs($days)));
-            if ($days > 14) {
-                $type = 'danger';
-            } else {
-                $type = 'warning';
-            }
+        if ($value instanceof \AbraFlexi\Relation) {
+            return (string) $value;
         }
-        return new \Ease\TWB5\Badge($type, $msg);
+
+        return $value === null ? '' : (string) $value;
     }
 
+    /**
+     * Human label from Relation::showAs or legacy @showAs key.
+     */
+    public static function relationShowAs(mixed $value, mixed $legacyShowAs = null): string
+    {
+        if ($value instanceof \AbraFlexi\Relation && !empty($value->showAs)) {
+            return (string) $value->showAs;
+        }
+        if ($legacyShowAs !== null && $legacyShowAs !== '') {
+            return (string) $legacyShowAs;
+        }
+
+        return self::relationValue($value);
+    }
+
+    /**
+     * Format AbraFlexi date / DateTime / string for listing.
+     */
+    public static function formatDate(mixed $date): string
+    {
+        if ($date instanceof \AbraFlexi\Date) {
+            return $date->isNull ? '' : $date->format('d.m.Y');
+        }
+        if ($date instanceof \DateTimeInterface) {
+            return $date->format('d.m.Y');
+        }
+        if (\is_string($date) && $date !== '') {
+            return (new \AbraFlexi\Date($date))->format('d.m.Y');
+        }
+
+        return '';
+    }
+
+    /**
+     * @param \DateTimeInterface|string|null $date
+     */
+    public static function dueLabel($date): \Ease\TWB5\Badge
+    {
+        if ($date === null || $date === ''
+            || ($date instanceof \AbraFlexi\Date && $date->isNull)
+        ) {
+            return new \Ease\TWB5\Badge(_('No due date'), 'secondary');
+        }
+
+        $days = \AbraFlexi\FakturaVydana::overdueDays($date);
+        if ($days < 0) {
+            return new \Ease\TWB5\Badge(
+                sprintf(_('%s days to due'), (string) abs($days)),
+                'success',
+            );
+        }
+
+        return new \Ease\TWB5\Badge(
+            sprintf(_('%s days after due'), (string) abs($days)),
+            $days > 14 ? 'danger' : 'warning',
+        );
+    }
 }

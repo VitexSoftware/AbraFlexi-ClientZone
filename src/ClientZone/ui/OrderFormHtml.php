@@ -68,7 +68,8 @@ class OrderFormHtml extends \Ease\TWB5\Form
                     continue;
                 }
                 $prefixID = $user->getAdresar()->getExternalID($itemclass->reqExtPrefix);
-                if (empty($prefixID)) {
+                // getExternalID returns false/null when missing; Relation/string when present
+                if ($prefixID === null || $prefixID === false || $prefixID === '') {
                     continue;
                 }
             }

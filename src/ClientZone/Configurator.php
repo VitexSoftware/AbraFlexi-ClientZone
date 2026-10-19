@@ -47,6 +47,8 @@ class Configurator extends \Ease\Brick
         "ABRAFLEXI_LOGIN" => 'string',
         "ABRAFLEXI_PASSWORD" => 'string',
         "ABRAFLEXI_COMPANY" => 'string',
+        "ABRAFLEXI_PASSWORD_HASH" => 'string',
+        "ABRAFLEXI_PASSWORD_SALT" => 'string',
         "ABRAFLEXI_PROFORMA_DOCTYPE" => 'string',
         "ABRAFLEXI_BANK_DOCTYPE" => 'string',
         "ABRAFLEXI_STORAGE" => 'string',

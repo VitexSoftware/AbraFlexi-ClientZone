@@ -15,6 +15,11 @@ use Ease\Html\DivTag;
 
 class BootstrapMenu extends \Ease\TWB5\Navbar
 {
+    /**
+     * Collapse / toggler target id (parent keeps $navBarName private).
+     */
+    private const NAVBAR_ID = 'clientzone-navbar';
+
     public function __construct()
     {
         $this->mainpage = 'index.php';
@@ -25,18 +30,31 @@ class BootstrapMenu extends \Ease\TWB5\Navbar
         parent::__construct(
             '<img src="images/clientzone-logo.svg" alt="" width="36" height="36" class="brand-logo">'
             .'<span class="brand-name">'.$brand.'</span>',
-            'clientzone-navbar',
+            self::NAVBAR_ID,
             ['class' => 'site-header navbar-expand-lg fixed-top'],
         );
     }
 
     /**
-     * Append theme toggle after menu items (same pattern as v.s.cz).
+     * Ease TWB5 Navbar::navBarCollapse() only embeds leftContent — right-side
+     * items (cart, account, Sign Out) would never render. Include both sides.
      */
     public function navBarCollapse()
     {
-        $collapse = parent::navBarCollapse();
+        $collapse = new DivTag(
+            [$this->leftContent, $this->rightContent],
+            ['class' => 'collapse navbar-collapse', 'id' => self::NAVBAR_ID],
+        );
+
         $controls = new DivTag(null, ['class' => 'header-controls']);
+        $user = \Ease\Shared::user();
+        if ($user instanceof \ClientZone\Customer || $user instanceof \ClientZone\User) {
+            $controls->addItem(new \Ease\Html\ATag(
+                'logout.php',
+                '<i class="fa fa-power-off" aria-hidden="true"></i> '._('Sign Out'),
+                ['class' => 'btn btn-line btn-sm cz-logout'],
+            ));
+        }
         $controls->addItem(
             '<button type="button" class="icon-btn theme-toggle" aria-label="'
             .htmlspecialchars(_('Switch light / dark mode'))
@@ -50,6 +68,24 @@ class BootstrapMenu extends \Ease\TWB5\Navbar
         $collapse->addItem($controls);
 
         return $collapse;
+    }
+
+    /**
+     * NavItemDropDown is already an &lt;li&gt; — do not wrap it again.
+     *
+     * @param mixed  $content
+     * @param bool   $enabled
+     * @param string $placement
+     */
+    public function addMenuItem($content, $enabled = true, $placement = 'left')
+    {
+        if ($content instanceof \Ease\TWB5\NavItemDropDown) {
+            return $placement === 'left'
+                ? $this->leftContent->addItem($content)
+                : $this->rightContent->addItem($content);
+        }
+
+        return parent::addMenuItem($content, $enabled, $placement);
     }
 
     /**

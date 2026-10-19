@@ -14,12 +14,19 @@ $oPage->onlyForLogged();
 
 $oPage->addToHeader(new ui\PageTop(_('My Orders')));
 
-$evidencies = ['faktura-vydana'=>_('Invoices'), 'objednavka-prijata'=>_('Orders')];
-$fetcher    = new \AbraFlexi\RO();
-foreach ($evidencies as $evidence=>$evCaption) {
+$evidencies = [
+    'faktura-vydana' => _('Invoices'),
+    'objednavka-prijata' => _('Orders'),
+];
+$fetcher = new \AbraFlexi\RO();
+$firma = $oUser->getAdresar();
+foreach ($evidencies as $evidence => $evCaption) {
     $fetcher->setEvidence($evidence);
-    $oPage->container->addItem(new ui\OrdersListing($fetcher,
-        ['firma' => $oUser->adresar], $evCaption));
+    $oPage->container->addItem(new ui\OrdersListing(
+        $fetcher,
+        $evCaption,
+        ['firma' => $firma],
+    ));
 }
 
 $oPage->addItem(new ui\PageBottom());

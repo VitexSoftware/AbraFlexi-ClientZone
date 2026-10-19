@@ -62,5 +62,17 @@ class SetupForm extends \AbraFlexi\ui\TWB5\ConnectionForm
             null,
             _('Show pricelist of items with "eshop" flag or label')
         );
+        $this->addInput(
+            new \Ease\Html\SelectTag('ABRAFLEXI_PASSWORD_HASH', [
+                'plain' => _('Plaintext'),
+                'sha256' => 'sha256',
+                'sha512' => 'sha512',
+                'sha1' => 'sha1',
+                'md5' => 'md5',
+            ], \Ease\Shared::cfg('ABRAFLEXI_PASSWORD_HASH', 'sha256') ?: 'plain'),
+            _('Contact password hashing'),
+            'sha256',
+            _('Store AbraFlexi contact passwords hashed (recommended) or as plaintext')
+        );
     }
 }

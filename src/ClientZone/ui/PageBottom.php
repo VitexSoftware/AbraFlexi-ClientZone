@@ -49,7 +49,7 @@ class PageBottom extends \Ease\Html\FooterTag
 
         $columns = [
             _('Products') => [
-                'https://github.com/VitexSoftware/FlexiProxy' => 'FlexiProXY',
+                'https://github.com/Spoje-NET/php-abraflexi' => 'php-abraflexi',
                 'https://github.com/VitexSoftware/Flexplorer/' => 'FlexPlorer',
                 'https://multiflexi.vitexsoftware.com/' => 'MultiFlexi',
             ],

@@ -87,6 +87,22 @@ Default: spoje_net_s_r_o_
 Description: AbraFlexi company
  Database / company code opened by default (e.g. spoje_net_s_r_o_).
 
+Template: clientzone/ABRAFLEXI_PASSWORD_HASH
+Type: select
+Choices: plain, sha256, sha512, sha1, md5
+Default: sha256
+Description: Contact password hashing
+ How ClientZone stores contact passwords in AbraFlexi. "plain" keeps
+ plaintext; any other value uses AbraFlexi's salted password hash API
+ (digest of salt:password). Login still accepts the plaintext password.
+
+Template: clientzone/ABRAFLEXI_PASSWORD_SALT
+Type: string
+Default: 
+Description: Fixed password salt (optional)
+ Leave empty to generate a random salt for each password write. Set only
+ if you need a stable salt across all contacts.
+
 Template: clientzone/ABRAFLEXI_PROFORMA_DOCTYPE
 Type: string
 Default: ZALOHA

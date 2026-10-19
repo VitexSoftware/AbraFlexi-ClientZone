@@ -126,50 +126,60 @@ class OrderItem extends \AbraFlexi\RW
 
     /**
      * Check if service/product is choosen
-     * 
-     * @param string $service
-     * @return boolean
+     *
+     * @param null|string $service
+     *
+     * @return bool
      */
     public function checkService($service)
     {
-        $ok = false;
-        if (!strlen($service)) {
+        $service = is_string($service) ? trim($service) : '';
+        if ($service === '') {
             $this->addStatusMessage(_('Please choose service'), 'info');
-        } else {
-            if ($service == 'Common') {
-                $code = $this->getDataValue('kod');
-            } else {
-                $code = urlencode($this->plugins[$service]->productCode);
-            }
 
-            if (strlen(trim($code))) {
-                $this->cenik->loadFromAbraFlexi('code:'.$code);
-                if ($this->cenik->lastResponseCode == 200) {
-//                $this->addStatusMessage($this->cenik->getDataValue('nazev'),
-//                    'success');
-                    $ok = true;
-                } else {
-                    $this->addStatusMessage(sprintf(_('Product with code %s does not exist'),
-                            $code), 'warning');
-                    $ok = false;
-                }
-            } else {
-                $this->addStatusMessage(sprintf(_('Missing product code'), $code),
-                    'warning');
-                $ok = false;
-            }
+            return false;
         }
-        return $ok;
+
+        if ($service === 'Common') {
+            $code = (string) ($this->getDataValue('kod') ?? '');
+        } elseif (isset($this->plugins[$service])) {
+            $code = urlencode((string) $this->plugins[$service]->productCode);
+        } else {
+            $this->addStatusMessage(sprintf(_('Unknown service %s'), $service), 'warning');
+
+            return false;
+        }
+
+        $code = trim($code);
+        if ($code === '') {
+            $this->addStatusMessage(_('Missing product code'), 'warning');
+
+            return false;
+        }
+
+        $this->cenik->loadFromAbraFlexi('code:'.$code);
+        if ($this->cenik->lastResponseCode == 200) {
+            return true;
+        }
+
+        $this->addStatusMessage(sprintf(_('Product with code %s does not exist'), $code), 'warning');
+
+        return false;
     }
 
     /**
-     * Check requirements for form choosen Plugin\
+     * Check requirements for form choosen Plugin
      *
-     * @return boolean
+     * @return bool
      */
     public function checkByPlugin()
     {
-        return $this->getServicePlugin()->controlFields($this);
+        $plugin = $this->getServicePlugin();
+        if ($plugin === null) {
+            return false;
+        }
+
+        return $plugin->controlFields($this);
     }
 
     /**
@@ -202,7 +212,7 @@ class OrderItem extends \AbraFlexi\RW
         $proforma = new \AbraFlexi\FakturaVydana();
 
         $today = date('Y-m-d');
-        $proforma->setDataValue('firma', $this->customer->adresar);
+        $proforma->setDataValue('firma', $this->customer->getAdresar());
         $proforma->setDataValue('typDokl', \AbraFlexi\Functions::code(
             \Ease\Shared::cfg('ABRAFLEXI_PROFORMA_DOCTYPE', 'ZALOHA')));
         $proforma->setDataValue('uvodTxt',
@@ -217,12 +227,19 @@ class OrderItem extends \AbraFlexi\RW
         //$proforma->debug = true;
         $proforma->insertToAbraFlexi();
 
-        if (\AbraFlexi\Priloha::addAttachment($proforma, 'order.json',
-                json_encode(array_merge($polozka,
-                        ['service' => $this->getDataValue('service')])),
-                'application/json') != 201) {
-            $proforma->addStatusMessage('Saving Order Details '.$proforma->getAbraFlexiURL().' Failed',
-                'error');
+        $attachment = \AbraFlexi\Priloha::addAttachment(
+            $proforma,
+            'order.json',
+            json_encode(array_merge($polozka, [
+                'service' => $this->getDataValue('service'),
+            ])),
+            'application/json',
+        );
+        if ($attachment->lastResponseCode !== 201) {
+            $proforma->addStatusMessage(
+                'Saving Order Details '.$proforma->getAbraFlexiURL().' Failed',
+                'error',
+            );
         }
 
         return $proforma;

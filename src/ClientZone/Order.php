@@ -22,10 +22,9 @@ class Order extends \AbraFlexi\RW
     public $customer;
 
     /**
-     * Výchozí evidence objednavky
-     * @var string
+     * Výchozí evidence objednavky.
      */
-    public $evidence = 'faktura-vydana';
+    public ?string $evidence = 'faktura-vydana';
 
     /**
      * CartData
@@ -62,7 +61,7 @@ class Order extends \AbraFlexi\RW
             ['evidence' => 'objednavka-prijata']);
 
         $today = date('Y-m-d');
-        $objednavka->setDataValue('firma', $this->customer->adresar);
+        $objednavka->setDataValue('firma', $this->customer->getAdresar());
         $objednavka->setDataValue('typDokl', 'code:OBP'); //Objednávka přijatá
         $objednavka->setDataValue('uvodTxt',
             _('Please wait while our salesman contact you.'));
@@ -83,11 +82,8 @@ class Order extends \AbraFlexi\RW
         //$proforma->debug = true;
         $objednavka->insertToAbraFlexi();
         $objednavka->loadFromAbraFlexi();
-        if (\AbraFlexi\Priloha::addAttachment($objednavka, 'order.json',
-                json_encode($items), 'application/json') != 201) {
-            $objednavka->addStatusMessage('Saving Order Details '.$objednavka->getAbraFlexiURL().' Failed',
-                'error');
-        }
+        $this->attachOrderJson($objednavka, $items);
+
         return $objednavka;
     }
 
@@ -108,12 +104,15 @@ class Order extends \AbraFlexi\RW
         $proforma = new \AbraFlexi\FakturaVydana();
 
         $today = date('Y-m-d');
-        $proforma->setDataValue('firma', $this->customer->adresar);
+        $proforma->setDataValue('firma', $this->customer->getAdresar());
         $proforma->setDataValue('typDokl', \AbraFlexi\Functions::code(
             \Ease\Shared::cfg('ABRAFLEXI_PROFORMA_DOCTYPE', 'ZALOHA')));
         $proforma->setDataValue('uvodTxt', \Ease\Shared::appName());
-        $proforma->setDataValue('typDoklSkl', 'code:STANDARD');
-
+        // typDoklSkl only when configured — flexibee-dev has no code:STANDARD
+        $typDoklSkl = \Ease\Shared::cfg('ABRAFLEXI_STOCK_DOCTYPE', '');
+        if ($typDoklSkl !== null && $typDoklSkl !== '') {
+            $proforma->setDataValue('typDoklSkl', \AbraFlexi\Functions::code($typDoklSkl));
+        }
 
         $proforma->setDataValue('zavTxt', '');
         $proforma->setDataValue('poznam', _('Proforma'));
@@ -129,12 +128,9 @@ class Order extends \AbraFlexi\RW
         //$proforma->debug = true;
         if ($proforma->insertToAbraFlexi()) {
             $proforma->loadFromAbraFlexi();
-            if (\AbraFlexi\Priloha::addAttachment($proforma, 'order.json',
-                    json_encode($items), 'application/json') != 201) {
-                $proforma->addStatusMessage('Saving Order Details '.$proforma->getAbraFlexiURL().' Failed',
-                    'error');
-            }
+            $this->attachOrderJson($proforma, $items);
         }
+
         return $proforma;
     }
 
@@ -155,7 +151,7 @@ class Order extends \AbraFlexi\RW
         $invoice = new \AbraFlexi\FakturaVydana();
 
         $today = date('Y-m-d');
-        $invoice->setDataValue('firma', $this->customer->adresar);
+        $invoice->setDataValue('firma', $this->customer->getAdresar());
         $invoice->setDataValue('typDokl', 'code:FAKTURA');
         $invoice->setDataValue('uvodTxt', '');
 
@@ -172,12 +168,30 @@ class Order extends \AbraFlexi\RW
         //$proforma->debug = true;
         $invoice->insertToAbraFlexi();
         $invoice->loadFromAbraFlexi();
-        if (\AbraFlexi\Priloha::addAttachment($invoice, 'order.json',
-                json_encode($items), 'application/json') != 201) {
-            $invoice->addStatusMessage('Saving Order Details '.$invoice->getAbraFlexiURL().' Failed',
-                'error');
-        }
+        $this->attachOrderJson($invoice, $items);
+
         return $invoice;
+    }
+
+    /**
+     * Attach cart payload as order.json (Priloha::addAttachment returns Priloha, not HTTP code).
+     *
+     * @param array<int|string, mixed> $items
+     */
+    private function attachOrderJson(\AbraFlexi\RW $document, array $items): void
+    {
+        $attachment = \AbraFlexi\Priloha::addAttachment(
+            $document,
+            'order.json',
+            json_encode($items),
+            'application/json',
+        );
+        if ($attachment->lastResponseCode !== 201) {
+            $document->addStatusMessage(
+                'Saving Order Details '.$document->getAbraFlexiURL().' Failed',
+                'error',
+            );
+        }
     }
 
     public function finishOrder()

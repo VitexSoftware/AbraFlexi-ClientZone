@@ -81,13 +81,11 @@ if ($oPage->isPosted()) {
 
             $password = \Ease\Sand::randomString(8);
 
-            $newOUser->kontakt->setData([
+            $newOUser->kontakt->setData(array_merge([
                 'email' => $emailAddress,
                 'username' => $emailAddress,
-                'password' => $newOUser->encryptPassword($password),
-                'firma' => $newOUser->adresar
-                ]
-            );
+                'firma' => $newOUser->adresar,
+            ], Customer::passwordWriteFields($password)));
 
 
             if ($newOUser->kontakt->sync()) {

@@ -13,9 +13,14 @@ namespace ClientZone;
 require_once 'includes/Init.php';
 
 $oPage->addToHeader(new ui\PageTop(\Ease\Shared::appName()));
-$oPage->container->addItem(new ui\ShopHero());
 
-if (get_class($oUser) === 'ClientZone\Customer') {
+$isCustomer = get_class($oUser) === 'ClientZone\Customer';
+if (!$isCustomer) {
+    // Marketing hero only for guests — logged-in users go straight to content
+    $oPage->container->addItem(new ui\ShopHero());
+}
+
+if ($isCustomer) {
     $oPage->container->addItem(new ui\ToPayItems($oUser));
 }
 
