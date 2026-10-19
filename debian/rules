@@ -15,15 +15,13 @@ override_dh_install:
 	dh_install
 	install -m 644 debian/autoload.php \
 	    debian/abraflexi-clientzone/usr/share/abraflexi-clientzone/autoload.php
-	sed -i "1a defined('APP_NAME') || define('APP_NAME', '$(PKG_SOURCE)');" \
-	    debian/abraflexi-clientzone/usr/share/abraflexi-clientzone/autoload.php
-	sed -i "s|'unknown'|'$(PKG_SOURCE)'|" \
-	    debian/abraflexi-clientzone/usr/share/abraflexi-clientzone/autoload.php
-	sed -i "s|'0.0.0'|'$(PKG_VERSION)'|" \
-	    debian/abraflexi-clientzone/usr/share/abraflexi-clientzone/autoload.php
-	sed -i "s|'library'|'$(PKG_TYPE)'|g" \
-	    debian/abraflexi-clientzone/usr/share/abraflexi-clientzone/autoload.php
-	sed -i "2a defined('APP_VERSION') || define('APP_VERSION', '$(PKG_VERSION)');" \
+	# Bake package identity into autoload without breaking declare(strict_types=1)
+	sed -i \
+	    -e "s|define('APP_NAME', 'vitexsoftware/abraflexi-clientzone')|define('APP_NAME', '$(PKG_SOURCE)')|" \
+	    -e "s|define('APP_VERSION', '0.0.0')|define('APP_VERSION', '$(PKG_VERSION)')|" \
+	    -e "s|'unknown'|'$(PKG_SOURCE)'|" \
+	    -e "s|'0.0.0'|'$(PKG_VERSION)'|" \
+	    -e "s|'library'|'$(PKG_TYPE)'|g" \
 	    debian/abraflexi-clientzone/usr/share/abraflexi-clientzone/autoload.php
 	# Ensure entry points load the Debian autoloader
 	find debian/abraflexi-clientzone/usr/share/abraflexi-clientzone -name '*.php' -print0 \
