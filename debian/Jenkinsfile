@@ -55,6 +55,9 @@ distributions.each { distro ->
             ansiColor('xterm') {
                 stage('Checkout ' + distroName) {
                     sh 'sudo chown -R jenkins:jenkins . 2>/dev/null || true'
+                    // Avoid AccessDeniedException on .git/objects when unstash
+                    // lands in a workspace that still has a previous checkout.
+                    deleteDir()
                     unstash 'src'
                     buildImage = docker.image(vendor + '/' + distro)
                 }
