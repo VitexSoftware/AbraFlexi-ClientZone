@@ -70,7 +70,7 @@ class OrderItem extends \AbraFlexi\RW
      * @param array $data
      * @return int
      */
-    public function takeData($data)
+    public function takeData(array $data): int
     {
         if (isset($data['lmsid'])) {
             $data['lmsid'] = intval($data['lmsid']);
@@ -85,22 +85,33 @@ class OrderItem extends \AbraFlexi\RW
      */
     public function loadPlugins()
     {
-        $d     = dir("ClientZone/orderplugins");
+        $this->plugins = self::findPlugins();
+
+        return count($this->plugins);
+    }
+
+    /**
+     * Discover order plugins in ClientZone/orderplugins.
+     *
+     * @return array<string, OrderPlugin>
+     */
+    public static function findPlugins(): array
+    {
+        $plugins = [];
+        $d = dir(__DIR__.'/orderplugins');
         while (false !== ($entry = $d->read())) {
-            if ($entry[0] == '.') {
+            if ($entry[0] === '.' || !str_ends_with($entry, '.php')) {
                 continue;
             }
             $pluginName = str_replace('.php', '', $entry);
-            $className  = '\\ClientZone\\orderplugins\\'.$pluginName;
-
-            /**
-             * @var \ClientZone\OrderPlugin OrderPlugin
-             */
-            $this->plugins[$pluginName]             = new $className;
-            $this->plugins[$pluginName]->easeShared = $this->easeShared;
+            $className = '\\ClientZone\\orderplugins\\'.$pluginName;
+            /** @var OrderPlugin $plugin */
+            $plugin = new $className();
+            $plugins[$pluginName] = $plugin;
         }
         $d->close();
-        return count($this->plugins);
+
+        return $plugins;
     }
 
     /**
@@ -162,7 +173,7 @@ class OrderItem extends \AbraFlexi\RW
     }
 
     /**
-     * Obtain Curent Service plugin object
+     * Obtain Current Service plugin object
      *
      * @return OrderPlugin
      */
@@ -192,7 +203,8 @@ class OrderItem extends \AbraFlexi\RW
 
         $today = date('Y-m-d');
         $proforma->setDataValue('firma', $this->customer->adresar);
-        $proforma->setDataValue('typDokl', 'code:ZALOHA');
+        $proforma->setDataValue('typDokl', \AbraFlexi\Functions::code(
+            \Ease\Shared::cfg('ABRAFLEXI_PROFORMA_DOCTYPE', 'ZALOHA')));
         $proforma->setDataValue('uvodTxt',
             $this->cenik->getDataValue('nazev').' '.$polozka['poznam']);
         $proforma->setDataValue('zavTxt', '');
@@ -227,10 +239,11 @@ class OrderItem extends \AbraFlexi\RW
         $polozka['service'] = $this->getDataValue('service');
         if (array_key_exists('cenik', $polozka)) {
             $this->cenik->loadFromAbraFlexi($polozka['cenik']);
-            $polozka['icon']       = $this->cenik->getDataValue('id');
-            $nazev                 = $this->cenik->getDataValue('nazev');
-            $polozka['typZasobyK'] = $this->cenik->getDataValue('typZasobyK');
-
+            $polozka['icon'] = $this->cenik->getDataValue('id');
+            $nazev = $this->cenik->getDataValue('nazev');
+            if (empty($polozka['typZasobyK'])) {
+                $polozka['typZasobyK'] = $this->cenik->getDataValue('typZasobyK');
+            }
             if (empty($polozka['cenaMj'])) {
                 if (!array_key_exists('cenaZaklBezDph', $polozka)) {
                     $polozka['cenaZaklBezDph'] = $this->cenik->getDataValue('cenaZaklBezDph');
@@ -239,9 +252,12 @@ class OrderItem extends \AbraFlexi\RW
                     $polozka['cenaZaklVcDph'] = $this->cenik->getDataValue('cenaZaklVcDph');
                 }
             } else {
-                $polozka['cenaZaklBezDph'] = $polozka['cenaMj'];
-                $polozka['cenaZaklVcDph']  = $polozka['cenaMj'] + ($polozka['cenaMj']
-                    * 0.21);
+                if (!array_key_exists('cenaZaklBezDph', $polozka)) {
+                    $polozka['cenaZaklBezDph'] = $polozka['cenaMj'];
+                }
+                if (!array_key_exists('cenaZaklVcDph', $polozka)) {
+                    $polozka['cenaZaklVcDph'] = $polozka['cenaMj'];
+                }
             }
         } else {
             $nazev = $polozka['nazev'];

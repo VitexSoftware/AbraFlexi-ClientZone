@@ -69,7 +69,8 @@ class Order extends \AbraFlexi\RW
 
         $objednavka->setDataValue('zavTxt', '');
         $objednavka->setDataValue('poznam', _('purchase order'));
-        $objednavka->setDataValue('typDoklFak', 'code:ZALOHA');
+        $objednavka->setDataValue('typDoklFak', \AbraFlexi\Functions::code(
+            \Ease\Shared::cfg('ABRAFLEXI_PROFORMA_DOCTYPE', 'ZALOHA')));
         $objednavka->setDataValue('duzpPuv', $today);
         $objednavka->setDataValue('duzpUcto', $today);
         $objednavka->setDataValue('datUcto', $today);
@@ -108,7 +109,8 @@ class Order extends \AbraFlexi\RW
 
         $today = date('Y-m-d');
         $proforma->setDataValue('firma', $this->customer->adresar);
-        $proforma->setDataValue('typDokl', 'code:ZÁLOHA');
+        $proforma->setDataValue('typDokl', \AbraFlexi\Functions::code(
+            \Ease\Shared::cfg('ABRAFLEXI_PROFORMA_DOCTYPE', 'ZALOHA')));
         $proforma->setDataValue('uvodTxt', \Ease\Shared::appName());
         $proforma->setDataValue('typDoklSkl', 'code:STANDARD');
 
@@ -118,7 +120,8 @@ class Order extends \AbraFlexi\RW
         $proforma->setDataValue('duzpPuv', $today);
         $proforma->setDataValue('duzpUcto', $today);
         $proforma->setDataValue('datUcto', $today);
-//        $proforma->setDataValue('stitky', ['SYSTEM', 'API']);
+        // API label = pending fulfilment for abraflexi-voip-credit / abraflexi-domain-credit
+        $proforma->setDataValue('stitky', ['SYSTEM', 'API']);
 
         foreach ($items as $polozka) {
             $proforma->addArrayToBranch($polozka, 'polozkyFaktury');

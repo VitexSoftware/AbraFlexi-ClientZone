@@ -46,7 +46,17 @@ class Configurator extends \Ease\Brick
         "ABRAFLEXI_URL" => 'string',
         "ABRAFLEXI_LOGIN" => 'string',
         "ABRAFLEXI_PASSWORD" => 'string',
-        "ABRAFLEXI_COMPANY" => 'string'
+        "ABRAFLEXI_COMPANY" => 'string',
+        "ABRAFLEXI_PROFORMA_DOCTYPE" => 'string',
+        "ABRAFLEXI_BANK_DOCTYPE" => 'string',
+        "ABRAFLEXI_STORAGE" => 'string',
+        "IPEX_URL" => 'string',
+        "IPEX_LOGIN" => 'string',
+        "IPEX_PASSWORD" => 'string',
+        "SUBREG_LOCATION" => 'string',
+        "SUBREG_URI" => 'string',
+        "SUBREG_LOGIN" => 'string',
+        "SUBREG_PASSWORD" => 'string',
     ];
 
     /**
@@ -275,9 +285,14 @@ class Configurator extends \Ease\Brick
      */
     public function saveConfig(): bool
     {
-        $envFile = file_exists('/etc/abraflexi/clientzone.env')
-            ? '/etc/abraflexi/clientzone.env'
-            : \dirname(__DIR__, 3).'/.env';
+        if (is_dir('/etc/abraflexi-client-zone')) {
+            $envFile = '/etc/abraflexi-client-zone/.env';
+        } elseif (file_exists('/etc/abraflexi/clientzone.env')) {
+            $envFile = '/etc/abraflexi/clientzone.env';
+        } else {
+            $envFile = \dirname(__DIR__, 3).'/.env';
+        }
+
         return $this->saveDataFile($this->getData(), $envFile);
     }
 }

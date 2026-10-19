@@ -50,7 +50,7 @@ if (count($finished)) {
             $infobox->addItem(
                 new \Ease\TWB5\Panel($type.' '.str_replace('code:', '', $document),
                 'info',
-                new ui\EmbedResponsivePDF('getpdf.php?evidence='.$document->getEvidence().'&id='.$document->getMyKey().'&embed=true'),
+                new \AbraFlexi\ui\TWB5\EmbedResponsivePDF($document),
                 new ui\DownloadInvoiceButton($document))
             );
         } else {

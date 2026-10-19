@@ -1,61 +1,154 @@
 Template: clientzone/WEBUSER
 Type: string
 Default: www-data
-Description: Web User
- Run Composer under as this user
+Description: Web server user
+ Application files and caches are owned by this user.
 
 Template: clientzone/SEND_MAILS_FROM
 Type: string
-Default: shop@syourdomain.net
-Description: Send Mails From:
- Source email of
+Default: shop@yourdomain.net
+Description: Send mails from
+ Envelope / From address used when the application sends e-mail.
 
 Template: clientzone/SEND_INFO_TO
 Type: string
-Default: office@yourdomain.net                                                                                                                      
-Description: Address to notify 
- Notify this address in case of new order
+Default: office@yourdomain.net
+Description: Notify address
+ Address notified about new registrations and orders.
 
 Template: clientzone/EMAIL_FROM
 Type: string
 Default: shop@yourdomain.net
-Description: From address
- Default sender arddress
+Description: Default From address
+ Default sender address for customer-facing messages.
 
 Template: clientzone/EASE_EMAILTO
 Type: string
 Default: info@vitexsoftware.cz
-Description: email logs to
- Where to send logs / operation results
+Description: Log e-mail recipient
+ Where to send application log / operation result e-mails.
 
 Template: clientzone/SUPPRESS_EMAILS
 Type: boolean
 Default: false
-Description: Suppress email
- Do not send any mails
+Description: Suppress e-mails
+ If true, no e-mails are sent to customers (useful for testing).
 
 Template: clientzone/ALLOW_REGISTER
 Type: boolean
 Default: true
-Description: Allow register
- Provide "Create account" dialog
+Description: Allow self-registration
+ Provide a "Create account" dialog for new customers.
 
 Template: clientzone/SHOW_PRICELIST
 Type: boolean
 Default: false
 Description: Show pricelist
- Show pricelist to customer
+ Show the AbraFlexi pricelist on the client zone homepage.
+
+Template: clientzone/PROD_CAT
+Type: string
+Default: 1
+Description: Pricelist category ID
+ AbraFlexi price-list tree node ID shown when the pricelist is enabled.
 
 Template: clientzone/DEBUG
 Type: boolean
 Default: false
-Description: Debug
- Enable debug mode
+Description: Debug mode
+ Enable verbose logging and debug output.
+
+Template: clientzone/EASE_LOGGER
+Type: string
+Default: syslog
+Description: Ease logger targets
+ Comma/pipe separated log writers (e.g. syslog, syslog|console).
+
+Template: clientzone/ABRAFLEXI_URL
+Type: string
+Default: https://demo.flexibee.eu:5434
+Description: AbraFlexi API URL
+ Full URL with protocol, hostname and port (https://host:5434).
+
+Template: clientzone/ABRAFLEXI_LOGIN
+Type: string
+Default: winstrom
+Description: AbraFlexi API login
+ User allowed to use the AbraFlexi REST API.
+
+Template: clientzone/ABRAFLEXI_PASSWORD
+Type: password
+Description: AbraFlexi API password
+ Password for the AbraFlexi REST API user.
+
+Template: clientzone/ABRAFLEXI_COMPANY
+Type: string
+Default: spoje_net_s_r_o_
+Description: AbraFlexi company
+ Database / company code opened by default (e.g. spoje_net_s_r_o_).
+
+Template: clientzone/ABRAFLEXI_PROFORMA_DOCTYPE
+Type: string
+Default: ZALOHA
+Description: Proforma document type code
+ AbraFlexi typDokladu code used for advance invoices (without "code:" prefix).
+
+Template: clientzone/ABRAFLEXI_BANK_DOCTYPE
+Type: string
+Default: STAND
+Description: Bank document type code
+ AbraFlexi bank movement document type code (without "code:" prefix).
+
+Template: clientzone/ABRAFLEXI_STORAGE
+Type: string
+Default: SKLAD
+Description: Default stock / warehouse
+ AbraFlexi sklad code used when creating documents.
+
+Template: clientzone/IPEX_URL
+Type: string
+Default: https://restapi.ipex.cz
+Description: IPEX B2B API URL
+ Base URL of the IPEX REST API (VoIP credit validation).
+
+Template: clientzone/IPEX_LOGIN
+Type: string
+Default: 
+Description: IPEX API login
+ Username for the IPEX B2B API.
+
+Template: clientzone/IPEX_PASSWORD
+Type: password
+Description: IPEX API password
+ Password for the IPEX B2B API.
+
+Template: clientzone/SUBREG_LOCATION
+Type: string
+Default: https://soap.subreg.cz/cmd.php
+Description: Subreg API location
+ Subreg SOAP command endpoint URL.
+
+Template: clientzone/SUBREG_URI
+Type: string
+Default: https://soap.subreg.cz/soap
+Description: Subreg SOAP URI
+ Subreg SOAP service URI.
+
+Template: clientzone/SUBREG_LOGIN
+Type: string
+Default: 
+Description: Subreg API login
+ Username for the Subreg registrar API.
+
+Template: clientzone/SUBREG_PASSWORD
+Type: password
+Description: Subreg API password
+ Password for the Subreg registrar API.
 
 Template: clientzone/ADMIN_LOGIN
 Type: string
 Default: admin
-Description: First administrator login name
+Description: First administrator login
  Username for the first local administrator account.
 
 Template: clientzone/ADMIN_PASSWORD

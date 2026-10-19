@@ -1,69 +1,99 @@
 #!/bin/bash
-# postinst script for clientzone
+# postinst script for abraflexi-clientzone
 
 set -e
 . /usr/share/debconf/confmodule
 
 db_get "clientzone/WEBUSER"
-WEBUSER=${RET}
+WEBUSER="${RET:-www-data}"
 
-ENV_FILE="/etc/abraflexi/clientzone.env"
+ENV_DIR="/etc/abraflexi-client-zone"
+ENV_FILE="${ENV_DIR}/.env"
+
+mkdir -p "$ENV_DIR"
+if [ ! -f "$ENV_FILE" ]; then
+    touch "$ENV_FILE"
+fi
+chmod 0640 "$ENV_FILE"
 
 replaceENV() {
     local key="$1"
     local value="$2"
+    # escape sed replacement metacharacters in value
+    local escaped
+    escaped=$(printf '%s' "$value" | sed -e 's/[&|\\]/\\&/g')
     if grep -q "^${key}=" "$ENV_FILE" 2>/dev/null; then
-        sed -i "s|^${key}=.*|${key}=\"${value}\"|" "$ENV_FILE"
+        sed -i "s|^${key}=.*|${key}=\"${escaped}\"|" "$ENV_FILE"
     else
         echo "${key}=\"${value}\"" >> "$ENV_FILE"
     fi
 }
 
-listOfConfigs="SEND_MAILS_FROM SEND_INFO_TO EMAIL_FROM EASE_EMAILTO SUPPRESS_EMAILS ALLOW_REGISTER SHOW_PRICELIST DEBUG"
+listOfConfigs="
+SEND_MAILS_FROM
+SEND_INFO_TO
+EMAIL_FROM
+EASE_EMAILTO
+SUPPRESS_EMAILS
+ALLOW_REGISTER
+SHOW_PRICELIST
+PROD_CAT
+DEBUG
+EASE_LOGGER
+ABRAFLEXI_URL
+ABRAFLEXI_LOGIN
+ABRAFLEXI_PASSWORD
+ABRAFLEXI_COMPANY
+ABRAFLEXI_PROFORMA_DOCTYPE
+ABRAFLEXI_BANK_DOCTYPE
+ABRAFLEXI_STORAGE
+IPEX_URL
+IPEX_LOGIN
+IPEX_PASSWORD
+SUBREG_LOCATION
+SUBREG_URI
+SUBREG_LOGIN
+SUBREG_PASSWORD
+"
 
-for keyword in $listOfConfigs
-do
-  db_get "clientzone/$keyword"
-  replaceENV "$keyword" "$RET"
+for keyword in $listOfConfigs; do
+    db_get "clientzone/$keyword" || true
+    replaceENV "$keyword" "${RET}"
 done
 
-if [ -x /usr/sbin/a2enconf ] ; then
-    a2enconf clientzone
+replaceENV "CONFIGURED" "true"
+
+# Migrate legacy config path if present and new file was empty of ABRAFLEXI_URL
+if [ -f /etc/abraflexi/clientzone.env ] && ! grep -q '^ABRAFLEXI_URL=.\+' "$ENV_FILE" 2>/dev/null; then
+    echo "abraflexi-clientzone: merging legacy /etc/abraflexi/clientzone.env into ${ENV_FILE}" >&2
+    cat /etc/abraflexi/clientzone.env >> "$ENV_FILE"
 fi
 
-if [ -f /bin/systemctl ] ; then
-    if [ -f /lib/systemd/system/apache2.service ] ; then
+if [ -x /usr/sbin/a2enconf ]; then
+    a2enconf abraflexi-clientzone 2>/dev/null || a2enconf clientzone 2>/dev/null || true
+fi
+
+if [ -f /bin/systemctl ]; then
+    if [ -f /lib/systemd/system/apache2.service ]; then
         systemctl reload apache2 3>/dev/null || true
     fi
-
-    if [ -f /lib/systemd/system/avahi-daemon.service ] ; then
+    if [ -f /lib/systemd/system/avahi-daemon.service ]; then
         systemctl reload avahi-daemon 3>/dev/null || true
     fi
 fi
 
-mkdir -p /var/cache/clientzone/
-chown $WEBUSER:$WEBUSER -R /var/cache/clientzone/
+mkdir -p /var/cache/abraflexi-clientzone /var/lib/abraflexi-clientzone/tmp
+chown "${WEBUSER}:${WEBUSER}" -R /var/cache/abraflexi-clientzone /var/lib/abraflexi-clientzone 2>/dev/null || true
 
-mkdir -p /var/lib/clientzone/tmp
-chown $WEBUSER:$WEBUSER /var/lib/clientzone/ -R
-
-mkdir -p /usr/share/clientzone
-chown $WEBUSER:$WEBUSER /usr/share/clientzone/ -R
-cd /usr/share/clientzone
-if [ -f composer.lock ] ; then
-    rm -f composer.lock
-fi
-mkdir -p /var/lib/composer
-chown $WEBUSER:$WEBUSER /var/lib/composer
-su - $WEBUSER -s /bin/bash -c 'COMPOSER_HOME="/var/lib/composer" composer --no-dev -o install -d /usr/share/clientzone/'
-
-db_get "clientzone/ADMIN_LOGIN"
-ADMIN_LOGIN="${RET:-admin}"
-db_get "clientzone/ADMIN_PASSWORD"
-ADMIN_PASSWORD="$RET"
-if [ -n "$ADMIN_PASSWORD" ]; then
-    su - "$WEBUSER" -s /bin/bash -c \
-      "php /usr/share/clientzone/bin/create-admin.php '$ADMIN_LOGIN' '$ADMIN_PASSWORD'" || true
+if [ -x /usr/share/abraflexi-clientzone/bin/create-admin.php ]; then
+    db_get "clientzone/ADMIN_LOGIN"
+    ADMIN_LOGIN="${RET:-admin}"
+    db_get "clientzone/ADMIN_PASSWORD"
+    ADMIN_PASSWORD="$RET"
+    if [ -n "$ADMIN_PASSWORD" ]; then
+        su - "$WEBUSER" -s /bin/bash -c \
+            "php /usr/share/abraflexi-clientzone/bin/create-admin.php '$ADMIN_LOGIN' '$ADMIN_PASSWORD'" || true
+    fi
 fi
 
 #DEBHELPER#

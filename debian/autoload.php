@@ -9,6 +9,13 @@ require_once '/usr/share/php/EaseTWB5Widgets/autoload.php';
 require_once '/usr/share/php/EaseTWB5WidgetsAbraFlexi/autoload.php';
 require_once '/usr/share/php/EaseHtmlWidgets/autoload.php';
 
+if (is_readable('/usr/share/php/IPEXB2B/autoload.php')) {
+    require_once '/usr/share/php/IPEXB2B/autoload.php';
+}
+if (is_readable('/usr/share/php/Subreg/autoload.php')) {
+    require_once '/usr/share/php/Subreg/autoload.php';
+}
+
 spl_autoload_register(function (string $class): void {
     $mappings = [
         'ClientZone\\'           => '/usr/share/abraflexi-clientzone/ClientZone/',

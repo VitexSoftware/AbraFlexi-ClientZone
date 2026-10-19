@@ -25,7 +25,9 @@ override_dh_install:
 	    debian/abraflexi-clientzone/usr/share/abraflexi-clientzone/autoload.php
 	sed -i "2a defined('APP_VERSION') || define('APP_VERSION', '$(PKG_VERSION)');" \
 	    debian/abraflexi-clientzone/usr/share/abraflexi-clientzone/autoload.php
-	sed -i -e 's/..\/clientzone.json/\/etc\/abraflexi\/clientzone.json/g' \
-	    debian/abraflexi-clientzone/usr/share/abraflexi-clientzone/setup.php
-	sed -i -e 's/..\/i18n/\/usr\/share\/locale/g' \
-	    debian/abraflexi-clientzone/usr/share/abraflexi-clientzone/includes/Init.php 2>/dev/null || true
+	# Ensure entry points load the Debian autoloader
+	find debian/abraflexi-clientzone/usr/share/abraflexi-clientzone -name '*.php' -print0 \
+	    | xargs -0 sed -i \
+	    -e "s|require_once __DIR__.'/../vendor/autoload.php';|require_once '/usr/share/abraflexi-clientzone/autoload.php';|g" \
+	    -e "s|require_once '../vendor/autoload.php';|require_once '/usr/share/abraflexi-clientzone/autoload.php';|g" \
+	    || true

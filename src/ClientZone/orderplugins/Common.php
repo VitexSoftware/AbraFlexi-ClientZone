@@ -73,7 +73,7 @@ class Common extends \ClientZone\OrderPlugin
      * @param \ClientZone\OrderItem $order
      * @return boolean
      */
-    public function controlFields($order)
+    public function controlFields($order): bool
     {
         return parent::controlFields($order) && $this->checkCode($order->getDataValue('kod'))
             && $this->checkCount($order->getDataValue('count'));
@@ -119,12 +119,13 @@ class Common extends \ClientZone\OrderPlugin
      * @param Order $order
      * @return array
      */
-    public function processFields($order)
+    public function processFields($order): array
     {
-        $orderItemData           = parent::processFields($order);
+        $orderItemData = parent::processFields($order);
         $orderItemData['mnozMj'] = $order->getDataValue('count');
         $orderItemData['poznam'] = $order->getDataValue('poznam');
-        $orderItemData['cenik']  = 'code:'.$order->getDataValue('kod');
+        $orderItemData['cenik'] = 'code:'.$order->getDataValue('kod');
+
         return $orderItemData;
     }
 

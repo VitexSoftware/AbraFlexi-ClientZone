@@ -1,3 +1,4 @@
-/etc/clientzone
-/usr/share/clientzone
-/var/lib/clientzone/tmp
+/etc/abraflexi-client-zone
+/usr/share/abraflexi-clientzone
+/var/lib/abraflexi-clientzone/tmp
+/var/cache/abraflexi-clientzone

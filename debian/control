@@ -1,5 +1,5 @@
 Source: abraflexi-clientzone
-Build-Depends: debhelper-compat (= 13), jq, appstream
+Build-Depends: debhelper-compat (= 13), jq, appstream, po-debconf
 Standards-Version: 4.6.2
 Maintainer: Vítězslav Dvořák <info@vitexsoftware.cz>
 Homepage: https://github.com/VitexSoftware/AbraFlexi-ClientZone
@@ -7,19 +7,22 @@ Rules-Requires-Root: no
 
 Package: abraflexi-clientzone
 Depends: ${misc:Depends},
+ debconf (>= 0.5) | debconf-2.0,
  php-spojenet-abraflexi (>= 3.7),
  php-vitexsoftware-abraflexi-bricks,
  php-vitexsoftware-ease-bootstrap5,
  php-vitexsoftware-ease-bootstrap5-widgets,
  php-vitexsoftware-ease-bootstrap5-widgets-abraflexi,
  php-vitexsoftware-ease-html-widgets,
+ php-spojenet-ipex-b2b,
+ php-spojenet-subreg,
  php-cakephp-phinx,
  php-mail-mime,
  php-curl,
  php-cli,
- composer,
  locales-all,
  libjs-font-awesome,
+Recommends: abraflexi-voip-credit, abraflexi-domain-credit,
 Architecture: all
 Section: web
 Priority: optional
