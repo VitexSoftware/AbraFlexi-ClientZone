@@ -17,8 +17,11 @@ class ProductImage extends \Ease\Html\ImgTag
 
     public function __construct($product, $type = 'image', $tagProperties = [])
     {
-        parent::__construct('prdimg.php?type='.$type.'&id='.$product->getMyKey(),
-            $product->getDataValue('nazev'), $tagProperties);
+        parent::__construct(
+            'prdimg.php?type='.$type.'&id='.$product->getMyKey(),
+            (string) ($product->getDataValue('nazev') ?? ''),
+            $tagProperties,
+        );
     }
 
 }

@@ -18,7 +18,7 @@ class ProductImager
      *
      * @var type
      */
-    public $baseDir = '/var/cache/clientzone/';
+    public $baseDir = '/var/cache/abraflexi-clientzone/';
 
     /**
      *

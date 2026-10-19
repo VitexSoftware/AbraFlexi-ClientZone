@@ -14,7 +14,13 @@ mkdir -p "$ENV_DIR"
 if [ ! -f "$ENV_FILE" ]; then
     touch "$ENV_FILE"
 fi
+# Readable by the web server user (debconf WEBUSER), writable by root
 chmod 0640 "$ENV_FILE"
+if id "$WEBUSER" >/dev/null 2>&1; then
+    chown "root:${WEBUSER}" "$ENV_FILE" || chown "root:www-data" "$ENV_FILE" || true
+else
+    chown root:www-data "$ENV_FILE" || true
+fi
 
 replaceENV() {
     local key="$1"
@@ -69,8 +75,24 @@ if [ -f /etc/abraflexi/clientzone.env ] && ! grep -q '^ABRAFLEXI_URL=.\+' "$ENV_
     cat /etc/abraflexi/clientzone.env >> "$ENV_FILE"
 fi
 
-if [ -x /usr/sbin/a2enconf ]; then
-    a2enconf abraflexi-clientzone 2>/dev/null || a2enconf clientzone 2>/dev/null || true
+# Remove botched install that put the conf into a directory of the same name
+if [ -d /etc/apache2/conf-available/abraflexi-clientzone.conf ]; then
+    echo "abraflexi-clientzone: replacing directory leftover at conf-available/abraflexi-clientzone.conf" >&2
+    rm -rf /etc/apache2/conf-available/abraflexi-clientzone.conf
+fi
+if [ -L /etc/apache2/conf-enabled/abraflexi-clientzone.conf ] || [ -d /etc/apache2/conf-enabled/abraflexi-clientzone.conf ]; then
+    rm -rf /etc/apache2/conf-enabled/abraflexi-clientzone.conf
+fi
+# Ensure the Apache conf file from this package is present (dpkg skips replace when a dir was there)
+PKG_CONF_SRC="/usr/share/abraflexi-clientzone/apache/abraflexi-clientzone.conf"
+if [ ! -f /etc/apache2/conf-available/abraflexi-clientzone.conf ]; then
+    if [ -f "$PKG_CONF_SRC" ]; then
+        install -m 0644 "$PKG_CONF_SRC" /etc/apache2/conf-available/abraflexi-clientzone.conf
+    fi
+fi
+
+if [ -x /usr/sbin/a2enconf ] && [ -f /etc/apache2/conf-available/abraflexi-clientzone.conf ]; then
+    a2enconf abraflexi-clientzone 2>/dev/null || true
 fi
 
 if [ -f /bin/systemctl ]; then

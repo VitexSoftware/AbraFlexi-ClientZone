@@ -39,21 +39,22 @@ class Pricelist extends \Ease\TWB5\Panel
         $this->pricer = new \AbraFlexi\Cenik();
         $items        = $this->pricer->getColumnsFromAbraFlexi('info', ['(in subtree '.$category.')']);
 
-        parent::__construct(_('Pricelist'), 'info', null,
-            new \Ease\TWB5\Badge('info',
-            sprintf(_('%s items found'), count($items))));
+        parent::__construct(
+            _('Pricelist'),
+            'info',
+            null,
+            new \Ease\TWB5\Badge(sprintf(_('%s items found'), count($items)), 'info'),
+        );
 
         if (count($items)) {
-            $headerRow = new \Ease\TWB5\Row(null);
+            $headerRow = new \Ease\TWB5\Row();
             $headerRow->addColumn(1);
-            $headerRow->addColumn(2, new \Ease\TWB5\Badge('info', _('Item name')));
-            $headerRow->addColumn(2,
-                new \Ease\TWB5\Badge('info', _('Price without VAT')));
-            $headerRow->addColumn(2,
-                new \Ease\TWB5\Badge('info', _('Price with VAT')));
-            $headerRow->addColumn(2, new \Ease\TWB5\Badge('info', _('Actions')));
+            $headerRow->addColumn(2, new \Ease\TWB5\Badge(_('Item name'), 'info'));
+            $headerRow->addColumn(2, new \Ease\TWB5\Badge(_('Price without VAT'), 'info'));
+            $headerRow->addColumn(2, new \Ease\TWB5\Badge(_('Price with VAT'), 'info'));
+            $headerRow->addColumn(2, new \Ease\TWB5\Badge(_('Actions'), 'info'));
             $this->addItem($headerRow);
-            $this->addItem('<p><hr/></p>');
+            $this->addItem(new \Ease\Html\HrTag());
             foreach ($items as $item) {
 
                 if (array_key_exists($item['kod'], $orderable)) {

@@ -10,6 +10,10 @@ abraflexi-clientzone (2.1) stable; urgency=medium
   [ vitex ]
   * Fix debian/autoload.php: keep declare(strict_types=1) as first
     statement
+  * Fix Apache conf packaging (file not directory), .env perms for www-
+    data, Init open_basedir probes
+  * Apache conf as real file; open_basedir-safe Init; ProductImager
+    cache path; .env readable by www-data
 
  -- Vítězslav Dvořák <info@vitexsoftware.cz>  Mon, 19 Oct 2026 07:25:00 +0200
 

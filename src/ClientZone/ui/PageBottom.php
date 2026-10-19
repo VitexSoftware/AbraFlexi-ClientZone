@@ -13,15 +13,24 @@ class PageBottom extends \Ease\Html\FooterTag
 
     public function __construct($content = null)
     {
-        $composer = '../composer.json';
-        if (!file_exists($composer)) {
-            $composer = '/usr/share/clientzone/composer.json';
+        $version = defined('APP_VERSION') ? APP_VERSION : 'dev';
+        $composerCandidates = ['/usr/share/abraflexi-clientzone/composer.json'];
+        if (!str_starts_with(__DIR__, '/usr/share/abraflexi-clientzone')) {
+            $composerCandidates[] = \dirname(__DIR__, 3).'/composer.json';
         }
-        $appInfo = json_decode(file_get_contents($composer));
+        foreach ($composerCandidates as $composer) {
+            if (is_readable($composer)) {
+                $decoded = json_decode((string) file_get_contents($composer));
+                if (is_object($decoded) && !empty($decoded->version)) {
+                    $version = (string) $decoded->version;
+                }
+                break;
+            }
+        }
 
         parent::__construct($content);
-        $this->SetTagID('footer');
-        $this->addItem('<hr>');
+        $this->setTagID('footer');
+        $this->addItem(new \Ease\Html\HrTag());
 
         $rowFluid1 = new \Ease\TWB5\Row();
         $colA      = $rowFluid1->addItem(new \Ease\TWB5\Col(1));
@@ -58,7 +67,10 @@ class PageBottom extends \Ease\Html\FooterTag
             _('Issues')));
 
         $colG = $rowFluid1->addItem(new \Ease\TWB5\Col(2));
-        $colG->addItem(_('Version').': '.$appInfo->version.' '.'&copy; 2017-2019 <a href="https://vitexsoftware.cz/">Vitex Software</a>');
+        $colG->addItem(new \Ease\Html\DivTag(
+            _('Version').': '.$version.' &copy; 2017-2026 ',
+        ));
+        $colG->addItem(new \Ease\Html\ATag('https://vitexsoftware.cz/', 'Vitex Software'));
 
         $this->addItem($rowFluid1);
     }
