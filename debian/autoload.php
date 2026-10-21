@@ -11,6 +11,7 @@ require_once '/usr/share/php/AbraFlexiBricks/autoload.php';
 require_once '/usr/share/php/EaseTWB5Widgets/autoload.php';
 require_once '/usr/share/php/EaseTWB5WidgetsAbraFlexi/autoload.php';
 require_once '/usr/share/php/EaseHtmlWidgets/autoload.php';
+require_once '/usr/share/php/AbraFlexiUiDataTables/autoload.php';
 
 if (is_readable('/usr/share/php/IPEXB2B/autoload.php')) {
     require_once '/usr/share/php/IPEXB2B/autoload.php';

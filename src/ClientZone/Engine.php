@@ -24,10 +24,8 @@ class Engine extends \Ease\Brick
 
     /**
      * Jméno záznamu.
-     *
-     * @var string
      */
-    public $nameColumn = 'name';
+    public string $nameColumn = 'name';
 
     /**
      * Klíčové slovo třídy.
@@ -76,12 +74,9 @@ class Engine extends \Ease\Brick
     /**
      * Převezme data do objektu.
      *
-     * @param array  $data
-     * @param string $dataPrefix
-     *
-     * @return int
+     * @param array<string, mixed> $data
      */
-    public function takeData($data, $dataPrefix = null)
+    public function takeData(array $data): int
     {
         unset($data['class']);
         foreach ($data as $colName => $value) {
@@ -106,7 +101,7 @@ class Engine extends \Ease\Brick
                     break;
                 case 'date':
                     if (strstr($data[$column], '.')) {
-                        $data[$column] = DateTime::createFromFormat('d.m.Y',
+                        $data[$column] = \DateTime::createFromFormat('d.m.Y',
                                 $data[$column])->format('Y-m-d');
                     } else {
                         if (!strstr($data[$column], '-')) {
@@ -115,9 +110,8 @@ class Engine extends \Ease\Brick
                     }
                     break;
                 case 'datetime':
-                    $date          = DateTime::createFromFormat('m-d-Y',
-                            $enquiry_time);
-                    $data[$column] = $date->format('Y-m-d');
+                    $date = \DateTime::createFromFormat('m-d-Y', $data[$column] ?? '');
+                    $data[$column] = $date ? $date->format('Y-m-d') : null;
                     break;
                 case 'text':
                 case 'string':
@@ -135,12 +129,11 @@ class Engine extends \Ease\Brick
                     }
                     break;
                 default:
-                    // $this->addStatusMessage(_('Neznámý druh dat') . ': ' . $type, 'warning');
                     break;
             }
         }
 
-        return parent::takeData($data, $dataPrefix);
+        return parent::takeData($data);
     }
 
     /**

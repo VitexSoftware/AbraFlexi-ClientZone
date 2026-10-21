@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ClientZone;
 
 /**
- * clientzone - Hlavní strana.
+ * clientzone — Customer's received orders (objednávka-prijata).
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  2017 VitexSoftware v.s.cz
+ * @copyright  2017-2026 VitexSoftware
  */
 require_once 'includes/Init.php';
 
@@ -14,21 +16,8 @@ $oPage->onlyForLogged();
 
 $oPage->addToHeader(new ui\PageTop(_('My Orders')));
 
-$evidencies = [
-    'faktura-vydana' => _('Invoices'),
-    'objednavka-prijata' => _('Orders'),
-];
-$fetcher = new \AbraFlexi\RO();
-$firma = $oUser->getAdresar();
-foreach ($evidencies as $evidence => $evCaption) {
-    $fetcher->setEvidence($evidence);
-    $oPage->container->addItem(new ui\OrdersListing(
-        $fetcher,
-        $evCaption,
-        ['firma' => $firma],
-    ));
-}
+\Ease\Part::jQueryze();
+$oPage->container->addItem(new ui\DocumentDataTable(new OrderLister()));
 
 $oPage->addItem(new ui\PageBottom());
-
 $oPage->draw();

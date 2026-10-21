@@ -38,6 +38,7 @@ class MainMenu extends \Ease\Html\DivTag
                     [
                         'orderform.php' => '<i class="fa fa-plus"></i> '._('New order'),
                         'myorders.php' => '<i class="fa fa-list"></i> '._('My orders'),
+                        'myinvoices.php' => '<i class="fa fa-file-invoice"></i> '._('My invoices'),
                     ],
                 );
                 $nav->addMenuItem(

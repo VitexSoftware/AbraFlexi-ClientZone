@@ -1,97 +1,125 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ClientZone;
 
 /**
  * clientzone - Změna hesla klienta.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  2017 VitexSoftware v.s.cz
+ * @copyright  2017-2026 VitexSoftware
  */
 require_once 'includes/Init.php';
 
-$oPage->onlyForLogged(); //Pouze pro přihlášené
+$oPage->onlyForLogged();
+
 $formOK = true;
 
-if (!isset($_POST['password']) || !strlen($_POST['password'])) {
-    $oUser->addStatusMessage('Please enter new password');
-    $formOK = false;
-} else {
-    if ($_POST['password'] == $oUser->getUserLogin()) {
-        $oUser->addStatusMessage('Password cant match with login', 'waring');
+if ($oPage->isPosted()) {
+    $password = (string) $oPage->getPostValue('password');
+    $passwordConfirm = (string) $oPage->getPostValue('passwordConfirm');
+    $currentPassword = (string) $oPage->getPostValue('CurrentPassword');
+
+    if ($password === '') {
+        $oUser->addStatusMessage(_('Please enter new password'), 'warning');
+        $formOK = false;
+    } elseif ($password === $oUser->getUserLogin()) {
+        $oUser->addStatusMessage(_('Password cant match with login'), 'warning');
         $formOK = false;
     }
-    /* TODO:
-      if (!$OUser->passwordCrackCheck($_POST['password'])) {
-      $OUser->addStatusMessage('Heslo není dostatečně bezpečné');
-      $FormOK = false;
-      }
-     */
-}
-if (!isset($_POST['passwordConfirm']) || !strlen($_POST['passwordConfirm'])) {
-    $oPage->addStatusMessage('Please enter password confirmation');
-    $formOK = false;
-}
-if ((isset($_POST['passwordConfirm']) && isset($_POST['password'])) && ($_POST['passwordConfirm']
-    != $_POST['password'])) {
-    $oUser->addStatusMessage('Password control do not match', 'waring');
-    $formOK = false;
-}
 
-if (!isset($_POST['CurrentPassword'])) {
-    $oPage->addStatusMessage('Please enter current password');
-    $formOK = false;
-} else {
-    if (!$oUser->passwordCheck($_POST['CurrentPassword'])) {
-        $oPage->AddStatusMessage('Current password invalid', 'warning');
+    if ($passwordConfirm === '') {
+        $oPage->addStatusMessage(_('Please enter password confirmation'), 'warning');
+        $formOK = false;
+    } elseif ($passwordConfirm !== $password) {
+        $oUser->addStatusMessage(_('Password control do not match'), 'warning');
+        $formOK = false;
+    }
+
+    if ($currentPassword === '') {
+        $oPage->addStatusMessage(_('Please enter current password'), 'warning');
+        $formOK = false;
+    } elseif (!$oUser->passwordCheck($currentPassword)) {
+        $oPage->addStatusMessage(_('Current password invalid'), 'warning');
         $formOK = false;
     }
 }
 
 $oPage->addToHeader(new ui\PageTop(_('User password change')));
-$oPage->addPageColumns();
 
 if ($formOK && $oPage->isPosted()) {
-    $plainPass = $oPage->getRequestValue('password');
+    $plainPass = (string) $oPage->getRequestValue('password');
 
     if ($oUser->passwordChange($plainPass)) {
-
         $oUser->addStatusMessage(_('Password was changed'), 'success');
 
-        $email = $oPage->addItem(new \Ease\Mailer($oUser->getDataValue($oUser->mailColumn),
-        \Ease\Shared::appName().' '._('Changed password')));
-        $email->addItem(sprintf(_('Dear user %s, your password was changed to'),
-                $oUser->getUserLogin()).":\n");
-        $email->addItem(_('Password').': '.$plainPass."\n");
+        $mailTo = (string) $oUser->getDataValue($oUser->mailColumn);
+        if ($mailTo !== '') {
+            $email = new \Ease\Mailer(
+                $mailTo,
+                \Ease\Shared::appName().' '._('Changed password'),
+            );
+            $email->addItem(sprintf(
+                _('Dear user %s, your password was changed to'),
+                $oUser->getUserLogin(),
+            ).":\n");
+            $email->addItem(_('Password').': '.$plainPass."\n");
 
-        $loginUrl = $_SERVER['REQUEST_SCHEME'].'://'.$_SERVER['HTTP_HOST'].dirname(\Ease\WebPage::getUri()).'/login.php';
-        $email->addItem("\n$loginUrl\n");
-
-        $email->send();
+            $loginUrl = ($_SERVER['REQUEST_SCHEME'] ?? 'https').'://'
+                .($_SERVER['HTTP_HOST'] ?? 'localhost')
+                .dirname(\Ease\WebPage::getUri()).'/login.php';
+            $email->addItem("\n$loginUrl\n");
+            $email->send();
+        }
     }
 } else {
-    $loginForm = new \Ease\Html\Form(NULL);
+    $form = new \Ease\Html\Form([
+        'name' => 'ChangePassword',
+        'method' => 'POST',
+        'class' => 'cz-auth-form',
+    ]);
 
-    $loginForm->addItem(new \Ease\TWB5\FormGroup(_('Current password'),
-        new \Ease\Html\InputPasswordTag('CurrentPassword'), NULL
+    $form->addItem(new \Ease\TWB5\FormGroup(
+        _('Current password'),
+        new \Ease\Html\InputPasswordTag('CurrentPassword', null, [
+            'class' => 'form-control',
+            'autocomplete' => 'current-password',
+            'required' => 'required',
+        ]),
+    ));
+    $form->addItem(new \Ease\TWB5\FormGroup(
+        _('New Password'),
+        new \Ease\Html\InputPasswordTag('password', null, [
+            'class' => 'form-control',
+            'autocomplete' => 'new-password',
+            'required' => 'required',
+        ]),
+    ));
+    $form->addItem(new \Ease\TWB5\FormGroup(
+        _('Password confirm'),
+        new \Ease\Html\InputPasswordTag('passwordConfirm', null, [
+            'class' => 'form-control',
+            'autocomplete' => 'new-password',
+            'required' => 'required',
+        ]),
     ));
 
-    $loginForm->addItem(new \Ease\TWB5\FormGroup(_('New Password'),
-        new \Ease\Html\InputPasswordTag('password'), NULL
+    $actions = new \Ease\Html\DivTag(null, ['class' => 'cz-form-actions d-flex flex-wrap gap-2 mt-3']);
+    $actions->addItem(new \Ease\TWB5\SubmitButton(_('Change password'), 'primary'));
+    $actions->addItem(new \Ease\Html\ATag(
+        'mycontact.php',
+        _('Back to my contact'),
+        ['class' => 'btn btn-line'],
     ));
+    $form->addItem($actions);
 
-    $loginForm->addItem(new \Ease\TWB5\FormGroup(_('Password confirm'),
-        new \Ease\Html\InputPasswordTag('passwordConfirm'), NULL
+    $oPage->container->addItem(new \Ease\TWB5\Panel(
+        _('Password change'),
+        'default',
+        $form,
     ));
-
-    $loginForm->addItem(new \Ease\TWB5\SubmitButton(_('Change password')));
-
-    $loginForm->fillUp($_POST);
-
-    $oPage->columnII->addItem(new \Ease\TWB5\Panel(_('Password change'),
-        'default', $loginForm));
 }
 
 $oPage->addItem(new ui\PageBottom());
-
 $oPage->draw();

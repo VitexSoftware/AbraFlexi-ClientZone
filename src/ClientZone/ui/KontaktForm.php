@@ -21,7 +21,10 @@ class KontaktForm extends \Ease\TWB5\Form
     {
         $contactID     = $contact->getMyKey();
         $this->contact = $contact;
-        parent::__construct('contact'.$contactID);
+        parent::__construct([
+            'name' => 'contact'.(string) $contactID,
+            'method' => 'POST',
+        ]);
 
         $this->addInput(new \Ease\Html\InputTag('jmeno',
             $contact->getDataValue('jmeno')), _('Name'));

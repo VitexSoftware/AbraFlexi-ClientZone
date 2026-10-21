@@ -21,7 +21,10 @@ class UserForm extends \Ease\TWB5\Form
     {
         $userID     = $user->getMyKey();
         $this->user = $user;
-        parent::__construct('user'.$userID);
+        parent::__construct([
+            'name' => 'user'.(string) $userID,
+            'method' => 'POST',
+        ]);
 
         $this->addInput(new \Ease\Html\InputTag('firstname',
             $user->getDataValue('firstname')), _('Name'));

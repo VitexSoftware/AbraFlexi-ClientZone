@@ -21,6 +21,7 @@
         "vitexsoftware/abraflexi-bricks": ">=1.5.0",
         "vitexsoftware/ease-bootstrap5-widgets-abraflexi": "dev-main",
         "vitexsoftware/ease-html-widgets": "dev-main",
+        "vitexsoftware/datatables-abraflexi": "^1.2",
         "robmorgan/phinx": "*"
     },
     "autoload": {

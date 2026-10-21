@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace ClientZone\ui;
 
 /**
- * Listing of customer invoices / orders.
+ * Listing of customer documents (orders or invoices).
  *
  * @author vitex
  */
 class OrdersListing extends \Ease\TWB5\Panel
 {
     /**
-     * @param \AbraFlexi\RO          $fetcher    Proforma/Invoice/Order fetcher
-     * @param string                 $caption    Panel caption
-     * @param array<string, mixed>   $conditions Query conditions
+     * @param \AbraFlexi\RO        $fetcher    Document fetcher (evidence already set)
+     * @param string               $caption    Panel caption
+     * @param array<string, mixed> $conditions Query conditions
      */
     public function __construct(\AbraFlexi\RO $fetcher, string $caption, array $conditions = [])
     {
@@ -30,6 +30,8 @@ class OrdersListing extends \Ease\TWB5\Panel
             $footer->addColumn(2, (string) count($documents));
             $footer->addColumn(2, $celkem.' Kč');
             $this->footer->addItem($footer);
+        } else {
+            $this->addItem(new \Ease\Html\PTag(_('No documents found.'), ['class' => 'dim mb-0']));
         }
     }
 }

@@ -1,21 +1,36 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ClientZone;
 
 /**
  * clientzone - Stránka firmy/adresy.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  2017 VitexSoftware v.s.cz
+ * @copyright  2017-2026 VitexSoftware
  */
 require_once 'includes/Init.php';
 
 $oPage->onlyForLogged();
 
 $address = Engine::doThings($oPage);
-if (is_null($address)) {
-    $address = new \AbraFlexi\Adresar($oUser->adresar->getRecordIdent(),
-        ['defaultUrlParams' => ['relations' => 'kontakt']]);
+if ($address === null) {
+    if (!$oUser instanceof Customer) {
+        $oPage->addStatusMessage(_('Please sign in with your customer account'), 'warning');
+        $oPage->redirect('login.php?backurl='.urlencode($_SERVER['REQUEST_URI'] ?? 'myaccount.php'));
+        exit;
+    }
+    $firma = $oUser->getAdresar()->getRecordIdent();
+    if (empty($firma)) {
+        $oPage->addStatusMessage(_('Your company record was not found'), 'error');
+        $oPage->redirect('index.php');
+        exit;
+    }
+    $address = new \AbraFlexi\Adresar(
+        $firma,
+        ['defaultUrlParams' => ['relations' => 'kontakt']],
+    );
 }
 
 if ($oPage->getGetValue('delete', 'bool') == 'true') {

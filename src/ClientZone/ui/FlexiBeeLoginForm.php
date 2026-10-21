@@ -16,7 +16,11 @@ class FlexiBeeLoginForm extends \Ease\TWB5\Form
 {
     public function __construct()
     {
-        parent::__construct('lmslogin', 'flexibeelogin.php', 'POST');
+        parent::__construct([
+            'name' => 'lmslogin',
+            'action' => 'flexibeelogin.php',
+            'method' => 'POST',
+        ]);
         $this->addInput(new \Ease\Html\InputTextTag('username'), _('Login'),
             _('your email address in most of cases'));
         $this->addInput(new \Ease\Html\InputPasswordTag('password'), _('Login'),

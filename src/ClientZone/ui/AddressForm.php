@@ -21,7 +21,10 @@ class AddressForm extends \Ease\TWB5\Form
     {
         $addressID     = $address->getMyKey();
         $this->address = $address;
-        parent::__construct('address'.$addressID);
+        parent::__construct([
+            'name' => 'address'.(string) $addressID,
+            'method' => 'POST',
+        ]);
 
         $this->addInput(new \Ease\Html\InputTag('kod',
             $address->getDataValue('kod')), _('Code'));
