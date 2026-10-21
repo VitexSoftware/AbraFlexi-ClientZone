@@ -1,3 +1,10 @@
+abraflexi-clientzone (2.1.6) unstable; urgency=medium
+
+  * Received invoices for supplier-customers; dashboard links to
+    listings.
+
+ -- vitex <info@vitexsoftware.cz>  Wed, 21 Oct 2026 15:40:36 +0200
+
 abraflexi-clientzone (2.1.5) unstable; urgency=medium
 
   * Dashboard: show issued documents, invoices and orders counts.
