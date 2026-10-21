@@ -10,7 +10,7 @@ require_once 'includes/Init.php';
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
  * @copyright  2017 VitexSoftware v.s.cz
  */
-$oPage->onlyForLogged('login.php', _('Please sign in to place an order'));
+$oPage->onlyForCustomer('login.php', _('Please sign in to place an order'));
 
 $oPage->addToHeader(new ui\PageTop(_('Spoje.Net Order Form')));
 

@@ -5,6 +5,11 @@ declare(strict_types=1);
 /**
  * clientzone - Init aplikace.
  *
+ * Development paths only. debian/rules rewrites them for the package:
+ *   vendor/autoload.php → /usr/share/abraflexi-clientzone/autoload.php
+ *   i18n               → /usr/share/locale
+ *   .env               → /etc/abraflexi-client-zone/.env
+ *
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2017-2026 VitexSoftware v.s.cz
  */
@@ -16,7 +21,7 @@ use Ease\Shared;
 require_once __DIR__.'/../../vendor/autoload.php';
 
 // Must use singleton — HtmlTag later calls Locale::singleton() and would
- // otherwise re-init from Accept-Language (en_US) and undo translations.
+// otherwise re-init from Accept-Language (en_US) and undo translations.
 \Ease\Locale::singleton('cs_CZ', __DIR__.'/../../i18n', 'clientzone');
 
 Shared::init(
@@ -30,7 +35,7 @@ Shared::init(
     false,
 );
 
-// Display name (package APP_NAME stays the composer id). Honour .env override.
+// Display name must be fixed before session keys / flash messages use appName().
 if (Shared::cfg('EASE_APPNAME') === null || Shared::cfg('EASE_APPNAME') === '') {
     \define('EASE_APPNAME', _('Client Zone'));
 }
@@ -42,7 +47,22 @@ if (\PHP_SAPI === 'cli') {
 } else {
     session_start();
 
-    Shared::user(null, User::class);
+    // Shared::init() runs before session_start(), so Ease flash messages saved by
+    // Document::redirect() never reach the logger. Restore them here — UI reads
+    // Shared::logger()->getMessages() (see BootstrapMenu / getStatusMessagesBlock).
+    $appName = Shared::appName();
+    if (!empty($_SESSION[$appName]['EaseMessages']) && \is_array($_SESSION[$appName]['EaseMessages'])) {
+        foreach ($_SESSION[$appName]['EaseMessages'] as $message) {
+            if ($message instanceof \Ease\Logger\Message) {
+                Shared::logger()->addStatusObject($message);
+            }
+        }
+        unset($_SESSION[$appName]['EaseMessages']);
+    }
+
+    // Authenticated users are always AbraFlexi contacts (Customer).
+    // There is no in-app administrator role — see GateKeeper / README.
+    Shared::user(null, Customer::class);
 
     /* @var $oPage ui\WebPage */
     $oPage = new ui\WebPage();
@@ -57,8 +77,9 @@ if (\PHP_SAPI === 'cli') {
 }
 
 /**
- * Objekt uživatele User nebo Anonym
- * @global User|\Ease\Anonym $oUser
+ * Logged-in Customer or anonymous user.
+ *
+ * @global Customer|\Ease\Anonym $oUser
  */
 $oUser = Shared::user();
 $shared = Shared::instanced();

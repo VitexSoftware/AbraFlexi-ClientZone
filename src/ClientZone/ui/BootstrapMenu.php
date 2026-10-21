@@ -22,7 +22,8 @@ class BootstrapMenu extends \Ease\TWB5\Navbar
 
     public function __construct()
     {
-        $this->mainpage = 'index.php';
+        $user = \Ease\Shared::user();
+        $this->mainpage = ($user instanceof \ClientZone\Customer) ? 'dashboard.php' : 'index.php';
         $appName = (string) (\Ease\Shared::appName() ?: _('Client Zone'));
         $parts = preg_split('/\s+/u', $appName, 2) ?: [$appName];
         $brand = '<b>'.htmlspecialchars($parts[0]).'</b>'
@@ -37,7 +38,8 @@ class BootstrapMenu extends \Ease\TWB5\Navbar
 
     /**
      * Ease TWB5 Navbar::navBarCollapse() only embeds leftContent — right-side
-     * items (cart, account, Sign Out) would never render. Include both sides.
+     * items (cart, account) would never render. Include both sides.
+     * Sign Out lives in the customer account dropdown (MainMenu), not here.
      */
     public function navBarCollapse()
     {
@@ -47,14 +49,6 @@ class BootstrapMenu extends \Ease\TWB5\Navbar
         );
 
         $controls = new DivTag(null, ['class' => 'header-controls']);
-        $user = \Ease\Shared::user();
-        if ($user instanceof \ClientZone\Customer || $user instanceof \ClientZone\User) {
-            $controls->addItem(new \Ease\Html\ATag(
-                'logout.php',
-                '<i class="fa fa-power-off" aria-hidden="true"></i> '._('Sign Out'),
-                ['class' => 'btn btn-line btn-sm cz-logout'],
-            ));
-        }
         $controls->addItem(
             '<button type="button" class="icon-btn theme-toggle" aria-label="'
             .htmlspecialchars(_('Switch light / dark mode'))

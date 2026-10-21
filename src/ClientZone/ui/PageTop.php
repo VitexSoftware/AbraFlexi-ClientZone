@@ -36,9 +36,5 @@ class PageTop extends \Ease\Html\DivTag
     {
         parent::finalize();
         $this->addItem(new MainMenu());
-
-        if (get_class(\Ease\Shared::user()) == 'ClientZone\User') {
-            $this->addItem(new History());
-        }
     }
 }

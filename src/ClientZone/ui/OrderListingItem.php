@@ -81,21 +81,6 @@ class OrderListingItem extends \Ease\TWB5\Row
             );
         }
 
-        if (get_class(\Ease\Shared::user()) === 'ClientZone\User') {
-            $links[] = self::iconLink(
-                \Ease\Shared::cfg('ABRAFLEXI_URL').'/c/'.\Ease\Shared::cfg('ABRAFLEXI_COMPANY').'/'.$evidence.'/'.$id,
-                'images/flexibee.png',
-                _('FlexiBee'),
-            );
-            $firma = $itemdata['firma'] ?? null;
-            $firmaShow = self::relationShowAs($firma, $itemdata['firma@showAs'] ?? null);
-            $links[] = self::iconLink(
-                'adresar.php?id='.self::relationValue($firma),
-                'images/company.svg',
-                $firmaShow !== '' ? $firmaShow : _('Company'),
-            );
-        }
-
         $this->addColumn(2, $links);
     }
 

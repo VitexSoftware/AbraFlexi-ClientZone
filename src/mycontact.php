@@ -16,7 +16,7 @@ namespace ClientZone;
 
 require_once 'includes/Init.php';
 
-$oPage->onlyForLogged();
+$oPage->onlyForCustomer();
 
 if (!$oUser instanceof Customer) {
     $oPage->addStatusMessage(_('Please sign in with your customer account to edit contact details'), 'warning');

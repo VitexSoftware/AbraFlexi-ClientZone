@@ -1,3 +1,24 @@
+abraflexi-clientzone (2.1.5) unstable; urgency=medium
+
+  * Dashboard: show issued documents, invoices and orders counts.
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Wed, 21 Oct 2026 11:04:51 +0200
+
+abraflexi-clientzone (2.1.4) unstable; urgency=medium
+
+  * Restore flash status messages after redirect (maildocument
+    confirmation).
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Wed, 21 Oct 2026 10:47:06 +0200
+
+abraflexi-clientzone (2.1.3) unstable; urgency=medium
+
+  * Customer dashboard; remove in-app admin role; harden document access
+    to own company only; fix PDF/mail actions and Init packaging paths;
+    drop flexiproxy.
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Wed, 21 Oct 2026 10:42:33 +0200
+
 abraflexi-clientzone (2.1) stable; urgency=medium
 
   [ Vítězslav Dvořák ]

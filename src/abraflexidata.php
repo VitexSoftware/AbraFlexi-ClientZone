@@ -5,7 +5,7 @@ declare(strict_types=1);
 /**
  * clientzone — DataTables JSON feeder for AbraFlexi document listers.
  *
- * Pattern mirrors MultiFlexi ajax2db.php: whitelist + getAllForDataTable().
+ * Always scoped to the logged-in customer's company — never trust client firma.
  *
  * @author     Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2026 VitexSoftware
@@ -17,7 +17,7 @@ require_once 'includes/Init.php';
 
 header('Content-Type: application/json; charset=utf-8');
 
-if (!$oUser->isLogged()) {
+if (!$oUser->isLogged() || !$oUser instanceof Customer) {
     echo json_encode([
         'data' => [],
         'recordsTotal' => 0,
@@ -35,11 +35,19 @@ $class = $oPage->getRequestValue('class');
 $allowed = [
     OrderLister::class,
     InvoiceLister::class,
+    ReceivedInvoiceLister::class,
 ];
 
 if ($class === null || $class === '' || !\in_array($class, $allowed, true)) {
     http_response_code(403);
     echo json_encode(['data' => [], 'error' => 'Class not allowed'], \JSON_UNESCAPED_UNICODE);
+
+    exit;
+}
+
+if ($class === ReceivedInvoiceLister::class && !$oUser->isSupplierCustomer()) {
+    http_response_code(403);
+    echo json_encode(['data' => [], 'error' => 'Not a supplier-customer'], \JSON_UNESCAPED_UNICODE);
 
     exit;
 }
@@ -51,17 +59,22 @@ if (!method_exists($class, 'getAllForDataTable')) {
     exit;
 }
 
-/** @var OrderLister|InvoiceLister $engine */
-$engine = new $class();
+$firma = $oUser->getAdresar()->getRecordIdent();
+if (empty($firma)) {
+    http_response_code(403);
+    echo json_encode([
+        'data' => [],
+        'recordsTotal' => 0,
+        'recordsFiltered' => 0,
+        'error' => 'No company',
+    ], \JSON_UNESCAPED_UNICODE);
 
-// Always scope to the logged-in customer's company — never trust client firma.
-$conditions = [];
-if ($oUser instanceof Customer) {
-    $firma = $oUser->getAdresar()->getRecordIdent();
-    if (!empty($firma)) {
-        $conditions['firma'] = $firma;
-    }
+    exit;
 }
+
+/** @var OrderLister|InvoiceLister|ReceivedInvoiceLister $engine */
+$engine = new $class();
+$conditions = ['firma' => $firma];
 
 try {
     echo json_encode($engine->getAllForDataTable($conditions), \JSON_UNESCAPED_UNICODE);

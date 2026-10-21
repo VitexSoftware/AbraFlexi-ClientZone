@@ -34,7 +34,7 @@ class ToPayItems extends \Ease\Html\DivTag
         foreach ($debts as $invoiceId => $invoiceInfo) {
             $customer->invoicer->setMyKey((int) $invoiceInfo['id']);
             $card = $grid->addItem(new \Ease\Html\ATag(
-                'document.php?id='.\AbraFlexi\RO::code($invoiceId)
+                'document.php?id='.(int) $invoiceInfo['id']
                     .'&embed=true&evidence='.$customer->invoicer->getEvidence(),
                 null,
                 ['class' => 'cz-topay-card'],
@@ -50,7 +50,7 @@ class ToPayItems extends \Ease\Html\DivTag
             ));
             $card->addItem(new \Ease\Html\DivTag(
                 '<strong>'.$invoiceInfo['sumCelkem'].'</strong> '
-                .\AbraFlexi\RO::uncode($invoiceInfo['mena']),
+                .\AbraFlexi\Functions::uncode((string) $invoiceInfo['mena']),
                 ['class' => 'cz-topay-amount'],
             ));
         }

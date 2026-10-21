@@ -113,7 +113,7 @@ if ($oPage->isPosted()) {
 
                 \Ease\Shared::user($newOUser)->loginSuccess();
 
-                $oPage->redirect('index.php');
+                $oPage->redirect('dashboard.php');
                 exit;
             } else {
                 $oUser->addStatusMessage(_('Error saving Contact'), 'error');

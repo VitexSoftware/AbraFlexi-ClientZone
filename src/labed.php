@@ -1,40 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace ClientZone;
 
 /**
- * clientzone - Label Switchech engine
- *
- * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  2017 VitexSoftware v.s.cz
+ * Former label editor AJAX — disabled.
  */
 require_once 'includes/Init.php';
 
-$oPage->onlyForUser();
-
-$id       = $oPage->getRequestValue('record');
-$label    = $oPage->getRequestValue('label');
-$evidence = $oPage->getRequestValue('evidence');
-$result   = false;
-
-if ($id && $label && $evidence) {
-    $flexiBee = new \AbraFlexi\RW(['id' => $id],
-        ['evidence' => $evidence]);
-
-    if ($oPage->getRequestValue('state', 'boolean')) {
-        $result = \AbraFlexi\Stitek::setLabel($label, $flexiBee);
-    } else {
-        $urlparbac                            = $flexiBee->defaultUrlParams;
-        $flexiBee->defaultUrlParams['detail'] = 'custom:id,stitky';
-        $flexiBee->loadFromAbraFlexi(is_numeric($id) ? intval($id) : $id);
-        $result                               = \AbraFlexi\Stitek::unsetLabel($label,
-                $flexiBee);
-        $flexiBee->defaultUrlParams           = $urlparbac;
-    }
-    http_response_code($flexiBee->lastResponseCode);
-} else {
-    http_response_code(404);
-}
-
-
-
+http_response_code(403);
+header('Content-Type: application/json; charset=utf-8');
+echo json_encode(['error' => 'Forbidden'], \JSON_UNESCAPED_UNICODE);

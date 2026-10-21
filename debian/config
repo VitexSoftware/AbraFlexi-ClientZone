@@ -41,9 +41,6 @@ ask SUBREG_URI
 ask SUBREG_LOGIN
 ask SUBREG_PASSWORD
 
-ask ADMIN_LOGIN
-ask ADMIN_PASSWORD
-
 ENV_DIR="/etc/abraflexi-client-zone"
 ENV_FILE="${ENV_DIR}/.env"
 

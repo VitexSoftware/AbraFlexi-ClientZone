@@ -1,143 +1,129 @@
 ![Packaging: deb](https://img.shields.io/badge/packaging-.deb-red?logo=debian&logoColor=white)
 
+AbraFlexi ClientZone
+====================
 
-FlexiBee ClientZone
-===================
+![ClientZone Logo](src/images/clientzone-logo.svg "Project Logo")
 
-![ClientZone Logo](https://raw.githubusercontent.com/VitexSoftware/ClientZone/master/src/images/logo.png "Project Logo")
+Klientská zóna napojená na [AbraFlexi](https://www.abraflexi.eu/) (dříve FlexiBee).
+Zákazníci si prohlížejí ceník, objednávají služby, spravují kontaktní údaje a
+pracují s fakturami a objednávkami — bez přímého přístupu do AbraFlexi.
 
-Klientská zóna vašeho FlexiBee. Aplikace taktéž umožňuje objednávání položek ceníku FlexiBee a následnou reakci na příchozí platbu
-
-Administrátor označí v ceníku nabízené položky štítkem ESHOP a ACTIVE. Poté jsou tyto nabízeny k obejdnání:
-
-![Nabídka](https://raw.githubusercontent.com/VitexSoftware/FlexiBee-ClientZone/master/doc/Shop4FlexiBee-screenshot.png "Snímek obrazovky aplikace")
-
-Po volbě položky je možné vyplnit detaily:
-
-![Formulář](https://raw.githubusercontent.com/VitexSoftware/FlexiBee-ClientZone/master/doc/Shop4FlexiBee-order-item-form.png "Formulář položky objednávky")
-
-Objednané položky jsou schraňovány v košíku:
-
-![Potvrzení](https://raw.githubusercontent.com/VitexSoftware/FlexiBee-ClientZone/master/doc/Shop4FlexiBee-confirm-screenshot.png "Potvrzení obejdnávky")
-
-Výsledkem je buď zálohová faktura, nebo objednávka ve FlexiBee:
-
-![Objednáno](https://raw.githubusercontent.com/VitexSoftware/FlexiBee-ClientZone/master/doc/Shop4FlexiBee-order-done.png "Dokončená objednávka")
-
+Administrátor označí v ceníku nabízené položky štítkem **ESHOP** a **AKTIVNI**.
+Poté jsou tyto nabízeny k objednání v katalogu.
 
 Vlastnosti
 ----------
 
- * Do aplikace je možné se zaregistrovat
- * Je možné si změnit heslo
- * Je možné si necha obnovit zapomenuté heslo
- * Je možné si objednat z nabízených produktů is možností jim vyplnit požadované parametry
- * Je možné si objednat libovolný produkt dle kódu
- * Objednané položky se leží do objednání v košíku uloženém v session
- * Po objednání jsou z položek vytvářeny typy dokladů: faktura, zálohová faktura a objednávka.
- * Klient vidí historii svých objednávek a jejich stav
- * Klient si může faktury/objednávky zobrazit jako pdf, stahnout jako isdoc či nechat zaslat mailem
-
-
-Moduly pro zpracování změn evidencí
-===================================
-
-Načítají se ze složky ClientZone\whplugins např **FakturaPrijata.php** a jsou vždy potomky třídy **\ClientZone\WebHookHandler**
-
-V modulu je možné předefinovat metody create() update() a delete() které se vykonávají při patřičné změně.
+ * Registrace, přihlášení, změna a obnova hesla
+ * **Dashboard** po přihlášení: souhrn obchodního vztahu (zákazníkem od, celková
+   útrata), neuhrazené faktury (včetně dat upomínek) a nevyřízené objednávky
+ * Objednávka položek z ceníku s volitelnými parametry (order pluginy)
+ * Košík uložený v session
+ * Po objednání vznikají v AbraFlexi doklady (faktura / záloha / objednávka)
+ * Historie objednávek a faktur (DataTables)
+ * Zobrazení PDF, stažení ISDOC, odeslání dokladu e-mailem
+ * GDPR správa kontaktních údajů (`mycontact.php`)
+ * Hashování hesel kontaktů v AbraFlexi (volitelné přes `.env`)
 
 Moduly pro zpracování objednaných položek
 =========================================
 
-Načítají se ze složky ClientZone\orderplugins např **DomainOrg.php** a jsou vždy potomky třídy **\ClientZone\OrderPlugin**
+Načítají se ze složky `ClientZone/orderplugins/` (např. `VoIPcredit.php`,
+`DomainCredit.php`) a jsou potomky `\ClientZone\OrderPlugin`.
 
-Plugin může mít předefinovány tyto metody:
+Plugin může předefinovat:
 
- * **formFields($form)**     - vykreslí formulář s položkami potřebnými pro objednání položky  
- * **controlFields($order)** - zkontroluje hodnoty odeslané formulářem
- * **processFields($order)** - zpracuje hodnoty odeslané formulářem
- * **settled()**             - vykonává se v případě že byla zaplacena faktura obsahující položku s kodem který ma plugin na starosti
+ * **formFields($form)** — formulář parametrů položky
+ * **controlFields($order)** — validace odeslaných hodnot
+ * **processFields($order)** — zpracování hodnot
+ * **settled()** — po úhradě faktury s položkou, kterou plugin spravuje
 
-
-Testovací adresa: [https://clientzonee.vitexsoftware.cz/]
-
-Požadavky pro běh:
-------------------
-
- * PHP 5 a vyšší s mysqli rozšířením
- * Ease framework 
- * FlexiPeeHP
- * SQL Databáze s podporou PDO
-
-Instalace
+Požadavky
 ---------
 
-Pro instalaci je třeba:
+ * PHP 8.1+ (balíček cílí na PHP 8.4)
+ * Debian balíčky: `php-spojenet-abraflexi`, Ease / TWB5 stack, `php-vitexsoftware-abraflexi-datatables`
+ * AbraFlexi API (URL, login, heslo, firma)
 
- * databáze a přidané deb zdroje VitexSoftware
+Instalace (Debian)
+------------------
 
-        wget -O - http://v.s.cz/info@vitexsoftware.cz.gpg.key|sudo apt-key add -
-        echo deb http://v.s.cz/ stable main > /etc/apt/sources.list.d/ease.list
-        apt update
-        apt install clientzone
-
-Docker
-------
-
-Image pro docker obsahuje jádro debianu a php-fpm na portu 9000
-
-```
-    <VirtualHost *:80>                                                                                                                                                                                                                          
-        ServerName clientzone.vitexsoftware.cz                                                                                                                                                                                              
-        DocumentRoot /usr/share/clientzone                                                                                                                                                                                                  
-        ProxyPassMatch ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:9001/usr/share/clientzone/$1                                                                                                                                                               
-        DirectoryIndex /index.php index.php                                                                                                                                                                                                 
-    </VirtualHost>                                                                                                                                                                                                                              
-```                 
-
-Konfigurace:
-------------
-
-Pokud není nastaven klíč **FLEXIBEE_URL** nebo klíč **CONFIGURED** není "yes" je 
-provedeno přesměrování na stránku setup.php. Zde je formulář po jehož uložení se
-vytvoří konfigurační soubor /etc/flexibee/clientzone.json.
-
-Tento konfigurační soubor se aplikace snaží načíst:
-
-```json
-{                                                                                                                                          
-    "EASE_APPNAME": "ClientZone",                                                                                                      
-    "EASE_LOGGER": "syslog",                                                                                                       
-    "SEND_MAILS_FROM": "shop@syourdomain.net",                                                                                                
-    "EMAIL_FROM": "shop@yourdomain.net",                                                                                                                       
-    "EASE_EMAILTO": "info@vitexsoftware.cz",                                                                    
-    "SUPPRESS_EMAILS": "true",
-    "ALLOW_REGISTER": "true",
-    "SHOW_PRICELIST": "false",
-    "PRICELIST_CATID": "0",
-    "SEND_INFO_TO": "office@yourdomain.net",                                                                                                                       
-    "DEBUG": "false"
-}
+```bash
+wget -O /etc/apt/keyrings/vitexsoftware.gpg https://repo.vitexsoftware.com/keyring.gpg
+echo "deb [signed-by=/etc/apt/keyrings/vitexsoftware.gpg] http://repo.vitexsoftware.com bookworm main" \
+  > /etc/apt/sources.list.d/vitexsoftware.list
+apt update
+apt install abraflexi-clientzone
 ```
 
-  * **SUPPRESS_EMAILS** - Neodesílají se Emaily klientům
-  * **EASE_EMAILTO**    - Komu se odesílají logy po vykonání skriptů
-  * **SEND_INFO_TO**    - Komu se posílá info o nových registracích a objednávkách
-  * **ALLOW_REGISTER**  - Povolit registraci nových klientů
-  * **SHOW_PRICELIST**  - Zobrazit Ceník
-  * **PRICELIST_CATID** - ID Zobrazené větve ceníku
+Aplikace se instaluje do `/usr/share/abraflexi-clientzone/` a je dostupná např. jako
+`/clientzone/` (Apache alias z balíčku).
 
-Adminská oprávnění pro uživatele: **a:1:{s:5:"admin";s:4:"true";}** 
+Konfigurace
+-----------
 
+Debconf / postinst zapíše `/etc/abraflexi-client-zone/.env`. Příklad klíčů:
 
+```env
+ABRAFLEXI_URL="https://flexibee.example.com:5434"
+ABRAFLEXI_LOGIN="user"
+ABRAFLEXI_PASSWORD="secret"
+ABRAFLEXI_COMPANY="firma_s_r_o_"
+ABRAFLEXI_PASSWORD_HASH="sha256"
+ALLOW_REGISTER="true"
+SHOW_PRICELIST="true"
+PROD_CAT="1"
+EASE_LOGGER="syslog"
+EASE_EMAILTO="admin@example.com"
+```
 
-Informace pro vývojáře:
------------------------
+| Klíč | Význam |
+|------|--------|
+| `ALLOW_REGISTER` | Povolit registraci nových klientů |
+| `SHOW_PRICELIST` | Zobrazit katalog na úvodní stránce |
+| `PROD_CAT` | ID větve ceníku |
+| `ABRAFLEXI_PASSWORD_HASH` | Hash hesel kontaktů (`sha256` / `plaintext` / prázdné) |
+| `SUPPRESS_EMAILS` | Potlačit odesílání e-mailů klientům |
 
- * Aplikace je vyvíjena pod v NetBeans pod linuxem.
- * Dokumentace ApiGen se nalézá ve složce doc
- * Složka testing obsahuje testovací sady Selenium a PHPUnit a strukturu DB
- * Aktuální zdrojové kody: **git@github.com:VitexSoftware/ClientZone.git**
+Bezpečnost / role
+-----------------
 
+V ClientZone **neexistuje role administrátora**. Přihlášení jsou výhradně
+kontakty AbraFlexi (`Customer`). Každý uživatel vidí jen doklady a údaje své
+firmy (`GateKeeper` + filtr `firma` v API).
 
-© 2017-2018 Vítězslav Dvořák / Vitex Software
+Správa portálu (API klíče, feature flags) probíhá přes SSH úpravou
+`/etc/abraflexi-client-zone/.env` nebo přímo v AbraFlexi. Lokální tabulka
+`users` / skript `create-admin.php` se již nepoužívají.
+
+Překlady (i18n)
+---------------
+
+Gettext doména `clientzone`, lokalizace v `i18n/`:
+
+```bash
+# regenerace šablony a merge
+find src -name '*.php' -print0 | xargs -0 xgettext \
+  --language=PHP --from-code=UTF-8 --keyword=_ --keyword=gettext \
+  --package-name=abraflexi-clientzone -o i18n/clientzone.pot
+msgmerge --update i18n/cs_CZ/LC_MESSAGES/clientzone.po i18n/clientzone.pot
+msgmerge --update i18n/en_US/LC_MESSAGES/clientzone.po i18n/clientzone.pot
+msgfmt -o i18n/cs_CZ/LC_MESSAGES/clientzone.mo i18n/cs_CZ/LC_MESSAGES/clientzone.po
+msgfmt -o i18n/en_US/LC_MESSAGES/clientzone.mo i18n/en_US/LC_MESSAGES/clientzone.po
+```
+
+Výchozí locale aplikace je `cs_CZ` (`src/includes/Init.php`).
+
+Vývoj
+-----
+
+```bash
+composer install
+cp .env.example .env   # nebo vytvořit .env s AbraFlexi údaji
+php -S localhost:8080 -t src
+```
+
+Zdrojáky: <https://github.com/VitexSoftware/AbraFlexi-ClientZone>
+
+© 2017–2026 Vítězslav Dvořák / Vitex Software

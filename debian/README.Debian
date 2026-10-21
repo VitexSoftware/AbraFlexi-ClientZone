@@ -1,6 +1,20 @@
-ClientZone
-=============
-    
-    
+AbraFlexi ClientZone for Debian
+===============================
 
--- Vítězslav Dvořák <info@vitexsoftware.cz>  Mon, 17 Jul 2017 16:37:59 +0200
+Package installs the web application to /usr/share/abraflexi-clientzone/
+and an Apache alias/configuration for /clientzone/.
+
+Configuration is stored in /etc/abraflexi-client-zone/.env (written by
+debconf during package configuration).
+
+Translations (gettext domain "clientzone") are installed under
+/usr/share/locale/*/LC_MESSAGES/clientzone.mo.
+
+After login, customers are redirected to dashboard.php (relationship
+summary, unpaid invoices with reminder dates, open orders).
+
+There is no in-app administrator role. Customers authenticate as AbraFlexi
+contacts and only see their own company's data. Privileged configuration is
+done by editing /etc/abraflexi-client-zone/.env over SSH (or in AbraFlexi).
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Wed, 21 Oct 2026 10:15:00 +0200

@@ -109,16 +109,8 @@ fi
 mkdir -p /var/cache/abraflexi-clientzone /var/lib/abraflexi-clientzone/tmp
 chown "${WEBUSER}:${WEBUSER}" -R /var/cache/abraflexi-clientzone /var/lib/abraflexi-clientzone 2>/dev/null || true
 
-if [ -x /usr/share/abraflexi-clientzone/bin/create-admin.php ]; then
-    db_get "clientzone/ADMIN_LOGIN"
-    ADMIN_LOGIN="${RET:-admin}"
-    db_get "clientzone/ADMIN_PASSWORD"
-    ADMIN_PASSWORD="$RET"
-    if [ -n "$ADMIN_PASSWORD" ]; then
-        su - "$WEBUSER" -s /bin/bash -c \
-            "php /usr/share/abraflexi-clientzone/bin/create-admin.php '$ADMIN_LOGIN' '$ADMIN_PASSWORD'" || true
-    fi
-fi
+# No local administrator account — customers authenticate against AbraFlexi
+# contacts; privileged config is /etc/abraflexi-client-zone/.env (SSH).
 
 #DEBHELPER#
 

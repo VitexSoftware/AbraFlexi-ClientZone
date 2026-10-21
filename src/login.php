@@ -25,7 +25,7 @@ if ($login !== '') {
     try {
         $oUser = \Ease\Shared::user(new Customer());
         if ($oUser->tryToLogin($credentials)) {
-            $back = $oPage->getRequestValue('backurl') ?: 'index.php';
+            $back = $oPage->getRequestValue('backurl') ?: 'dashboard.php';
             $oPage->redirect($back);
             exit;
         }

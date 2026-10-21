@@ -12,7 +12,7 @@ namespace ClientZone;
  */
 require_once 'includes/Init.php';
 
-$oPage->onlyForLogged();
+$oPage->onlyForCustomer();
 
 $oPage->addToHeader(new ui\PageTop(_('My Invoices')));
 

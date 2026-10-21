@@ -1,69 +1,69 @@
 <?php
+
+declare(strict_types=1);
+
 /**
- * clientzone - GateKeeper
+ * clientzone - GateKeeper — document access only for owning customer.
  *
  * @author     Vítězslav Dvořák <vitex@arachne.cz>
- * @copyright  2017 VitexSoftware v.s.cz
+ * @copyright  2017-2026 VitexSoftware v.s.cz
  */
 
 namespace ClientZone;
 
 /**
- * Description of GateKeeper
- *
- * @author vitex
+ * Ensures a logged-in customer may only access documents of their own company.
+ * No elevated / admin bypass exists on purpose.
  */
 class GateKeeper extends \Ease\Sand
 {
-
     /**
-     * Is document accessible by user ?
+     * Is document accessible by user?
      *
-     * @param \AbraFlexi\RO $document FlexiBee documnet
-     * @param Customer|User|\Ease\Anonym $user Current User
-     *
-     * @return boolean
+     * @param \AbraFlexi\RO              $document AbraFlexi document
+     * @param Customer|\Ease\Anonym|mixed $user     Current user
      */
-    public static function isAccessibleBy($document, $user)
+    public static function isAccessibleBy($document, $user): bool
     {
-        $result = null;
-        switch (get_class($user)) {
-            case 'ClientZone\User': //Admin
-                $result = true;
-                break;
-            case 'ClientZone\Customer': //Customer
-                $result = (self::getDocumentCompany($document) == self::getCustomerCompany($user));
-                break;
-            case 'Ease\Anonym': //Anonymous
-                $result = false;
-                break;
+        if (!$user instanceof Customer) {
+            return false;
         }
-        return $result;
+
+        $docCompany = self::getDocumentCompany($document);
+        $custCompany = self::getCustomerCompany($user);
+
+        if ($docCompany === null || $custCompany === null || $docCompany === '' || $custCompany === '') {
+            return false;
+        }
+
+        return strcasecmp($docCompany, $custCompany) === 0;
     }
 
     /**
-     * Get Company code for document
+     * Company code on the document (without code: prefix).
      *
      * @param \AbraFlexi\RO $document
-     *
-     * @return string documnent code
      */
-    public static function getDocumentCompany($document)
+    public static function getDocumentCompany($document): ?string
     {
-        return $document->getDataValue('firma') ? \AbraFlexi\RO::uncode(
-                $document->getDataValue('firma')) : null;
+        $firma = $document->getDataValue('firma');
+        if ($firma === null || $firma === '' || $firma === false) {
+            return null;
+        }
+
+        return \AbraFlexi\Functions::uncode((string) $firma);
     }
 
     /**
-     * Obtain customer company code
-     *
-     * @param Customer $customer
-     * 
-     * @return int
+     * Logged-in customer's company code (without code: prefix).
      */
-    public static function getCustomerCompany($customer)
+    public static function getCustomerCompany(Customer $customer): ?string
     {
-        return $customer->adresar->getDataValue('kod') ? \AbraFlexi\RO::uncode($customer->adresar->getDataValue('kod'))
-                : null;
+        $kod = $customer->getAdresar()->getDataValue('kod');
+        if ($kod === null || $kod === '' || $kod === false) {
+            return null;
+        }
+
+        return \AbraFlexi\Functions::uncode((string) $kod);
     }
 }

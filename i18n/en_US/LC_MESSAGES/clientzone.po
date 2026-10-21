@@ -1,8 +1,9 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2017-09-12 14:08+0200\n"
-"PO-Revision-Date: 2017-09-12 14:09+0200\n"
+"Report-Msgid-Bugs-To: info@vitexsoftware.cz\n"
+"POT-Creation-Date: 2026-10-21 11:17+0200\n"
+"PO-Revision-Date: 2026-10-21 10:02+0200\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: \n"
 "Language: en\n"
@@ -16,1529 +17,1974 @@ msgstr ""
 "X-Poedit-SearchPath-0: ../src\n"
 "X-Poedit-SearchPathExcluded-0: ../vendor\n"
 
-#: ../src/ClientZone/Customer.php:209
-msgid "missing login"
-msgstr "missing login"
-
-#: ../src/ClientZone/Customer.php:214
-msgid "missing password"
-msgstr "missing password"
-
-#: ../src/ClientZone/Customer.php:225
-#, php-format
-msgid "Multiplete ContactID"
-msgstr "Multiplete ContactID"
-
-#: ../src/ClientZone/Customer.php:228
-msgid "Using the first one"
-msgstr "Using the first one"
-
-#: ../src/ClientZone/Customer.php:269
-#, php-format
-msgid "Sign in %s all ok"
-msgstr "Sign in %s all ok"
-
-#: ../src/ClientZone/DataGrid.php:197
-#, fuzzy
-msgid "Přidat"
-msgstr "Add contact information"
-
-#: ../src/ClientZone/DataGrid.php:198 ../src/ClientZone/Engine.php:468
-msgid "Modify"
-msgstr "Modify"
-
-#: ../src/ClientZone/DataGrid.php:199 ../src/ClientZone/Engine.php:466
-#, fuzzy
-msgid "Smazat"
-msgstr "delete"
-
-#: ../src/ClientZone/DataGrid.php:360 ../src/ClientZone/DataGrid.php:400
-#: ../src/ClientZone/DataGrid.php:438
-msgid "Je třeba označit nějaké řádky"
-msgstr ""
-
-#: ../src/ClientZone/DataSource.php:131
-msgid "Smazáno"
-msgstr ""
-
-#: ../src/ClientZone/DataSource.php:138
-msgid "Záznam byl přidán"
-msgstr ""
-
-#: ../src/ClientZone/DataSource.php:141
-msgid "Záznam nebyl přidám"
-msgstr ""
-
-#: ../src/ClientZone/DataSource.php:149
-msgid "Záznam byl upraven"
-msgstr ""
-
-#: ../src/ClientZone/DataSource.php:152
-msgid "Záznam nebyl upravn"
-msgstr ""
-
-#: ../src/ClientZone/Engine.php:178
-msgid "Záznam byl uložen"
-msgstr ""
-
-#: ../src/ClientZone/Engine.php:185
-msgid "Záznam nebyl uložen"
-msgstr ""
-
-#: ../src/ClientZone/Engine.php:315
-msgid "Chybná hodnota"
-msgstr ""
-
-#: ../src/ClientZone/Engine.php:424
-#, php-format
-msgid " %s %s byl smazán "
-msgstr ""
-
-#: ../src/ClientZone/Engine.php:430
-#, php-format
-msgid " %s %s nebyl smazán "
-msgstr ""
-
-#: ../src/ClientZone/FlexiBeeStatus.php:39
-msgid "Zvolená firma neexistuje"
-msgstr ""
-
-#: ../src/ClientZone/FlexiBeeStatus.php:43
-msgid "Chyba komunikace"
-msgstr ""
-
-#: ../src/ClientZone/HookReciever.php:74
-#, php-format
-msgid "Change version %s already processed"
-msgstr "Change version %s already processed"
-
-#: ../src/ClientZone/HookReciever.php:105
-#, php-format
-msgid "Handler Class %s does not exist"
-msgstr "Handler Class %s does not exist"
-
-#: ../src/ClientZone/HookReciever.php:127
-msgid "Empty WebHook request"
-msgstr "Empty WebHook request"
-
-#: ../src/ClientZone/HookReciever.php:151
-msgid "Last Processed Change ID Saving Failed"
-msgstr "Last Processed Change ID Saving Failed"
-
-#: ../src/ClientZone/HookReciever.php:155
-#, php-format
-msgid "Last Processed Change ID #%s Saved"
-msgstr "Last Processed Change ID #%s Saved"
-
-#: ../src/ClientZone/HookReciever.php:174
-msgid "Last Processed Change ID Loading Failed"
-msgstr "Last Processed Change ID Loading Failed"
-
-#: ../src/ClientZone/Order.php:68
-msgid "Please wait while our salesman contact you."
-msgstr "Please wait while our salesman contact you."
-
-#: ../src/ClientZone/Order.php:71
-msgid "purchase order"
-msgstr "purchase order"
-
-#: ../src/ClientZone/Order.php:117
-msgid "Proforma"
-msgstr "Proforma"
-
-#: ../src/ClientZone/Order.php:160
-msgid "Invoice"
-msgstr "Invoice"
-
-#: ../src/ClientZone/Order.php:202
-#, php-format
-msgid "Unhandled type of item"
-msgstr "Unhandled type of item"
-
-#: ../src/ClientZone/OrderItem.php:126
-msgid "Please choose service"
-msgstr "Please choose service"
-
-#: ../src/ClientZone/OrderItem.php:141
-#, php-format
-msgid "Product with code %s does not exist"
-msgstr "Product with code %s does not exist"
-
-#: ../src/ClientZone/OrderItem.php:146
-#, php-format
-msgid "Missing product code"
-msgstr "Missing product code"
-
-#: ../src/ClientZone/OrderItem.php:227
-#, php-format
-msgid "%s added to cart"
-msgstr "%s added to cart"
-
-#: ../src/ClientZone/OrderPlugin.php:75
-msgid "Product not specified"
-msgstr "Product not specified"
-
-#: ../src/ClientZone/OrderPlugin.php:88
-#, php-format
-msgid "Item %s was settled without action handled in OrderPlugin code"
-msgstr "Item %s was settled without action handled in OrderPlugin code"
-
-#: ../src/ClientZone/ParovacFaktur.php:161
-#, php-format
-msgid "Invoice with Euro currency %s"
-msgstr "Invoice with Euro currency %s"
-
-#: ../src/ClientZone/ParovacFaktur.php:168
-#, php-format
-msgid "Unknown invoice type: %s %s"
-msgstr "Unknown invoice type: %s %s"
-
-#: ../src/ClientZone/ParovacFaktur.php:182
-msgid "Invoice found: - overdue?"
-msgstr "Invoice found: - overdue?"
-
-#: ../src/ClientZone/ParovacFaktur.php:216
-msgid "Faktura za Eura"
-msgstr ""
-
-#: ../src/ClientZone/ParovacFaktur.php:219
-#, php-format
-msgid "Unknown invoice type: %s"
-msgstr "Unknown invoice type: %s"
-
-#: ../src/ClientZone/ParovacFaktur.php:241
-#, php-format
-msgid "Castecna uhrada - DOBROPIS: prijato: %s ma byt zaplaceno %s"
-msgstr ""
-
-#: ../src/ClientZone/ParovacFaktur.php:246
-#, php-format
-msgid "Přeplatek - DOBROPIS: prijato: %s ma byt zaplaceno %s"
-msgstr ""
-
-#: ../src/ClientZone/ParovacFaktur.php:258
-#, php-format
-msgid "Platba %s  %s byla sparovana s dobropisem %s"
-msgstr ""
-
-#: ../src/ClientZone/ParovacFaktur.php:284
-#, php-format
-msgid "Platba %s  %s byla sparovana s zalohou %s"
-msgstr ""
-
-#: ../src/ClientZone/ParovacFaktur.php:348
-#, php-format
-msgid "Částečná úhrada %s"
-msgstr ""
-
-#: ../src/ClientZone/ParovacFaktur.php:351
-#, php-format
-msgid "Vytvoř ZDD: %s"
-msgstr ""
-
-#: ../src/ClientZone/ParovacFaktur.php:357
-#, php-format
-msgid "Přeplatek %s"
-msgstr ""
-
-#: ../src/ClientZone/ParovacFaktur.php:377
-#, php-format
-msgid "Faktura #%s byla sparovana"
-msgstr ""
-
-#: ../src/ClientZone/ParovacFaktur.php:381
-#, php-format
-msgid "Faktura #%s nebyla sparovana"
-msgstr ""
-
-#: ../src/ClientZone/ParovacFaktur.php:406
-#, php-format
-msgid "Castecna uhrada - FAKTURA: prijato: %s ma byt zaplaceno %s"
-msgstr ""
-
-#: ../src/ClientZone/ParovacFaktur.php:411
-#, php-format
-msgid "Přeplatek - FAKTURA: prijato: %s ma byt zaplaceno %s"
-msgstr ""
-
-#: ../src/ClientZone/ParovacFaktur.php:424
-#, php-format
-msgid "Platba %s  %s byla sparovana s fakturou %s"
-msgstr ""
-
-#: ../src/ClientZone/ParovacFaktur.php:482
-#, php-format
-msgid "Faktura %s byla vytvořena z dokladu %s"
-msgstr ""
-
-#: ../src/ClientZone/ParovacFaktur.php:551
-msgid "Neidentifikovaná platba"
-msgstr ""
-
-#: ../src/ClientZone/ParovacFaktur.php:558
-msgid "Platba bez faktury"
-msgstr ""
-
-#: ../src/ClientZone/ParovacFaktur.php:677
-#, php-format
-msgid "Platba pro fakturu %s nebyla dohledána"
-msgstr ""
-
-#: ../src/ClientZone/Upominac.php:65
-msgid "Getting clients"
-msgstr "Getting clients"
-
-#: ../src/ClientZone/Upominac.php:69
-#, php-format
-msgid "%s Clients Found"
-msgstr "%s Clients Found"
-
-#: ../src/ClientZone/Upominac.php:70
-msgid "Getting debts"
-msgstr "Getting debts"
-
-#: ../src/ClientZone/Upominac.php:92
-#, php-format
-msgid "%s Debts Found"
-msgstr "%s Debts Found"
-
-#: ../src/ClientZone/Upominac.php:119 ../src/ClientZone/Upominac.php:122
-#, php-format
-msgid "Clear %s Remind labels"
-msgstr "Clear %s Remind labels"
-
-#: ../src/ClientZone/Upominac.php:140
-#, php-format
-msgid "%d clients to remind process"
-msgstr "%d clients to remind process"
-
-#: ../src/ClientZone/Upominac.php:146
-#, php-format
-msgid "(%d / %d) #%s LMS# %s %s "
-msgstr "(%d / %d) #%s LMS# %s %s "
-
-#: ../src/ClientZone/Upominac.php:158
-#, php-format
-msgid "User %s not present in LMS; cannot set dashboard "
-msgstr "User %s not present in LMS; cannot set dashboard "
-
-#: ../src/ClientZone/Upominac.php:200
-#, php-format
-msgid "Dashboard for: %d "
-msgstr "Dashboard for: %d "
-
-#: ../src/ClientZone/Upominac.php:209
-#, php-format
-msgid "Disconnect for: %d "
-msgstr "Disconnect for: %d "
-
-#: ../src/ClientZone/Upominac.php:239
-msgid "Invoice locked: skipping process"
-msgstr "Invoice locked: skipping process"
-
-#: ../src/ClientZone/Upominac.php:292
-#, php-format
-msgid "Invoice %s remind %s date saved"
-msgstr "Invoice %s remind %s date saved"
-
-#: ../src/ClientZone/Upominac.php:295
-#, php-format
-msgid "Invoice %s remind %s date save failed"
-msgstr "Invoice %s remind %s date save failed"
-
-#: ../src/ClientZone/Upominac.php:301
-msgid "Remind send disbled"
-msgstr "Remind send disbled"
-
-#: ../src/ClientZone/Upominac.php:304
-#, php-format
-msgid "Remind %d already sent"
-msgstr "Remind %d already sent"
-
-#: ../src/ClientZone/Upominac.php:308
-msgid "No debts to remind"
-msgstr "No debts to remind"
-
-#: ../src/ClientZone/Upominac.php:317
-#, php-format
-msgid "Invoice %s locked again"
-msgstr "Invoice %s locked again"
-
-#: ../src/ClientZone/Upominac.php:320
-#, php-format
-msgid "Invoice %s locking failed"
-msgstr "Invoice %s locking failed"
-
-#: ../src/ClientZone/Upominac.php:398
-msgid "UPOMINKA NEBYLA ODESLANA!!!!"
-msgstr ""
-
-#: ../src/ClientZone/Upominac.php:402
-#, php-format
-msgid "Set Label %s "
-msgstr "Set Label %s "
-
-#: ../src/ClientZone/Upominac.php:413
-#, php-format
-msgid "Set dashboards for %d customers"
-msgstr "Set dashboards for %d customers"
-
-#: ../src/ClientZone/Upominac.php:428
-#, php-format
-msgid "Disconnect %d customers"
-msgstr "Disconnect %d customers"
-
-#: ../src/ClientZone/Upominac.php:443
-#, php-format
-msgid "Connect %d customers"
-msgstr "Connect %d customers"
-
-#: ../src/ClientZone/Upominka.php:70
-#, php-format
-msgid ""
-"%s \n"
-"\n"
-"-----------------------\n"
-" celkem za %s,-"
-msgstr ""
-
-#: ../src/ClientZone/Upominka.php:85
-#, php-format
-msgid "Klient %s nema email - HELPDESK RESIT %s !!!"
-msgstr ""
-
-#: ../src/ClientZone/User.php:111 ../src/ClientZone/User.php:116
-#: ../src/ClientZone/User.php:186
-msgid "Delete"
-msgstr "Delete"
-
-#: ../src/ClientZone/User.php:112
-#, php-format
-msgid "Are you sure %s ?"
-msgstr "Are you sure %s ?"
-
-#: ../src/ClientZone/User.php:188
-#: ../src/ClientZone/ui/AdminPricelist.php:72
-msgid "Edit"
-msgstr "Edit"
-
-#: ../src/ClientZone/WebHookHandler.php:129
-#: ../src/ClientZone/WebHookHandler.php:138
-msgid "No Update Action Defined"
-msgstr "No Update Action Defined"
-
-#: ../src/ClientZone/WebHookHandler.php:147
-msgid "No Delete Action Defined"
-msgstr "No Delete Action Defined"
-
-#: ../src/ClientZone/ZalohyZeSmluvDoPohledavek.php:142
-#, php-format
-msgid "Pohledávka %d vytvořena"
-msgstr ""
-
-#: ../src/ClientZone/ZalohyZeSmluvDoPohledavek.php:150
-#, php-format
-msgid "Bylo vygenerováno %s ostatních pohledávek z %s zálohových faktur"
-msgstr ""
-
-#: ../src/ClientZone/ZalohyZeSmluvDoPohledavek.php:165
-#: ../src/ClientZone/ZalohyZeSmluvDoZavazku.php:165
-#, php-format
-msgid "Nepodařilo se smazat zálohovou fakturu %s"
-msgstr ""
-
-#: ../src/ClientZone/ZalohyZeSmluvDoPohledavek.php:169
-msgid "Zálohové faktury převedené na pohledávky byly smazány"
-msgstr ""
-
-#: ../src/ClientZone/ZalohyZeSmluvDoZavazku.php:142
-#, php-format
-msgid "Závazek %d vytvořen"
-msgstr ""
-
-#: ../src/ClientZone/ZalohyZeSmluvDoZavazku.php:150
-#, php-format
-msgid "Bylo vygenerováno %s ostatních závazků z %s zálohových faktur"
-msgstr ""
-
-#: ../src/ClientZone/ZalohyZeSmluvDoZavazku.php:169
-msgid "Zálohové faktury převedené na závazky byly smazány"
-msgstr ""
-
-#: ../src/ClientZone/orderplugins/Common.php:37
-msgid "Common item"
-msgstr "Common item"
-
-#: ../src/ClientZone/orderplugins/Common.php:57
-msgid "Product Code"
-msgstr "Product Code"
-
-#: ../src/ClientZone/orderplugins/Common.php:57
-msgid "ANTENA_2ODB_OUTDOOR"
-msgstr "ANTENA_2ODB_OUTDOOR"
-
-#: ../src/ClientZone/orderplugins/Common.php:58
-msgid "Product code from our pricelist"
-msgstr "Product code from our pricelist"
-
-#: ../src/ClientZone/orderplugins/Common.php:61
-msgid "Items count"
-msgstr "Items count"
-
-#: ../src/ClientZone/orderplugins/Common.php:61
-msgid "Amount requested"
-msgstr "Amount requested"
-
-#: ../src/ClientZone/orderplugins/Common.php:64
-msgid "Note for stuff"
-msgstr "Note for stuff"
-
-#: ../src/ClientZone/orderplugins/Common.php:65
-msgid "ASAP Please"
-msgstr "ASAP Please"
-
-#: ../src/ClientZone/orderplugins/Common.php:65
-msgid "Your kind words about ordered item"
-msgstr "Your kind words about ordered item"
-
-#: ../src/ClientZone/orderplugins/Common.php:107
-#, php-format
-msgid "Producet with code %s does not exist"
-msgstr "Producet with code %s does not exist"
-
-#: ../src/ClientZone/ui/AddressContactsLinks.php:37
-msgid "New Contact"
-msgstr "New Contact"
-
-#: ../src/ClientZone/ui/AddressForm.php:27
-msgid "Code"
-msgstr "Code"
-
-#: ../src/ClientZone/ui/AddressForm.php:29
-#: ../src/ClientZone/ui/CartForm.php:36
-#: ../src/ClientZone/ui/KontaktForm.php:27
-#: ../src/ClientZone/ui/UserForm.php:27 ../src/createaccount.php:139
-#: ../src/newcustomer.php:161
-msgid "Name"
-msgstr "Name"
-
-#: ../src/ClientZone/ui/AddressForm.php:32
-msgid "Email address is empty"
-msgstr "Email address is empty"
-
-#: ../src/ClientZone/ui/AddressForm.php:36
-#: ../src/ClientZone/ui/KontaktForm.php:31
-#: ../src/ClientZone/ui/UserForm.php:31 ../src/admpasswrcvr.php:70
-#: ../src/custmpassrecv.php:78
-msgid "Email"
-msgstr "Email"
-
-#: ../src/ClientZone/ui/AddressForm.php:42
-#: ../src/ClientZone/ui/ColumnsForm.php:102
-#: ../src/ClientZone/ui/KontaktForm.php:48
-#: ../src/ClientZone/ui/UserForm.php:38
-#, fuzzy
-msgid "Uložit"
-msgstr "Save"
-
-#: ../src/ClientZone/ui/AdminPricelist.php:43
-#: ../src/ClientZone/ui/MainMenu.php:81
-#: ../src/ClientZone/ui/MainMenu.php:97
-#: ../src/ClientZone/ui/Pricelist.php:43 ../src/pricelist.php:13
-msgid "Pricelist"
-msgstr "Pricelist"
-
-#: ../src/ClientZone/ui/AdminPricelist.php:45
-#: ../src/ClientZone/ui/Pricelist.php:45
-#, php-format
-msgid "%s items found"
-msgstr "%s items found"
-
-#: ../src/ClientZone/ui/BootstrapMenu.php:44
-#: ../src/ClientZone/ui/BootstrapMenu.php:64
-msgid "Settings"
-msgstr "Settings"
-
-#: ../src/ClientZone/ui/BootstrapMenu.php:53
-#: ../src/ClientZone/ui/BootstrapMenu.php:74 ../src/changecustpw.php:91
-#: ../src/changepassword.php:89
-msgid "Password change"
-msgstr "Password change"
-
-#: ../src/ClientZone/ui/BootstrapMenu.php:54 ../src/about.php:15
-#: ../src/about.php:19
+#: src/about.php:15 src/about.php:19 src/ClientZone/ui/PageBottom.php:60
 msgid "About"
 msgstr "About"
 
-#: ../src/ClientZone/ui/BootstrapMenu.php:56
-#: ../src/ClientZone/ui/BootstrapMenu.php:76
-msgid "Sign Out"
-msgstr "Sign Out"
-
-#: ../src/ClientZone/ui/BootstrapMenu.php:69
-#: ../src/ClientZone/ui/BootstrapMenu.php:88
-#: ../src/ClientZone/ui/CartForm.php:30
-msgid "Cart"
-msgstr "Cart"
-
-#: ../src/ClientZone/ui/BootstrapMenu.php:96
-#: ../src/ClientZone/ui/BootstrapMenu.php:103
-#: ../src/ClientZone/ui/FlexiBeeLoginForm.php:24 ../src/adminlogin.php:47
-#: ../src/admpasswrcvr.php:78 ../src/custmpassrecv.php:88
-#: ../src/customerlogin.php:35 ../src/flexibeelogin.php:16
-msgid "Sign In"
-msgstr "Sign In"
-
-#: ../src/ClientZone/ui/BootstrapMenu.php:99
-#: ../src/ClientZone/ui/FlexiBeeLoginForm.php:20
-#: ../src/ClientZone/ui/FlexiBeeLoginForm.php:22
-#: ../src/ClientZone/ui/KontaktForm.php:37
-msgid "Login"
-msgstr "Login"
-
-#: ../src/ClientZone/ui/BootstrapMenu.php:100
-#: ../src/ClientZone/ui/KontaktForm.php:39 ../src/adminlogin.php:67
-#: ../src/admpasswrcvr.php:43 ../src/changecustpw.php:65
-#: ../src/changepassword.php:66 ../src/custmpassrecv.php:43
-#: ../src/customerlogin.php:56
-msgid "Password"
-msgstr "Password"
-
-#: ../src/ClientZone/ui/BootstrapMenu.php:102
-msgid "Remeber me"
-msgstr "Remeber me"
-
-#: ../src/ClientZone/ui/BootstrapMenu.php:104 ../src/createaccount.php:130
-#: ../src/createaccount.php:132
-msgid "Registrace"
-msgstr ""
-
-#: ../src/ClientZone/ui/BootstrapMenu.php:122
-msgid "Click to hide messages"
-msgstr "Click to hide messages"
-
-#: ../src/ClientZone/ui/CartForm.php:31
-msgid "Cart contents"
-msgstr "Cart contents"
-
-#: ../src/ClientZone/ui/CartForm.php:35
-#: ../src/ClientZone/ui/ProductEditor.php:51
-msgid "Image"
-msgstr "Image"
-
-#: ../src/ClientZone/ui/CartForm.php:37
-msgid "Price"
-msgstr "Price"
-
-#: ../src/ClientZone/ui/CartForm.php:38
-msgid "Count"
-msgstr "Count"
-
-#: ../src/ClientZone/ui/CartForm.php:39
-#: ../src/ClientZone/ui/Pillbox.php:56
-msgid "Remove"
-msgstr "Remove"
-
-#: ../src/ClientZone/ui/CartForm.php:55
-msgid "Cash desk"
-msgstr "Cash desk"
-
-#: ../src/ClientZone/ui/CartForm.php:56
-msgid "Order now"
-msgstr "Order now"
-
-#: ../src/ClientZone/ui/CartForm.php:60 ../src/cart.php:14
-msgid "Cart is empty"
-msgstr "Cart is empty"
-
-#: ../src/ClientZone/ui/ColumnsForm.php:112
-msgid "Uložit a zpět na přehled"
-msgstr ""
-
-#: ../src/ClientZone/ui/ColumnsForm.php:121
-msgid "Uložit a další"
-msgstr ""
-
-#: ../src/ClientZone/ui/DownloadInvoiceButton.php:21
-#, php-format
-msgid "Download Your %s"
-msgstr "Download Your %s"
-
-#: ../src/ClientZone/ui/FlexiBeeLoginForm.php:21
-msgid "your email address in most of cases"
-msgstr "your email address in most of cases"
-
-#: ../src/ClientZone/ui/FlexiBeeLoginForm.php:23
-msgid "Password you recivied by email"
-msgstr "Password you recivied by email"
-
-#: ../src/ClientZone/ui/FlexiBeeLoginForm.php:29
-msgid "Please enter your Login and Password"
-msgstr "Please enter your Login and Password"
-
-#: ../src/ClientZone/ui/InvoicesOfAddresButton.php:26
-msgid "Customer Invoices"
-msgstr "Customer Invoices"
-
-#: ../src/ClientZone/ui/KontaktForm.php:29
-#: ../src/ClientZone/ui/UserForm.php:29 ../src/createaccount.php:140
-msgid "Příjmení"
-msgstr ""
-
-#: ../src/ClientZone/ui/KontaktForm.php:33
-msgid "Phone"
-msgstr "Phone"
-
-#: ../src/ClientZone/ui/KontaktForm.php:35
-msgid "Cell"
-msgstr "Cell"
-
-#: ../src/ClientZone/ui/LinkToFlexiBeeButton.php:25
-msgid "Open in FlexiBee"
-msgstr "Open in FlexiBee"
-
-#: ../src/ClientZone/ui/MainMenu.php:79
-msgid "Proposal"
-msgstr "Proposal"
-
-#: ../src/ClientZone/ui/MainMenu.php:85
-msgid "Users"
-msgstr "Users"
-
-#: ../src/ClientZone/ui/MainMenu.php:87
-msgid "New user"
-msgstr "New user"
-
-#: ../src/ClientZone/ui/MainMenu.php:88
-msgid "User overview"
-msgstr "User overview"
-
-#: ../src/ClientZone/ui/MainMenu.php:94 ../src/customerorders.php:34
-msgid "Orders"
-msgstr "Orders"
-
-#: ../src/ClientZone/ui/MainMenu.php:96
-msgid "New order"
-msgstr "New order"
-
-#: ../src/ClientZone/ui/MainMenu.php:98
-msgid "My orders"
-msgstr "My orders"
-
-#: ../src/ClientZone/ui/NavBarSearchBox.php:39
-msgid "Hledání"
-msgstr ""
-
-#: ../src/ClientZone/ui/NavBarSearchBox.php:45
-msgid "Close"
-msgstr "Close"
-
-#: ../src/ClientZone/ui/NavBarSearchBox.php:49
-msgid "Search"
-msgstr "Search"
-
-#: ../src/ClientZone/ui/OrderFormHtml.php:36
-msgid "Service Requested"
-msgstr "Service Requested"
-
-#: ../src/ClientZone/ui/OrderFormHtml.php:38
-msgid "Enter details"
-msgstr "Enter details"
-
-#: ../src/ClientZone/ui/OrderFormHtml.php:44
-#: ../src/ClientZone/ui/Pricelist.php:73
-msgid "Order Now"
-msgstr "Order Now"
-
-#: ../src/ClientZone/ui/OrderFormHtml.php:56
-msgid "Please choose your service"
-msgstr "Please choose your service"
-
-#: ../src/ClientZone/ui/OrderListingItem.php:34
-msgid "Settled"
-msgstr "Settled"
-
-#: ../src/ClientZone/ui/OrderListingItem.php:41
-msgid "Done"
-msgstr "Done"
-
-#: ../src/ClientZone/ui/OrderListingItem.php:44
-msgid "Open"
-msgstr "Open"
-
-#: ../src/ClientZone/ui/OrderListingItem.php:58
-#: ../src/ClientZone/ui/OrderListingItem.php:59
-msgid "Show"
-msgstr "Show"
-
-#: ../src/ClientZone/ui/OrderListingItem.php:62
-#: ../src/ClientZone/ui/OrderListingItem.php:63
-msgid "Download"
-msgstr "Download"
-
-#: ../src/ClientZone/ui/OrderListingItem.php:66
-#: ../src/ClientZone/ui/OrderListingItem.php:67
-msgid "Send"
-msgstr "Send"
-
-#: ../src/ClientZone/ui/OrderListingItem.php:72
-#: ../src/ClientZone/ui/OrderListingItem.php:73
-msgid "ISDOC"
-msgstr "ISDOC"
-
-#: ../src/ClientZone/ui/OrderListingItem.php:79
-#: ../src/ClientZone/ui/OrderListingItem.php:80 ../src/index.php:28
-msgid "FlexiBee"
-msgstr "FlexiBee"
-
-#: ../src/ClientZone/ui/OrderListingItem.php:83
-#: ../src/ClientZone/ui/OrderListingItem.php:85
-msgid "Company"
-msgstr "Company"
-
-#: ../src/ClientZone/ui/OrderListingItem.php:108
-#, php-format
-msgid " %s days to due"
-msgstr " %s days to due"
-
-#: ../src/ClientZone/ui/OrderListingItem.php:111
-#, php-format
-msgid " %s days after due"
-msgstr " %s days after due"
-
-#: ../src/ClientZone/ui/PageBottom.php:32
-msgid "Hosted by"
-msgstr "Hosted by"
-
-#: ../src/ClientZone/ui/PageBottom.php:39
-msgid "More"
-msgstr "More"
-
-#: ../src/ClientZone/ui/PageBottom.php:42
-msgid "About us"
-msgstr "About us"
-
-#: ../src/ClientZone/ui/PageBottom.php:44
-msgid "Source code"
-msgstr "Source code"
-
-#: ../src/ClientZone/ui/PageBottom.php:46
-msgid "Issues"
-msgstr "Issues"
-
-#: ../src/ClientZone/ui/PageBottom.php:54
-msgid "Version"
-msgstr "Version"
-
-#: ../src/ClientZone/ui/PageBottom.php:54
-msgid "&copy; 2017 Vitex Software"
-msgstr "&copy; 2017 Vitex Software"
-
-#: ../src/ClientZone/ui/Pillbox.php:67 ../src/admpasswrcvr.php:78
-#: ../src/custmpassrecv.php:87
-msgid "and"
-msgstr "and"
-
-#: ../src/ClientZone/ui/Pillbox.php:68
-msgid "more ..."
-msgstr "more ..."
-
-#: ../src/ClientZone/ui/Pillbox.php:71
-msgid "add item"
-msgstr "add item"
-
-#: ../src/ClientZone/ui/Pillbox.php:74
-msgid "Toggle dropdown"
-msgstr "Toggle dropdown"
-
-#: ../src/ClientZone/ui/ProductEditor.php:45
-msgid "Thumbnail"
-msgstr "Thumbnail"
-
-#: ../src/ClientZone/ui/ProductEditor.php:45
-msgid "Small 150x150px"
-msgstr "Small 150x150px"
-
-#: ../src/ClientZone/ui/ProductEditor.php:52
-msgid "Large image"
-msgstr "Large image"
-
-#: ../src/ClientZone/ui/ProductEditor.php:59
-msgid "Save"
-msgstr "Save"
-
-#: ../src/ClientZone/ui/ProductEditor.php:97
-#, php-format
-msgid "%s File %s was attached"
-msgstr "%s File %s was attached"
-
-#: ../src/ClientZone/ui/RecordsWithLabel.php:28
-#, php-format
-msgid "%s records with label %s"
-msgstr "%s records with label %s"
-
-#: ../src/ClientZone/ui/RightsForm.php:21 ../src/user.php:29
-msgid "Uživatel"
-msgstr ""
-
-#: ../src/ClientZone/ui/SettleForm.php:24
-msgid "Zákazník"
-msgstr ""
-
-#: ../src/ClientZone/ui/SettleForm.php:25
-msgid "Jaroslav Vomáčka"
-msgstr ""
-
-#: ../src/ClientZone/ui/SettleForm.php:26
-msgid "Po zadání dvou písmen budou nabídnuty možnosti"
-msgstr ""
-
-#: ../src/ClientZone/ui/SettleForm.php:30
-msgid "Faktura"
-msgstr ""
-
-#: ../src/ClientZone/ui/SettleForm.php:31
-msgid "Nejprve vyber Zákazníka"
-msgstr ""
-
-#: ../src/ClientZone/ui/SettleForm.php:35
-msgid "Kasa"
-msgstr ""
-
-#: ../src/ClientZone/ui/SettleForm.php:40
-msgid "Celkem"
-msgstr ""
-
-#: ../src/ClientZone/ui/SettleForm.php:45
-msgid "Popis"
-msgstr ""
-
-#: ../src/ClientZone/ui/TWBSwitch.php:28 ../src/adresar.php:53
-#: ../src/kontakt.php:59 ../src/user.php:40
-msgid "Yes"
-msgstr "Yes"
-
-#: ../src/ClientZone/ui/TWBSwitch.php:31 ../src/adresar.php:51
-#: ../src/kontakt.php:57 ../src/user.php:39
-msgid "No"
-msgstr ""
-
-#: ../src/ClientZone/ui/UserForm.php:33
-msgid "Přihlašovací jméno"
-msgstr ""
-
-#: ../src/ClientZone/ui/WebPage.php:86
-msgid "Please sign in as admin first"
-msgstr "Please sign in as admin first"
-
-#: ../src/ClientZone/ui/WebPage.php:102
-msgid "Please sign in as user first"
-msgstr "Please sign in as user first"
-
-#: ../src/ClientZone/ui/ZewlScoreLabel.php:33
-msgid "Zewl score"
-msgstr "Zewl score"
-
-#: ../src/about.php:21
+#: src/about.php:21
 msgid "Vitex Software"
 msgstr "Vitex Software"
 
-#: ../src/adminlogin.php:14 ../src/customerlogin.php:14
-msgid "Please enable cookies in your browser"
-msgstr "Please enable cookies in your browser"
+#: src/maildocument.php:22 src/maildocument.php:33 src/getisdoc.php:35
+#: src/order.php:20 src/order.php:28 src/getpdf.php:40 src/document.php:22
+msgid "Wrong call"
+msgstr "Wrong call"
 
-#: ../src/adminlogin.php:37
-msgid "Signed as"
-msgstr "Signed as"
+#: src/maildocument.php:41
+msgid "Cannot send e-mail: your account has no valid e-mail address"
+msgstr "Cannot send e-mail: your account has no valid e-mail address"
 
-#: ../src/adminlogin.php:43
-msgid "Please enter your login creditials"
-msgstr "Please enter your login creditials"
-
-#: ../src/adminlogin.php:57
-msgid "Welcome to ClientZone administration"
-msgstr "Welcome to ClientZone administration"
-
-#: ../src/adminlogin.php:61 ../src/customerlogin.php:49 ../src/index.php:47
-msgid "Sign in"
-msgstr "Sign in"
-
-#: ../src/adminlogin.php:65 ../src/admpasswrcvr.php:42
-#: ../src/custmpassrecv.php:42 ../src/customerlogin.php:53
-msgid "Username"
-msgstr "Username"
-
-#: ../src/adminlogin.php:76 ../src/admpasswrcvr.php:55
-#: ../src/custmpassrecv.php:62 ../src/customerlogin.php:65
-msgid "Lost password recovery"
-msgstr "Lost password recovery"
-
-#: ../src/adminlogin.php:81 ../src/customerlogin.php:70
-#: ../src/newcustomer.php:138
-msgid "Sign On"
-msgstr "Sign On"
-
-#: ../src/adminpricelist.php:14
-msgid "Pricelist Admin"
-msgstr "Pricelist Admin"
-
-#: ../src/admpasswrcvr.php:38 ../src/custmpassrecv.php:37 ../src/index.php:14
-msgid "clientzone"
-msgstr "clientzone"
-
-#: ../src/admpasswrcvr.php:38 ../src/custmpassrecv.php:37
+#: src/maildocument.php:50
 #, php-format
-msgid "New password for %s"
-msgstr "New password for %s"
+msgid "Document %s"
+msgstr "Document %s"
 
-#: ../src/admpasswrcvr.php:40 ../src/custmpassrecv.php:40
-msgid "Sign On informations was changed:\n"
-msgstr "Sign On informations was changed:\n"
-
-#: ../src/admpasswrcvr.php:47
+#: src/maildocument.php:55
 #, php-format
-msgid "Your new password was sent to %s"
-msgstr "Your new password was sent to %s"
+msgid "your document %s is in attachment"
+msgstr "your document %s is in attachment"
 
-#: ../src/admpasswrcvr.php:52 ../src/custmpassrecv.php:59
-msgid "Please enter your email."
-msgstr "Please enter your email."
+#: src/maildocument.php:67
+#, php-format
+msgid "Document was sent to %s"
+msgstr "Document was sent to %s"
 
-#: ../src/admpasswrcvr.php:65 ../src/custmpassrecv.php:72
+#: src/maildocument.php:72
+msgid "Mailer does not work"
+msgstr "Mailer does not work"
+
+#: src/maildocument.php:78
+#, php-format
+msgid "Sending failed: %s"
+msgstr "Sending failed: %s"
+
+#: src/prdimg.php:24 src/productimage.php:14
+msgid "Missing product ID"
+msgstr "Missing product ID"
+
+#: src/mycontact.php:22
+msgid "Please sign in with your customer account to edit contact details"
+msgstr "Please sign in with your customer account to edit contact details"
+
+#: src/mycontact.php:35
+msgid "Your contact record was not found"
+msgstr "Your contact record was not found"
+
+#: src/mycontact.php:52
+msgid "Please fill in your name"
+msgstr "Please fill in your name"
+
+#: src/mycontact.php:55
+msgid "Please enter a valid email address"
+msgstr "Please enter a valid email address"
+
+#: src/mycontact.php:78
+msgid "Contact details were saved"
+msgstr "Contact details were saved"
+
+#: src/mycontact.php:81
+msgid "Contact details could not be saved"
+msgstr "Contact details could not be saved"
+
+#: src/mycontact.php:100 src/ClientZone/ui/MainMenu.php:55
+msgid "My Contact"
+msgstr "My Contact"
+
+#: src/mycontact.php:103
+msgid "Personal data"
+msgstr "Personal data"
+
+#: src/mycontact.php:104
+msgid "My contact details"
+msgstr "My contact details"
+
+#: src/mycontact.php:106
 msgid ""
-"Forgot your password? Enter your e-mail address you entered during the "
-"registration and we will send you a new one."
-msgstr ""
-"Forgot your password? Enter your e-mail address you entered during the "
-"registration and we will send you a new one."
-
-#: ../src/admpasswrcvr.php:71 ../src/custmpassrecv.php:79
-msgid "Send New Password"
-msgstr "Send New Password"
-
-#: ../src/admpasswrcvr.php:77 ../src/custmpassrecv.php:86
-msgid "Please check your mailbox for new password"
-msgstr "Please check your mailbox for new password"
-
-#: ../src/adresar.php:33 ../src/kontakt.php:77
-msgid "Address"
-msgstr "Address"
-
-#: ../src/adresar.php:48 ../src/kontakt.php:54
-msgid "Delete ?"
-msgstr "Delete ?"
-
-#: ../src/api/getCustomerScore.php:20
-msgid "FlexiBee Address ID"
-msgstr "FlexiBee Address ID"
-
-#: ../src/api/getCustomerScore.php:21
-msgid "Get Score"
-msgstr "Get Score"
-
-#: ../src/bin/InitializeHistory.php:22
-#, php-format
-msgid "History table %s is not empty"
-msgstr "History table %s is not empty"
-
-#: ../src/bin/InitializeHistory.php:31
-#, php-format
-msgid "%d records found in evidence %s"
-msgstr "%d records found in evidence %s"
-
-#: ../src/bin/InitializeHistory.php:38
-#, php-format
-msgid "Saving record %s into history table"
-msgstr "Saving record %s into history table"
-
-#: ../src/bin/ParujFaktury.php:10
-msgid "Stahuji Výpisy online"
+"Under GDPR you have the right to keep your personal data accurate and up to "
+"date. Changes are saved to your contact record in our accounting system."
 msgstr ""
 
-#: ../src/bin/ParujFaktury.php:14
-msgid "Zahajuji programové párování"
-msgstr ""
+#: src/mycontact.php:126
+msgid "Also available"
+msgstr "Also available"
 
-#: ../src/bin/ParujFaktury.php:16
-msgid "Párování hotovo"
-msgstr ""
+#: src/mycontact.php:128
+msgid "Company / billing address is managed separately."
+msgstr "Company / billing address is managed separately."
 
-#: ../src/bin/ProcessUnprocessedChanges.php:25
-#, php-format
-msgid "Last processed change %d Last Availble Change: %d"
-msgstr "Last processed change %d Last Availble Change: %d"
+#: src/mycontact.php:133 src/ClientZone/ui/MainMenu.php:54
+msgid "My Account"
+msgstr "My Account"
 
-#: ../src/bin/ProcessUnprocessedChanges.php:34
-#, php-format
-msgid "%d unprocessed changes found"
-msgstr "%d unprocessed changes found"
+#: src/mycontact.php:138 src/ClientZone/ui/MainMenu.php:56
+#: src/changepassword.php:118
+msgid "Password change"
+msgstr "Password change"
 
-#: ../src/bin/ProcessUnprocessedChanges.php:37
-#, php-format
-msgid "Done for now. Last processed change %d Last Availble Change: %d"
-msgstr "Done for now. Last processed change %d Last Availble Change: %d"
+#: src/pricelist.php:15 src/ClientZone/ui/Pricelist.php:47
+#: src/ClientZone/ui/MainMenu.php:31
+msgid "Catalog"
+msgstr "Catalog"
 
-#: ../src/bin/ProcessUnprocessedChanges.php:41
-msgid "No changes to process"
-msgstr "No changes to process"
-
-#: ../src/cart.php:20
+#: src/cart.php:19
 #, php-format
 msgid "Cart Item %s was removed"
 msgstr "Cart Item %s was removed"
 
-#: ../src/cart.php:26 ../src/orderform.php:13 ../src/ordernow.php:16
-msgid "Spoje.Net Order Form"
-msgstr "Spoje.Net Order Form"
+#: src/cart.php:27 src/ClientZone/ui/CartForm.php:27
+#: src/ClientZone/ui/MainMenu.php:92
+msgid "Cart"
+msgstr "Cart"
 
-#: ../src/cash.php:27
-#, php-format
-msgid "Faktura %s byla uhrazena"
-msgstr ""
-
-#: ../src/cash.php:38
-#, php-format
-msgid "Vrať přeplatek %s"
-msgstr ""
-
-#: ../src/cash.php:51
-msgid "Pokladna"
-msgstr ""
-
-#: ../src/cash.php:65 ../src/cash.php:97
-msgid "Úhrada faktury"
-msgstr ""
-
-#: ../src/cash.php:75
-msgid "Příjem"
-msgstr ""
-
-#: ../src/cash.php:85 ../src/cash.php:104
-msgid "Výdej"
-msgstr ""
-
-#: ../src/cash.php:92
-msgid "Operace Pokladny"
-msgstr ""
-
-#: ../src/cash.php:101
-msgid "Vklad"
-msgstr ""
-
-#: ../src/cash.php:107
-#, fuzzy
-msgid "Přehled"
-msgstr "Hostgroup overview"
-
-#: ../src/cash.php:108
-msgid "Transakce"
-msgstr ""
-
-#: ../src/cenik.php:17 ../src/prdimg.php:14 ../src/productimage.php:14
-msgid "Missing product ID"
-msgstr "Missing product ID"
-
-#: ../src/changecustpw.php:51 ../src/changepassword.php:52
-msgid "User password change"
-msgstr "User password change"
-
-#: ../src/changecustpw.php:59 ../src/changepassword.php:60
-#: ../src/custmpassrecv.php:33
-msgid "Password was changed"
-msgstr "Password was changed"
-
-#: ../src/changecustpw.php:62 ../src/changepassword.php:63
-msgid "Changed password"
-msgstr "Changed password"
-
-#: ../src/changecustpw.php:63 ../src/changepassword.php:64
-#, php-format
-msgid "Dear user %s, your password was changed to"
-msgstr "Dear user %s, your password was changed to"
-
-#: ../src/changecustpw.php:75 ../src/changepassword.php:73
-msgid "Current password"
-msgstr "Current password"
-
-#: ../src/changecustpw.php:79 ../src/changepassword.php:77
-msgid "New Password"
-msgstr "New Password"
-
-#: ../src/changecustpw.php:83 ../src/changepassword.php:81
-msgid "Password confirm"
-msgstr "Password confirm"
-
-#: ../src/changecustpw.php:87 ../src/changepassword.php:85
-msgid "Change password"
-msgstr "Change password"
-
-#: ../src/createaccount.php:41
-msgid "mailová adresa je příliš krátká"
-msgstr ""
-
-#: ../src/createaccount.php:45
-msgid "chyba v mailové adrese"
-msgstr ""
-
-#: ../src/createaccount.php:52
-#, php-format
-msgid "Mailová adresa %s je již zaregistrována"
-msgstr ""
-
-#: ../src/createaccount.php:60
-msgid "heslo je příliš krátké"
-msgstr ""
-
-#: ../src/createaccount.php:63
-msgid "kontrola hesla nesouhlasí"
-msgstr ""
-
-#: ../src/createaccount.php:73
-#, php-format
-msgid ""
-"Zadané uživatelské jméno %s je již v databázi použito. Zvolte prosím jiné."
-msgstr ""
-
-#: ../src/createaccount.php:96
-msgid "Administrátirský účet byl vytvořen"
-msgstr ""
-
-#: ../src/createaccount.php:99
-msgid "Uživatelský účet byl vytvořen"
-msgstr ""
-
-#: ../src/createaccount.php:104
-msgid "Potvrzení registrace"
-msgstr ""
-
-#: ../src/createaccount.php:111
-#, php-format
-msgid "Nová registrace do Systému: %s"
-msgstr ""
-
-#: ../src/createaccount.php:113
-msgid "Právě byl zaregistrován nový uživatel:\n"
-msgstr ""
-
-#: ../src/createaccount.php:122
-msgid "Zápis do databáze se nezdařil!"
-msgstr ""
-
-#: ../src/createaccount.php:142
-msgid "přihlašovací jméno"
-msgstr ""
-
-#: ../src/createaccount.php:143
-msgid "heslo"
-msgstr ""
-
-#: ../src/createaccount.php:144
-msgid "potvrzení hesla"
-msgstr ""
-
-#: ../src/createaccount.php:145
-msgid "emailová adresa"
-msgstr ""
-
-#: ../src/createaccount.php:147
-msgid "Registrovat"
-msgstr ""
-
-#: ../src/createaccount.php:147
-msgid "dokončit registraci"
-msgstr ""
-
-#: ../src/custmpassrecv.php:55
-#, php-format
-msgid "unknown email address %s"
-msgstr "unknown email address %s"
-
-#: ../src/customerlogin.php:17
-msgid "Sign in first please"
-msgstr "Sign in first please"
-
-#: ../src/customerlogin.php:45
-msgid "Welcome to ClientZone"
-msgstr "Welcome to ClientZone"
-
-#: ../src/customerlogin.php:55
-msgid "usually your email address"
-msgstr "usually your email address"
-
-#: ../src/customerorders.php:24 ../src/myorders.php:15 ../src/myorders.php:22
+#: src/myorders.php:17
 msgid "My Orders"
 msgstr "My Orders"
 
-#: ../src/customerorders.php:29
-msgid "Invoices"
-msgstr "Invoices"
-
-#: ../src/flexibeeinit.php:15
-msgid "FlexiBee Init"
-msgstr "FlexiBee Init"
-
-#: ../src/flexibeeinit.php:28
-msgid "ChangesApi Povoleno"
-msgstr ""
-
-#: ../src/flexibeeinit.php:30
-msgid "ChangesAPI povoleno"
-msgstr ""
-
-#: ../src/flexibeeinit.php:33
-msgid "ChangesAPI zakázáno"
-msgstr ""
-
-#: ../src/flexibeelogin.php:19
-msgid "I already have an customer number"
-msgstr "I already have an customer number"
-
-#: ../src/getisdoc.php:33 ../src/getpdf.php:39 ../src/maildocument.php:29
-msgid "Wrong call"
-msgstr "Wrong call"
-
-#: ../src/index.php:25 ../src/index.php:35 ../src/index.php:44
-msgid "Cennik"
-msgstr ""
-
-#: ../src/index.php:38
-msgid "Order Form"
-msgstr "Order Form"
-
-#: ../src/index.php:50
-msgid "Sign up"
-msgstr "Sign up"
-
-#: ../src/kontakt.php:45 ../src/kontakt.php:74
-msgid "Contact"
-msgstr "Contact"
-
-#: ../src/labels.php:21 ../src/labels.php:31
-msgid "Label"
-msgstr "Label"
-
-#: ../src/logout.php:19
-msgid "Sign Off"
-msgstr "Sign Off"
-
-#: ../src/logout.php:23
-msgid "Thank you for your favor and we look forward to another visit"
-msgstr "Thank you for your favor and we look forward to another visit"
-
-#: ../src/maildocument.php:21
-#, php-format
-msgid "%s %s"
-msgstr "%s %s"
-
-#: ../src/maildocument.php:22
-msgid "Dear Customer, your document is in attachment"
-msgstr "Dear Customer, your document is in attachment"
-
-#: ../src/maildocument.php:23
-msgid "Invoice was sent"
-msgstr "Invoice was sent"
-
-#: ../src/maildocument.php:25
-msgid "Mailer does not work"
-msgstr "Mailer does not work"
-
-#: ../src/newcustomer.php:36
+#: src/newcustomer.php:36
 msgid "Human control field is empty"
 msgstr "Human control field is empty"
 
-#: ../src/newcustomer.php:40
+#: src/newcustomer.php:40
 msgid "six"
 msgstr "six"
 
-#: ../src/newcustomer.php:43
+#: src/newcustomer.php:43
 msgid "Mail address is too short"
 msgstr "Mail address is too short"
 
-#: ../src/newcustomer.php:48
+#: src/newcustomer.php:48
 msgid "invalid email address"
 msgstr "invalid email address"
 
-#: ../src/newcustomer.php:55
+#: src/newcustomer.php:55
 #, php-format
 msgid "Mail address %s is allready registered"
 msgstr "Mail address %s is allready registered"
 
-#: ../src/newcustomer.php:61
+#: src/newcustomer.php:61
 msgid "Are you smart human ?"
 msgstr "Are you smart human ?"
 
-#: ../src/newcustomer.php:80
+#: src/newcustomer.php:80
 msgid "Company registered"
 msgstr "Company registered"
 
-#: ../src/newcustomer.php:94
+#: src/newcustomer.php:92
 msgid "User account created"
 msgstr "User account created"
 
-#: ../src/newcustomer.php:97
+#: src/newcustomer.php:96
 msgid "Sign On info"
 msgstr "Sign On info"
 
-#: ../src/newcustomer.php:99
+#: src/newcustomer.php:98
 msgid "clientzone Account"
 msgstr "clientzone Account"
 
-#: ../src/newcustomer.php:105
+#: src/newcustomer.php:104
 #, php-format
 msgid "New clientzone account: %s"
 msgstr "New clientzone account: %s"
 
-#: ../src/newcustomer.php:108
+#: src/newcustomer.php:107
 msgid "New Customer"
 msgstr "New Customer"
 
-#: ../src/newcustomer.php:120
+#: src/newcustomer.php:119
 msgid "Error saving Contact"
 msgstr "Error saving Contact"
 
-#: ../src/newcustomer.php:127
+#: src/newcustomer.php:126
 msgid "Error saving Company"
-msgstr ""
+msgstr "Error saving Company"
 
-#: ../src/newcustomer.php:141
+#: src/newcustomer.php:137
+msgid "Sign On"
+msgstr "Sign On"
+
+#: src/newcustomer.php:140 src/ClientZone/ui/Dashboard.php:35
 msgid "Welcome"
 msgstr "Welcome"
 
-#: ../src/newcustomer.php:145
+#: src/newcustomer.php:144
 msgid "After registering, you will be prompted to order service."
 msgstr "After registering, you will be prompted to order service."
 
-#: ../src/newcustomer.php:146
+#: src/newcustomer.php:145
 msgid "All notifications target to your email"
 msgstr "All notifications target to your email"
 
-#: ../src/newcustomer.php:162 ../src/newcustomer.php:166
+#: src/newcustomer.php:161 src/ClientZone/ui/AddressForm.php:32
+#: src/ClientZone/ui/UserForm.php:30 src/ClientZone/ui/KontaktForm.php:30
+msgid "Name"
+msgstr "Name"
+
+#: src/newcustomer.php:162 src/newcustomer.php:166
 msgid "Requied"
 msgstr "Requied"
 
-#: ../src/newcustomer.php:166
+#: src/newcustomer.php:166
 msgid "Email Address"
 msgstr "Email Address"
 
-#: ../src/newcustomer.php:168
+#: src/newcustomer.php:168
 msgid "Telephone number"
 msgstr "Telephone number"
 
-#: ../src/newcustomer.php:171
+#: src/newcustomer.php:171
 msgid "Company ID number"
 msgstr "Company ID number"
 
-#: ../src/newcustomer.php:171 ../src/newcustomer.php:173
+#: src/newcustomer.php:171 src/newcustomer.php:173
 msgid "Only for company"
 msgstr "Only for company"
 
-#: ../src/newcustomer.php:173
+#: src/newcustomer.php:173
 msgid "Company VAT number"
 msgstr "Company VAT number"
 
-#: ../src/newcustomer.php:175
+#: src/newcustomer.php:175
 msgid "The Cube"
 msgstr "The Cube"
 
-#: ../src/newcustomer.php:176
+#: src/newcustomer.php:176
 msgid "How many walls does the cube have?"
 msgstr "How many walls does the cube have?"
 
-#: ../src/newcustomer.php:176
+#: src/newcustomer.php:176
 msgid "Only for humans"
 msgstr "Only for humans"
 
-#: ../src/newcustomer.php:179
+#: src/newcustomer.php:183
 msgid "Singn On"
 msgstr "Singn On"
 
-#: ../src/newcustomer.php:180
+#: src/newcustomer.php:184
 msgid "Finish"
 msgstr "Finish"
 
-#: ../src/order.php:19 ../src/order.php:24 ../src/orderform.php:24
-msgid "Order"
-msgstr "Order"
+#: src/myaccount.php:19
+msgid "Your company record was not found"
+msgstr "Your company record was not found"
 
-#: ../src/order.php:27
+#: src/myaccount.php:30
+msgid "Address"
+msgstr "Address"
+
+#: src/ClientZone/ReceivedInvoiceLister.php:28
+#: src/ClientZone/InvoiceLister.php:26 src/ClientZone/ui/AddressForm.php:30
+#: src/ClientZone/OrderLister.php:26
+msgid "Code"
+msgstr "Code"
+
+#: src/ClientZone/ReceivedInvoiceLister.php:29
+#: src/ClientZone/InvoiceLister.php:27 src/ClientZone/OrderLister.php:27
+msgid "Amount"
+msgstr "Amount"
+
+#: src/ClientZone/ReceivedInvoiceLister.php:30
+#: src/ClientZone/InvoiceLister.php:28 src/ClientZone/OrderLister.php:28
+msgid "Currency"
+msgstr "Currency"
+
+#: src/ClientZone/ReceivedInvoiceLister.php:31
+#: src/ClientZone/InvoiceLister.php:29
+msgid "Due date"
+msgstr "Due date"
+
+#: src/ClientZone/ReceivedInvoiceLister.php:32
+#: src/ClientZone/InvoiceLister.php:30 src/ClientZone/OrderLister.php:30
+msgid "Status"
+msgstr "Status"
+
+#: src/ClientZone/ReceivedInvoiceLister.php:33
+#: src/ClientZone/InvoiceLister.php:31 src/ClientZone/OrderLister.php:31
+msgid "Actions"
+msgstr "Actions"
+
+#: src/ClientZone/ReceivedInvoiceLister.php:53
+#: src/ClientZone/InvoiceLister.php:51 src/ClientZone/ui/Dashboard.php:167
+#: src/ClientZone/ui/Dashboard.php:274 src/ClientZone/ui/Dashboard.php:338
+#: src/ClientZone/ui/OrderListingItem.php:25
+#: src/ClientZone/ui/OrderListingItem.php:62 src/ClientZone/OrderLister.php:51
+#: src/ClientZone/OrderLister.php:86
+msgid "Show"
+msgstr "Show"
+
+#: src/ClientZone/ReceivedInvoiceLister.php:69
+#: src/ClientZone/InvoiceLister.php:67
+#: src/ClientZone/ui/OrderListingItem.php:37
+msgid "Settled"
+msgstr "Settled"
+
+#: src/ClientZone/User.php:29
+msgid "Local administrator accounts are no longer supported"
+msgstr "Local administrator accounts are no longer supported"
+
+#: src/ClientZone/OrderItem.php:138
+msgid "Please choose service"
+msgstr "Please choose service"
+
+#: src/ClientZone/OrderItem.php:148
 #, php-format
-msgid "Download Your Proforma #%s Here"
-msgstr "Download Your Proforma #%s Here"
+msgid "Unknown service %s"
+msgstr "Unknown service %s"
 
-#: ../src/ordernow.php:8
-msgid "Please sign in to finish your order"
-msgstr "Please sign in to finish your order"
+#: src/ClientZone/OrderItem.php:155
+msgid "Missing product code"
+msgstr "Missing product code"
 
-#: ../src/ordernow.php:25
-msgid "Order Accepted"
-msgstr "Order Accepted"
-
-#: ../src/ordernow.php:31
+#: src/ClientZone/OrderItem.php:165
 #, php-format
-msgid "Order %s was accepted"
-msgstr "Order %s was accepted"
+msgid "Product with code %s does not exist"
+msgstr "Product with code %s does not exist"
 
-#: ../src/ordernow.php:40
+#: src/ClientZone/OrderItem.php:285
 #, php-format
-msgid "%s for your order"
-msgstr "%s for your order"
+msgid "%s added to cart"
+msgstr "%s added to cart"
 
-#: ../src/ordernow.php:42
+#: src/ClientZone/OrderItem.php:289
 #, php-format
-msgid "Proforma was sent to %s"
-msgstr "Proforma was sent to %s"
+msgid "%s chnged in cart"
+msgstr "%s chnged in cart"
 
-#: ../src/ordernow.php:46
+#: src/ClientZone/Order.php:67
+msgid "Please wait while our salesman contact you."
+msgstr "Please wait while our salesman contact you."
+
+#: src/ClientZone/Order.php:70
+msgid "purchase order"
+msgstr "purchase order"
+
+#: src/ClientZone/Order.php:118
+msgid "Proforma"
+msgstr "Proforma"
+
+#: src/ClientZone/Order.php:159
+msgid "Invoice"
+msgstr "Invoice"
+
+#: src/ClientZone/Order.php:219
 #, php-format
-msgid "Get Your %s Here %s"
-msgstr "Get Your %s Here %s"
+msgid "Unhandled type of item"
+msgstr "Unhandled type of item"
 
-#: ../src/ordernow.php:64
-msgid "The order is empty"
-msgstr "The order is empty"
+#: src/ClientZone/orderplugins/Common.php:37
+msgid "Common item"
+msgstr "Common item"
 
-#: ../src/search.php:18
+#: src/ClientZone/orderplugins/Common.php:57
+msgid "Product Code"
+msgstr "Product Code"
+
+#: src/ClientZone/orderplugins/Common.php:57
+msgid "ANTENA_2ODB_OUTDOOR"
+msgstr "ANTENA_2ODB_OUTDOOR"
+
+#: src/ClientZone/orderplugins/Common.php:58
+msgid "Product code from our pricelist"
+msgstr "Product code from our pricelist"
+
+#: src/ClientZone/orderplugins/Common.php:61
+msgid "Items count"
+msgstr "Items count"
+
+#: src/ClientZone/orderplugins/Common.php:61
+msgid "Amount requested"
+msgstr "Amount requested"
+
+#: src/ClientZone/orderplugins/Common.php:64
+msgid "Note for stuff"
+msgstr "Note for stuff"
+
+#: src/ClientZone/orderplugins/Common.php:65
+msgid "ASAP Please"
+msgstr "ASAP Please"
+
+#: src/ClientZone/orderplugins/Common.php:65
+msgid "Your kind words about ordered item"
+msgstr "Your kind words about ordered item"
+
+#: src/ClientZone/orderplugins/Common.php:107
+#, php-format
+msgid "Producet with code %s does not exist"
+msgstr "Producet with code %s does not exist"
+
+#: src/ClientZone/orderplugins/VoIPcredit.php:41
+#: src/ClientZone/orderplugins/VoIPcredit.php:269
+msgid "VoIP Credit"
+msgstr "VoIP Credit"
+
+#: src/ClientZone/orderplugins/VoIPcredit.php:66
+#: src/ClientZone/orderplugins/DomainCredit.php:57
+msgid "Required Credit Value"
+msgstr "Required Credit Value"
+
+#: src/ClientZone/orderplugins/VoIPcredit.php:66
+msgid "with VAT"
+msgstr "with VAT"
+
+#: src/ClientZone/orderplugins/VoIPcredit.php:68
+msgid "Your price"
+msgstr "Your price"
+
+#: src/ClientZone/orderplugins/VoIPcredit.php:68
+msgid "without VAT"
+msgstr "without VAT"
+
+#: src/ClientZone/orderplugins/VoIPcredit.php:87
+#, php-format
+msgid "%d characters minimum"
+msgstr "%d characters minimum"
+
+#: src/ClientZone/orderplugins/VoIPcredit.php:90
+msgid "For Number"
+msgstr "For Number"
+
+#: src/ClientZone/orderplugins/VoIPcredit.php:92
+msgid "Telephone number you requested to pay"
+msgstr "Telephone number you requested to pay"
+
+#: src/ClientZone/orderplugins/VoIPcredit.php:113
+#: src/ClientZone/orderplugins/DomainCredit.php:79
+msgid "Please enter Requested Credit"
+msgstr "Please enter Requested Credit"
+
+#: src/ClientZone/orderplugins/VoIPcredit.php:119
+#: src/ClientZone/orderplugins/DomainCredit.php:85
+#, php-format
+msgid "Please enter at least %s Credit"
+msgstr "Please enter at least %s Credit"
+
+#: src/ClientZone/orderplugins/VoIPcredit.php:136
+msgid "VoIP Number not set"
+msgstr "VoIP Number not set"
+
+#: src/ClientZone/orderplugins/VoIPcredit.php:142
+msgid "IPEX library is not available"
+msgstr "IPEX library is not available"
+
+#: src/ClientZone/orderplugins/VoIPcredit.php:154
+#: src/ClientZone/orderplugins/VoIPcredit.php:167
+#, php-format
+msgid "VoIP Number %s is not registered"
+msgstr "VoIP Number %s is not registered"
+
+#: src/ClientZone/orderplugins/VoIPcredit.php:177
+#, php-format
+msgid "Cannot add credit to VoIP Number %s"
+msgstr "Cannot add credit to VoIP Number %s"
+
+#: src/ClientZone/orderplugins/VoIPcredit.php:186
+#: src/ClientZone/OrderPlugin.php:103
+msgid "Please sign in to order item"
+msgstr "Please sign in to order item"
+
+#: src/ClientZone/orderplugins/VoIPcredit.php:210
+#, php-format
+msgid "VoIP Number %s does not belong to you"
+msgstr "VoIP Number %s does not belong to you"
+
+#: src/ClientZone/orderplugins/VoIPcredit.php:284
+#, php-format
+msgid "Item %s will be settled by abraflexi-voip-credit after payment"
+msgstr "Item %s will be settled by abraflexi-voip-credit after payment"
+
+#: src/ClientZone/orderplugins/DomainCredit.php:37
+#: src/ClientZone/orderplugins/DomainCredit.php:106
+msgid "Domain Credit"
+msgstr "Domain Credit"
+
+#: src/ClientZone/orderplugins/DomainCredit.php:59
+msgid "Amount of Credit you requested"
+msgstr "Amount of Credit you requested"
+
+#: src/ClientZone/orderplugins/DomainCredit.php:119
+#, php-format
+msgid "Item %s will be settled by abraflexi-domain-credit after payment"
+msgstr "Item %s will be settled by abraflexi-domain-credit after payment"
+
+#: src/ClientZone/Engine.php:171
+msgid "Záznam byl uložen"
+msgstr "Záznam byl uložen"
+
+#: src/ClientZone/Engine.php:178
+msgid "Záznam nebyl uložen"
+msgstr "Záznam nebyl uložen"
+
+#: src/ClientZone/Engine.php:308
+msgid "Chybná hodnota"
+msgstr "Chybná hodnota"
+
+#: src/ClientZone/Engine.php:417
+#, php-format
+msgid " %s %s byl smazán "
+msgstr " %s %s byl smazán "
+
+#: src/ClientZone/Engine.php:423
+#, php-format
+msgid " %s %s nebyl smazán "
+msgstr " %s %s nebyl smazán "
+
+#: src/ClientZone/Engine.php:466 src/ClientZone/DataGrid.php:199
+#, fuzzy
+msgid "Smazat"
+msgstr "delete"
+
+#: src/ClientZone/Engine.php:471 src/ClientZone/DataGrid.php:198
+msgid "Modify"
+msgstr "Modify"
+
+#: src/ClientZone/DataSource.php:131
+msgid "Smazáno"
+msgstr "Smazáno"
+
+#: src/ClientZone/DataSource.php:138
+msgid "Záznam byl přidán"
+msgstr "Záznam byl přidán"
+
+#: src/ClientZone/DataSource.php:141
+msgid "Záznam nebyl přidám"
+msgstr "Záznam nebyl přidám"
+
+#: src/ClientZone/DataSource.php:149
+msgid "Záznam byl upraven"
+msgstr "Záznam byl upraven"
+
+#: src/ClientZone/DataSource.php:152
+msgid "Záznam nebyl upravn"
+msgstr "Záznam nebyl upravn"
+
+#: src/ClientZone/ui/PageBottom.php:43 src/ClientZone/ui/WebPage.php:36
+#: src/ClientZone/ui/BootstrapMenu.php:27 src/includes/Init.php:40
+msgid "Client Zone"
+msgstr "Client Zone"
+
+#: src/ClientZone/ui/PageBottom.php:47
+msgid "&copy; 2017-2026 Vitex Software"
+msgstr "&copy; 2017-2026 Vitex Software"
+
+#: src/ClientZone/ui/PageBottom.php:48
+msgid "Version"
+msgstr "Version"
+
+#: src/ClientZone/ui/PageBottom.php:51
+msgid "Products"
+msgstr "Products"
+
+#: src/ClientZone/ui/PageBottom.php:56
+msgid "Hosted by"
+msgstr "Hosted by"
+
+#: src/ClientZone/ui/PageBottom.php:59
+msgid "More"
+msgstr "More"
+
+#: src/ClientZone/ui/PageBottom.php:61
+msgid "Source code"
+msgstr "Source code"
+
+#: src/ClientZone/ui/PageBottom.php:62
+msgid "Issues"
+msgstr "Issues"
+
+#: src/ClientZone/ui/FlexiBeeLoginForm.php:24
+#: src/ClientZone/ui/FlexiBeeLoginForm.php:26
+#: src/ClientZone/ui/KontaktForm.php:40
+msgid "Login"
+msgstr "Login"
+
+#: src/ClientZone/ui/FlexiBeeLoginForm.php:25
+msgid "your email address in most of cases"
+msgstr "your email address in most of cases"
+
+#: src/ClientZone/ui/FlexiBeeLoginForm.php:27
+msgid "Password you recivied by email"
+msgstr "Password you recivied by email"
+
+#: src/ClientZone/ui/FlexiBeeLoginForm.php:28 src/ClientZone/ui/MainMenu.php:78
+#: src/ClientZone/ui/ShopHero.php:44 src/flexibeelogin.php:16
+#: src/passwordrecovery.php:109 src/passwordrecovery.php:118 src/login.php:44
+#: src/login.php:55 src/logout.php:30
+msgid "Sign In"
+msgstr "Sign In"
+
+#: src/ClientZone/ui/FlexiBeeLoginForm.php:33
+msgid "Please enter your Login and Password"
+msgstr "Please enter your Login and Password"
+
+#: src/ClientZone/ui/MyContactForm.php:51
+msgid "First name"
+msgstr "First name"
+
+#: src/ClientZone/ui/MyContactForm.php:58
+msgid "Surname"
+msgstr "Surname"
+
+#: src/ClientZone/ui/MyContactForm.php:64
+msgid "Title (before)"
+msgstr "Title (before)"
+
+#: src/ClientZone/ui/MyContactForm.php:70
+msgid "Title (after)"
+msgstr "Title (after)"
+
+#: src/ClientZone/ui/MyContactForm.php:77 src/ClientZone/ui/AddressForm.php:39
+#: src/ClientZone/ui/UserForm.php:34 src/ClientZone/ui/KontaktForm.php:34
+#: src/passwordrecovery.php:89
+msgid "Email"
+msgstr "Email"
+
+#: src/ClientZone/ui/MyContactForm.php:79
+msgid "Used for login and notifications"
+msgstr "Used for login and notifications"
+
+#: src/ClientZone/ui/MyContactForm.php:85 src/ClientZone/ui/KontaktForm.php:36
+msgid "Phone"
+msgstr "Phone"
+
+#: src/ClientZone/ui/MyContactForm.php:91
+msgid "Mobile"
+msgstr "Mobile"
+
+#: src/ClientZone/ui/MyContactForm.php:98
+msgid "Note"
+msgstr "Note"
+
+#: src/ClientZone/ui/MyContactForm.php:102
+msgid "Save contact details"
+msgstr "Save contact details"
+
+#: src/ClientZone/ui/MyContactForm.php:105 src/changepassword.php:109
+msgid "Change password"
+msgstr "Change password"
+
+#: src/ClientZone/ui/SetupForm.php:37
+msgid "Send mails From"
+msgstr "Send mails From"
+
+#: src/ClientZone/ui/SetupForm.php:39
+msgid "Outgoing emails sender address"
+msgstr "Outgoing emails sender address"
+
+#: src/ClientZone/ui/SetupForm.php:43
+msgid "Send info To"
+msgstr "Send info To"
+
+#: src/ClientZone/ui/SetupForm.php:44
+msgid "Your Address"
+msgstr "Your Address"
+
+#: src/ClientZone/ui/SetupForm.php:45
+msgid "Where to send info about new orderers"
+msgstr "Where to send info about new orderers"
+
+#: src/ClientZone/ui/SetupForm.php:49
+msgid "Suppress Emails"
+msgstr "Suppress Emails"
+
+#: src/ClientZone/ui/SetupForm.php:51
+msgid "Do not send any emails"
+msgstr "Do not send any emails"
+
+#: src/ClientZone/ui/SetupForm.php:55
+msgid "Allow Sign Up"
+msgstr "Allow Sign Up"
+
+#: src/ClientZone/ui/SetupForm.php:57
+msgid "Customer can create new account"
+msgstr "Customer can create new account"
+
+#: src/ClientZone/ui/SetupForm.php:61
+msgid "Show Pricelist"
+msgstr "Show Pricelist"
+
+#: src/ClientZone/ui/SetupForm.php:63
+msgid "Show pricelist of items with \"eshop\" flag or label"
+msgstr ""
+
+#: src/ClientZone/ui/SetupForm.php:67
+msgid "Plaintext"
+msgstr "Plaintext"
+
+#: src/ClientZone/ui/SetupForm.php:73
+msgid "Contact password hashing"
+msgstr "Contact password hashing"
+
+#: src/ClientZone/ui/SetupForm.php:75
+msgid "Store AbraFlexi contact passwords hashed (recommended) or as plaintext"
+msgstr "Store AbraFlexi contact passwords hashed (recommended) or as plaintext"
+
+#: src/ClientZone/ui/AddressForm.php:35
+msgid "Email address is empty"
+msgstr "Email address is empty"
+
+#: src/ClientZone/ui/AddressForm.php:45 src/ClientZone/ui/ColumnsForm.php:104
+#: src/ClientZone/ui/UserForm.php:41 src/ClientZone/ui/KontaktForm.php:51
+#, fuzzy
+msgid "Uložit"
+msgstr "Save"
+
+#: src/ClientZone/ui/ProductEditor.php:47
+msgid "Thumbnail"
+msgstr "Thumbnail"
+
+#: src/ClientZone/ui/ProductEditor.php:47
+msgid "Small 150x150px"
+msgstr "Small 150x150px"
+
+#: src/ClientZone/ui/ProductEditor.php:53
+msgid "Image"
+msgstr "Image"
+
+#: src/ClientZone/ui/ProductEditor.php:54
+msgid "Large image"
+msgstr "Large image"
+
+#: src/ClientZone/ui/ProductEditor.php:61
+msgid "Save"
+msgstr "Save"
+
+#: src/ClientZone/ui/ProductEditor.php:99
+#, php-format
+msgid "%s File %s was attached"
+msgstr "%s File %s was attached"
+
+#: src/ClientZone/ui/CartForm.php:26 src/ordernow.php:28
+msgid "Checkout"
+msgstr "Checkout"
+
+#: src/ClientZone/ui/CartForm.php:31
+msgid "Cart is empty"
+msgstr "Cart is empty"
+
+#: src/ClientZone/ui/CartForm.php:34 src/ClientZone/ui/Dashboard.php:78
+#: src/ClientZone/ui/ShopHero.php:36
+msgid "Browse catalog"
+msgstr "Browse catalog"
+
+#: src/ClientZone/ui/CartForm.php:56
+msgid "Total"
+msgstr "Total"
+
+#: src/ClientZone/ui/CartForm.php:58
+#, php-format
+msgid "%s items"
+msgstr "%s items"
+
+#: src/ClientZone/ui/CartForm.php:63
+msgid "Order now"
+msgstr "Order now"
+
+#: src/ClientZone/ui/CartForm.php:84
+#, php-format
+msgid "Qty: %s"
+msgstr "Qty: %s"
+
+#: src/ClientZone/ui/CartForm.php:93
+msgid "Remove"
+msgstr "Remove"
+
+#: src/ClientZone/ui/LinkToFlexiBeeButton.php:25
+msgid "Open in FlexiBee"
+msgstr "Open in FlexiBee"
+
+#: src/ClientZone/ui/OrderFormHtml.php:36
+msgid "Service Requested"
+msgstr "Service Requested"
+
+#: src/ClientZone/ui/OrderFormHtml.php:39
+msgid "Enter details"
+msgstr "Enter details"
+
+#: src/ClientZone/ui/OrderFormHtml.php:50 src/ClientZone/ui/Pricelist.php:117
+msgid "Order Now"
+msgstr "Order Now"
+
+#: src/ClientZone/ui/OrderFormHtml.php:61
+msgid "Please choose your service"
+msgstr "Please choose your service"
+
+#: src/ClientZone/ui/ZewlScoreLabel.php:33
+msgid "Zewl score"
+msgstr "Zewl score"
+
+#: src/ClientZone/ui/Dashboard.php:31
+msgid "My overview"
+msgstr "My overview"
+
+#: src/ClientZone/ui/Dashboard.php:34
+#, php-format
+msgid "Welcome, %s"
+msgstr "Welcome, %s"
+
+#: src/ClientZone/ui/Dashboard.php:39
+msgid "Please review the open items below — they need your attention."
+msgstr "Please review the open items below — they need your attention."
+
+#: src/ClientZone/ui/Dashboard.php:40
+msgid "Here is a summary of your business relationship with us."
+msgstr "Here is a summary of your business relationship with us."
+
+#: src/ClientZone/ui/Dashboard.php:61 src/ClientZone/ui/Dashboard.php:104
+msgid "All invoices"
+msgstr "All invoices"
+
+#: src/ClientZone/ui/Dashboard.php:66 src/ClientZone/ui/Dashboard.php:306
+msgid "All orders"
+msgstr "All orders"
+
+#: src/ClientZone/ui/Dashboard.php:72 src/ClientZone/ui/Dashboard.php:218
+msgid "All received invoices"
+msgstr "All received invoices"
+
+#: src/ClientZone/ui/Dashboard.php:93
+msgid "Action required"
+msgstr "Action required"
+
+#: src/ClientZone/ui/Dashboard.php:94
+msgid "Unpaid invoices"
+msgstr "Unpaid invoices"
+
+#: src/ClientZone/ui/Dashboard.php:97
+#, php-format
+msgid "Outstanding balance: %s"
+msgstr "Outstanding balance: %s"
+
+#: src/ClientZone/ui/Dashboard.php:137 src/ClientZone/ui/Dashboard.php:251
+#, php-format
+msgid "Due %s"
+msgstr "Due %s"
+
+#: src/ClientZone/ui/Dashboard.php:140 src/ClientZone/ui/Dashboard.php:254
+msgid "1 day overdue"
+msgstr "1 day overdue"
+
+#: src/ClientZone/ui/Dashboard.php:141 src/ClientZone/ui/Dashboard.php:255
+#, php-format
+msgid "%d days overdue"
+msgstr "%d days overdue"
+
+#: src/ClientZone/ui/Dashboard.php:172 src/ClientZone/ui/Dashboard.php:279
+#: src/ClientZone/ui/OrderListingItem.php:67 src/ClientZone/OrderLister.php:91
+msgid "Download"
+msgstr "Download"
+
+#: src/ClientZone/ui/Dashboard.php:184
+#, php-format
+msgid "QR payment for %s"
+msgstr "QR payment for %s"
+
+#: src/ClientZone/ui/Dashboard.php:207
+msgid "Awaiting settlement"
+msgstr "Awaiting settlement"
+
+#: src/ClientZone/ui/Dashboard.php:208
+msgid "Unpaid received invoices"
+msgstr "Unpaid received invoices"
+
+#: src/ClientZone/ui/Dashboard.php:211
+#, php-format
+msgid "Outstanding receivable: %s"
+msgstr "Outstanding receivable: %s"
+
+#: src/ClientZone/ui/Dashboard.php:295
+msgid "In progress"
+msgstr "In progress"
+
+#: src/ClientZone/ui/Dashboard.php:296
+msgid "Open orders"
+msgstr "Open orders"
+
+#: src/ClientZone/ui/Dashboard.php:300
+msgid "1 order awaiting completion"
+msgstr "1 order awaiting completion"
+
+#: src/ClientZone/ui/Dashboard.php:301
+#, php-format
+msgid "%d orders awaiting completion"
+msgstr "%d orders awaiting completion"
+
+#: src/ClientZone/ui/Dashboard.php:324
+#, php-format
+msgid "Issued %s"
+msgstr "Issued %s"
+
+#: src/ClientZone/ui/Dashboard.php:353
+msgid "Relationship"
+msgstr "Relationship"
+
+#: src/ClientZone/ui/Dashboard.php:354
+msgid "With us"
+msgstr "With us"
+
+#: src/ClientZone/ui/Dashboard.php:367
+msgid "Documents"
+msgstr "Documents"
+
+#: src/ClientZone/ui/Dashboard.php:370
+msgid "1 document on record"
+msgstr "1 document on record"
+
+#: src/ClientZone/ui/Dashboard.php:371
+#, php-format
+msgid "%d documents on record"
+msgstr "%d documents on record"
+
+#: src/ClientZone/ui/Dashboard.php:375
+msgid "Invoices"
+msgstr "Invoices"
+
+#: src/ClientZone/ui/Dashboard.php:378
+msgid "1 invoice issued"
+msgstr "1 invoice issued"
+
+#: src/ClientZone/ui/Dashboard.php:379
+#, fuzzy, php-format
+msgid "%d invoices issued"
+msgstr "%d invoices issued"
+
+#: src/ClientZone/ui/Dashboard.php:384 src/ClientZone/ui/MainMenu.php:44
+msgid "Orders"
+msgstr "Orders"
+
+#: src/ClientZone/ui/Dashboard.php:387
+msgid "1 order issued"
+msgstr "1 order issued"
+
+#: src/ClientZone/ui/Dashboard.php:388
+#, php-format
+msgid "%d orders issued"
+msgstr "%d orders issued"
+
+#: src/ClientZone/ui/Dashboard.php:394 src/ClientZone/ui/MainMenu.php:42
+#: src/myreceivedinvoices.php:28
+msgid "Received invoices"
+msgstr "Received invoices"
+
+#: src/ClientZone/ui/Dashboard.php:397 src/ClientZone/ui/Dashboard.php:438
+msgid "1 received invoice"
+msgstr "1 received invoice"
+
+#: src/ClientZone/ui/Dashboard.php:398 src/ClientZone/ui/Dashboard.php:439
+#, php-format
+msgid "%d received invoices"
+msgstr "%d received invoices"
+
+#: src/ClientZone/ui/Dashboard.php:405
+msgid "not available"
+msgstr "not available"
+
+#: src/ClientZone/ui/Dashboard.php:411
+msgid "1 year"
+msgstr "1 year"
+
+#: src/ClientZone/ui/Dashboard.php:413
+#, php-format
+msgid "%d years"
+msgstr "%d years"
+
+#: src/ClientZone/ui/Dashboard.php:419
+msgid "Customer since"
+msgstr "Customer since"
+
+#: src/ClientZone/ui/Dashboard.php:421
+msgid "First order or invoice on record"
+msgstr "First order or invoice on record"
+
+#: src/ClientZone/ui/Dashboard.php:425
+msgid "Total spent"
+msgstr "Total spent"
+
+#: src/ClientZone/ui/Dashboard.php:428
+msgid "1 invoice"
+msgstr "1 invoice"
+
+#: src/ClientZone/ui/Dashboard.php:429
+#, php-format
+msgid "%d invoices"
+msgstr "%d invoices"
+
+#: src/ClientZone/ui/Dashboard.php:435
+msgid "Total received"
+msgstr "Total received"
+
+#: src/ClientZone/ui/Dashboard.php:447
+#, php-format
+msgid "%d unpaid · %d open orders"
+msgstr "%d unpaid · %d open orders"
+
+#: src/ClientZone/ui/Dashboard.php:453
+#, php-format
+msgid "%d unpaid received"
+msgstr "%d unpaid received"
+
+#: src/ClientZone/ui/Dashboard.php:459
+msgid "Open items"
+msgstr "Open items"
+
+#: src/ClientZone/ui/Dashboard.php:493
+#, php-format
+msgid "1st reminder: %s"
+msgstr "1st reminder: %s"
+
+#: src/ClientZone/ui/Dashboard.php:496
+#, php-format
+msgid "2nd reminder: %s"
+msgstr "2nd reminder: %s"
+
+#: src/ClientZone/ui/OrdersListing.php:34
+msgid "No documents found."
+msgstr "No documents found."
+
+#: src/ClientZone/ui/NavBarSearchBox.php:36
+#: src/ClientZone/ui/NavBarSearchBox.php:37
+#: src/ClientZone/ui/NavBarSearchBox.php:43
+msgid "Search"
+msgstr "Search"
+
+#: src/ClientZone/ui/OrderListingItem.php:44 src/ClientZone/OrderLister.php:66
+msgid "Done"
+msgstr "Done"
+
+#: src/ClientZone/ui/OrderListingItem.php:47 src/ClientZone/OrderLister.php:68
+msgid "Open"
+msgstr "Open"
+
+#: src/ClientZone/ui/OrderListingItem.php:72 src/ClientZone/OrderLister.php:96
+msgid "Send"
+msgstr "Send"
+
+#: src/ClientZone/ui/OrderListingItem.php:80 src/ClientZone/OrderLister.php:103
+msgid "ISDOC"
+msgstr "ISDOC"
+
+#: src/ClientZone/ui/OrderListingItem.php:158
+msgid "No due date"
+msgstr "No due date"
+
+#: src/ClientZone/ui/OrderListingItem.php:164
+#, php-format
+msgid "%s days to due"
+msgstr "%s days to due"
+
+#: src/ClientZone/ui/OrderListingItem.php:170
+#, php-format
+msgid "%s days after due"
+msgstr "%s days after due"
+
+#: src/ClientZone/ui/RecordsWithLabel.php:28
+#, php-format
+msgid "%s records with label %s"
+msgstr "%s records with label %s"
+
+#: src/ClientZone/ui/Pricelist.php:46
+msgid "Our products"
+msgstr "Our products"
+
+#: src/ClientZone/ui/Pricelist.php:49
+#, php-format
+msgid "%s products"
+msgstr "%s products"
+
+#: src/ClientZone/ui/Pricelist.php:55
+msgid "No products are available right now."
+msgstr "No products are available right now."
+
+#: src/ClientZone/ui/Pricelist.php:106
+msgid "excl. VAT"
+msgstr "excl. VAT"
+
+#: src/ClientZone/ui/RightsForm.php:22
+msgid "Uživatel"
+msgstr "Uživatel"
+
+#: src/ClientZone/ui/WebPage.php:78
+msgid "Please sign in with your customer account"
+msgstr "Please sign in with your customer account"
+
+#: src/ClientZone/ui/WebPage.php:92
+msgid ""
+"This tool is not available in ClientZone. Use AbraFlexi or server "
+"configuration instead."
+msgstr ""
+"This tool is not available in ClientZone. Use AbraFlexi or server "
+"configuration instead."
+
+#: src/ClientZone/ui/ColumnsForm.php:114
+msgid "Uložit a zpět na přehled"
+msgstr "Uložit a zpět na přehled"
+
+#: src/ClientZone/ui/ColumnsForm.php:123
+msgid "Uložit a další"
+msgstr "Uložit a další"
+
+#: src/ClientZone/ui/BootstrapMenu.php:54
+#: src/ClientZone/ui/BootstrapMenu.php:55
+msgid "Switch light / dark mode"
+msgstr "Switch light / dark mode"
+
+#: src/ClientZone/ui/BootstrapMenu.php:100
+msgid "Click to hide messages"
+msgstr "Click to hide messages"
+
+#: src/ClientZone/ui/InvoicesOfAddresButton.php:27
+msgid "Invoices for me"
+msgstr "Invoices for me"
+
+#: src/ClientZone/ui/UserForm.php:32 src/ClientZone/ui/KontaktForm.php:32
+msgid "Příjmení"
+msgstr "Příjmení"
+
+#: src/ClientZone/ui/UserForm.php:36
+msgid "Přihlašovací jméno"
+msgstr "Přihlašovací jméno"
+
+#: src/ClientZone/ui/KontaktForm.php:38
+msgid "Cell"
+msgstr "Cell"
+
+#: src/ClientZone/ui/KontaktForm.php:42 src/changepassword.php:67
+#: src/passwordrecovery.php:32 src/login.php:86
+msgid "Password"
+msgstr "Password"
+
+#: src/ClientZone/ui/MainMenu.php:36 src/ClientZone/ui/ShopHero.php:50
+msgid "New order"
+msgstr "New order"
+
+#: src/ClientZone/ui/MainMenu.php:37
+msgid "My orders"
+msgstr "My orders"
+
+#: src/ClientZone/ui/MainMenu.php:38
+msgid "My invoices"
+msgstr "My invoices"
+
+#: src/ClientZone/ui/MainMenu.php:53 src/dashboard.php:17
+msgid "Dashboard"
+msgstr "Dashboard"
+
+#: src/ClientZone/ui/MainMenu.php:57
+msgid "Sign Out"
+msgstr "Sign Out"
+
+#: src/ClientZone/ui/MainMenu.php:72 src/login.php:110
+msgid "Sign Up"
+msgstr "Sign Up"
+
+#: src/ClientZone/ui/ToPayItems.php:29
+msgid "Payments"
+msgstr "Payments"
+
+#: src/ClientZone/ui/ToPayItems.php:30
+msgid "Orders to pay"
+msgstr "Orders to pay"
+
+#: src/ClientZone/ui/ShopHero.php:24
+msgid "Self-service portal"
+msgstr "Self-service portal"
+
+#: src/ClientZone/ui/ShopHero.php:29
+msgid ""
+"Order domains, VoIP credit and hosting services online — instantly, without "
+"waiting for a callback."
+msgstr ""
+"Order domains, VoIP credit and hosting services online — instantly, without "
+"waiting for a callback."
+
+#: src/ClientZone/ui/AdminPricelist.php:43
+msgid "Pricelist"
+msgstr "Pricelist"
+
+#: src/ClientZone/ui/AdminPricelist.php:45
+#, php-format
+msgid "%s items found"
+msgstr "%s items found"
+
+#: src/ClientZone/ui/AdminPricelist.php:72
+msgid "Edit"
+msgstr "Edit"
+
+#: src/ClientZone/ui/DownloadInvoiceButton.php:21
+#, php-format
+msgid "Download Your %s"
+msgstr "Download Your %s"
+
+#: src/ClientZone/ui/AddressContactsLinks.php:37
+msgid "New Contact"
+msgstr "New Contact"
+
+#: src/ClientZone/OrderLister.php:29
+msgid "Issued"
+msgstr "Issued"
+
+#: src/ClientZone/OrderPlugin.php:89
+msgid "Product not specified"
+msgstr "Product not specified"
+
+#: src/ClientZone/OrderPlugin.php:119
+#, php-format
+msgid "Item %s was settled without action handled in OrderPlugin code"
+msgstr "Item %s was settled without action handled in OrderPlugin code"
+
+#: src/ClientZone/Customer.php:65
+msgid "missing login"
+msgstr "missing login"
+
+#: src/ClientZone/Customer.php:70
+msgid "missing password"
+msgstr "missing password"
+
+#: src/ClientZone/Customer.php:93
+msgid "Contact not found after authentication"
+msgstr "Contact not found after authentication"
+
+#: src/ClientZone/Customer.php:633
+msgid "Password set"
+msgstr "Password set"
+
+#: src/ClientZone/Customer.php:649
+msgid "Password set failed"
+msgstr "Password set failed"
+
+#: src/ClientZone/Configurator.php:238
+#, php-format
+msgid "Configuration file %s was saved"
+msgstr "Configuration file %s was saved"
+
+#: src/ClientZone/Configurator.php:242
+#, php-format
+msgid "Configuration file %s was not saved"
+msgstr "Configuration file %s was not saved"
+
+#: src/ClientZone/DataGrid.php:197
+#, fuzzy
+msgid "Přidat"
+msgstr "Add contact information"
+
+#: src/ClientZone/DataGrid.php:360 src/ClientZone/DataGrid.php:400
+#: src/ClientZone/DataGrid.php:438
+msgid "Je třeba označit nějaké řádky"
+msgstr "Je třeba označit nějaké řádky"
+
+#: src/changepassword.php:25
+msgid "Please enter new password"
+msgstr "Please enter new password"
+
+#: src/changepassword.php:28
+msgid "Password cant match with login"
+msgstr "Password cant match with login"
+
+#: src/changepassword.php:33
+msgid "Please enter password confirmation"
+msgstr "Please enter password confirmation"
+
+#: src/changepassword.php:36
+msgid "Password control do not match"
+msgstr "Password control do not match"
+
+#: src/changepassword.php:41
+msgid "Please enter current password"
+msgstr "Please enter current password"
+
+#: src/changepassword.php:44
+msgid "Current password invalid"
+msgstr "Current password invalid"
+
+#: src/changepassword.php:49
+msgid "User password change"
+msgstr "User password change"
+
+#: src/changepassword.php:55
+msgid "Password was changed"
+msgstr "Password was changed"
+
+#: src/changepassword.php:61
+msgid "Changed password"
+msgstr "Changed password"
+
+#: src/changepassword.php:64
+#, php-format
+msgid "Dear user %s, your password was changed to"
+msgstr "Dear user %s, your password was changed to"
+
+#: src/changepassword.php:84
+msgid "Current password"
+msgstr "Current password"
+
+#: src/changepassword.php:92
+msgid "New Password"
+msgstr "New Password"
+
+#: src/changepassword.php:100
+msgid "Password confirm"
+msgstr "Password confirm"
+
+#: src/changepassword.php:112
+msgid "Back to my contact"
+msgstr "Back to my contact"
+
+#: src/flexibeelogin.php:19
+msgid "I already have an customer number"
+msgstr "I already have an customer number"
+
+#: src/passwordrecovery.php:27
+msgid "New password"
+msgstr "New password"
+
+#: src/passwordrecovery.php:30
+msgid "Sign On informations was changed:\n"
+msgstr "Sign On informations was changed:\n"
+
+#: src/passwordrecovery.php:31 src/login.php:73
+msgid "Username"
+msgstr "Username"
+
+#: src/passwordrecovery.php:41
+#, php-format
+msgid "Your new password was sent to %s"
+msgstr "Your new password was sent to %s"
+
+#: src/passwordrecovery.php:45
+msgid "Password could not be changed"
+msgstr "Password could not be changed"
+
+#: src/passwordrecovery.php:49
+#, php-format
+msgid "unknown email address %s"
+msgstr "unknown email address %s"
+
+#: src/passwordrecovery.php:54
+msgid "Password recovery failed. Please try again."
+msgstr "Password recovery failed. Please try again."
+
+#: src/passwordrecovery.php:60
+msgid "Please enter your email."
+msgstr "Please enter your email."
+
+#: src/passwordrecovery.php:63 src/passwordrecovery.php:75 src/login.php:107
+msgid "Lost password recovery"
+msgstr "Lost password recovery"
+
+#: src/passwordrecovery.php:74
+msgid "Account"
+msgstr "Account"
+
+#: src/passwordrecovery.php:79
+msgid ""
+"Forgot your password? Enter your e-mail address you entered during the "
+"registration and we will send you a new one."
+msgstr ""
+"Forgot your password? Enter your e-mail address you entered during the "
+"registration and we will send you a new one."
+
+#: src/passwordrecovery.php:99
+msgid "Send New Password"
+msgstr "Send New Password"
+
+#: src/passwordrecovery.php:113
+msgid "Please check your mailbox for new password"
+msgstr "Please check your mailbox for new password"
+
+#: src/template.php:15
+msgid "Spoje.Net"
+msgstr "Spoje.Net"
+
+#: src/search.php:18
 msgid "Search results"
 msgstr "Search results"
 
-#: ../src/search.php:31
+#: src/search.php:31
 #, php-format
 msgid "%d occurencies of %s found"
 msgstr "%d occurencies of %s found"
 
-#: ../src/search.php:66
+#: src/search.php:66
 #, php-format
 msgid "Search for %s results in %s"
 msgstr "Search for %s results in %s"
 
-#: ../src/settings.php:15
+#: src/orderform.php:13
+msgid "Please sign in to place an order"
+msgstr "Please sign in to place an order"
+
+#: src/orderform.php:15
+msgid "Spoje.Net Order Form"
+msgstr "Spoje.Net Order Form"
+
+#: src/orderform.php:27 src/order.php:33 src/order.php:38 src/ordernow.php:17
+msgid "Order"
+msgstr "Order"
+
+#: src/login.php:16
+msgid "Please enable cookies in your browser"
+msgstr "Please enable cookies in your browser"
+
+#: src/login.php:32 src/login.php:34
+msgid "Invalid username or password"
+msgstr "Invalid username or password"
+
+#: src/login.php:36
+msgid "Sign in failed. Please try again."
+msgstr "Sign in failed. Please try again."
+
+#: src/login.php:58
+msgid "Sign in with your account to order services and manage invoices."
+msgstr "Sign in with your account to order services and manage invoices."
+
+#: src/login.php:82
+msgid "Usually your email address"
+msgstr "Usually your email address"
+
+#: src/login.php:97
+msgid "Sign in"
+msgstr "Sign in"
+
+#: src/setup.php:29
+msgid "Configuration Finished"
+msgstr "Configuration Finished"
+
+#: src/setup.php:40
+msgid "ClientZone Setup"
+msgstr "ClientZone Setup"
+
+#: src/setup.php:82
+msgid "Finish Configuration"
+msgstr "Finish Configuration"
+
+#: src/setup.php:85
+msgid "App Config File Preview"
+msgstr "App Config File Preview"
+
+#: src/setup.php:88
+msgid "FlexiBee Config File Preview"
+msgstr "FlexiBee Config File Preview"
+
+#: src/setup.php:93 src/setup.php:96
+msgid "AbraFlexi Connection Status"
+msgstr "AbraFlexi Connection Status"
+
+#: src/setup.php:97
+msgid "Connection not set"
+msgstr "Connection not set"
+
+#: src/setup.php:102
+msgid "AbraFlexi Setup"
+msgstr "AbraFlexi Setup"
+
+#: src/logout.php:17
+msgid "You have been signed out"
+msgstr "You have been signed out"
+
+#: src/logout.php:19
+msgid "Sign Off"
+msgstr "Sign Off"
+
+#: src/logout.php:23
+msgid "Signed out"
+msgstr "Signed out"
+
+#: src/logout.php:25
+msgid "Thank you for your favor and we look forward to another visit"
+msgstr "Thank you for your favor and we look forward to another visit"
+
+#: src/ordernow.php:15
+msgid "Please sign in to finish your order"
+msgstr "Please sign in to finish your order"
+
+#: src/ordernow.php:29
+msgid "Order Accepted"
+msgstr "Order Accepted"
+
+#: src/ordernow.php:35
+#, php-format
+msgid "Document creation failed (%s)"
+msgstr "Document creation failed (%s)"
+
+#: src/ordernow.php:45
+msgid "Document"
+msgstr "Document"
+
+#: src/ordernow.php:46
+#, php-format
+msgid "Order %s was accepted"
+msgstr "Order %s was accepted"
+
+#: src/ordernow.php:64
+#, php-format
+msgid "%s for your order"
+msgstr "%s for your order"
+
+#: src/ordernow.php:67
+#, php-format
+msgid "Proforma was sent to %s"
+msgstr "Proforma was sent to %s"
+
+#: src/ordernow.php:77
+#, php-format
+msgid "Document created, but e-mail to %s was not sent (%s)"
+msgstr "Document created, but e-mail to %s was not sent (%s)"
+
+#: src/ordernow.php:79
+msgid "mail disabled or failed"
+msgstr "mail disabled or failed"
+
+#: src/ordernow.php:86
+#, php-format
+msgid "Document created, but e-mail failed: %s"
+msgstr "Document created, but e-mail failed: %s"
+
+#: src/ordernow.php:106
+msgid "The order is empty"
+msgstr "The order is empty"
+
+#: src/ordernow.php:106
+msgid "No document was created"
+msgstr "No document was created"
+
+#: src/ordernow.php:111
+msgid "Back to cart"
+msgstr "Back to cart"
+
+#: src/myinvoices.php:17
+msgid "My Invoices"
+msgstr "My Invoices"
+
+#: src/myreceivedinvoices.php:22
+msgid "Received invoices are available only for supplier-customers"
+msgstr "Received invoices are available only for supplier-customers"
+
+#, php-format
+#~ msgid "%s %s %s"
+#~ msgstr "%s %s %s"
+
+#~ msgid "Invoice was sent"
+#~ msgstr "Invoice was sent"
+
+#~ msgid "Settings"
+#~ msgstr "Settings"
+
+#~ msgid "Change Password"
+#~ msgstr "Change Password"
+
+#~ msgid "Delete ?"
+#~ msgstr "Delete ?"
+
+#~ msgid "No"
+#~ msgstr "No"
+
+#~ msgid "Yes"
+#~ msgstr "Yes"
+
+#~ msgid "FlexiBee"
+#~ msgstr "FlexiBee"
+
+#~ msgid "Company"
+#~ msgstr "Company"
+
+#~ msgid "Please sign in as admin first"
+#~ msgstr "Please sign in as admin first"
+
+#~ msgid "Please sign in as user first"
+#~ msgstr "Please sign in as user first"
+
+#~ msgid "Admin"
+#~ msgstr "Admin"
+
+#~ msgid "Registration disabled"
+#~ msgstr "Registration disabled"
+
+#~ msgid "mail address is too short"
+#~ msgstr "mail address is too short"
+
+#~ msgid "Invalid mail address"
+#~ msgstr "Invalid mail address"
+
+#, php-format
+#~ msgid "Mail addressa  %s is already registered"
+#~ msgstr "Mail addressa  %s is already registered"
+
+#~ msgid "Password is too short"
+#~ msgstr "Password is too short"
+
+#~ msgid "password conntrol do not match"
+#~ msgstr "password conntrol do not match"
+
+#, php-format
+#~ msgid "Username %s is already used. Please choose another one."
+#~ msgstr "Username %s is already used. Please choose another one."
+
+#~ msgid "User Account Created"
+#~ msgstr "User Account Created"
+
+#~ msgid "Potvrzení registrace"
+#~ msgstr "Potvrzení registrace"
+
+#~ msgid "ClientZone sign up confirmation"
+#~ msgstr "ClientZone sign up confirmation"
+
+#, php-format
+#~ msgid "New Registration: %s"
+#~ msgstr "New Registration: %s"
+
+#~ msgid "New Registered User"
+#~ msgstr "New Registered User"
+
+#~ msgid "Cannot create new account"
+#~ msgstr "Cannot create new account"
+
+#~ msgid "Firstnaname"
+#~ msgstr "Firstnaname"
+
+#~ msgid "Lastname"
+#~ msgstr "Lastname"
+
+#~ msgid "password"
+#~ msgstr "password"
+
+#~ msgid "Password Confirmation"
+#~ msgstr "Password Confirmation"
+
+#~ msgid "email address"
+#~ msgstr "email address"
+
+#~ msgid "Register"
+#~ msgstr "Register"
+
+#, php-format
+#~ msgid "Faktura %s byla uhrazena"
+#~ msgstr "Faktura %s byla uhrazena"
+
+#, php-format
+#~ msgid "Vrať přeplatek %s"
+#~ msgstr "Vrať přeplatek %s"
+
+#~ msgid "Pokladna"
+#~ msgstr "Pokladna"
+
+#~ msgid "Úhrada faktury"
+#~ msgstr "Úhrada faktury"
+
+#~ msgid "Příjem"
+#~ msgstr "Příjem"
+
+#~ msgid "Výdej"
+#~ msgstr "Výdej"
+
+#~ msgid "Operace Pokladny"
+#~ msgstr "Operace Pokladny"
+
+#~ msgid "Vklad"
+#~ msgstr "Vklad"
+
 #, fuzzy
-msgid "Nastavení"
-msgstr "Settings"
+#~ msgid "Přehled"
+#~ msgstr "Hostgroup overview"
 
-#: ../src/settings.php:18
-msgid "Change Password"
-msgstr "Change Password"
+#~ msgid "Transakce"
+#~ msgstr "Transakce"
 
-#: ../src/settings.php:21
-msgid "Init FlexiBee"
-msgstr "FlexiBee Address ID"
+#, php-format
+#~ msgid "Download Your Proforma #%s Here"
+#~ msgstr "Download Your Proforma #%s Here"
 
-#: ../src/template.php:15
-msgid "Spoje.Net"
-msgstr "Spoje.Net"
+#~ msgid "Contact"
+#~ msgstr "Contact"
 
-#: ../src/user.php:38
-msgid "Opravdu smazat ?"
-msgstr ""
+#~ msgid "Label"
+#~ msgstr "Label"
 
-#: ../src/users.php:17
-msgid "Přehled uživatelů"
-msgstr ""
+#, php-format
+#~ msgid "Multiplete ContactID"
+#~ msgstr "Multiplete ContactID"
 
-#: ../src/users.php:19
-msgid "Uživatelé"
-msgstr ""
+#~ msgid "Using the first one"
+#~ msgstr "Using the first one"
+
+#, php-format
+#~ msgid "Sign in %s all ok"
+#~ msgstr "Sign in %s all ok"
+
+#, php-format
+#~ msgid "Change version %s already processed"
+#~ msgstr "Change version %s already processed"
+
+#, php-format
+#~ msgid "Handler Class %s does not exist"
+#~ msgstr "Handler Class %s does not exist"
+
+#~ msgid "Empty WebHook request"
+#~ msgstr "Empty WebHook request"
+
+#~ msgid "Last Processed Change ID Saving Failed"
+#~ msgstr "Last Processed Change ID Saving Failed"
+
+#, php-format
+#~ msgid "Last Processed Change ID #%s Saved"
+#~ msgstr "Last Processed Change ID #%s Saved"
+
+#~ msgid "Last Processed Change ID Loading Failed"
+#~ msgstr "Last Processed Change ID Loading Failed"
+
+#, php-format
+#~ msgid "Invoice with Euro currency %s"
+#~ msgstr "Invoice with Euro currency %s"
+
+#, php-format
+#~ msgid "Unknown invoice type: %s %s"
+#~ msgstr "Unknown invoice type: %s %s"
+
+#~ msgid "Invoice found: - overdue?"
+#~ msgstr "Invoice found: - overdue?"
+
+#, php-format
+#~ msgid "Unknown invoice type: %s"
+#~ msgstr "Unknown invoice type: %s"
+
+#~ msgid "Getting clients"
+#~ msgstr "Getting clients"
+
+#, php-format
+#~ msgid "%s Clients Found"
+#~ msgstr "%s Clients Found"
+
+#~ msgid "Getting debts"
+#~ msgstr "Getting debts"
+
+#, php-format
+#~ msgid "%s Debts Found"
+#~ msgstr "%s Debts Found"
+
+#, php-format
+#~ msgid "Clear %s Remind labels"
+#~ msgstr "Clear %s Remind labels"
+
+#, php-format
+#~ msgid "%d clients to remind process"
+#~ msgstr "%d clients to remind process"
+
+#, php-format
+#~ msgid "(%d / %d) #%s LMS# %s %s "
+#~ msgstr "(%d / %d) #%s LMS# %s %s "
+
+#, php-format
+#~ msgid "User %s not present in LMS; cannot set dashboard "
+#~ msgstr "User %s not present in LMS; cannot set dashboard "
+
+#, php-format
+#~ msgid "Dashboard for: %d "
+#~ msgstr "Dashboard for: %d "
+
+#, php-format
+#~ msgid "Disconnect for: %d "
+#~ msgstr "Disconnect for: %d "
+
+#~ msgid "Invoice locked: skipping process"
+#~ msgstr "Invoice locked: skipping process"
+
+#, php-format
+#~ msgid "Invoice %s remind %s date saved"
+#~ msgstr "Invoice %s remind %s date saved"
+
+#, php-format
+#~ msgid "Invoice %s remind %s date save failed"
+#~ msgstr "Invoice %s remind %s date save failed"
+
+#~ msgid "Remind send disbled"
+#~ msgstr "Remind send disbled"
+
+#, php-format
+#~ msgid "Remind %d already sent"
+#~ msgstr "Remind %d already sent"
+
+#~ msgid "No debts to remind"
+#~ msgstr "No debts to remind"
+
+#, php-format
+#~ msgid "Invoice %s locked again"
+#~ msgstr "Invoice %s locked again"
+
+#, php-format
+#~ msgid "Invoice %s locking failed"
+#~ msgstr "Invoice %s locking failed"
+
+#, php-format
+#~ msgid "Set Label %s "
+#~ msgstr "Set Label %s "
+
+#, php-format
+#~ msgid "Set dashboards for %d customers"
+#~ msgstr "Set dashboards for %d customers"
+
+#, php-format
+#~ msgid "Disconnect %d customers"
+#~ msgstr "Disconnect %d customers"
+
+#, php-format
+#~ msgid "Connect %d customers"
+#~ msgstr "Connect %d customers"
+
+#~ msgid "Delete"
+#~ msgstr "Delete"
+
+#, php-format
+#~ msgid "Are you sure %s ?"
+#~ msgstr "Are you sure %s ?"
+
+#~ msgid "No Update Action Defined"
+#~ msgstr "No Update Action Defined"
+
+#~ msgid "No Delete Action Defined"
+#~ msgstr "No Delete Action Defined"
+
+#~ msgid "Remeber me"
+#~ msgstr "Remeber me"
+
+#~ msgid "Cart contents"
+#~ msgstr "Cart contents"
+
+#~ msgid "Price"
+#~ msgstr "Price"
+
+#~ msgid "Count"
+#~ msgstr "Count"
+
+#~ msgid "Cash desk"
+#~ msgstr "Cash desk"
+
+#~ msgid "Customer Invoices"
+#~ msgstr "Customer Invoices"
+
+#~ msgid "Proposal"
+#~ msgstr "Proposal"
+
+#~ msgid "Users"
+#~ msgstr "Users"
+
+#~ msgid "New user"
+#~ msgstr "New user"
+
+#~ msgid "User overview"
+#~ msgstr "User overview"
+
+#~ msgid "Close"
+#~ msgstr "Close"
+
+#, php-format
+#~ msgid " %s days to due"
+#~ msgstr " %s days to due"
+
+#, php-format
+#~ msgid " %s days after due"
+#~ msgstr " %s days after due"
+
+#~ msgid "About us"
+#~ msgstr "About us"
+
+#~ msgid "&copy; 2017 Vitex Software"
+#~ msgstr "&copy; 2017 Vitex Software"
+
+#~ msgid "and"
+#~ msgstr "and"
+
+#~ msgid "more ..."
+#~ msgstr "more ..."
+
+#~ msgid "add item"
+#~ msgstr "add item"
+
+#~ msgid "Toggle dropdown"
+#~ msgstr "Toggle dropdown"
+
+#~ msgid "Signed as"
+#~ msgstr "Signed as"
+
+#~ msgid "Please enter your login creditials"
+#~ msgstr "Please enter your login creditials"
+
+#~ msgid "Welcome to ClientZone administration"
+#~ msgstr "Welcome to ClientZone administration"
+
+#~ msgid "Pricelist Admin"
+#~ msgstr "Pricelist Admin"
+
+#~ msgid "clientzone"
+#~ msgstr "clientzone"
+
+#, php-format
+#~ msgid "New password for %s"
+#~ msgstr "New password for %s"
+
+#~ msgid "FlexiBee Address ID"
+#~ msgstr "FlexiBee Address ID"
+
+#~ msgid "Get Score"
+#~ msgstr "Get Score"
+
+#, php-format
+#~ msgid "History table %s is not empty"
+#~ msgstr "History table %s is not empty"
+
+#, php-format
+#~ msgid "%d records found in evidence %s"
+#~ msgstr "%d records found in evidence %s"
+
+#, php-format
+#~ msgid "Saving record %s into history table"
+#~ msgstr "Saving record %s into history table"
+
+#, php-format
+#~ msgid "Last processed change %d Last Availble Change: %d"
+#~ msgstr "Last processed change %d Last Availble Change: %d"
+
+#, php-format
+#~ msgid "%d unprocessed changes found"
+#~ msgstr "%d unprocessed changes found"
+
+#, php-format
+#~ msgid "Done for now. Last processed change %d Last Availble Change: %d"
+#~ msgstr "Done for now. Last processed change %d Last Availble Change: %d"
+
+#~ msgid "No changes to process"
+#~ msgstr "No changes to process"
+
+#~ msgid "Sign in first please"
+#~ msgstr "Sign in first please"
+
+#~ msgid "Welcome to ClientZone"
+#~ msgstr "Welcome to ClientZone"
+
+#~ msgid "usually your email address"
+#~ msgstr "usually your email address"
+
+#~ msgid "FlexiBee Init"
+#~ msgstr "FlexiBee Init"
+
+#~ msgid "Order Form"
+#~ msgstr "Order Form"
+
+#~ msgid "Sign up"
+#~ msgstr "Sign up"
+
+#, php-format
+#~ msgid "%s %s"
+#~ msgstr "%s %s"
+
+#~ msgid "Dear Customer, your document is in attachment"
+#~ msgstr "Dear Customer, your document is in attachment"
+
+#, php-format
+#~ msgid "Get Your %s Here %s"
+#~ msgstr "Get Your %s Here %s"
+
+#, fuzzy
+#~ msgid "Nastavení"
+#~ msgstr "Settings"
+
+#~ msgid "Init FlexiBee"
+#~ msgstr "FlexiBee Address ID"
 
 #~ msgid "id"
 #~ msgstr "id"
@@ -1624,23 +2070,8 @@ msgstr ""
 #~ msgid "Domain .ORG"
 #~ msgstr "Domain .ORG"
 
-#~ msgid "VoIP Credit"
-#~ msgstr "VoIP Credit"
-
 #~ msgid "Requied Credit Value"
 #~ msgstr "Requied Credit Value"
-
-#~ msgid "For Number"
-#~ msgstr "For Number"
-
-#~ msgid "Telephone number you requested to pay"
-#~ msgstr "Telephone number you requested to pay"
-
-#~ msgid "Please enter Requested Credit"
-#~ msgstr "Please enter Requested Credit"
-
-#~ msgid "VoIP Number not set"
-#~ msgstr "VoIP Number not set"
 
 #~ msgid "login"
 #~ msgstr "login"
@@ -1697,47 +2128,5 @@ msgstr ""
 #~ msgid "Order specific"
 #~ msgstr "Order specific"
 
-msgid "Client Zone"
-msgstr "Client Zone"
-
-msgid "Our products"
-msgstr "Our products"
-
-msgid "Catalog"
-msgstr "Catalog"
-
-msgid "%s products"
-msgstr "%s products"
-
-msgid "No products are available right now."
-msgstr "No products are available right now."
-
-msgid "excl. VAT"
-msgstr "excl. VAT"
-
-msgid "Self-service portal"
-msgstr "Self-service portal"
-
-msgid "Order domains, VoIP credit and hosting services online — instantly, without waiting for a callback."
-msgstr "Order domains, VoIP credit and hosting services online — instantly, without waiting for a callback."
-
-msgid "Browse catalog"
-msgstr "Browse catalog"
-
-msgid "Quick actions"
-msgstr "Quick actions"
-
-msgid "Payments"
-msgstr "Payments"
-
-msgid "Checkout"
-msgstr "Checkout"
-
-msgid "Total"
-msgstr "Total"
-
-msgid "Qty: %s"
-msgstr "Qty: %s"
-
-msgid "%s items"
-msgstr "%s items"
+#~ msgid "Quick actions"
+#~ msgstr "Quick actions"

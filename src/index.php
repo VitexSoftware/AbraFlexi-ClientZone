@@ -14,14 +14,9 @@ require_once 'includes/Init.php';
 
 $oPage->addToHeader(new ui\PageTop(\Ease\Shared::appName()));
 
-$isCustomer = get_class($oUser) === 'ClientZone\Customer';
-if (!$isCustomer) {
-    // Marketing hero only for guests — logged-in users go straight to content
+// Marketing hero for guests only — customers use dashboard.php after login.
+if (!$oUser instanceof Customer) {
     $oPage->container->addItem(new ui\ShopHero());
-}
-
-if ($isCustomer) {
-    $oPage->container->addItem(new ui\ToPayItems($oUser));
 }
 
 if ($shared->getConfigValue('SHOW_PRICELIST') == 'true') {

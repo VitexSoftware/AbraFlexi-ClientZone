@@ -10,10 +10,12 @@ namespace ClientZone;
  */
 require_once 'includes/Init.php';
 
+$oPage->onlyForCustomer();
+
 $id       = $oPage->getRequestValue('id');
 $evidence = $oPage->getRequestValue('evidence');
 
-$document = new \AbraFlexi\RO(is_numeric($id) ? intval($id) : $id,
+$document = new \AbraFlexi\RO(is_numeric($id) ? (int) $id : $id,
     ['evidence' => $evidence]);
 
 if (!is_null($document->getMyKey()) && GateKeeper::isAccessibleBy($document,

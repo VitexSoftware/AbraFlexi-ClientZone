@@ -37,5 +37,16 @@ vagrant: clean
 	vagrant destroy
 	vagrant up
 
-.PHONY : install
-	
+# Gettext: regenerate POT, merge PO, compile MO
+i18n:
+	find src -name '*.php' -print0 | xargs -0 xgettext \
+		--language=PHP --from-code=UTF-8 --keyword=_ --keyword=gettext \
+		--keyword=ngettext:1,2 --package-name=abraflexi-clientzone \
+		--msgid-bugs-address=info@vitexsoftware.cz \
+		-o i18n/clientzone.pot
+	msgmerge --update --backup=simple i18n/cs_CZ/LC_MESSAGES/clientzone.po i18n/clientzone.pot
+	msgmerge --update --backup=simple i18n/en_US/LC_MESSAGES/clientzone.po i18n/clientzone.pot
+	msgfmt -c -o i18n/cs_CZ/LC_MESSAGES/clientzone.mo i18n/cs_CZ/LC_MESSAGES/clientzone.po
+	msgfmt -c -o i18n/en_US/LC_MESSAGES/clientzone.mo i18n/en_US/LC_MESSAGES/clientzone.po
+
+.PHONY: install i18n

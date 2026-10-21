@@ -66,24 +66,34 @@ class WebPage extends \Ease\TWB5\WebPage
         $this->columnIII = $row->addItem(new \Ease\Html\DivTag(null, ['class' => 'col-md-4']));
     }
 
-    public function onlyForAdmin(string $loginPage = 'login.php'): void
+    /**
+     * Require a logged-in AbraFlexi customer (no local admin role exists).
+     */
+    public function onlyForCustomer(string $loginPage = 'login.php', ?string $message = null): void
     {
+        $this->onlyForLogged($loginPage, $message);
         $user = \Ease\Shared::user();
-        if (!$user->getSettingValue('admin')) {
-            $user->addStatusMessage(\gettext('Please sign in as admin first'), 'warning');
-            $this->redirect($loginPage);
+        if (!$user instanceof \ClientZone\Customer) {
+            $this->addStatusMessage(
+                $message ?? _('Please sign in with your customer account'),
+                'warning',
+            );
+            $this->redirect($loginPage.'?backurl='.urlencode($_SERVER['REQUEST_URI'] ?? 'index.php'));
             exit;
         }
     }
 
-    public function onlyForUser(string $loginPage = 'login.php'): void
+    /**
+     * Former admin-only tools are disabled — configuration is via .env / AbraFlexi.
+     */
+    public function refusePrivilegedTool(string $redirect = 'index.php'): void
     {
-        $user = \Ease\Shared::user();
-        if (get_class($user) !== 'ClientZone\User') {
-            $this->addStatusMessage(\gettext('Please sign in as user first'), 'warning');
-            $this->redirect($loginPage);
-            exit;
-        }
+        $this->addStatusMessage(
+            _('This tool is not available in ClientZone. Use AbraFlexi or server configuration instead.'),
+            'warning',
+        );
+        $this->redirect($redirect);
+        exit;
     }
 
     public function onlyForLogged($loginPage = 'login.php', $message = null)

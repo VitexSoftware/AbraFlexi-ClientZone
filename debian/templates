@@ -160,14 +160,3 @@ Template: clientzone/SUBREG_PASSWORD
 Type: password
 Description: Subreg API password
  Password for the Subreg registrar API.
-
-Template: clientzone/ADMIN_LOGIN
-Type: string
-Default: admin
-Description: First administrator login
- Username for the first local administrator account.
-
-Template: clientzone/ADMIN_PASSWORD
-Type: password
-Description: First administrator password
- Password for the first local administrator account.

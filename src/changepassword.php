@@ -12,7 +12,7 @@ namespace ClientZone;
  */
 require_once 'includes/Init.php';
 
-$oPage->onlyForLogged();
+$oPage->onlyForCustomer();
 
 $formOK = true;
 

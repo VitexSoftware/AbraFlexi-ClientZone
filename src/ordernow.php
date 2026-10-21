@@ -12,7 +12,7 @@ namespace ClientZone;
  */
 require_once 'includes/Init.php';
 
-$oPage->onlyForLogged('login.php', _('Please sign in to finish your order'));
+$oPage->onlyForCustomer('login.php', _('Please sign in to finish your order'));
 
 $oPage->addToHeader(new ui\PageTop(_('Order')));
 

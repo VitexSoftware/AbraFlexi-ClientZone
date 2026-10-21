@@ -17,10 +17,11 @@
     </p>
     <p>Key features:</p>
     <ul>
+      <li>Customer dashboard with relationship summary, unpaid invoices (including reminder dates) and open orders</li>
       <li>Browse and order items from the AbraFlexi price list</li>
       <li>View and download issued invoices and orders as PDF or ISDOC</li>
       <li>Receive invoices by e-mail directly from the portal</li>
-      <li>Customer account registration and password management</li>
+      <li>Customer account registration, GDPR contact editing and password management</li>
       <li>Shopping cart with configurable order item parameters</li>
       <li>Automatic creation of proforma invoices and orders in AbraFlexi upon checkout</li>
       <li>Administrator setup form for AbraFlexi connection and portal options</li>
@@ -45,6 +46,17 @@
   </developer>
 
   <releases>
+    <release version="2.1" date="2026-10-21">
+      <description>
+        <p>Customer dashboard and document access improvements.</p>
+        <ul>
+          <li>Post-login dashboard: customer since, total spent, unpaid invoices with reminder dates, open orders</li>
+          <li>Removed in-app administrator role — customers only see their own company data</li>
+          <li>Fixed PDF view / download / e-mail actions (AbraFlexi Functions::uncode)</li>
+          <li>GDPR contact details page and DataTables listings for orders and invoices</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.0" date="2024-01-01">
       <description>
         <p>Modernized to use AbraFlexi (formerly FlexiBee) libraries and Bootstrap 5.</p>
