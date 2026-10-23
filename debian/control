@@ -24,7 +24,6 @@ Depends: ${misc:Depends},
  locales-all,
  libjs-font-awesome,
  libjs-jquery-datatables,
-Recommends: abraflexi-voip-credit, abraflexi-domain-credit,
 Architecture: all
 Section: web
 Priority: optional
@@ -32,3 +31,15 @@ Description: Client Zone for AbraFlexi
  Web-based self-service portal for AbraFlexi accounting system customers.
  Allows customers to browse the price list, place orders, view invoices,
  download PDF documents, and manage their account details.
+
+Package: abraflexi-clientzone-spojenet
+Architecture: all
+Depends: ${misc:Depends}, abraflexi-clientzone (= ${binary:Version})
+Recommends: abraflexi-voip-credit, abraflexi-domain-credit
+Breaks: abraflexi-clientzone (<< 2.2.0)
+Replaces: abraflexi-clientzone (<< 2.2.0)
+Section: web
+Priority: optional
+Description: Spoje.Net order plugins for AbraFlexi ClientZone
+ Order plugins for prepaid VoIP and domain credit products settled by
+ abraflexi-voip-credit and abraflexi-domain-credit.

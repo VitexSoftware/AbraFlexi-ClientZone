@@ -29,8 +29,9 @@ Vlastnosti
 Moduly pro zpracování objednaných položek
 =========================================
 
-Načítají se ze složky `ClientZone/orderplugins/` (např. `VoIPcredit.php`,
-`DomainCredit.php`) a jsou potomky `\ClientZone\OrderPlugin`.
+Načítají se ze složky `ClientZone/orderplugins/` a jsou potomky `\ClientZone\OrderPlugin`.
+Jádro obsahuje obecný plugin `Common.php`. Kreditové pluginy `VoIPcredit.php` a
+`DomainCredit.php` jsou v balíčku `abraflexi-clientzone-spojenet` (zdroje v `src/ClientZone/orderplugins/`).
 
 Plugin může předefinovat:
 

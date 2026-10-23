@@ -1,3 +1,11 @@
+abraflexi-clientzone (2.2.0) unstable; urgency=medium
+
+  * Spoje.Net order plugins (DomainCredit, VoIPcredit) moved out of the core
+    package into abraflexi-clientzone-spojenet.
+  * Core ships only the generic Common order plugin.
+
+ -- vitex <info@vitexsoftware.cz>  Fri, 23 Oct 2026 17:50:00 +0200
+
 abraflexi-clientzone (2.1.6) unstable; urgency=medium
 
   * Received invoices for supplier-customers; dashboard links to

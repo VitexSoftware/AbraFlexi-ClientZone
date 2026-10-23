@@ -7,7 +7,7 @@ src/js/*.js				usr/share/abraflexi-clientzone/js
 src/images/*				usr/share/abraflexi-clientzone/images
 src/ClientZone/*.php			usr/share/abraflexi-clientzone/ClientZone
 src/ClientZone/ui/*.php			usr/share/abraflexi-clientzone/ClientZone/ui
-src/ClientZone/orderplugins/*.php	usr/share/abraflexi-clientzone/ClientZone/orderplugins
+src/ClientZone/orderplugins/Common.php	usr/share/abraflexi-clientzone/ClientZone/orderplugins
 debian/conf/abraflexi-clientzone.conf	etc/apache2/conf-available
 debian/conf/abraflexi-clientzone.conf	usr/share/abraflexi-clientzone/apache
 debian/conf/composer.json		usr/share/abraflexi-clientzone
