@@ -86,7 +86,7 @@ class OrderLister extends \AbraFlexi\ObjednavkaPrijata
                 _('Show'),
             ),
             OrderListingItem::iconLink(
-                'getpdf.php?id='.$id.'&evidence='.$evidence.'&embed=true',
+                'getpdf.php?id='.$id.'&evidence='.$evidence,
                 'images/download.svg',
                 _('Download'),
             ),

@@ -62,7 +62,7 @@ class OrderListingItem extends \Ease\TWB5\Row
                 _('Show'),
             ),
             self::iconLink(
-                'getpdf.php?id='.$id.'&evidence='.$evidence.'&embed=true',
+                'getpdf.php?id='.$id.'&evidence='.$evidence,
                 'images/download.svg',
                 _('Download'),
             ),

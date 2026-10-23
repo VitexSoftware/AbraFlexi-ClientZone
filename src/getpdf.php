@@ -23,17 +23,14 @@ if (!is_null($document->getMyKey()) && GateKeeper::isAccessibleBy($document,
         $oUser)) {
     $documentBody = $document->getInFormat('pdf');
 
-    if ($embed != 'true') {
-        header('Content-Description: File Transfer');
-        header('Content-Disposition: attachment; filename='.$document->getEvidence().'_'.$document.'.pdf');
-        header('Content-Type: application/octet-stream');
-        header('Content-Transfer-Encoding: binary');
-    } else {
-        header('Content-Type: application/pdf');
-    }
-    header('Expires: 0');
-    header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
-    header('Pragma: public');
+    $safeName = preg_replace('/[^A-Za-z0-9._-]/', '_',
+        $document->getEvidence().'_'.$document).'.pdf';
+    $disposition = ($embed == 'true') ? 'inline' : 'attachment';
+
+    header('Content-Type: application/pdf');
+    header('Content-Disposition: '.$disposition.'; filename="'.$safeName.'"');
+    header('X-Content-Type-Options: nosniff');
+    header('Cache-Control: private, no-cache');
     header('Content-Length: '.strlen($documentBody));
     echo $documentBody;
 } else {
