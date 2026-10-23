@@ -385,25 +385,6 @@ class Customer extends \AbraFlexi\Bricks\Customer
     }
 
     /**
-     * Customer's contracts (smlouva) — the services they have subscribed to.
-     *
-     * @return list<array<string, mixed>>
-     */
-    public function getContracts(): array
-    {
-        $contracts = new \AbraFlexi\Smlouva();
-        $contracts->defaultUrlParams['limit'] = 0;
-        $contracts->defaultUrlParams['order'] = 'smlouvaOd@D';
-
-        $rows = $contracts->getColumnsFromAbraFlexi(
-            ['id', 'kod', 'nazev', 'smlouvaOd', 'typSml'],
-            [$this->getFirmaCondition()],
-        );
-
-        return \is_array($rows) ? array_values($rows) : [];
-    }
-
-    /**
      * Unpaid received invoices (supplier role — awaiting settlement by us).
      *
      * @return list<array<string, mixed>>

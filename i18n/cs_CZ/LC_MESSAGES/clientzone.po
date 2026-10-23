@@ -1562,6 +1562,10 @@ msgid "Received invoices are available only for supplier-customers"
 msgstr "Přijaté faktury jsou dostupné pouze pro odběratele-dodavatele"
 
 #, php-format
+
+msgid "Cancelled"
+msgstr "Stornováno"
+
 #~ msgid "%s %s %s"
 #~ msgstr "%s %s %s"
 

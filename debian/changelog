@@ -1,3 +1,13 @@
+abraflexi-clientzone (2.5.0) unstable; urgency=medium
+
+  * "My services" lists contracts in a DataTable; contract detail shows status,
+    validity, last change and the products on the contract (customer-visible
+    fields only).
+  * Invoice list shows cancelled (storno) documents greyed out with a
+    "Cancelled" status; their detail link works as for other documents.
+
+ -- vitex <info@vitexsoftware.cz>  Fri, 23 Oct 2026 20:30:00 +0200
+
 abraflexi-clientzone (2.4.0) unstable; urgency=medium
 
   * New "My services" page listing the customer's contracts (smlouvy).

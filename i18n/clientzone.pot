@@ -1546,3 +1546,7 @@ msgstr ""
 #: src/myreceivedinvoices.php:22
 msgid "Received invoices are available only for supplier-customers"
 msgstr ""
+
+msgid "Cancelled"
+msgstr ""
+

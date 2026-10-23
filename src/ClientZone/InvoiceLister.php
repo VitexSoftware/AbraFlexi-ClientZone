@@ -34,7 +34,7 @@ class InvoiceLister extends \AbraFlexi\FakturaVydana
 
     protected function extraFetchColumns(): array
     {
-        return ['id', 'stavUhrK', 'datSplat', 'datVyst'];
+        return ['id', 'stavUhrK', 'datSplat', 'datVyst', 'storno'];
     }
 
     public function completeDataRow(array $dataRowRaw): array
@@ -42,6 +42,7 @@ class InvoiceLister extends \AbraFlexi\FakturaVydana
         $base = $this->normalizeScalars($dataRowRaw);
         $id = (string) ($dataRowRaw['id'] ?? '');
         $evidence = $this->getEvidence();
+        $cancelled = self::isCancelled($dataRowRaw['storno'] ?? null);
 
         $kod = (string) ($dataRowRaw['kod'] ?? $id);
         $row = [
@@ -63,12 +64,28 @@ class InvoiceLister extends \AbraFlexi\FakturaVydana
         ];
 
         $stavUhr = (string) ($dataRowRaw['stavUhrK'] ?? '');
-        if ($stavUhr !== '' && str_contains($stavUhr, 'stavUhr.uhrazeno')) {
+        if ($cancelled) {
+            $row['stavUhrK'] = (string) new \Ease\TWB5\Badge(_('Cancelled'), 'secondary');
+            // Cancelled documents stay listed, but greyed out and without a due-date label.
+            foreach (['kod', 'sumCelkem', 'mena', 'datSplat'] as $cell) {
+                $row[$cell] = '<span class="text-muted">'.$row[$cell].'</span>';
+            }
+        } elseif ($stavUhr !== '' && str_contains($stavUhr, 'stavUhr.uhrazeno')) {
             $row['stavUhrK'] = (string) new \Ease\TWB5\Badge(_('Settled'), 'success');
         } else {
             $row['stavUhrK'] = (string) OrderListingItem::dueLabel($dataRowRaw['datSplat'] ?? null);
         }
 
         return $row;
+    }
+
+    /**
+     * AbraFlexi returns the storno flag as boolean or as its string form.
+     *
+     * @param mixed $storno
+     */
+    public static function isCancelled(mixed $storno): bool
+    {
+        return \in_array($storno, [true, 1, 'true', '1'], true);
     }
 }

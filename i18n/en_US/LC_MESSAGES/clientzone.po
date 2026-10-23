@@ -1557,6 +1557,10 @@ msgid "Received invoices are available only for supplier-customers"
 msgstr "Received invoices are available only for supplier-customers"
 
 #, php-format
+
+msgid "Cancelled"
+msgstr "Cancelled"
+
 #~ msgid "%s %s %s"
 #~ msgstr "%s %s %s"
 

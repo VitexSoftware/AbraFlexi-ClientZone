@@ -36,6 +36,7 @@ $allowed = [
     OrderLister::class,
     InvoiceLister::class,
     ReceivedInvoiceLister::class,
+    ContractLister::class,
 ];
 
 if ($class === null || $class === '' || !\in_array($class, $allowed, true)) {
