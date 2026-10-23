@@ -1,7 +1,4 @@
 /nbproject/private/
-/debian/clientzone/
-/debian/clientzone.debhelper.log
-/debian/clientzone.substvars
 /src/includes/config.php
 /build-stamp
 /testing/PHPUnit/build/
@@ -9,5 +6,12 @@
 /vendor/
 /debian/debhelper-build-stamp
 /.vagrant/
-/debian/clientzone.postrm.debhelper
-/clientzone_1.0_all.deb
+/debian/.debhelper/
+/debian/abraflexi-clientzone*/
+/debian/abraflexi-clientzone*.debhelper.log
+/debian/abraflexi-clientzone*.postrm.debhelper
+/debian/abraflexi-clientzone*.substvars
+/src/php_errors.log
+/*.deb
+/*.buildinfo
+/*.changes
