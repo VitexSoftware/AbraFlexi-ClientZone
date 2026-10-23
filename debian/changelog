@@ -1,3 +1,10 @@
+abraflexi-clientzone (2.3.0) unstable; urgency=medium
+
+  * New order plugins WebHosting and MailHosting, packaged in
+    abraflexi-clientzone-vitexsoftware.
+
+ -- vitex <info@vitexsoftware.cz>  Fri, 23 Oct 2026 18:30:00 +0200
+
 abraflexi-clientzone (2.2.0) unstable; urgency=medium
 
   * Spoje.Net order plugins (DomainCredit, VoIPcredit) moved out of the core

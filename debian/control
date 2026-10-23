@@ -43,3 +43,12 @@ Priority: optional
 Description: Spoje.Net order plugins for AbraFlexi ClientZone
  Order plugins for prepaid VoIP and domain credit products settled by
  abraflexi-voip-credit and abraflexi-domain-credit.
+
+Package: abraflexi-clientzone-vitexsoftware
+Architecture: all
+Depends: ${misc:Depends}, abraflexi-clientzone (= ${binary:Version})
+Section: web
+Priority: optional
+Description: VitexSoftware service order plugins for AbraFlexi ClientZone
+ Order plugins for ordering VitexSoftware hosted services (web hosting,
+ e-mail hosting) through AbraFlexi ClientZone.
