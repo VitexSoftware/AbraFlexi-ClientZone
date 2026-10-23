@@ -14,11 +14,15 @@ require_once 'includes/Init.php';
 
 $oPage->onlyForCustomer();
 
-$id = $oPage->getRequestValue('id');
+$contractId = filter_var(
+    $oPage->getRequestValue('id'),
+    \FILTER_VALIDATE_INT,
+    ['options' => ['min_range' => 1]],
+);
 
-$contract = new \AbraFlexi\Smlouva(is_numeric($id) ? (int) $id : $id);
+$contract = new \AbraFlexi\Smlouva($contractId === false ? null : $contractId);
 
-if (is_null($contract->getMyKey()) || !GateKeeper::isAccessibleBy($contract, $oUser)) {
+if ($contractId === false || is_null($contract->getMyKey()) || !GateKeeper::isAccessibleBy($contract, $oUser)) {
     $oPage->addStatusMessage(_('Wrong call'), 'error');
     $oPage->redirect('myservices.php');
     $oPage->draw();
@@ -26,7 +30,9 @@ if (is_null($contract->getMyKey()) || !GateKeeper::isAccessibleBy($contract, $oU
     exit;
 }
 
-$oPage->addToHeader(new ui\PageTop(_('Service').' '.$contract->getDataValue('kod')));
+$oPage->addToHeader(new ui\PageTop(
+    _('Service').' '.\htmlspecialchars((string) $contract->getDataValue('kod'), \ENT_QUOTES),
+));
 
 $details = new \Ease\Html\TableTag(null, ['class' => 'table']);
 
