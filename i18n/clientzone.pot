@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: abraflexi-clientzone\n"
 "Report-Msgid-Bugs-To: info@vitexsoftware.cz\n"
-"POT-Creation-Date: 2026-10-28 13:26+0100\n"
+"POT-Creation-Date: 2026-10-28 16:04+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -141,176 +141,210 @@ msgstr ""
 msgid "My Orders"
 msgstr ""
 
-#: src/newcustomer.php:20
+#: src/newcustomer.php:21
 msgid "Sign On form is disabled by configuration"
 msgstr ""
 
-#: src/newcustomer.php:37
+#: src/newcustomer.php:43
 msgid "Human control field is empty"
 msgstr ""
 
-#: src/newcustomer.php:38
+#: src/newcustomer.php:44
 msgid "six"
 msgstr ""
 
-#: src/newcustomer.php:39
+#: src/newcustomer.php:45
 msgid "Are you smart human ?"
 msgstr ""
 
-#: src/newcustomer.php:41
+#: src/newcustomer.php:47
 msgid "invalid email address"
 msgstr ""
 
-#: src/newcustomer.php:47 src/newcustomer.php:68
+#: src/newcustomer.php:53
 #, php-format
 msgid "Mail address %s is allready registered"
 msgstr ""
 
-#: src/newcustomer.php:57
+#: src/newcustomer.php:55
+msgid "This e-mail address belongs to more companies, please contact us"
+msgstr ""
+
+#: src/newcustomer.php:63 src/newcustomer.php:93
 msgid "Please start the registration again"
 msgstr ""
 
-#: src/newcustomer.php:70 src/ClientZone/Customer.php:65
+#: src/newcustomer.php:81
+msgid "Name is required"
+msgstr ""
+
+#: src/newcustomer.php:98 src/ClientZone/Customer.php:65
 msgid "missing login"
 msgstr ""
 
-#: src/newcustomer.php:72
+#: src/newcustomer.php:100
 #, php-format
 msgid "Username %s is already used"
 msgstr ""
 
-#: src/newcustomer.php:74
+#: src/newcustomer.php:102
 msgid "Password must have at least 8 characters"
 msgstr ""
 
-#: src/newcustomer.php:76
+#: src/newcustomer.php:104
 msgid "Passwords do not match"
 msgstr ""
 
-#: src/newcustomer.php:78
-msgid "Name is required"
-msgstr ""
-
-#: src/newcustomer.php:101
+#: src/newcustomer.php:124
 msgid "CLIENTZONE_URL is not configured, confirmation e-mail cannot be sent"
 msgstr ""
 
-#: src/newcustomer.php:103
+#: src/newcustomer.php:126
 msgid ""
 "REGISTRATION_SECRET is not configured, confirmation e-mail cannot be sent"
 msgstr ""
 
-#: src/newcustomer.php:105 src/newcustomer.php:153
+#: src/newcustomer.php:128 src/newcustomer.php:196
 #, php-format
 msgid "Confirmation link was sent to %s"
 msgstr ""
 
-#: src/newcustomer.php:108
+#: src/newcustomer.php:132
 msgid "Confirmation e-mail could not be sent"
 msgstr ""
 
-#: src/newcustomer.php:117
+#: src/newcustomer.php:141
 #, php-format
 msgid "New clientzone account: %s"
 msgstr ""
 
-#: src/newcustomer.php:120
+#: src/newcustomer.php:144
 msgid "New Customer"
 msgstr ""
 
-#: src/newcustomer.php:135 src/verifyemail.php:34
+#: src/newcustomer.php:152
+msgid "Please check your contact details"
+msgstr ""
+
+#: src/newcustomer.php:163 src/newcustomer.php:196 src/verifyemail.php:34
 msgid "Registration failed"
 msgstr ""
 
-#: src/newcustomer.php:141
+#: src/newcustomer.php:178 src/newcustomer.php:190
 msgid "Sign On"
 msgstr ""
 
-#: src/newcustomer.php:144 src/ClientZone/ui/Dashboard.php:35
-msgid "Welcome"
+#: src/newcustomer.php:189 src/passwordrecovery.php:74
+msgid "Account"
 msgstr ""
 
-#: src/newcustomer.php:146
-msgid "After registering, you will be prompted to order service."
+#: src/newcustomer.php:199 src/newcustomer.php:255
+#: src/ClientZone/ui/FlexiBeeLoginForm.php:28 src/ClientZone/ui/MainMenu.php:79
+#: src/ClientZone/ui/ShopHero.php:44 src/flexibeelogin.php:16
+#: src/passwordrecovery.php:109 src/passwordrecovery.php:118 src/login.php:44
+#: src/login.php:55 src/logout.php:30
+msgid "Sign In"
 msgstr ""
 
-#: src/newcustomer.php:147
-msgid "All notifications target to your email"
+#: src/newcustomer.php:208
+msgid "Back"
 msgstr ""
 
-#: src/newcustomer.php:163 src/newcustomer.php:171
-#, php-format
+#: src/newcustomer.php:214
+msgid ""
+"Start with your e-mail address. We will check whether we already know you."
+msgstr ""
+
+#: src/newcustomer.php:217
 msgid "Email Address"
 msgstr ""
 
-#: src/newcustomer.php:165 src/newcustomer.php:174 src/newcustomer.php:181
-msgid "Requied"
-msgstr ""
-
-#: src/newcustomer.php:167
+#: src/newcustomer.php:219
 msgid "The Cube"
 msgstr ""
 
-#: src/newcustomer.php:167
+#: src/newcustomer.php:219
 msgid "How many walls does the cube have?"
 msgstr ""
 
-#: src/newcustomer.php:167
+#: src/newcustomer.php:219
 msgid "Only for humans"
 msgstr ""
 
-#: src/newcustomer.php:168
+#: src/newcustomer.php:220 src/newcustomer.php:228
 msgid "Continue"
 msgstr ""
 
-#: src/newcustomer.php:174 src/ClientZone/ContractLister.php:36
+#: src/newcustomer.php:222
+msgid "We do not know this e-mail yet. Tell us about your company."
+msgstr ""
+
+#: src/newcustomer.php:224 src/ClientZone/ContractLister.php:36
 #: src/ClientZone/ui/AddressForm.php:32 src/ClientZone/ui/UserForm.php:30
 #: src/ClientZone/ui/KontaktForm.php:30 src/contract.php:41
 msgid "Name"
 msgstr ""
 
-#: src/newcustomer.php:175
+#: src/newcustomer.php:224 src/newcustomer.php:242
+msgid "Requied"
+msgstr ""
+
+#: src/newcustomer.php:225
 msgid "Company ID number"
 msgstr ""
 
-#: src/newcustomer.php:175 src/newcustomer.php:176
+#: src/newcustomer.php:225 src/newcustomer.php:226
 msgid "Only for company"
 msgstr ""
 
-#: src/newcustomer.php:176
+#: src/newcustomer.php:226
 msgid "Company VAT number"
 msgstr ""
 
-#: src/newcustomer.php:177
+#: src/newcustomer.php:227
 msgid "Telephone number"
 msgstr ""
 
-#: src/newcustomer.php:181 src/passwordrecovery.php:31 src/login.php:73
+#: src/newcustomer.php:232
+#, php-format
+msgid "Choose how you will sign in as %s."
+msgstr ""
+
+#: src/newcustomer.php:233
+#, php-format
+msgid "We already know %s, only the sign-in details are missing."
+msgstr ""
+
+#: src/newcustomer.php:238
+msgid "We will send a confirmation link to this address."
+msgstr ""
+
+#: src/newcustomer.php:242 src/passwordrecovery.php:31 src/login.php:73
 msgid "Username"
 msgstr ""
 
-#: src/newcustomer.php:184 src/ClientZone/ui/KontaktForm.php:42
+#: src/newcustomer.php:245 src/ClientZone/ui/KontaktForm.php:42
 #: src/changepassword.php:67 src/passwordrecovery.php:32 src/login.php:86
 msgid "Password"
 msgstr ""
 
-#: src/newcustomer.php:184
+#: src/newcustomer.php:245
 msgid "At least 8 characters"
 msgstr ""
 
-#: src/newcustomer.php:185
+#: src/newcustomer.php:246
 msgid "Password again"
 msgstr ""
 
-#: src/newcustomer.php:186
+#: src/newcustomer.php:247
+msgid "Send confirmation link"
+msgstr ""
+
+#: src/newcustomer.php:247
 msgid "Singn On"
 msgstr ""
 
-#: src/newcustomer.php:192
-msgid "Finish"
-msgstr ""
-
-#: src/newcustomer.php:196 src/passwordrecovery.php:63
+#: src/newcustomer.php:258 src/passwordrecovery.php:63
 #: src/passwordrecovery.php:75 src/login.php:107
 msgid "Lost password recovery"
 msgstr ""
@@ -664,31 +698,31 @@ msgstr ""
 msgid "Modify"
 msgstr ""
 
-#: src/ClientZone/Registration.php:149
-msgid "Error saving Company"
-msgstr ""
-
-#: src/ClientZone/Registration.php:154
-msgid "Company registered"
-msgstr ""
-
-#: src/ClientZone/Registration.php:164
+#: src/ClientZone/Registration.php:182 src/ClientZone/Registration.php:233
 msgid "Error saving Contact"
 msgstr ""
 
-#: src/ClientZone/Registration.php:169
+#: src/ClientZone/Registration.php:187 src/ClientZone/Registration.php:238
 msgid "User account created"
 msgstr ""
 
-#: src/ClientZone/Registration.php:221
-msgid "Confirm your e-mail address"
+#: src/ClientZone/Registration.php:218
+msgid "Error saving Company"
 msgstr ""
 
 #: src/ClientZone/Registration.php:223
+msgid "Company registered"
+msgstr ""
+
+#: src/ClientZone/Registration.php:290
+msgid "Confirm your e-mail address"
+msgstr ""
+
+#: src/ClientZone/Registration.php:292
 msgid "To finish the registration open this link:"
 msgstr ""
 
-#: src/ClientZone/Registration.php:225
+#: src/ClientZone/Registration.php:294
 #, php-format
 msgid "The link is valid for %d hours."
 msgstr ""
@@ -762,13 +796,6 @@ msgstr ""
 
 #: src/ClientZone/ui/FlexiBeeLoginForm.php:27
 msgid "Password you recivied by email"
-msgstr ""
-
-#: src/ClientZone/ui/FlexiBeeLoginForm.php:28 src/ClientZone/ui/MainMenu.php:79
-#: src/ClientZone/ui/ShopHero.php:44 src/flexibeelogin.php:16
-#: src/passwordrecovery.php:109 src/passwordrecovery.php:118 src/login.php:44
-#: src/login.php:55 src/logout.php:30
-msgid "Sign In"
 msgstr ""
 
 #: src/ClientZone/ui/FlexiBeeLoginForm.php:33
@@ -886,6 +913,26 @@ msgstr ""
 msgid "Uložit"
 msgstr ""
 
+#: src/ClientZone/ui/WizardSteps.php:27
+msgid "Registration progress"
+msgstr ""
+
+#: src/ClientZone/ui/WizardSteps.php:30
+msgid "E-mail"
+msgstr ""
+
+#: src/ClientZone/ui/WizardSteps.php:31
+msgid "Company"
+msgstr ""
+
+#: src/ClientZone/ui/WizardSteps.php:32
+msgid "Access"
+msgstr ""
+
+#: src/ClientZone/ui/WizardSteps.php:33
+msgid "Finish"
+msgstr ""
+
 #: src/ClientZone/ui/CartForm.php:26 src/ordernow.php:28
 msgid "Checkout"
 msgstr ""
@@ -952,6 +999,10 @@ msgstr ""
 #: src/ClientZone/ui/Dashboard.php:34
 #, php-format
 msgid "Welcome, %s"
+msgstr ""
+
+#: src/ClientZone/ui/Dashboard.php:35
+msgid "Welcome"
 msgstr ""
 
 #: src/ClientZone/ui/Dashboard.php:39
@@ -1547,10 +1598,6 @@ msgstr ""
 
 #: src/passwordrecovery.php:60
 msgid "Please enter your email."
-msgstr ""
-
-#: src/passwordrecovery.php:74
-msgid "Account"
 msgstr ""
 
 #: src/passwordrecovery.php:79
