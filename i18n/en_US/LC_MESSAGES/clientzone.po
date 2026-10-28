@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@vitexsoftware.cz\n"
-"POT-Creation-Date: 2026-10-28 11:33+0100\n"
+"POT-Creation-Date: 2026-10-28 13:22+0100\n"
 "PO-Revision-Date: 2026-10-21 10:02+0200\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: \n"
@@ -144,77 +144,87 @@ msgstr "Cart"
 msgid "My Orders"
 msgstr "My Orders"
 
-#: src/newcustomer.php:14
+#: src/newcustomer.php:20
 msgid "Sign On form is disabled by configuration"
 msgstr "Sign On form is disabled by configuration"
 
-#: src/newcustomer.php:36
+#: src/newcustomer.php:37
 msgid "Human control field is empty"
 msgstr "Human control field is empty"
 
-#: src/newcustomer.php:40
+#: src/newcustomer.php:38
 msgid "six"
 msgstr "six"
 
-#: src/newcustomer.php:43
-msgid "Mail address is too short"
-msgstr "Mail address is too short"
+#: src/newcustomer.php:39
+msgid "Are you smart human ?"
+msgstr "Are you smart human ?"
 
-#: src/newcustomer.php:48
+#: src/newcustomer.php:41
 msgid "invalid email address"
 msgstr "invalid email address"
 
-#: src/newcustomer.php:55
+#: src/newcustomer.php:47 src/newcustomer.php:68
 #, php-format
 msgid "Mail address %s is allready registered"
 msgstr "Mail address %s is allready registered"
 
-#: src/newcustomer.php:61
-msgid "Are you smart human ?"
-msgstr "Are you smart human ?"
+#: src/newcustomer.php:57
+msgid "Please start the registration again"
+msgstr "Please start the registration again"
 
-#: src/newcustomer.php:80
-msgid "Company registered"
-msgstr "Company registered"
+#: src/newcustomer.php:70 src/ClientZone/Customer.php:65
+msgid "missing login"
+msgstr "missing login"
 
-#: src/newcustomer.php:92
-msgid "User account created"
-msgstr "User account created"
+#: src/newcustomer.php:72
+#, php-format
+msgid "Username %s is already used"
+msgstr "Username %s is already used"
 
-#: src/newcustomer.php:96
-msgid "Sign On info"
-msgstr "Sign On info"
+#: src/newcustomer.php:74
+msgid "Password must have at least 8 characters"
+msgstr "Password must have at least 8 characters"
 
-#: src/newcustomer.php:98
-msgid "clientzone Account"
-msgstr "clientzone Account"
+#: src/newcustomer.php:76
+msgid "Passwords do not match"
+msgstr "Passwords do not match"
 
-#: src/newcustomer.php:104
+#: src/newcustomer.php:78
+msgid "Name is required"
+msgstr "Name is required"
+
+#: src/newcustomer.php:101
+msgid "CLIENTZONE_URL is not configured, confirmation e-mail cannot be sent"
+msgstr "CLIENTZONE_URL is not configured, confirmation e-mail cannot be sent"
+
+#: src/newcustomer.php:103 src/newcustomer.php:151
+#, php-format
+msgid "Confirmation link was sent to %s"
+msgstr "Confirmation link was sent to %s"
+
+#: src/newcustomer.php:106
+msgid "Confirmation e-mail could not be sent"
+msgstr "Confirmation e-mail could not be sent"
+
+#: src/newcustomer.php:115
 #, php-format
 msgid "New clientzone account: %s"
 msgstr "New clientzone account: %s"
 
-#: src/newcustomer.php:107
+#: src/newcustomer.php:118
 msgid "New Customer"
 msgstr "New Customer"
 
-#: src/newcustomer.php:119
-msgid "Error saving Contact"
-msgstr "Error saving Contact"
+#: src/newcustomer.php:133 src/verifyemail.php:34
+msgid "Registration failed"
+msgstr "Registration failed"
 
-#: src/newcustomer.php:121 src/newcustomer.php:128
-msgid "Sign on Failed"
-msgstr "Sign on Failed"
-
-#: src/newcustomer.php:126
-msgid "Error saving Company"
-msgstr "Error saving Company"
-
-#: src/newcustomer.php:137
+#: src/newcustomer.php:139
 msgid "Sign On"
 msgstr "Sign On"
 
-#: src/newcustomer.php:140 src/ClientZone/ui/Dashboard.php:35
+#: src/newcustomer.php:142 src/ClientZone/ui/Dashboard.php:35
 msgid "Welcome"
 msgstr "Welcome"
 
@@ -226,55 +236,90 @@ msgstr "After registering, you will be prompted to order service."
 msgid "All notifications target to your email"
 msgstr "All notifications target to your email"
 
-#: src/newcustomer.php:161 src/ClientZone/ContractLister.php:36
+#: src/newcustomer.php:161 src/newcustomer.php:169
+#, php-format
+msgid "Email Address"
+msgstr "Email Address"
+
+#: src/newcustomer.php:163 src/newcustomer.php:172 src/newcustomer.php:179
+msgid "Requied"
+msgstr "Requied"
+
+#: src/newcustomer.php:165
+msgid "The Cube"
+msgstr "The Cube"
+
+#: src/newcustomer.php:165
+msgid "How many walls does the cube have?"
+msgstr "How many walls does the cube have?"
+
+#: src/newcustomer.php:165
+msgid "Only for humans"
+msgstr "Only for humans"
+
+#: src/newcustomer.php:166
+msgid "Continue"
+msgstr "Continue"
+
+#: src/newcustomer.php:172 src/ClientZone/ContractLister.php:36
 #: src/ClientZone/ui/AddressForm.php:32 src/ClientZone/ui/UserForm.php:30
 #: src/ClientZone/ui/KontaktForm.php:30 src/contract.php:41
 msgid "Name"
 msgstr "Name"
 
-#: src/newcustomer.php:162 src/newcustomer.php:166
-msgid "Requied"
-msgstr "Requied"
-
-#: src/newcustomer.php:166
-msgid "Email Address"
-msgstr "Email Address"
-
-#: src/newcustomer.php:168
-msgid "Telephone number"
-msgstr "Telephone number"
-
-#: src/newcustomer.php:171
+#: src/newcustomer.php:173
 msgid "Company ID number"
 msgstr "Company ID number"
 
-#: src/newcustomer.php:171 src/newcustomer.php:173
+#: src/newcustomer.php:173 src/newcustomer.php:174
 msgid "Only for company"
 msgstr "Only for company"
 
-#: src/newcustomer.php:173
+#: src/newcustomer.php:174
 msgid "Company VAT number"
 msgstr "Company VAT number"
 
 #: src/newcustomer.php:175
-msgid "The Cube"
-msgstr "The Cube"
+msgid "Telephone number"
+msgstr "Telephone number"
 
-#: src/newcustomer.php:176
-msgid "How many walls does the cube have?"
-msgstr "How many walls does the cube have?"
+#: src/newcustomer.php:179 src/passwordrecovery.php:31 src/login.php:73
+msgid "Username"
+msgstr "Username"
 
-#: src/newcustomer.php:176
-msgid "Only for humans"
-msgstr "Only for humans"
+#: src/newcustomer.php:182 src/ClientZone/ui/KontaktForm.php:42
+#: src/changepassword.php:67 src/passwordrecovery.php:32 src/login.php:86
+msgid "Password"
+msgstr "Password"
+
+#: src/newcustomer.php:182
+msgid "At least 8 characters"
+msgstr "At least 8 characters"
 
 #: src/newcustomer.php:183
+msgid "Password again"
+msgstr "Password again"
+
+#: src/newcustomer.php:184
 msgid "Singn On"
 msgstr "Singn On"
 
-#: src/newcustomer.php:184
+#: src/newcustomer.php:190
 msgid "Finish"
 msgstr "Finish"
+
+#: src/newcustomer.php:194 src/passwordrecovery.php:63
+#: src/passwordrecovery.php:75 src/login.php:107
+msgid "Lost password recovery"
+msgstr "Lost password recovery"
+
+#: src/verifyemail.php:24
+msgid "Confirmation link is invalid or expired"
+msgstr "Confirmation link is invalid or expired"
+
+#: src/verifyemail.php:31
+msgid "E-mail address confirmed, you can sign in now"
+msgstr "E-mail address confirmed, you can sign in now"
 
 #: src/myaccount.php:19
 msgid "Your company record was not found"
@@ -616,6 +661,35 @@ msgstr "Smazat"
 #: src/ClientZone/Engine.php:471 src/ClientZone/DataGrid.php:198
 msgid "Modify"
 msgstr "Modify"
+
+#: src/ClientZone/Registration.php:145
+msgid "Error saving Company"
+msgstr "Error saving Company"
+
+#: src/ClientZone/Registration.php:150
+msgid "Company registered"
+msgstr "Company registered"
+
+#: src/ClientZone/Registration.php:160
+msgid "Error saving Contact"
+msgstr "Error saving Contact"
+
+#: src/ClientZone/Registration.php:165
+msgid "User account created"
+msgstr "User account created"
+
+#: src/ClientZone/Registration.php:217
+msgid "Confirm your e-mail address"
+msgstr "Confirm your e-mail address"
+
+#: src/ClientZone/Registration.php:219
+msgid "To finish the registration open this link:"
+msgstr "To finish the registration open this link:"
+
+#: src/ClientZone/Registration.php:221
+#, php-format
+msgid "The link is valid for %d hours."
+msgstr "The link is valid for %d hours."
 
 #: src/ClientZone/InvoiceLister.php:68
 msgid "Cancelled"
@@ -1204,11 +1278,6 @@ msgstr "Přihlašovací jméno"
 msgid "Cell"
 msgstr "Cell"
 
-#: src/ClientZone/ui/KontaktForm.php:42 src/changepassword.php:67
-#: src/passwordrecovery.php:32 src/login.php:86
-msgid "Password"
-msgstr "Password"
-
 #: src/ClientZone/ui/MainMenu.php:36 src/ClientZone/ui/ShopHero.php:50
 msgid "New order"
 msgstr "New order"
@@ -1292,10 +1361,6 @@ msgstr "Product not specified"
 msgid "Item %s was settled without action handled in OrderPlugin code"
 msgstr "Item %s was settled without action handled in OrderPlugin code"
 
-#: src/ClientZone/Customer.php:65
-msgid "missing login"
-msgstr "missing login"
-
 #: src/ClientZone/Customer.php:70
 msgid "missing password"
 msgstr "missing password"
@@ -1316,12 +1381,12 @@ msgstr "Password set"
 msgid "Password set failed"
 msgstr "Password set failed"
 
-#: src/ClientZone/Configurator.php:238
+#: src/ClientZone/Configurator.php:241
 #, php-format
 msgid "Configuration file %s was saved"
 msgstr "Configuration file %s was saved"
 
-#: src/ClientZone/Configurator.php:242
+#: src/ClientZone/Configurator.php:245
 #, php-format
 msgid "Configuration file %s was not saved"
 msgstr "Configuration file %s was not saved"
@@ -1464,10 +1529,6 @@ msgstr "New password"
 msgid "Sign On informations was changed:\n"
 msgstr "Sign On informations was changed:\n"
 
-#: src/passwordrecovery.php:31 src/login.php:73
-msgid "Username"
-msgstr "Username"
-
 #: src/passwordrecovery.php:41
 #, php-format
 msgid "Your new password was sent to %s"
@@ -1489,10 +1550,6 @@ msgstr "Password recovery failed. Please try again."
 #: src/passwordrecovery.php:60
 msgid "Please enter your email."
 msgstr "Please enter your email."
-
-#: src/passwordrecovery.php:63 src/passwordrecovery.php:75 src/login.php:107
-msgid "Lost password recovery"
-msgstr "Lost password recovery"
 
 #: src/passwordrecovery.php:74
 msgid "Account"
@@ -1682,6 +1739,18 @@ msgstr "My Invoices"
 msgid "Received invoices are available only for supplier-customers"
 msgstr "Received invoices are available only for supplier-customers"
 
+#~ msgid "Mail address is too short"
+#~ msgstr "Mail address is too short"
+
+#~ msgid "Sign On info"
+#~ msgstr "Sign On info"
+
+#~ msgid "clientzone Account"
+#~ msgstr "clientzone Account"
+
+#~ msgid "Sign on Failed"
+#~ msgstr "Sign on Failed"
+
 #~ msgid "Thumbnail"
 #~ msgstr "Thumbnail"
 
@@ -1741,9 +1810,6 @@ msgstr "Received invoices are available only for supplier-customers"
 #~ msgid "Admin"
 #~ msgstr "Admin"
 
-#~ msgid "Registration disabled"
-#~ msgstr "Registration disabled"
-
 #~ msgid "mail address is too short"
 #~ msgstr "mail address is too short"
 
@@ -1756,10 +1822,6 @@ msgstr "Received invoices are available only for supplier-customers"
 
 #~ msgid "password conntrol do not match"
 #~ msgstr "password conntrol do not match"
-
-#, php-format
-#~ msgid "Username %s is already used. Please choose another one."
-#~ msgstr "Username %s is already used. Please choose another one."
 
 #~ msgid "User Account Created"
 #~ msgstr "User Account Created"

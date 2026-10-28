@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@vitexsoftware.cz\n"
-"POT-Creation-Date: 2026-10-28 11:33+0100\n"
+"POT-Creation-Date: 2026-10-28 13:22+0100\n"
 "PO-Revision-Date: 2026-10-21 10:02+0200\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: \n"
@@ -144,77 +144,87 @@ msgstr "Košík"
 msgid "My Orders"
 msgstr "Mé Objednávky"
 
-#: src/newcustomer.php:14
+#: src/newcustomer.php:20
 msgid "Sign On form is disabled by configuration"
 msgstr "Registrační formulář je v konfiguraci vypnut"
 
-#: src/newcustomer.php:36
+#: src/newcustomer.php:37
 msgid "Human control field is empty"
 msgstr "Lidské kontrolní políčko je prázdné"
 
-#: src/newcustomer.php:40
+#: src/newcustomer.php:38
 msgid "six"
 msgstr "šest"
 
-#: src/newcustomer.php:43
-msgid "Mail address is too short"
-msgstr "Mailová adresa je příliš krátká"
+#: src/newcustomer.php:39
+msgid "Are you smart human ?"
+msgstr "Jste chytrý člověk ?"
 
-#: src/newcustomer.php:48
+#: src/newcustomer.php:41
 msgid "invalid email address"
 msgstr "Chybná emailová adresa"
 
-#: src/newcustomer.php:55
+#: src/newcustomer.php:47 src/newcustomer.php:68
 #, php-format
 msgid "Mail address %s is allready registered"
 msgstr "Mailová adresa %s je již registrována"
 
-#: src/newcustomer.php:61
-msgid "Are you smart human ?"
-msgstr "Jste chytrý člověk ?"
+#: src/newcustomer.php:57
+msgid "Please start the registration again"
+msgstr "Začněte prosím registraci znovu"
 
-#: src/newcustomer.php:80
-msgid "Company registered"
-msgstr "Společnost klienta byla zaregistrována"
+#: src/newcustomer.php:70 src/ClientZone/Customer.php:65
+msgid "missing login"
+msgstr "chybějící login"
 
-#: src/newcustomer.php:92
-msgid "User account created"
-msgstr "Úživatelský účet byl vytvořen"
+#: src/newcustomer.php:72
+#, php-format
+msgid "Username %s is already used"
+msgstr "Uživatelské jméno %s je již použité"
 
-#: src/newcustomer.php:96
-msgid "Sign On info"
-msgstr "Přihlašovací údaje"
+#: src/newcustomer.php:74
+msgid "Password must have at least 8 characters"
+msgstr "Heslo musí mít alespoň 8 znaků"
 
-#: src/newcustomer.php:98
-msgid "clientzone Account"
-msgstr "Účet clientzone"
+#: src/newcustomer.php:76
+msgid "Passwords do not match"
+msgstr "Hesla se neshodují"
 
-#: src/newcustomer.php:104
+#: src/newcustomer.php:78
+msgid "Name is required"
+msgstr "Název je povinný"
+
+#: src/newcustomer.php:101
+msgid "CLIENTZONE_URL is not configured, confirmation e-mail cannot be sent"
+msgstr "Není nastaveno CLIENTZONE_URL, potvrzovací e-mail nelze odeslat"
+
+#: src/newcustomer.php:103 src/newcustomer.php:151
+#, php-format
+msgid "Confirmation link was sent to %s"
+msgstr "Potvrzovací odkaz byl odeslán na %s"
+
+#: src/newcustomer.php:106
+msgid "Confirmation e-mail could not be sent"
+msgstr "Potvrzovací e-mail se nepodařilo odeslat"
+
+#: src/newcustomer.php:115
 #, php-format
 msgid "New clientzone account: %s"
 msgstr "Nový účet clientzone: %s"
 
-#: src/newcustomer.php:107
+#: src/newcustomer.php:118
 msgid "New Customer"
 msgstr "Nový zákazník"
 
-#: src/newcustomer.php:119
-msgid "Error saving Contact"
-msgstr "Chyba ukládání kontaktu"
-
-#: src/newcustomer.php:121 src/newcustomer.php:128
-msgid "Sign on Failed"
+#: src/newcustomer.php:133 src/verifyemail.php:34
+msgid "Registration failed"
 msgstr "Registrace se nezdařila"
 
-#: src/newcustomer.php:126
-msgid "Error saving Company"
-msgstr "Chyba ukládání Firmy"
-
-#: src/newcustomer.php:137
+#: src/newcustomer.php:139
 msgid "Sign On"
 msgstr "Registrace"
 
-#: src/newcustomer.php:140 src/ClientZone/ui/Dashboard.php:35
+#: src/newcustomer.php:142 src/ClientZone/ui/Dashboard.php:35
 msgid "Welcome"
 msgstr "Vítejte"
 
@@ -226,55 +236,90 @@ msgstr "Po registraci vám bude nabídnuta objednávka služeb"
 msgid "All notifications target to your email"
 msgstr "Všechny notifikace směřují na váš mail"
 
-#: src/newcustomer.php:161 src/ClientZone/ContractLister.php:36
+#: src/newcustomer.php:161 src/newcustomer.php:169
+#, php-format
+msgid "Email Address"
+msgstr "Emailová adresa"
+
+#: src/newcustomer.php:163 src/newcustomer.php:172 src/newcustomer.php:179
+msgid "Requied"
+msgstr "Požadováno"
+
+#: src/newcustomer.php:165
+msgid "The Cube"
+msgstr "Krychle"
+
+#: src/newcustomer.php:165
+msgid "How many walls does the cube have?"
+msgstr "Kolik stěn má krychle ?"
+
+#: src/newcustomer.php:165
+msgid "Only for humans"
+msgstr "Pouze pro lidi"
+
+#: src/newcustomer.php:166
+msgid "Continue"
+msgstr "Pokračovat"
+
+#: src/newcustomer.php:172 src/ClientZone/ContractLister.php:36
 #: src/ClientZone/ui/AddressForm.php:32 src/ClientZone/ui/UserForm.php:30
 #: src/ClientZone/ui/KontaktForm.php:30 src/contract.php:41
 msgid "Name"
 msgstr "Jméno"
 
-#: src/newcustomer.php:162 src/newcustomer.php:166
-msgid "Requied"
-msgstr "Požadováno"
-
-#: src/newcustomer.php:166
-msgid "Email Address"
-msgstr "Emailová adresa"
-
-#: src/newcustomer.php:168
-msgid "Telephone number"
-msgstr "Telefoní číslo"
-
-#: src/newcustomer.php:171
+#: src/newcustomer.php:173
 msgid "Company ID number"
 msgstr "IČO"
 
-#: src/newcustomer.php:171 src/newcustomer.php:173
+#: src/newcustomer.php:173 src/newcustomer.php:174
 msgid "Only for company"
 msgstr "Pouze pro firmy"
 
-#: src/newcustomer.php:173
+#: src/newcustomer.php:174
 msgid "Company VAT number"
 msgstr "DIČ"
 
 #: src/newcustomer.php:175
-msgid "The Cube"
-msgstr "Krychle"
+msgid "Telephone number"
+msgstr "Telefoní číslo"
 
-#: src/newcustomer.php:176
-msgid "How many walls does the cube have?"
-msgstr "Kolik stěn má krychle ?"
+#: src/newcustomer.php:179 src/passwordrecovery.php:31 src/login.php:73
+msgid "Username"
+msgstr "Uživatelské jméno"
 
-#: src/newcustomer.php:176
-msgid "Only for humans"
-msgstr "Pouze pro lidi"
+#: src/newcustomer.php:182 src/ClientZone/ui/KontaktForm.php:42
+#: src/changepassword.php:67 src/passwordrecovery.php:32 src/login.php:86
+msgid "Password"
+msgstr "Heslo"
+
+#: src/newcustomer.php:182
+msgid "At least 8 characters"
+msgstr "Alespoň 8 znaků"
 
 #: src/newcustomer.php:183
+msgid "Password again"
+msgstr "Heslo znovu"
+
+#: src/newcustomer.php:184
 msgid "Singn On"
 msgstr "Registrace"
 
-#: src/newcustomer.php:184
+#: src/newcustomer.php:190
 msgid "Finish"
 msgstr "Dokončit"
+
+#: src/newcustomer.php:194 src/passwordrecovery.php:63
+#: src/passwordrecovery.php:75 src/login.php:107
+msgid "Lost password recovery"
+msgstr "Obnova ztraceného hesla"
+
+#: src/verifyemail.php:24
+msgid "Confirmation link is invalid or expired"
+msgstr "Potvrzovací odkaz je neplatný nebo jeho platnost vypršela"
+
+#: src/verifyemail.php:31
+msgid "E-mail address confirmed, you can sign in now"
+msgstr "E-mailová adresa byla potvrzena, můžete se přihlásit"
 
 #: src/myaccount.php:19
 msgid "Your company record was not found"
@@ -617,6 +662,35 @@ msgstr "Smazat"
 #: src/ClientZone/Engine.php:471 src/ClientZone/DataGrid.php:198
 msgid "Modify"
 msgstr "Upravit"
+
+#: src/ClientZone/Registration.php:145
+msgid "Error saving Company"
+msgstr "Chyba ukládání Firmy"
+
+#: src/ClientZone/Registration.php:150
+msgid "Company registered"
+msgstr "Společnost klienta byla zaregistrována"
+
+#: src/ClientZone/Registration.php:160
+msgid "Error saving Contact"
+msgstr "Chyba ukládání kontaktu"
+
+#: src/ClientZone/Registration.php:165
+msgid "User account created"
+msgstr "Úživatelský účet byl vytvořen"
+
+#: src/ClientZone/Registration.php:217
+msgid "Confirm your e-mail address"
+msgstr "Potvrďte svou e-mailovou adresu"
+
+#: src/ClientZone/Registration.php:219
+msgid "To finish the registration open this link:"
+msgstr "Registraci dokončíte otevřením tohoto odkazu:"
+
+#: src/ClientZone/Registration.php:221
+#, php-format
+msgid "The link is valid for %d hours."
+msgstr "Odkaz platí %d hodin."
 
 #: src/ClientZone/InvoiceLister.php:68
 msgid "Cancelled"
@@ -1207,11 +1281,6 @@ msgstr "Přihlašovací jméno"
 msgid "Cell"
 msgstr "Mobilní číslo"
 
-#: src/ClientZone/ui/KontaktForm.php:42 src/changepassword.php:67
-#: src/passwordrecovery.php:32 src/login.php:86
-msgid "Password"
-msgstr "Heslo"
-
 #: src/ClientZone/ui/MainMenu.php:36 src/ClientZone/ui/ShopHero.php:50
 msgid "New order"
 msgstr "Nová objednávka"
@@ -1295,10 +1364,6 @@ msgstr "Produkt nebyl zvolen"
 msgid "Item %s was settled without action handled in OrderPlugin code"
 msgstr "Položka %s byla zaplacena bez akce v kódu objednávkového pluginu"
 
-#: src/ClientZone/Customer.php:65
-msgid "missing login"
-msgstr "chybějící login"
-
 #: src/ClientZone/Customer.php:70
 msgid "missing password"
 msgstr "chybějící heslo"
@@ -1319,12 +1384,12 @@ msgstr "Heslo nastaveno"
 msgid "Password set failed"
 msgstr "Nastavení hesla selhalo"
 
-#: src/ClientZone/Configurator.php:238
+#: src/ClientZone/Configurator.php:241
 #, php-format
 msgid "Configuration file %s was saved"
 msgstr "Konfigurační soubor %s byl uložen"
 
-#: src/ClientZone/Configurator.php:242
+#: src/ClientZone/Configurator.php:245
 #, php-format
 msgid "Configuration file %s was not saved"
 msgstr "Konfigurační soubor %s nebyl uložen"
@@ -1467,10 +1532,6 @@ msgstr "Nové heslo"
 msgid "Sign On informations was changed:\n"
 msgstr "Přihlašovací údaje byly změněny\n"
 
-#: src/passwordrecovery.php:31 src/login.php:73
-msgid "Username"
-msgstr "Uživatelské jméno"
-
 #: src/passwordrecovery.php:41
 #, php-format
 msgid "Your new password was sent to %s"
@@ -1492,10 +1553,6 @@ msgstr "Obnova hesla selhala. Zkuste to prosím znovu."
 #: src/passwordrecovery.php:60
 msgid "Please enter your email."
 msgstr "Prosím zadejte svůj email"
-
-#: src/passwordrecovery.php:63 src/passwordrecovery.php:75 src/login.php:107
-msgid "Lost password recovery"
-msgstr "Obnova ztraceného hesla"
 
 #: src/passwordrecovery.php:74
 msgid "Account"
@@ -1686,6 +1743,18 @@ msgstr "Mé faktury"
 msgid "Received invoices are available only for supplier-customers"
 msgstr "Přijaté faktury jsou dostupné pouze pro odběratele-dodavatele"
 
+#~ msgid "Mail address is too short"
+#~ msgstr "Mailová adresa je příliš krátká"
+
+#~ msgid "Sign On info"
+#~ msgstr "Přihlašovací údaje"
+
+#~ msgid "clientzone Account"
+#~ msgstr "Účet clientzone"
+
+#~ msgid "Sign on Failed"
+#~ msgstr "Registrace se nezdařila"
+
 #~ msgid "Thumbnail"
 #~ msgstr "Náhled"
 
@@ -1752,9 +1821,6 @@ msgstr "Přijaté faktury jsou dostupné pouze pro odběratele-dodavatele"
 #~ "Samoregistrace je vypnuta. Kontaktujte administrátora nebo se registrujte "
 #~ "přes aplikaci AbraFlexi."
 
-#~ msgid "Registration disabled"
-#~ msgstr "Registrace je vypnuta"
-
 #~ msgid "mail address is too short"
 #~ msgstr "mailová adresa je příliš krátká"
 
@@ -1767,10 +1833,6 @@ msgstr "Přijaté faktury jsou dostupné pouze pro odběratele-dodavatele"
 
 #~ msgid "password conntrol do not match"
 #~ msgstr "Kontrola hesla nesouhlasí"
-
-#, php-format
-#~ msgid "Username %s is already used. Please choose another one."
-#~ msgstr "Uživatelské %s jméno je již použito. Prosím zvolte jiné"
 
 #~ msgid "User Account Created"
 #~ msgstr "Uživatelský účet byl vytvořen"
