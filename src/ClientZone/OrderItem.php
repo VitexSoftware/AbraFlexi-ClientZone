@@ -237,7 +237,7 @@ class OrderItem extends \AbraFlexi\RW
         );
         if ($attachment->lastResponseCode !== 201) {
             $proforma->addStatusMessage(
-                'Saving Order Details '.$proforma->getAbraFlexiURL().' Failed',
+                sprintf(_('Saving Order Details %s Failed'), $proforma->getAbraFlexiURL()),
                 'error',
             );
         }

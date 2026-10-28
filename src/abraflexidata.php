@@ -41,21 +41,21 @@ $allowed = [
 
 if ($class === null || $class === '' || !\in_array($class, $allowed, true)) {
     http_response_code(403);
-    echo json_encode(['data' => [], 'error' => 'Class not allowed'], \JSON_UNESCAPED_UNICODE);
+    echo json_encode(['data' => [], 'error' => _('Class not allowed')], \JSON_UNESCAPED_UNICODE);
 
     exit;
 }
 
 if ($class === ReceivedInvoiceLister::class && !$oUser->isSupplierCustomer()) {
     http_response_code(403);
-    echo json_encode(['data' => [], 'error' => 'Not a supplier-customer'], \JSON_UNESCAPED_UNICODE);
+    echo json_encode(['data' => [], 'error' => _('Not a supplier-customer')], \JSON_UNESCAPED_UNICODE);
 
     exit;
 }
 
 if (!method_exists($class, 'getAllForDataTable')) {
     http_response_code(403);
-    echo json_encode(['data' => [], 'error' => 'Invalid data source'], \JSON_UNESCAPED_UNICODE);
+    echo json_encode(['data' => [], 'error' => _('Invalid data source')], \JSON_UNESCAPED_UNICODE);
 
     exit;
 }

@@ -1,8 +1,9 @@
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@vitexsoftware.cz\n"
-"POT-Creation-Date: 2026-10-21 11:17+0200\n"
+"POT-Creation-Date: 2026-10-28 11:33+0100\n"
 "PO-Revision-Date: 2026-10-21 10:02+0200\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: \n"
@@ -10,12 +11,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-Basepath: ../..\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ../..\n"
 "X-Poedit-SearchPath-0: ../src\n"
 "X-Poedit-SearchPathExcluded-0: ../vendor\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
 #: src/about.php:15 src/about.php:19 src/ClientZone/ui/PageBottom.php:60
 msgid "About"
@@ -25,8 +26,9 @@ msgstr "O aplikaci"
 msgid "Vitex Software"
 msgstr "Vitex Software"
 
-#: src/maildocument.php:22 src/maildocument.php:33 src/getisdoc.php:35
-#: src/order.php:20 src/order.php:28 src/getpdf.php:40 src/document.php:22
+#: src/maildocument.php:22 src/maildocument.php:33 src/contract.php:26
+#: src/getisdoc.php:35 src/order.php:20 src/order.php:28 src/getpdf.php:37
+#: src/document.php:22
 msgid "Wrong call"
 msgstr "Špatné volání"
 
@@ -86,7 +88,7 @@ msgstr "Kontaktní údaje byly uloženy"
 msgid "Contact details could not be saved"
 msgstr "Kontaktní údaje se nepodařilo uložit"
 
-#: src/mycontact.php:100 src/ClientZone/ui/MainMenu.php:55
+#: src/mycontact.php:100 src/ClientZone/ui/MainMenu.php:56
 msgid "My Contact"
 msgstr "Moje kontaktní informace"
 
@@ -114,16 +116,16 @@ msgstr "Také k dispozici"
 msgid "Company / billing address is managed separately."
 msgstr "Firemní / fakturační adresa se spravuje zvlášť."
 
-#: src/mycontact.php:133 src/ClientZone/ui/MainMenu.php:54
+#: src/mycontact.php:133 src/ClientZone/ui/MainMenu.php:55
 msgid "My Account"
 msgstr "Můj účet"
 
-#: src/mycontact.php:138 src/ClientZone/ui/MainMenu.php:56
+#: src/mycontact.php:138 src/ClientZone/ui/MainMenu.php:57
 #: src/changepassword.php:118
 msgid "Password change"
 msgstr "Změna hesla"
 
-#: src/pricelist.php:15 src/ClientZone/ui/Pricelist.php:47
+#: src/pricelist.php:15 src/ClientZone/ui/Pricelist.php:50
 #: src/ClientZone/ui/MainMenu.php:31
 msgid "Catalog"
 msgstr "Katalog"
@@ -134,13 +136,17 @@ msgid "Cart Item %s was removed"
 msgstr "Položka košíku %s byla odstraněna"
 
 #: src/cart.php:27 src/ClientZone/ui/CartForm.php:27
-#: src/ClientZone/ui/MainMenu.php:92
+#: src/ClientZone/ui/MainMenu.php:93
 msgid "Cart"
 msgstr "Košík"
 
 #: src/myorders.php:17
 msgid "My Orders"
 msgstr "Mé Objednávky"
+
+#: src/newcustomer.php:14
+msgid "Sign On form is disabled by configuration"
+msgstr "Registrační formulář je v konfiguraci vypnut"
 
 #: src/newcustomer.php:36
 msgid "Human control field is empty"
@@ -196,6 +202,10 @@ msgstr "Nový zákazník"
 msgid "Error saving Contact"
 msgstr "Chyba ukládání kontaktu"
 
+#: src/newcustomer.php:121 src/newcustomer.php:128
+msgid "Sign on Failed"
+msgstr "Registrace se nezdařila"
+
 #: src/newcustomer.php:126
 msgid "Error saving Company"
 msgstr "Chyba ukládání Firmy"
@@ -216,8 +226,9 @@ msgstr "Po registraci vám bude nabídnuta objednávka služeb"
 msgid "All notifications target to your email"
 msgstr "Všechny notifikace směřují na váš mail"
 
-#: src/newcustomer.php:161 src/ClientZone/ui/AddressForm.php:32
-#: src/ClientZone/ui/UserForm.php:30 src/ClientZone/ui/KontaktForm.php:30
+#: src/newcustomer.php:161 src/ClientZone/ContractLister.php:36
+#: src/ClientZone/ui/AddressForm.php:32 src/ClientZone/ui/UserForm.php:30
+#: src/ClientZone/ui/KontaktForm.php:30 src/contract.php:41
 msgid "Name"
 msgstr "Jméno"
 
@@ -275,7 +286,7 @@ msgstr "Adresa"
 
 #: src/ClientZone/ReceivedInvoiceLister.php:28
 #: src/ClientZone/InvoiceLister.php:26 src/ClientZone/ui/AddressForm.php:30
-#: src/ClientZone/OrderLister.php:26
+#: src/ClientZone/OrderLister.php:26 src/contract.php:76
 msgid "Code"
 msgstr "Kód"
 
@@ -295,7 +306,8 @@ msgid "Due date"
 msgstr "Splatnost"
 
 #: src/ClientZone/ReceivedInvoiceLister.php:32
-#: src/ClientZone/InvoiceLister.php:30 src/ClientZone/OrderLister.php:30
+#: src/ClientZone/ContractLister.php:39 src/ClientZone/InvoiceLister.php:30
+#: src/ClientZone/OrderLister.php:30 src/contract.php:44
 msgid "Status"
 msgstr "Stav"
 
@@ -305,8 +317,9 @@ msgid "Actions"
 msgstr "Akce"
 
 #: src/ClientZone/ReceivedInvoiceLister.php:53
-#: src/ClientZone/InvoiceLister.php:51 src/ClientZone/ui/Dashboard.php:167
-#: src/ClientZone/ui/Dashboard.php:274 src/ClientZone/ui/Dashboard.php:338
+#: src/ClientZone/ContractLister.php:54 src/ClientZone/InvoiceLister.php:52
+#: src/ClientZone/ui/Dashboard.php:167 src/ClientZone/ui/Dashboard.php:274
+#: src/ClientZone/ui/Dashboard.php:338
 #: src/ClientZone/ui/OrderListingItem.php:25
 #: src/ClientZone/ui/OrderListingItem.php:62 src/ClientZone/OrderLister.php:51
 #: src/ClientZone/OrderLister.php:86
@@ -314,7 +327,7 @@ msgid "Show"
 msgstr "Zobraz"
 
 #: src/ClientZone/ReceivedInvoiceLister.php:69
-#: src/ClientZone/InvoiceLister.php:67
+#: src/ClientZone/InvoiceLister.php:74
 #: src/ClientZone/ui/OrderListingItem.php:37
 msgid "Settled"
 msgstr "Uhrazeno"
@@ -341,6 +354,11 @@ msgstr "Chybějící kód produktu"
 msgid "Product with code %s does not exist"
 msgstr "Produkt s kódem %s neexistuje"
 
+#: src/ClientZone/OrderItem.php:240 src/ClientZone/Order.php:191
+#, php-format
+msgid "Saving Order Details %s Failed"
+msgstr "Uložení detailů objednávky %s se nezdařilo"
+
 #: src/ClientZone/OrderItem.php:285
 #, php-format
 msgid "%s added to cart"
@@ -350,6 +368,22 @@ msgstr "%s přidáno do košíku"
 #, php-format
 msgid "%s chnged in cart"
 msgstr "%s změněno v košíku"
+
+#: src/ClientZone/ContractLister.php:35 src/contract.php:40
+msgid "Contract number"
+msgstr "Číslo smlouvy"
+
+#: src/ClientZone/ContractLister.php:37 src/contract.php:45 src/contract.php:81
+msgid "Valid from"
+msgstr "Platnost od"
+
+#: src/ClientZone/ContractLister.php:38 src/contract.php:46 src/contract.php:82
+msgid "Valid to"
+msgstr "Platnost do"
+
+#: src/ClientZone/ContractLister.php:40 src/contract.php:49
+msgid "Last change"
+msgstr "Poslední změna"
 
 #: src/ClientZone/Order.php:67
 msgid "Please wait while our salesman contact you."
@@ -412,6 +446,31 @@ msgstr "Vaše poznámka ka objednávané položce"
 #, php-format
 msgid "Producet with code %s does not exist"
 msgstr "Produkt s kódem %s neexistuje"
+
+#: src/ClientZone/orderplugins/WebHosting.php:25
+#: src/ClientZone/orderplugins/WebHosting.php:77
+msgid "Web hosting"
+msgstr "Webhosting"
+
+#: src/ClientZone/orderplugins/WebHosting.php:39
+#: src/ClientZone/orderplugins/MailHosting.php:39
+msgid "Domain"
+msgstr "Doména"
+
+#: src/ClientZone/orderplugins/WebHosting.php:41
+msgid "Domain the web hosting will serve"
+msgstr "Doména, kterou bude webhosting obsluhovat"
+
+#: src/ClientZone/orderplugins/WebHosting.php:60
+#: src/ClientZone/orderplugins/MailHosting.php:68
+msgid "Please enter a valid domain"
+msgstr "Zadejte prosím platnou doménu"
+
+#: src/ClientZone/orderplugins/WebHosting.php:89
+#: src/ClientZone/orderplugins/MailHosting.php:109
+#, php-format
+msgid "Item %s will be provisioned by MultiFlexi after payment"
+msgstr "Položka %s bude po zaplacení zřízena systémem MultiFlexi"
 
 #: src/ClientZone/orderplugins/VoIPcredit.php:41
 #: src/ClientZone/orderplugins/VoIPcredit.php:269
@@ -493,6 +552,27 @@ msgstr "VoIP číslo %s vám nepatří"
 msgid "Item %s will be settled by abraflexi-voip-credit after payment"
 msgstr "Položka %s bude po zaplacení zpracována modulem abraflexi-voip-credit"
 
+#: src/ClientZone/orderplugins/MailHosting.php:25
+#: src/ClientZone/orderplugins/MailHosting.php:97
+msgid "Mail hosting"
+msgstr "Mailhosting"
+
+#: src/ClientZone/orderplugins/MailHosting.php:41
+msgid "Domain the mailboxes will belong to"
+msgstr "Doména, do které budou schránky patřit"
+
+#: src/ClientZone/orderplugins/MailHosting.php:46
+msgid "Mailboxes"
+msgstr "Schránky"
+
+#: src/ClientZone/orderplugins/MailHosting.php:48
+msgid "Number of mailboxes requested"
+msgstr "Požadovaný počet schránek"
+
+#: src/ClientZone/orderplugins/MailHosting.php:79
+msgid "Please enter at least one mailbox"
+msgstr "Zadejte prosím alespoň jednu schránku"
+
 #: src/ClientZone/orderplugins/DomainCredit.php:37
 #: src/ClientZone/orderplugins/DomainCredit.php:106
 msgid "Domain Credit"
@@ -538,6 +618,10 @@ msgstr "Smazat"
 msgid "Modify"
 msgstr "Upravit"
 
+#: src/ClientZone/InvoiceLister.php:68
+msgid "Cancelled"
+msgstr "Stornováno"
+
 #: src/ClientZone/DataSource.php:131
 msgid "Smazáno"
 msgstr "Smazáno"
@@ -559,7 +643,7 @@ msgid "Záznam nebyl upravn"
 msgstr "Záznam nebyl upravn"
 
 #: src/ClientZone/ui/PageBottom.php:43 src/ClientZone/ui/WebPage.php:36
-#: src/ClientZone/ui/BootstrapMenu.php:27 src/includes/Init.php:40
+#: src/ClientZone/ui/BootstrapMenu.php:27 src/includes/Init.php:46
 msgid "Client Zone"
 msgstr "Klientská Zóna"
 
@@ -605,7 +689,7 @@ msgstr "větsinou vaše emailová adresa"
 msgid "Password you recivied by email"
 msgstr "Heslo které jste obdžel mailem"
 
-#: src/ClientZone/ui/FlexiBeeLoginForm.php:28 src/ClientZone/ui/MainMenu.php:78
+#: src/ClientZone/ui/FlexiBeeLoginForm.php:28 src/ClientZone/ui/MainMenu.php:79
 #: src/ClientZone/ui/ShopHero.php:44 src/flexibeelogin.php:16
 #: src/passwordrecovery.php:109 src/passwordrecovery.php:118 src/login.php:44
 #: src/login.php:55 src/logout.php:30
@@ -726,34 +810,8 @@ msgstr "Emailová adresa je prázdná"
 
 #: src/ClientZone/ui/AddressForm.php:45 src/ClientZone/ui/ColumnsForm.php:104
 #: src/ClientZone/ui/UserForm.php:41 src/ClientZone/ui/KontaktForm.php:51
-#, fuzzy
 msgid "Uložit"
 msgstr "Uložit"
-
-#: src/ClientZone/ui/ProductEditor.php:47
-msgid "Thumbnail"
-msgstr "Náhled"
-
-#: src/ClientZone/ui/ProductEditor.php:47
-msgid "Small 150x150px"
-msgstr "Malý 150x150px"
-
-#: src/ClientZone/ui/ProductEditor.php:53
-msgid "Image"
-msgstr "Obrázek"
-
-#: src/ClientZone/ui/ProductEditor.php:54
-msgid "Large image"
-msgstr "Velký obrázek"
-
-#: src/ClientZone/ui/ProductEditor.php:61
-msgid "Save"
-msgstr "Ulož"
-
-#: src/ClientZone/ui/ProductEditor.php:99
-#, php-format
-msgid "%s File %s was attached"
-msgstr "%s soubor %s byl přiložen"
 
 #: src/ClientZone/ui/CartForm.php:26 src/ordernow.php:28
 msgid "Checkout"
@@ -768,7 +826,7 @@ msgstr "Košík je prázdný"
 msgid "Browse catalog"
 msgstr "Procházet katalog"
 
-#: src/ClientZone/ui/CartForm.php:56
+#: src/ClientZone/ui/CartForm.php:56 src/contract.php:80
 msgid "Total"
 msgstr "Celkem"
 
@@ -802,7 +860,7 @@ msgstr "Požadovaná služba"
 msgid "Enter details"
 msgstr "Vlož detaily"
 
-#: src/ClientZone/ui/OrderFormHtml.php:50 src/ClientZone/ui/Pricelist.php:117
+#: src/ClientZone/ui/OrderFormHtml.php:50 src/ClientZone/ui/Pricelist.php:120
 msgid "Order Now"
 msgstr "Objednej nyní"
 
@@ -945,11 +1003,11 @@ msgid "1 invoice issued"
 msgstr "1 vystavená faktura"
 
 #: src/ClientZone/ui/Dashboard.php:379
-#, fuzzy, php-format
+#, php-format
 msgid "%d invoices issued"
 msgstr "%d vystavených faktur"
 
-#: src/ClientZone/ui/Dashboard.php:384 src/ClientZone/ui/MainMenu.php:44
+#: src/ClientZone/ui/Dashboard.php:384 src/ClientZone/ui/MainMenu.php:45
 msgid "Orders"
 msgstr "Objednávky"
 
@@ -962,7 +1020,7 @@ msgstr "1 vystavená objednávka"
 msgid "%d orders issued"
 msgstr "%d vystavených objednávek"
 
-#: src/ClientZone/ui/Dashboard.php:394 src/ClientZone/ui/MainMenu.php:42
+#: src/ClientZone/ui/Dashboard.php:394 src/ClientZone/ui/MainMenu.php:43
 #: src/myreceivedinvoices.php:28
 msgid "Received invoices"
 msgstr "Přijaté faktury"
@@ -1083,20 +1141,20 @@ msgstr "%s dnů po splatnosti"
 msgid "%s records with label %s"
 msgstr "%s záznamů se štítkem %s nalezeno"
 
-#: src/ClientZone/ui/Pricelist.php:46
+#: src/ClientZone/ui/Pricelist.php:49
 msgid "Our products"
 msgstr "Naše produkty"
 
-#: src/ClientZone/ui/Pricelist.php:49
+#: src/ClientZone/ui/Pricelist.php:52
 #, php-format
 msgid "%s products"
 msgstr "%s produktů"
 
-#: src/ClientZone/ui/Pricelist.php:55
+#: src/ClientZone/ui/Pricelist.php:58
 msgid "No products are available right now."
 msgstr "Momentálně nejsou k dispozici žádné produkty."
 
-#: src/ClientZone/ui/Pricelist.php:106
+#: src/ClientZone/ui/Pricelist.php:109
 msgid "excl. VAT"
 msgstr "bez DPH"
 
@@ -1129,7 +1187,7 @@ msgstr "Uložit a další"
 msgid "Switch light / dark mode"
 msgstr "Přepnout světlý / tmavý režim"
 
-#: src/ClientZone/ui/BootstrapMenu.php:100
+#: src/ClientZone/ui/BootstrapMenu.php:105
 msgid "Click to hide messages"
 msgstr "Klikněte pro skrytí zpráv"
 
@@ -1166,15 +1224,19 @@ msgstr "Mé objednávky"
 msgid "My invoices"
 msgstr "Mé faktury"
 
-#: src/ClientZone/ui/MainMenu.php:53 src/dashboard.php:17
+#: src/ClientZone/ui/MainMenu.php:39 src/myservices.php:17
+msgid "My services"
+msgstr "Moje služby"
+
+#: src/ClientZone/ui/MainMenu.php:54 src/dashboard.php:17
 msgid "Dashboard"
 msgstr "Přehled"
 
-#: src/ClientZone/ui/MainMenu.php:57
+#: src/ClientZone/ui/MainMenu.php:58
 msgid "Sign Out"
 msgstr "Odhlášení"
 
-#: src/ClientZone/ui/MainMenu.php:72 src/login.php:110
+#: src/ClientZone/ui/MainMenu.php:73 src/login.php:110
 msgid "Sign Up"
 msgstr "Registrace"
 
@@ -1190,14 +1252,13 @@ msgstr "Objednávky k úhradě"
 msgid "Self-service portal"
 msgstr "Samoobslužný portál"
 
-#: src/ClientZone/ui/ShopHero.php:29
+#: src/ClientZone/ui/ShopHero.php:76
 msgid ""
 "Order domains, VoIP credit and hosting services online — instantly, without "
 "waiting for a callback."
 msgstr ""
-"Objednejte domény, VoIP kredit a hostingové služby online — hned, bez čekání "
-"na zpětné volání.Objednejte domény, VoIP kredit a hosting online — ihned, "
-"bez čekání na zpětný telefonát."
+"Objednejte domény, VoIP kredit a hosting online — ihned, bez čekání na "
+"zpětný telefonát."
 
 #: src/ClientZone/ui/AdminPricelist.php:43
 msgid "Pricelist"
@@ -1245,6 +1306,10 @@ msgstr "chybějící heslo"
 #: src/ClientZone/Customer.php:93
 msgid "Contact not found after authentication"
 msgstr "Po ověření nebyl kontakt nalezen"
+
+#: src/ClientZone/Customer.php:621
+msgid "Cannot change password: no user ID"
+msgstr "Heslo nelze změnit: chybí ID uživatele"
 
 #: src/ClientZone/Customer.php:633
 msgid "Password set"
@@ -1330,9 +1395,69 @@ msgstr "Potvrzení hesla"
 msgid "Back to my contact"
 msgstr "Zpět na můj kontakt"
 
+#: src/contract.php:34
+msgid "Service"
+msgstr "Služba"
+
+#: src/contract.php:42
+msgid "Description"
+msgstr "Popis"
+
+#: src/contract.php:43
+msgid "Contract type"
+msgstr "Typ smlouvy"
+
+#: src/contract.php:47
+msgid "Signed on"
+msgstr "Podepsáno"
+
+#: src/contract.php:48
+msgid "Billing frequency (months)"
+msgstr "Frekvence fakturace (měsíce)"
+
+#: src/contract.php:59
+msgid "Contract"
+msgstr "Smlouva"
+
+#: src/contract.php:62
+msgid "Products on this contract"
+msgstr "Produkty na této smlouvě"
+
+#: src/contract.php:72
+msgid "This contract has no products yet."
+msgstr "Tato smlouva zatím nemá žádné produkty."
+
+#: src/contract.php:77
+msgid "Product"
+msgstr "Produkt"
+
+#: src/contract.php:78
+msgid "Quantity"
+msgstr "Množství"
+
+#: src/contract.php:79
+msgid "Unit price"
+msgstr "Jednotková cena"
+
+#: src/contract.php:100
+msgid "Back to my services"
+msgstr "Zpět na moje služby"
+
 #: src/flexibeelogin.php:19
 msgid "I already have an customer number"
 msgstr "Již mám zákaznické číslo"
+
+#: src/abraflexidata.php:44
+msgid "Class not allowed"
+msgstr "Třída není povolena"
+
+#: src/abraflexidata.php:51
+msgid "Not a supplier-customer"
+msgstr "Nejde o dodavatele-odběratele"
+
+#: src/abraflexidata.php:58
+msgid "Invalid data source"
+msgstr "Neplatný zdroj dat"
 
 #: src/passwordrecovery.php:27
 msgid "New password"
@@ -1561,10 +1686,28 @@ msgstr "Mé faktury"
 msgid "Received invoices are available only for supplier-customers"
 msgstr "Přijaté faktury jsou dostupné pouze pro odběratele-dodavatele"
 
-#, php-format
+#~ msgid "Thumbnail"
+#~ msgstr "Náhled"
 
-msgid "Cancelled"
-msgstr "Stornováno"
+#~ msgid "Small 150x150px"
+#~ msgstr "Malý 150x150px"
+
+#~ msgid "Image"
+#~ msgstr "Obrázek"
+
+#~ msgid "Large image"
+#~ msgstr "Velký obrázek"
+
+#~ msgid "Save"
+#~ msgstr "Ulož"
+
+#, php-format
+#~ msgid "%s File %s was attached"
+#~ msgstr "%s soubor %s byl přiložen"
+
+#, php-format
+#~ msgid "Attachment %s Failed"
+#~ msgstr "Přiložení %s se nezdařilo"
 
 #~ msgid "%s %s %s"
 #~ msgstr "%s %s %s"
@@ -1614,9 +1757,6 @@ msgstr "Stornováno"
 
 #~ msgid "mail address is too short"
 #~ msgstr "mailová adresa je příliš krátká"
-
-#~ msgid "Invalid mail address"
-#~ msgstr "Chybná mailová adresa"
 
 #, php-format
 #~ msgid "Mail addressa  %s is already registered"
@@ -1704,9 +1844,6 @@ msgstr "Stornováno"
 #, php-format
 #~ msgid "Download Your Proforma #%s Here"
 #~ msgstr "Stáhněte svou zálohovou fakturu zde  %s"
-
-#~ msgid "Contact"
-#~ msgstr "Kontakt"
 
 #~ msgid "Label"
 #~ msgstr "Štítek"
@@ -2170,9 +2307,6 @@ msgstr "Stornováno"
 
 #~ msgid "Domain .NET"
 #~ msgstr "Doména .NET"
-
-#~ msgid "Domain .NL"
-#~ msgstr "Doména .NL"
 
 #~ msgid "Domain .ORG"
 #~ msgstr "Doména .ORG"

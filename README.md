@@ -74,6 +74,8 @@ ABRAFLEXI_COMPANY="firma_s_r_o_"
 ABRAFLEXI_PASSWORD_HASH="sha256"
 ALLOW_REGISTER="true"
 SHOW_PRICELIST="true"
+WELCOME_CS="Objednejte domény, VoIP kredit a hosting online — ihned, bez čekání na zpětný telefonát."
+WELCOME_EN="Order domains, VoIP credit and hosting online — instantly, without waiting for a callback."
 PROD_CAT="1"
 EASE_LOGGER="syslog"
 EASE_EMAILTO="admin@example.com"
@@ -83,6 +85,7 @@ EASE_EMAILTO="admin@example.com"
 |------|--------|
 | `ALLOW_REGISTER` | Povolit registraci nových klientů |
 | `SHOW_PRICELIST` | Zobrazit katalog na úvodní stránce |
+| `WELCOME_<LL>` | Úvodní text na titulní stránce pro jazyk `LL` (`WELCOME_CS`, `WELCOME_DE`, …); fallback `WELCOME_EN`, pak výchozí text |
 | `PROD_CAT` | ID větve ceníku |
 | `ABRAFLEXI_PASSWORD_HASH` | Hash hesel kontaktů (`sha256` / `plaintext` / prázdné) |
 | `SUPPRESS_EMAILS` | Potlačit odesílání e-mailů klientům |

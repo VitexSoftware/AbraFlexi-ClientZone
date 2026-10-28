@@ -26,7 +26,7 @@ class ShopHero extends \Ease\Html\DivTag
             new \Ease\Html\SpanTag(\Ease\Shared::appName(), ['class' => 'grad']),
         ));
         $inner->addItem(new \Ease\Html\PTag(
-            _('Order domains, VoIP credit and hosting services online — instantly, without waiting for a callback.'),
+            self::welcomeText(),
             ['class' => 'lead'],
         ));
 
@@ -51,5 +51,28 @@ class ShopHero extends \Ease\Html\DivTag
                 ['class' => 'btn btn-line'],
             ));
         }
+    }
+
+    /**
+     * Intro text customisable per e-shop via WELCOME_<LL> (.env), e.g. WELCOME_CS, WELCOME_DE.
+     *
+     * Falls back to WELCOME_EN and finally to the built-in translation.
+     */
+    public static function welcomeText(): string
+    {
+        $lang = strtoupper(substr(\Ease\Locale::$localeUsed ?? 'en_US', 0, 2));
+        $text = '';
+
+        foreach (['WELCOME_'.$lang, 'WELCOME_EN', 'WELLCOME_END'] as $key) {
+            $text = trim((string) \Ease\Shared::cfg($key, ''));
+
+            if ($text !== '') {
+                break;
+            }
+        }
+
+        return $text !== ''
+            ? htmlspecialchars($text)
+            : _('Order domains, VoIP credit and hosting services online — instantly, without waiting for a callback.');
     }
 }

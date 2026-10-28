@@ -188,7 +188,7 @@ class Order extends \AbraFlexi\RW
         );
         if ($attachment->lastResponseCode !== 201) {
             $document->addStatusMessage(
-                'Saving Order Details '.$document->getAbraFlexiURL().' Failed',
+                sprintf(_('Saving Order Details %s Failed'), $document->getAbraFlexiURL()),
                 'error',
             );
         }

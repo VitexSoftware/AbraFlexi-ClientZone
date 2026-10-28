@@ -1,8 +1,9 @@
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@vitexsoftware.cz\n"
-"POT-Creation-Date: 2026-10-21 11:17+0200\n"
+"POT-Creation-Date: 2026-10-28 11:33+0100\n"
 "PO-Revision-Date: 2026-10-21 10:02+0200\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: \n"
@@ -10,12 +11,12 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
-"X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-Basepath: ../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ../..\n"
 "X-Poedit-SearchPath-0: ../src\n"
 "X-Poedit-SearchPathExcluded-0: ../vendor\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 
 #: src/about.php:15 src/about.php:19 src/ClientZone/ui/PageBottom.php:60
 msgid "About"
@@ -25,8 +26,9 @@ msgstr "About"
 msgid "Vitex Software"
 msgstr "Vitex Software"
 
-#: src/maildocument.php:22 src/maildocument.php:33 src/getisdoc.php:35
-#: src/order.php:20 src/order.php:28 src/getpdf.php:40 src/document.php:22
+#: src/maildocument.php:22 src/maildocument.php:33 src/contract.php:26
+#: src/getisdoc.php:35 src/order.php:20 src/order.php:28 src/getpdf.php:37
+#: src/document.php:22
 msgid "Wrong call"
 msgstr "Wrong call"
 
@@ -86,7 +88,7 @@ msgstr "Contact details were saved"
 msgid "Contact details could not be saved"
 msgstr "Contact details could not be saved"
 
-#: src/mycontact.php:100 src/ClientZone/ui/MainMenu.php:55
+#: src/mycontact.php:100 src/ClientZone/ui/MainMenu.php:56
 msgid "My Contact"
 msgstr "My Contact"
 
@@ -103,6 +105,8 @@ msgid ""
 "Under GDPR you have the right to keep your personal data accurate and up to "
 "date. Changes are saved to your contact record in our accounting system."
 msgstr ""
+"Under GDPR you have the right to keep your personal data accurate and up to "
+"date. Changes are saved to your contact record in our accounting system."
 
 #: src/mycontact.php:126
 msgid "Also available"
@@ -112,16 +116,16 @@ msgstr "Also available"
 msgid "Company / billing address is managed separately."
 msgstr "Company / billing address is managed separately."
 
-#: src/mycontact.php:133 src/ClientZone/ui/MainMenu.php:54
+#: src/mycontact.php:133 src/ClientZone/ui/MainMenu.php:55
 msgid "My Account"
 msgstr "My Account"
 
-#: src/mycontact.php:138 src/ClientZone/ui/MainMenu.php:56
+#: src/mycontact.php:138 src/ClientZone/ui/MainMenu.php:57
 #: src/changepassword.php:118
 msgid "Password change"
 msgstr "Password change"
 
-#: src/pricelist.php:15 src/ClientZone/ui/Pricelist.php:47
+#: src/pricelist.php:15 src/ClientZone/ui/Pricelist.php:50
 #: src/ClientZone/ui/MainMenu.php:31
 msgid "Catalog"
 msgstr "Catalog"
@@ -132,13 +136,17 @@ msgid "Cart Item %s was removed"
 msgstr "Cart Item %s was removed"
 
 #: src/cart.php:27 src/ClientZone/ui/CartForm.php:27
-#: src/ClientZone/ui/MainMenu.php:92
+#: src/ClientZone/ui/MainMenu.php:93
 msgid "Cart"
 msgstr "Cart"
 
 #: src/myorders.php:17
 msgid "My Orders"
 msgstr "My Orders"
+
+#: src/newcustomer.php:14
+msgid "Sign On form is disabled by configuration"
+msgstr "Sign On form is disabled by configuration"
 
 #: src/newcustomer.php:36
 msgid "Human control field is empty"
@@ -194,6 +202,10 @@ msgstr "New Customer"
 msgid "Error saving Contact"
 msgstr "Error saving Contact"
 
+#: src/newcustomer.php:121 src/newcustomer.php:128
+msgid "Sign on Failed"
+msgstr "Sign on Failed"
+
 #: src/newcustomer.php:126
 msgid "Error saving Company"
 msgstr "Error saving Company"
@@ -214,8 +226,9 @@ msgstr "After registering, you will be prompted to order service."
 msgid "All notifications target to your email"
 msgstr "All notifications target to your email"
 
-#: src/newcustomer.php:161 src/ClientZone/ui/AddressForm.php:32
-#: src/ClientZone/ui/UserForm.php:30 src/ClientZone/ui/KontaktForm.php:30
+#: src/newcustomer.php:161 src/ClientZone/ContractLister.php:36
+#: src/ClientZone/ui/AddressForm.php:32 src/ClientZone/ui/UserForm.php:30
+#: src/ClientZone/ui/KontaktForm.php:30 src/contract.php:41
 msgid "Name"
 msgstr "Name"
 
@@ -273,7 +286,7 @@ msgstr "Address"
 
 #: src/ClientZone/ReceivedInvoiceLister.php:28
 #: src/ClientZone/InvoiceLister.php:26 src/ClientZone/ui/AddressForm.php:30
-#: src/ClientZone/OrderLister.php:26
+#: src/ClientZone/OrderLister.php:26 src/contract.php:76
 msgid "Code"
 msgstr "Code"
 
@@ -293,7 +306,8 @@ msgid "Due date"
 msgstr "Due date"
 
 #: src/ClientZone/ReceivedInvoiceLister.php:32
-#: src/ClientZone/InvoiceLister.php:30 src/ClientZone/OrderLister.php:30
+#: src/ClientZone/ContractLister.php:39 src/ClientZone/InvoiceLister.php:30
+#: src/ClientZone/OrderLister.php:30 src/contract.php:44
 msgid "Status"
 msgstr "Status"
 
@@ -303,8 +317,9 @@ msgid "Actions"
 msgstr "Actions"
 
 #: src/ClientZone/ReceivedInvoiceLister.php:53
-#: src/ClientZone/InvoiceLister.php:51 src/ClientZone/ui/Dashboard.php:167
-#: src/ClientZone/ui/Dashboard.php:274 src/ClientZone/ui/Dashboard.php:338
+#: src/ClientZone/ContractLister.php:54 src/ClientZone/InvoiceLister.php:52
+#: src/ClientZone/ui/Dashboard.php:167 src/ClientZone/ui/Dashboard.php:274
+#: src/ClientZone/ui/Dashboard.php:338
 #: src/ClientZone/ui/OrderListingItem.php:25
 #: src/ClientZone/ui/OrderListingItem.php:62 src/ClientZone/OrderLister.php:51
 #: src/ClientZone/OrderLister.php:86
@@ -312,7 +327,7 @@ msgid "Show"
 msgstr "Show"
 
 #: src/ClientZone/ReceivedInvoiceLister.php:69
-#: src/ClientZone/InvoiceLister.php:67
+#: src/ClientZone/InvoiceLister.php:74
 #: src/ClientZone/ui/OrderListingItem.php:37
 msgid "Settled"
 msgstr "Settled"
@@ -339,6 +354,11 @@ msgstr "Missing product code"
 msgid "Product with code %s does not exist"
 msgstr "Product with code %s does not exist"
 
+#: src/ClientZone/OrderItem.php:240 src/ClientZone/Order.php:191
+#, php-format
+msgid "Saving Order Details %s Failed"
+msgstr "Saving Order Details %s Failed"
+
 #: src/ClientZone/OrderItem.php:285
 #, php-format
 msgid "%s added to cart"
@@ -348,6 +368,22 @@ msgstr "%s added to cart"
 #, php-format
 msgid "%s chnged in cart"
 msgstr "%s chnged in cart"
+
+#: src/ClientZone/ContractLister.php:35 src/contract.php:40
+msgid "Contract number"
+msgstr "Contract number"
+
+#: src/ClientZone/ContractLister.php:37 src/contract.php:45 src/contract.php:81
+msgid "Valid from"
+msgstr "Valid from"
+
+#: src/ClientZone/ContractLister.php:38 src/contract.php:46 src/contract.php:82
+msgid "Valid to"
+msgstr "Valid to"
+
+#: src/ClientZone/ContractLister.php:40 src/contract.php:49
+msgid "Last change"
+msgstr "Last change"
 
 #: src/ClientZone/Order.php:67
 msgid "Please wait while our salesman contact you."
@@ -410,6 +446,31 @@ msgstr "Your kind words about ordered item"
 #, php-format
 msgid "Producet with code %s does not exist"
 msgstr "Producet with code %s does not exist"
+
+#: src/ClientZone/orderplugins/WebHosting.php:25
+#: src/ClientZone/orderplugins/WebHosting.php:77
+msgid "Web hosting"
+msgstr "Web hosting"
+
+#: src/ClientZone/orderplugins/WebHosting.php:39
+#: src/ClientZone/orderplugins/MailHosting.php:39
+msgid "Domain"
+msgstr "Domain"
+
+#: src/ClientZone/orderplugins/WebHosting.php:41
+msgid "Domain the web hosting will serve"
+msgstr "Domain the web hosting will serve"
+
+#: src/ClientZone/orderplugins/WebHosting.php:60
+#: src/ClientZone/orderplugins/MailHosting.php:68
+msgid "Please enter a valid domain"
+msgstr "Please enter a valid domain"
+
+#: src/ClientZone/orderplugins/WebHosting.php:89
+#: src/ClientZone/orderplugins/MailHosting.php:109
+#, php-format
+msgid "Item %s will be provisioned by MultiFlexi after payment"
+msgstr "Item %s will be provisioned by MultiFlexi after payment"
 
 #: src/ClientZone/orderplugins/VoIPcredit.php:41
 #: src/ClientZone/orderplugins/VoIPcredit.php:269
@@ -491,6 +552,27 @@ msgstr "VoIP Number %s does not belong to you"
 msgid "Item %s will be settled by abraflexi-voip-credit after payment"
 msgstr "Item %s will be settled by abraflexi-voip-credit after payment"
 
+#: src/ClientZone/orderplugins/MailHosting.php:25
+#: src/ClientZone/orderplugins/MailHosting.php:97
+msgid "Mail hosting"
+msgstr "Mail hosting"
+
+#: src/ClientZone/orderplugins/MailHosting.php:41
+msgid "Domain the mailboxes will belong to"
+msgstr "Domain the mailboxes will belong to"
+
+#: src/ClientZone/orderplugins/MailHosting.php:46
+msgid "Mailboxes"
+msgstr "Mailboxes"
+
+#: src/ClientZone/orderplugins/MailHosting.php:48
+msgid "Number of mailboxes requested"
+msgstr "Number of mailboxes requested"
+
+#: src/ClientZone/orderplugins/MailHosting.php:79
+msgid "Please enter at least one mailbox"
+msgstr "Please enter at least one mailbox"
+
 #: src/ClientZone/orderplugins/DomainCredit.php:37
 #: src/ClientZone/orderplugins/DomainCredit.php:106
 msgid "Domain Credit"
@@ -528,13 +610,16 @@ msgid " %s %s nebyl smazán "
 msgstr " %s %s nebyl smazán "
 
 #: src/ClientZone/Engine.php:466 src/ClientZone/DataGrid.php:199
-#, fuzzy
 msgid "Smazat"
-msgstr "delete"
+msgstr "Smazat"
 
 #: src/ClientZone/Engine.php:471 src/ClientZone/DataGrid.php:198
 msgid "Modify"
 msgstr "Modify"
+
+#: src/ClientZone/InvoiceLister.php:68
+msgid "Cancelled"
+msgstr "Cancelled"
 
 #: src/ClientZone/DataSource.php:131
 msgid "Smazáno"
@@ -557,7 +642,7 @@ msgid "Záznam nebyl upravn"
 msgstr "Záznam nebyl upravn"
 
 #: src/ClientZone/ui/PageBottom.php:43 src/ClientZone/ui/WebPage.php:36
-#: src/ClientZone/ui/BootstrapMenu.php:27 src/includes/Init.php:40
+#: src/ClientZone/ui/BootstrapMenu.php:27 src/includes/Init.php:46
 msgid "Client Zone"
 msgstr "Client Zone"
 
@@ -603,7 +688,7 @@ msgstr "your email address in most of cases"
 msgid "Password you recivied by email"
 msgstr "Password you recivied by email"
 
-#: src/ClientZone/ui/FlexiBeeLoginForm.php:28 src/ClientZone/ui/MainMenu.php:78
+#: src/ClientZone/ui/FlexiBeeLoginForm.php:28 src/ClientZone/ui/MainMenu.php:79
 #: src/ClientZone/ui/ShopHero.php:44 src/flexibeelogin.php:16
 #: src/passwordrecovery.php:109 src/passwordrecovery.php:118 src/login.php:44
 #: src/login.php:55 src/logout.php:30
@@ -702,7 +787,7 @@ msgstr "Show Pricelist"
 
 #: src/ClientZone/ui/SetupForm.php:63
 msgid "Show pricelist of items with \"eshop\" flag or label"
-msgstr ""
+msgstr "Show pricelist of items with \"eshop\" flag or label"
 
 #: src/ClientZone/ui/SetupForm.php:67
 msgid "Plaintext"
@@ -722,34 +807,8 @@ msgstr "Email address is empty"
 
 #: src/ClientZone/ui/AddressForm.php:45 src/ClientZone/ui/ColumnsForm.php:104
 #: src/ClientZone/ui/UserForm.php:41 src/ClientZone/ui/KontaktForm.php:51
-#, fuzzy
 msgid "Uložit"
-msgstr "Save"
-
-#: src/ClientZone/ui/ProductEditor.php:47
-msgid "Thumbnail"
-msgstr "Thumbnail"
-
-#: src/ClientZone/ui/ProductEditor.php:47
-msgid "Small 150x150px"
-msgstr "Small 150x150px"
-
-#: src/ClientZone/ui/ProductEditor.php:53
-msgid "Image"
-msgstr "Image"
-
-#: src/ClientZone/ui/ProductEditor.php:54
-msgid "Large image"
-msgstr "Large image"
-
-#: src/ClientZone/ui/ProductEditor.php:61
-msgid "Save"
-msgstr "Save"
-
-#: src/ClientZone/ui/ProductEditor.php:99
-#, php-format
-msgid "%s File %s was attached"
-msgstr "%s File %s was attached"
+msgstr "Uložit"
 
 #: src/ClientZone/ui/CartForm.php:26 src/ordernow.php:28
 msgid "Checkout"
@@ -764,7 +823,7 @@ msgstr "Cart is empty"
 msgid "Browse catalog"
 msgstr "Browse catalog"
 
-#: src/ClientZone/ui/CartForm.php:56
+#: src/ClientZone/ui/CartForm.php:56 src/contract.php:80
 msgid "Total"
 msgstr "Total"
 
@@ -798,7 +857,7 @@ msgstr "Service Requested"
 msgid "Enter details"
 msgstr "Enter details"
 
-#: src/ClientZone/ui/OrderFormHtml.php:50 src/ClientZone/ui/Pricelist.php:117
+#: src/ClientZone/ui/OrderFormHtml.php:50 src/ClientZone/ui/Pricelist.php:120
 msgid "Order Now"
 msgstr "Order Now"
 
@@ -941,11 +1000,11 @@ msgid "1 invoice issued"
 msgstr "1 invoice issued"
 
 #: src/ClientZone/ui/Dashboard.php:379
-#, fuzzy, php-format
+#, php-format
 msgid "%d invoices issued"
 msgstr "%d invoices issued"
 
-#: src/ClientZone/ui/Dashboard.php:384 src/ClientZone/ui/MainMenu.php:44
+#: src/ClientZone/ui/Dashboard.php:384 src/ClientZone/ui/MainMenu.php:45
 msgid "Orders"
 msgstr "Orders"
 
@@ -958,7 +1017,7 @@ msgstr "1 order issued"
 msgid "%d orders issued"
 msgstr "%d orders issued"
 
-#: src/ClientZone/ui/Dashboard.php:394 src/ClientZone/ui/MainMenu.php:42
+#: src/ClientZone/ui/Dashboard.php:394 src/ClientZone/ui/MainMenu.php:43
 #: src/myreceivedinvoices.php:28
 msgid "Received invoices"
 msgstr "Received invoices"
@@ -1079,20 +1138,20 @@ msgstr "%s days after due"
 msgid "%s records with label %s"
 msgstr "%s records with label %s"
 
-#: src/ClientZone/ui/Pricelist.php:46
+#: src/ClientZone/ui/Pricelist.php:49
 msgid "Our products"
 msgstr "Our products"
 
-#: src/ClientZone/ui/Pricelist.php:49
+#: src/ClientZone/ui/Pricelist.php:52
 #, php-format
 msgid "%s products"
 msgstr "%s products"
 
-#: src/ClientZone/ui/Pricelist.php:55
+#: src/ClientZone/ui/Pricelist.php:58
 msgid "No products are available right now."
 msgstr "No products are available right now."
 
-#: src/ClientZone/ui/Pricelist.php:106
+#: src/ClientZone/ui/Pricelist.php:109
 msgid "excl. VAT"
 msgstr "excl. VAT"
 
@@ -1125,7 +1184,7 @@ msgstr "Uložit a další"
 msgid "Switch light / dark mode"
 msgstr "Switch light / dark mode"
 
-#: src/ClientZone/ui/BootstrapMenu.php:100
+#: src/ClientZone/ui/BootstrapMenu.php:105
 msgid "Click to hide messages"
 msgstr "Click to hide messages"
 
@@ -1162,15 +1221,19 @@ msgstr "My orders"
 msgid "My invoices"
 msgstr "My invoices"
 
-#: src/ClientZone/ui/MainMenu.php:53 src/dashboard.php:17
+#: src/ClientZone/ui/MainMenu.php:39 src/myservices.php:17
+msgid "My services"
+msgstr "My services"
+
+#: src/ClientZone/ui/MainMenu.php:54 src/dashboard.php:17
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: src/ClientZone/ui/MainMenu.php:57
+#: src/ClientZone/ui/MainMenu.php:58
 msgid "Sign Out"
 msgstr "Sign Out"
 
-#: src/ClientZone/ui/MainMenu.php:72 src/login.php:110
+#: src/ClientZone/ui/MainMenu.php:73 src/login.php:110
 msgid "Sign Up"
 msgstr "Sign Up"
 
@@ -1186,7 +1249,7 @@ msgstr "Orders to pay"
 msgid "Self-service portal"
 msgstr "Self-service portal"
 
-#: src/ClientZone/ui/ShopHero.php:29
+#: src/ClientZone/ui/ShopHero.php:76
 msgid ""
 "Order domains, VoIP credit and hosting services online — instantly, without "
 "waiting for a callback."
@@ -1241,6 +1304,10 @@ msgstr "missing password"
 msgid "Contact not found after authentication"
 msgstr "Contact not found after authentication"
 
+#: src/ClientZone/Customer.php:621
+msgid "Cannot change password: no user ID"
+msgstr "Cannot change password: no user ID"
+
 #: src/ClientZone/Customer.php:633
 msgid "Password set"
 msgstr "Password set"
@@ -1260,9 +1327,8 @@ msgid "Configuration file %s was not saved"
 msgstr "Configuration file %s was not saved"
 
 #: src/ClientZone/DataGrid.php:197
-#, fuzzy
 msgid "Přidat"
-msgstr "Add contact information"
+msgstr "Přidat"
 
 #: src/ClientZone/DataGrid.php:360 src/ClientZone/DataGrid.php:400
 #: src/ClientZone/DataGrid.php:438
@@ -1326,9 +1392,69 @@ msgstr "Password confirm"
 msgid "Back to my contact"
 msgstr "Back to my contact"
 
+#: src/contract.php:34
+msgid "Service"
+msgstr "Service"
+
+#: src/contract.php:42
+msgid "Description"
+msgstr "Description"
+
+#: src/contract.php:43
+msgid "Contract type"
+msgstr "Contract type"
+
+#: src/contract.php:47
+msgid "Signed on"
+msgstr "Signed on"
+
+#: src/contract.php:48
+msgid "Billing frequency (months)"
+msgstr "Billing frequency (months)"
+
+#: src/contract.php:59
+msgid "Contract"
+msgstr "Contract"
+
+#: src/contract.php:62
+msgid "Products on this contract"
+msgstr "Products on this contract"
+
+#: src/contract.php:72
+msgid "This contract has no products yet."
+msgstr "This contract has no products yet."
+
+#: src/contract.php:77
+msgid "Product"
+msgstr "Product"
+
+#: src/contract.php:78
+msgid "Quantity"
+msgstr "Quantity"
+
+#: src/contract.php:79
+msgid "Unit price"
+msgstr "Unit price"
+
+#: src/contract.php:100
+msgid "Back to my services"
+msgstr "Back to my services"
+
 #: src/flexibeelogin.php:19
 msgid "I already have an customer number"
 msgstr "I already have an customer number"
+
+#: src/abraflexidata.php:44
+msgid "Class not allowed"
+msgstr "Class not allowed"
+
+#: src/abraflexidata.php:51
+msgid "Not a supplier-customer"
+msgstr "Not a supplier-customer"
+
+#: src/abraflexidata.php:58
+msgid "Invalid data source"
+msgstr "Invalid data source"
 
 #: src/passwordrecovery.php:27
 msgid "New password"
@@ -1556,10 +1682,28 @@ msgstr "My Invoices"
 msgid "Received invoices are available only for supplier-customers"
 msgstr "Received invoices are available only for supplier-customers"
 
-#, php-format
+#~ msgid "Thumbnail"
+#~ msgstr "Thumbnail"
 
-msgid "Cancelled"
-msgstr "Cancelled"
+#~ msgid "Small 150x150px"
+#~ msgstr "Small 150x150px"
+
+#~ msgid "Image"
+#~ msgstr "Image"
+
+#~ msgid "Large image"
+#~ msgstr "Large image"
+
+#~ msgid "Save"
+#~ msgstr "Save"
+
+#, php-format
+#~ msgid "%s File %s was attached"
+#~ msgstr "%s File %s was attached"
+
+#, php-format
+#~ msgid "Attachment %s Failed"
+#~ msgstr "Attachment %s Failed"
 
 #~ msgid "%s %s %s"
 #~ msgstr "%s %s %s"
@@ -1602,9 +1746,6 @@ msgstr "Cancelled"
 
 #~ msgid "mail address is too short"
 #~ msgstr "mail address is too short"
-
-#~ msgid "Invalid mail address"
-#~ msgstr "Invalid mail address"
 
 #, php-format
 #~ msgid "Mail addressa  %s is already registered"
@@ -1693,9 +1834,6 @@ msgstr "Cancelled"
 #, php-format
 #~ msgid "Download Your Proforma #%s Here"
 #~ msgstr "Download Your Proforma #%s Here"
-
-#~ msgid "Contact"
-#~ msgstr "Contact"
 
 #~ msgid "Label"
 #~ msgstr "Label"
@@ -2067,9 +2205,6 @@ msgstr "Cancelled"
 
 #~ msgid "Domain .NET"
 #~ msgstr "Domain .NET"
-
-#~ msgid "Domain .NL"
-#~ msgstr "Domain .NL"
 
 #~ msgid "Domain .ORG"
 #~ msgstr "Domain .ORG"

@@ -11,7 +11,7 @@ namespace ClientZone;
 require_once 'includes/Init.php';
 
 if ($shared->getConfigValue('ALLOW_REGISTER') != 'true') {
-    $oPage->addStatusMessage('Sing On form is disabled by configuration');
+    $oPage->addStatusMessage(_('Sign On form is disabled by configuration'));
     $oPage->redirect('index.php');
     exit();
 }
@@ -118,14 +118,14 @@ if ($oPage->isPosted()) {
             } else {
                 $oUser->addStatusMessage(_('Error saving Contact'), 'error');
                 $email = $oPage->addItem(new \Ease\Mailer(constant('SEND_ORDERS_TO'),
-                    'Sign on Failed'));
+                    _('Sign on Failed')));
                 $email->addItem(serialize($newOUser->kontakt->getData()));
                 $email->send();
             }
         } else {
             $oUser->addStatusMessage(_('Error saving Company'), 'error');
             $email = $oPage->addItem(new \Ease\Mailer(constant('SEND_ORDERS_TO'),
-                'Sign on Failed'));
+                _('Sign on Failed')));
             $email->addItem(serialize($newOUser->adresar->getData()));
             $email->send();
         }

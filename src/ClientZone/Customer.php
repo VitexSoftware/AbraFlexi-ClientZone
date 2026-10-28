@@ -618,7 +618,7 @@ class Customer extends \AbraFlexi\Bricks\Customer
         }
 
         if (empty($userID)) {
-            $this->addStatusMessage('Cannot change password: no user ID', 'error');
+            $this->addStatusMessage(_('Cannot change password: no user ID'), 'error');
 
             return false;
         }

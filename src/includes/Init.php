@@ -20,9 +20,15 @@ use Ease\Shared;
 
 require_once __DIR__.'/../../vendor/autoload.php';
 
+// Session must exist before Locale so ?locale=xx_XX choice is remembered.
+if (\PHP_SAPI !== 'cli' && session_status() === \PHP_SESSION_NONE) {
+    session_start();
+}
+
 // Must use singleton — HtmlTag later calls Locale::singleton() and would
 // otherwise re-init from Accept-Language (en_US) and undo translations.
-\Ease\Locale::singleton('cs_CZ', __DIR__.'/../../i18n', 'clientzone');
+// Locale null = autodetect: ?locale= → session → browser Accept-Language.
+\Ease\Locale::singleton(null, __DIR__.'/../../i18n', 'clientzone');
 
 Shared::init(
     [
@@ -45,9 +51,7 @@ if (\PHP_SAPI === 'cli') {
         define('EASE_LOGGER', 'syslog|console|email');
     }
 } else {
-    session_start();
-
-    // Shared::init() runs before session_start(), so Ease flash messages saved by
+    // Shared::init() runs after session_start(), so Ease flash messages saved by
     // Document::redirect() never reach the logger. Restore them here — UI reads
     // Shared::logger()->getMessages() (see BootstrapMenu / getStatusMessagesBlock).
     $appName = Shared::appName();

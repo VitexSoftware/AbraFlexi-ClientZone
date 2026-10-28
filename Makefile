@@ -44,8 +44,8 @@ i18n:
 		--keyword=ngettext:1,2 --package-name=abraflexi-clientzone \
 		--msgid-bugs-address=info@vitexsoftware.cz \
 		-o i18n/clientzone.pot
-	msgmerge --update --backup=simple i18n/cs_CZ/LC_MESSAGES/clientzone.po i18n/clientzone.pot
-	msgmerge --update --backup=simple i18n/en_US/LC_MESSAGES/clientzone.po i18n/clientzone.pot
+	msgmerge --update --backup=none i18n/cs_CZ/LC_MESSAGES/clientzone.po i18n/clientzone.pot
+	msgmerge --update --backup=none i18n/en_US/LC_MESSAGES/clientzone.po i18n/clientzone.pot
 	msgfmt -c -o i18n/cs_CZ/LC_MESSAGES/clientzone.mo i18n/cs_CZ/LC_MESSAGES/clientzone.po
 	msgfmt -c -o i18n/en_US/LC_MESSAGES/clientzone.mo i18n/en_US/LC_MESSAGES/clientzone.po
 
