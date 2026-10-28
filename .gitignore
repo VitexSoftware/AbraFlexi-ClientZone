@@ -15,3 +15,5 @@
 /*.deb
 /*.buildinfo
 /*.changes
+/debian/files
+/.phpunit.result.cache
