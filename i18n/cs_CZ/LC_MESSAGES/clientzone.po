@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@vitexsoftware.cz\n"
-"POT-Creation-Date: 2026-10-28 13:22+0100\n"
+"POT-Creation-Date: 2026-10-28 13:26+0100\n"
 "PO-Revision-Date: 2026-10-21 10:02+0200\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: \n"
@@ -198,117 +198,122 @@ msgstr "Název je povinný"
 msgid "CLIENTZONE_URL is not configured, confirmation e-mail cannot be sent"
 msgstr "Není nastaveno CLIENTZONE_URL, potvrzovací e-mail nelze odeslat"
 
-#: src/newcustomer.php:103 src/newcustomer.php:151
+#: src/newcustomer.php:103
+msgid ""
+"REGISTRATION_SECRET is not configured, confirmation e-mail cannot be sent"
+msgstr "Není nastaveno REGISTRATION_SECRET, potvrzovací e-mail nelze odeslat"
+
+#: src/newcustomer.php:105 src/newcustomer.php:153
 #, php-format
 msgid "Confirmation link was sent to %s"
 msgstr "Potvrzovací odkaz byl odeslán na %s"
 
-#: src/newcustomer.php:106
+#: src/newcustomer.php:108
 msgid "Confirmation e-mail could not be sent"
 msgstr "Potvrzovací e-mail se nepodařilo odeslat"
 
-#: src/newcustomer.php:115
+#: src/newcustomer.php:117
 #, php-format
 msgid "New clientzone account: %s"
 msgstr "Nový účet clientzone: %s"
 
-#: src/newcustomer.php:118
+#: src/newcustomer.php:120
 msgid "New Customer"
 msgstr "Nový zákazník"
 
-#: src/newcustomer.php:133 src/verifyemail.php:34
+#: src/newcustomer.php:135 src/verifyemail.php:34
 msgid "Registration failed"
 msgstr "Registrace se nezdařila"
 
-#: src/newcustomer.php:139
+#: src/newcustomer.php:141
 msgid "Sign On"
 msgstr "Registrace"
 
-#: src/newcustomer.php:142 src/ClientZone/ui/Dashboard.php:35
+#: src/newcustomer.php:144 src/ClientZone/ui/Dashboard.php:35
 msgid "Welcome"
 msgstr "Vítejte"
 
-#: src/newcustomer.php:144
+#: src/newcustomer.php:146
 msgid "After registering, you will be prompted to order service."
 msgstr "Po registraci vám bude nabídnuta objednávka služeb"
 
-#: src/newcustomer.php:145
+#: src/newcustomer.php:147
 msgid "All notifications target to your email"
 msgstr "Všechny notifikace směřují na váš mail"
 
-#: src/newcustomer.php:161 src/newcustomer.php:169
+#: src/newcustomer.php:163 src/newcustomer.php:171
 #, php-format
 msgid "Email Address"
 msgstr "Emailová adresa"
 
-#: src/newcustomer.php:163 src/newcustomer.php:172 src/newcustomer.php:179
+#: src/newcustomer.php:165 src/newcustomer.php:174 src/newcustomer.php:181
 msgid "Requied"
 msgstr "Požadováno"
 
-#: src/newcustomer.php:165
+#: src/newcustomer.php:167
 msgid "The Cube"
 msgstr "Krychle"
 
-#: src/newcustomer.php:165
+#: src/newcustomer.php:167
 msgid "How many walls does the cube have?"
 msgstr "Kolik stěn má krychle ?"
 
-#: src/newcustomer.php:165
+#: src/newcustomer.php:167
 msgid "Only for humans"
 msgstr "Pouze pro lidi"
 
-#: src/newcustomer.php:166
+#: src/newcustomer.php:168
 msgid "Continue"
 msgstr "Pokračovat"
 
-#: src/newcustomer.php:172 src/ClientZone/ContractLister.php:36
+#: src/newcustomer.php:174 src/ClientZone/ContractLister.php:36
 #: src/ClientZone/ui/AddressForm.php:32 src/ClientZone/ui/UserForm.php:30
 #: src/ClientZone/ui/KontaktForm.php:30 src/contract.php:41
 msgid "Name"
 msgstr "Jméno"
 
-#: src/newcustomer.php:173
+#: src/newcustomer.php:175
 msgid "Company ID number"
 msgstr "IČO"
 
-#: src/newcustomer.php:173 src/newcustomer.php:174
+#: src/newcustomer.php:175 src/newcustomer.php:176
 msgid "Only for company"
 msgstr "Pouze pro firmy"
 
-#: src/newcustomer.php:174
+#: src/newcustomer.php:176
 msgid "Company VAT number"
 msgstr "DIČ"
 
-#: src/newcustomer.php:175
+#: src/newcustomer.php:177
 msgid "Telephone number"
 msgstr "Telefoní číslo"
 
-#: src/newcustomer.php:179 src/passwordrecovery.php:31 src/login.php:73
+#: src/newcustomer.php:181 src/passwordrecovery.php:31 src/login.php:73
 msgid "Username"
 msgstr "Uživatelské jméno"
 
-#: src/newcustomer.php:182 src/ClientZone/ui/KontaktForm.php:42
+#: src/newcustomer.php:184 src/ClientZone/ui/KontaktForm.php:42
 #: src/changepassword.php:67 src/passwordrecovery.php:32 src/login.php:86
 msgid "Password"
 msgstr "Heslo"
 
-#: src/newcustomer.php:182
+#: src/newcustomer.php:184
 msgid "At least 8 characters"
 msgstr "Alespoň 8 znaků"
 
-#: src/newcustomer.php:183
+#: src/newcustomer.php:185
 msgid "Password again"
 msgstr "Heslo znovu"
 
-#: src/newcustomer.php:184
+#: src/newcustomer.php:186
 msgid "Singn On"
 msgstr "Registrace"
 
-#: src/newcustomer.php:190
+#: src/newcustomer.php:192
 msgid "Finish"
 msgstr "Dokončit"
 
-#: src/newcustomer.php:194 src/passwordrecovery.php:63
+#: src/newcustomer.php:196 src/passwordrecovery.php:63
 #: src/passwordrecovery.php:75 src/login.php:107
 msgid "Lost password recovery"
 msgstr "Obnova ztraceného hesla"
@@ -663,31 +668,31 @@ msgstr "Smazat"
 msgid "Modify"
 msgstr "Upravit"
 
-#: src/ClientZone/Registration.php:145
+#: src/ClientZone/Registration.php:149
 msgid "Error saving Company"
 msgstr "Chyba ukládání Firmy"
 
-#: src/ClientZone/Registration.php:150
+#: src/ClientZone/Registration.php:154
 msgid "Company registered"
 msgstr "Společnost klienta byla zaregistrována"
 
-#: src/ClientZone/Registration.php:160
+#: src/ClientZone/Registration.php:164
 msgid "Error saving Contact"
 msgstr "Chyba ukládání kontaktu"
 
-#: src/ClientZone/Registration.php:165
+#: src/ClientZone/Registration.php:169
 msgid "User account created"
 msgstr "Úživatelský účet byl vytvořen"
 
-#: src/ClientZone/Registration.php:217
+#: src/ClientZone/Registration.php:221
 msgid "Confirm your e-mail address"
 msgstr "Potvrďte svou e-mailovou adresu"
 
-#: src/ClientZone/Registration.php:219
+#: src/ClientZone/Registration.php:223
 msgid "To finish the registration open this link:"
 msgstr "Registraci dokončíte otevřením tohoto odkazu:"
 
-#: src/ClientZone/Registration.php:221
+#: src/ClientZone/Registration.php:225
 #, php-format
 msgid "The link is valid for %d hours."
 msgstr "Odkaz platí %d hodin."
@@ -1368,28 +1373,28 @@ msgstr "Položka %s byla zaplacena bez akce v kódu objednávkového pluginu"
 msgid "missing password"
 msgstr "chybějící heslo"
 
-#: src/ClientZone/Customer.php:93
+#: src/ClientZone/Customer.php:94
 msgid "Contact not found after authentication"
 msgstr "Po ověření nebyl kontakt nalezen"
 
-#: src/ClientZone/Customer.php:621
+#: src/ClientZone/Customer.php:622
 msgid "Cannot change password: no user ID"
 msgstr "Heslo nelze změnit: chybí ID uživatele"
 
-#: src/ClientZone/Customer.php:633
+#: src/ClientZone/Customer.php:634
 msgid "Password set"
 msgstr "Heslo nastaveno"
 
-#: src/ClientZone/Customer.php:649
+#: src/ClientZone/Customer.php:650
 msgid "Password set failed"
 msgstr "Nastavení hesla selhalo"
 
-#: src/ClientZone/Configurator.php:241
+#: src/ClientZone/Configurator.php:242
 #, php-format
 msgid "Configuration file %s was saved"
 msgstr "Konfigurační soubor %s byl uložen"
 
-#: src/ClientZone/Configurator.php:245
+#: src/ClientZone/Configurator.php:246
 #, php-format
 msgid "Configuration file %s was not saved"
 msgstr "Konfigurační soubor %s nebyl uložen"

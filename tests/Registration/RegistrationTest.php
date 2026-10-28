@@ -13,13 +13,17 @@ use PHPUnit\Framework\TestCase;
  */
 final class RegistrationTest extends TestCase
 {
-    private const FLAGS = ['REGISTER_USERNAME_IS_EMAIL', 'REGISTER_VERIFY_EMAIL', 'ABRAFLEXI_PASSWORD_HASH', 'ABRAFLEXI_PASSWORD_SALT'];
+    private const SECRET = 'unit-test-secret-0123456789abcdefghij';
+
+    private const FLAGS = ['REGISTER_USERNAME_IS_EMAIL', 'REGISTER_VERIFY_EMAIL', 'ABRAFLEXI_PASSWORD_HASH', 'ABRAFLEXI_PASSWORD_SALT', 'REGISTRATION_SECRET'];
 
     protected function setUp(): void
     {
         foreach (self::FLAGS as $flag) {
             putenv($flag);
         }
+
+        putenv('REGISTRATION_SECRET='.self::SECRET);
     }
 
     protected function tearDown(): void
@@ -83,6 +87,27 @@ final class RegistrationTest extends TestCase
         self::assertStringNotContainsString('secret@example.com', base64_decode(strtr($token, '-_', '+/')));
     }
 
+    public function testTokenNeedsDedicatedSecret(): void
+    {
+        $token = Registration::makeToken(['email' => 'a@b.cz']);
+
+        putenv('REGISTRATION_SECRET=too-short');
+
+        self::assertFalse(Registration::tokenSecretConfigured());
+        self::assertNull(Registration::parseToken($token));
+        $this->expectException(\RuntimeException::class);
+        Registration::makeToken(['email' => 'a@b.cz']);
+    }
+
+    public function testTokenWithAnotherSecretIsRejected(): void
+    {
+        $token = Registration::makeToken(['email' => 'a@b.cz']);
+
+        putenv('REGISTRATION_SECRET=another-secret-0123456789abcdefghijk');
+
+        self::assertNull(Registration::parseToken($token));
+    }
+
     public function testTamperedTokenIsRejected(): void
     {
         $token = Registration::makeToken(['email' => 'a@b.cz']);
@@ -102,15 +127,6 @@ final class RegistrationTest extends TestCase
         $token = rtrim(strtr(base64_encode($iv.$tag.$cipher), '+/', '-_'), '=');
 
         self::assertNull(Registration::parseToken($token));
-    }
-
-    public function testTokenEncryptedWithAnotherKeyIsRejected(): void
-    {
-        $iv = random_bytes(12);
-        $tag = '';
-        $cipher = openssl_encrypt(json_encode(['email' => 'a@b.cz', 'exp' => time() + 60]), 'aes-256-gcm', hash('sha256', 'another-installation', true), \OPENSSL_RAW_DATA, $iv, $tag);
-
-        self::assertNull(Registration::parseToken(rtrim(strtr(base64_encode($iv.$tag.$cipher), '+/', '-_'), '=')));
     }
 
     public function testPasswordFieldsPlain(): void

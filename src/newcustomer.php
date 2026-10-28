@@ -99,6 +99,8 @@ if ($posted && $oPage->getPostValue('step') === '1') {
 
                 if ($baseUrl === '') {
                     $oPage->addStatusMessage(_('CLIENTZONE_URL is not configured, confirmation e-mail cannot be sent'), 'error');
+                } elseif (!Registration::tokenSecretConfigured()) {
+                    $oPage->addStatusMessage(_('REGISTRATION_SECRET is not configured, confirmation e-mail cannot be sent'), 'error');
                 } elseif (Registration::sendVerification($emailAddress, Registration::makeToken($data), $baseUrl)) {
                     $oPage->addStatusMessage(sprintf(_('Confirmation link was sent to %s'), $emailAddress), 'success');
                     $done = true;

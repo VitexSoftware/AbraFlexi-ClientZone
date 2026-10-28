@@ -41,6 +41,7 @@ class Configurator extends \Ease\Brick
         "REGISTER_USERNAME_IS_EMAIL" => 'boolean',
         "REGISTER_VERIFY_EMAIL" => 'boolean',
         "CLIENTZONE_URL" => 'string',
+        "REGISTRATION_SECRET" => 'string',
         "SHOW_PRICELIST" => 'boolean',
         "PROD_CAT" => 'string',
         "DEBUG" => 'boolean',

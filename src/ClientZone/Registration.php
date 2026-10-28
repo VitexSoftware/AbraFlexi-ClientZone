@@ -78,13 +78,17 @@ class Registration
     }
 
     /**
-     * Is the username used by any contact (except the given one)?
+     * Is the username used as username or e-mail by any contact (except the given one)?
      */
     public static function usernameTaken(string $username, mixed $exceptId = null): bool
     {
-        foreach (self::contactsBy('username', $username) as $row) {
-            if ($exceptId === null || (string) $row['id'] !== (string) $exceptId) {
-                return true;
+        // The e-mail column counts too: a username equal to somebody else's e-mail
+        // would let the owner of that username sign in as that contact.
+        foreach (['username', 'email'] as $column) {
+            foreach (self::contactsBy($column, $username) as $row) {
+                if ($exceptId === null || (string) $row['id'] !== (string) $exceptId) {
+                    return true;
+                }
             }
         }
 
@@ -189,7 +193,7 @@ class Registration
     {
         $raw = base64_decode(strtr($token, '-_', '+/'), true);
 
-        if ($raw === false || \strlen($raw) < 29) {
+        if ($raw === false || \strlen($raw) < 29 || !self::tokenSecretConfigured()) {
             return null;
         }
 
@@ -224,11 +228,24 @@ class Registration
     }
 
     /**
-     * Secret derived from the AbraFlexi connection settings, no extra key to manage.
+     * Is there a dedicated random REGISTRATION_SECRET (at least 32 characters)?
+     */
+    public static function tokenSecretConfigured(): bool
+    {
+        return \strlen(trim((string) Shared::cfg('REGISTRATION_SECRET'))) >= 32;
+    }
+
+    /**
+     * Token key from the dedicated secret. It is deliberately not derived from the
+     * AbraFlexi credentials: anybody holding a token could then guess them offline.
      */
     private static function tokenKey(): string
     {
-        return hash('sha256', 'clientzone-registration|'.Shared::cfg('ABRAFLEXI_URL').'|'.Shared::cfg('ABRAFLEXI_LOGIN').'|'.Shared::cfg('ABRAFLEXI_PASSWORD'), true);
+        if (!self::tokenSecretConfigured()) {
+            throw new \RuntimeException('REGISTRATION_SECRET is not configured');
+        }
+
+        return hash_hkdf('sha256', trim((string) Shared::cfg('REGISTRATION_SECRET')), 32, 'clientzone-registration-token');
     }
 
     /**

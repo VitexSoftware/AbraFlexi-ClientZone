@@ -74,6 +74,11 @@ done
 
 replaceENV "CONFIGURED" "true"
 
+# Random secret for e-mail verification links, generated once and never asked for
+if ! grep -q '^REGISTRATION_SECRET=".\{32,\}"' "$ENV_FILE" 2>/dev/null; then
+    replaceENV "REGISTRATION_SECRET" "$(head -c 32 /dev/urandom | od -An -tx1 | tr -d ' \n')"
+fi
+
 # Migrate legacy config path if present and new file was empty of ABRAFLEXI_URL
 if [ -f /etc/abraflexi/clientzone.env ] && ! grep -q '^ABRAFLEXI_URL=.\+' "$ENV_FILE" 2>/dev/null; then
     echo "abraflexi-clientzone: merging legacy /etc/abraflexi/clientzone.env into ${ENV_FILE}" >&2

@@ -82,9 +82,10 @@ class Customer extends \AbraFlexi\Bricks\Customer
             }
 
             $kontakt->defaultUrlParams['detail'] = 'full';
-            $kontakt->loadFromAbraFlexi([$this->loginColumn => $login]);
+            // authenticate() matched by username, so resolve the contact the same way first.
+            $kontakt->loadFromAbraFlexi(['username' => $login]);
             if (empty($kontakt->getMyKey())) {
-                $kontakt->loadFromAbraFlexi(['username' => $login]);
+                $kontakt->loadFromAbraFlexi([$this->loginColumn => $login]);
             }
             if (empty($kontakt->getMyKey())) {
                 $kontakt->loadFromAbraFlexi(['email' => $login]);

@@ -86,6 +86,7 @@ EASE_EMAILTO="admin@example.com"
 | `ALLOW_REGISTER` | Povolit registraci nových klientů |
 | `REGISTER_USERNAME_IS_EMAIL` | Přihlašovací jméno musí být shodné s e-mailem (výchozí `true`) |
 | `CLIENTZONE_URL` | Veřejná adresa aplikace pro odkazy v e-mailech, nutná pro ověření e-mailu |
+| `REGISTRATION_SECRET` | Náhodný tajný klíč (min. 32 znaků) pro odkazy k ověření e-mailu; balíček ho vygeneruje sám |
 | `REGISTER_VERIFY_EMAIL` | Při registraci ověřit e-mailovou schránku odkazem (výchozí `false`) |
 | `SHOW_PRICELIST` | Zobrazit katalog na úvodní stránce |
 | `WELCOME_<LL>` | Úvodní text na titulní stránce pro jazyk `LL` (`WELCOME_CS`, `WELCOME_DE`, …); fallback `WELCOME_EN`, pak výchozí text |
