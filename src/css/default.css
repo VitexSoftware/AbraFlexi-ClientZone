@@ -842,3 +842,75 @@ a.cz-dashboard-stat-link:hover {
         justify-content: flex-start;
     }
 }
+
+/* ---------- Registration wizard ---------- */
+.cz-wizard {
+    display: flex;
+    gap: 8px;
+    margin: 0 0 22px;
+    padding: 0;
+    list-style: none;
+    counter-reset: none;
+}
+
+.cz-wizard li {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    color: var(--dim);
+    font-size: .85rem;
+    min-width: 0;
+}
+
+.cz-wizard-num {
+    flex: none;
+    display: inline-grid;
+    place-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 1px solid currentColor;
+    font-size: .75rem;
+}
+
+.cz-wizard-title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cz-wizard li.is-done {
+    color: var(--text);
+}
+
+.cz-wizard li.is-done .cz-wizard-num {
+    background: var(--p2);
+    border-color: var(--p2);
+    color: #12091f;
+}
+
+.cz-wizard li.is-current {
+    color: var(--text);
+    border-color: var(--p1);
+    background: color-mix(in srgb, var(--p1) 12%, var(--glass));
+}
+
+.cz-wizard li.is-current .cz-wizard-num {
+    background: var(--p1);
+    border-color: var(--p1);
+    color: #fff;
+}
+
+@media (max-width: 575.98px) {
+    .cz-wizard li:not(.is-current) .cz-wizard-title {
+        display: none;
+    }
+}
+
+.cz-auth-card.cz-auth-wide {
+    width: min(560px, 100%);
+}

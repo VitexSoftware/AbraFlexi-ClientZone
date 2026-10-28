@@ -21,6 +21,9 @@ use Ease\Shared;
  *
  *  - STATE_KNOWN:  e-mail belongs to a contact without login → only credentials are added
  *  - STATE_TAKEN:  e-mail belongs to a contact which already has a username → refuse
+ *  - STATE_COMPANY: no contact has the e-mail, but a company (adresar) does → a contact
+ *                   is created for that company so there is a place to store the password
+ *  - STATE_AMBIGUOUS: the e-mail is on several companies → refuse, a human has to decide
  *  - STATE_NEW:    e-mail is unknown → company (adresar) and contact are created
  *
  * AbraFlexi never returns the contact password, so "has login" means
@@ -31,6 +34,13 @@ class Registration
     public const STATE_NEW = 'new';
     public const STATE_KNOWN = 'known';
     public const STATE_TAKEN = 'taken';
+    public const STATE_COMPANY = 'company';
+    public const STATE_AMBIGUOUS = 'ambiguous';
+
+    public const STEP_EMAIL = 'email';
+    public const STEP_COMPANY = 'company';
+    public const STEP_ACCESS = 'access';
+    public const STEP_DONE = 'done';
 
     /**
      * Pending e-mail verification link lifetime in seconds.
@@ -58,23 +68,55 @@ class Registration
     /**
      * Classify an e-mail address against known contacts.
      *
-     * @return array{state: string, contact: ?array<string, mixed>}
+     * @return array{state: string, contact: ?array<string, mixed>, company: ?array<string, mixed>}
      */
     public static function lookup(string $email): array
     {
         $rows = self::contactsBy('email', $email);
 
-        if ($rows === []) {
-            return ['state' => self::STATE_NEW, 'contact' => null];
-        }
-
         foreach ($rows as $row) {
             if (empty($row['username'])) {
-                return ['state' => self::STATE_KNOWN, 'contact' => $row];
+                return ['state' => self::STATE_KNOWN, 'contact' => $row, 'company' => null];
             }
         }
 
-        return ['state' => self::STATE_TAKEN, 'contact' => $rows[0]];
+        if ($rows !== []) {
+            return ['state' => self::STATE_TAKEN, 'contact' => $rows[0], 'company' => null];
+        }
+
+        // No contact has this address; it may still be the company's own e-mail.
+        $companies = self::companiesByEmail($email);
+
+        if (\count($companies) > 1) {
+            return ['state' => self::STATE_AMBIGUOUS, 'contact' => null, 'company' => null];
+        }
+
+        if ($companies !== []) {
+            return ['state' => self::STATE_COMPANY, 'contact' => null, 'company' => $companies[0]];
+        }
+
+        return ['state' => self::STATE_NEW, 'contact' => null, 'company' => null];
+    }
+
+    /**
+     * Wizard steps for the given lookup state (details are asked only for unknown e-mails).
+     *
+     * @return list<string>
+     */
+    public static function steps(?string $state): array
+    {
+        return $state === self::STATE_NEW
+            ? [self::STEP_EMAIL, self::STEP_COMPANY, self::STEP_ACCESS, self::STEP_DONE]
+            : [self::STEP_EMAIL, self::STEP_ACCESS, self::STEP_DONE];
+    }
+
+    /**
+     * A contact is attached to an existing company only after the mailbox is verified,
+     * whatever REGISTER_VERIFY_EMAIL says: the e-mail alone would give access to its invoices.
+     */
+    public static function mustVerify(?string $state): bool
+    {
+        return self::verifyEmail() || $state === self::STATE_COMPANY;
     }
 
     /**
@@ -114,11 +156,38 @@ class Registration
         // Re-check, the verification link may be used twice or the state may have changed.
         $current = self::lookup($email);
 
-        if ($current['state'] === self::STATE_TAKEN || self::usernameTaken($username, $data['contactId'] ?? null)) {
+        if (
+            \in_array($current['state'], [self::STATE_TAKEN, self::STATE_AMBIGUOUS], true)
+            || self::usernameTaken($username, $data['contactId'] ?? null)
+        ) {
             return null;
         }
 
         $customer = new Customer();
+
+        if ($data['state'] === self::STATE_COMPANY) {
+            $company = $current['company'];
+
+            if ($current['state'] !== self::STATE_COMPANY || (string) $company['id'] !== (string) ($data['companyId'] ?? '')) {
+                return null;
+            }
+
+            $customer->kontakt->setData(array_merge([
+                'email' => $email,
+                'username' => $username,
+                'firma' => empty($company['kod']) ? 'id:'.$company['id'] : \AbraFlexi\Functions::code((string) $company['kod']),
+            ], $data['passwordFields']));
+
+            if (!$customer->kontakt->sync()) {
+                $customer->addStatusMessage(_('Error saving Contact'), 'error');
+
+                return null;
+            }
+
+            $customer->addStatusMessage(_('User account created'), 'success');
+
+            return $customer;
+        }
 
         if ($data['state'] === self::STATE_KNOWN) {
             if ($current['state'] !== self::STATE_KNOWN) {
@@ -246,6 +315,18 @@ class Registration
         }
 
         return hash_hkdf('sha256', trim((string) Shared::cfg('REGISTRATION_SECRET')), 32, 'clientzone-registration-token');
+    }
+
+    /**
+     * @return list<array<string, mixed>> companies (adresar) whose own e-mail equals the address
+     */
+    private static function companiesByEmail(string $email): array
+    {
+        $adresar = new \AbraFlexi\Adresar();
+        $adresar->throwException = false;
+        $rows = $adresar->getColumnsFromAbraFlexi(['id', 'kod', 'nazev', 'email'], ['email' => $email]);
+
+        return \is_array($rows) ? array_values(array_filter($rows, 'is_array')) : [];
     }
 
     /**

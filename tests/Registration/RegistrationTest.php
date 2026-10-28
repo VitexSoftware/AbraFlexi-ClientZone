@@ -129,6 +129,32 @@ final class RegistrationTest extends TestCase
         self::assertNull(Registration::parseToken($token));
     }
 
+    public function testDetailsAreAskedOnlyForUnknownEmail(): void
+    {
+        self::assertSame(
+            [Registration::STEP_EMAIL, Registration::STEP_COMPANY, Registration::STEP_ACCESS, Registration::STEP_DONE],
+            Registration::steps(Registration::STATE_NEW),
+        );
+
+        foreach ([Registration::STATE_KNOWN, Registration::STATE_COMPANY, null] as $state) {
+            self::assertSame(
+                [Registration::STEP_EMAIL, Registration::STEP_ACCESS, Registration::STEP_DONE],
+                Registration::steps($state),
+            );
+        }
+    }
+
+    public function testCompanyMatchAlwaysNeedsVerification(): void
+    {
+        self::assertFalse(Registration::mustVerify(Registration::STATE_KNOWN));
+        self::assertFalse(Registration::mustVerify(Registration::STATE_NEW));
+        self::assertTrue(Registration::mustVerify(Registration::STATE_COMPANY));
+
+        putenv('REGISTER_VERIFY_EMAIL=true');
+
+        self::assertTrue(Registration::mustVerify(Registration::STATE_KNOWN));
+    }
+
     public function testPasswordFieldsPlain(): void
     {
         self::assertSame(['password' => 'abc12345'], Customer::passwordWriteFields('abc12345'));
