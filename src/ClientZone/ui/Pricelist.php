@@ -40,7 +40,10 @@ class Pricelist extends \Ease\Html\DivTag
         }
 
         $this->pricer = new \AbraFlexi\Cenik();
-        $items = $this->pricer->getColumnsFromAbraFlexi('info', ['(in subtree '.$category.')']);
+        $items = $this->pricer->getColumnsFromAbraFlexi('info', [
+            '(in subtree '.$category.')',
+            'limit' => 0,
+        ]);
 
         $head = $this->addItem(new \Ease\Html\DivTag(null, ['class' => 'cz-catalog-head']));
         $head->addItem(new \Ease\Html\DivTag(_('Our products'), ['class' => 'eyebrow']));
