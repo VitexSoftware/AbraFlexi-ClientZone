@@ -17,3 +17,4 @@
 /*.changes
 /debian/files
 /.phpunit.result.cache
+/.env
