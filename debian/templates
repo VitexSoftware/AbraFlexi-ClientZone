@@ -40,6 +40,24 @@ Default: true
 Description: Allow self-registration
  Provide a "Create account" dialog for new customers.
 
+Template: clientzone/REGISTER_USERNAME_IS_EMAIL
+Type: boolean
+Default: true
+Description: Username must equal the e-mail address
+ If true, new customers log in with their e-mail address. Otherwise they choose their own username.
+
+Template: clientzone/REGISTER_VERIFY_EMAIL
+Type: boolean
+Default: false
+Description: Verify the e-mail address during registration
+ If true, the account is created only after the customer opens the confirmation link sent by e-mail.
+
+Template: clientzone/CLIENTZONE_URL
+Type: string
+Default:
+Description: Public base URL of Client Zone
+ Used for links in e-mails (e.g. https://zone.example.com/clientzone). Required when e-mail verification is enabled.
+
 Template: clientzone/SHOW_PRICELIST
 Type: boolean
 Default: false
