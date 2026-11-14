@@ -1,3 +1,15 @@
+abraflexi-clientzone (2.6.0) unstable; urgency=medium
+
+  * Contract detail: the customer can withdraw from chosen products or from the
+    whole contract. The products get the end of validity (platiDoData), the
+    whole contract also smlouvaDo, so the invoices AbraFlexi generates from the
+    contract afterwards no longer contain them. The last billed day is the end
+    of the period that has been invoiced already (today when nothing was
+    invoiced ahead). The form needs a confirmation and is protected by a CSRF
+    token.
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Sat, 14 Nov 2026 16:13:41 +0100
+
 abraflexi-clientzone (2.5.0) unstable; urgency=medium
 
   * "My services" lists contracts in a DataTable; contract detail shows status,

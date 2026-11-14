@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: abraflexi-clientzone\n"
 "Report-Msgid-Bugs-To: info@vitexsoftware.cz\n"
-"POT-Creation-Date: 2026-10-28 16:04+0100\n"
+"POT-Creation-Date: 2026-11-14 16:13+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -281,7 +281,7 @@ msgstr ""
 
 #: src/newcustomer.php:224 src/ClientZone/ContractLister.php:36
 #: src/ClientZone/ui/AddressForm.php:32 src/ClientZone/ui/UserForm.php:30
-#: src/ClientZone/ui/KontaktForm.php:30 src/contract.php:41
+#: src/ClientZone/ui/KontaktForm.php:30 src/contract.php:68
 msgid "Name"
 msgstr ""
 
@@ -367,7 +367,7 @@ msgstr ""
 
 #: src/ClientZone/ReceivedInvoiceLister.php:28
 #: src/ClientZone/InvoiceLister.php:26 src/ClientZone/ui/AddressForm.php:30
-#: src/ClientZone/OrderLister.php:26 src/contract.php:76
+#: src/ClientZone/OrderLister.php:26 src/contract.php:100
 msgid "Code"
 msgstr ""
 
@@ -388,7 +388,7 @@ msgstr ""
 
 #: src/ClientZone/ReceivedInvoiceLister.php:32
 #: src/ClientZone/ContractLister.php:39 src/ClientZone/InvoiceLister.php:30
-#: src/ClientZone/OrderLister.php:30 src/contract.php:44
+#: src/ClientZone/OrderLister.php:30 src/contract.php:71
 msgid "Status"
 msgstr ""
 
@@ -411,6 +411,14 @@ msgstr ""
 #: src/ClientZone/InvoiceLister.php:74
 #: src/ClientZone/ui/OrderListingItem.php:37
 msgid "Settled"
+msgstr ""
+
+#: src/ClientZone/ContractWithdrawal.php:146
+msgid "Choose at least one product to withdraw from"
+msgstr ""
+
+#: src/ClientZone/ContractWithdrawal.php:167
+msgid "The withdrawal was not saved"
 msgstr ""
 
 #: src/ClientZone/User.php:29
@@ -450,19 +458,21 @@ msgstr ""
 msgid "%s chnged in cart"
 msgstr ""
 
-#: src/ClientZone/ContractLister.php:35 src/contract.php:40
+#: src/ClientZone/ContractLister.php:35 src/contract.php:67
 msgid "Contract number"
 msgstr ""
 
-#: src/ClientZone/ContractLister.php:37 src/contract.php:45 src/contract.php:81
+#: src/ClientZone/ContractLister.php:37 src/contract.php:72
+#: src/contract.php:105
 msgid "Valid from"
 msgstr ""
 
-#: src/ClientZone/ContractLister.php:38 src/contract.php:46 src/contract.php:82
+#: src/ClientZone/ContractLister.php:38 src/contract.php:73
+#: src/contract.php:106
 msgid "Valid to"
 msgstr ""
 
-#: src/ClientZone/ContractLister.php:40 src/contract.php:49
+#: src/ClientZone/ContractLister.php:40 src/contract.php:76
 msgid "Last change"
 msgstr ""
 
@@ -485,6 +495,30 @@ msgstr ""
 #: src/ClientZone/Order.php:219
 #, php-format
 msgid "Unhandled type of item"
+msgstr ""
+
+#: src/ClientZone/orderplugins/MultiFlexi.php:28
+#: src/ClientZone/orderplugins/MultiFlexi.php:82
+msgid "MultiFlexi (SaaS)"
+msgstr ""
+
+#: src/ClientZone/orderplugins/MultiFlexi.php:46
+msgid "Instances"
+msgstr ""
+
+#: src/ClientZone/orderplugins/MultiFlexi.php:48
+msgid "Number of MultiFlexi instances"
+msgstr ""
+
+#: src/ClientZone/orderplugins/MultiFlexi.php:69
+msgid "Please enter at least 1 instance"
+msgstr ""
+
+#: src/ClientZone/orderplugins/MultiFlexi.php:96
+#: src/ClientZone/orderplugins/WebHosting.php:89
+#: src/ClientZone/orderplugins/MailHosting.php:109
+#, php-format
+msgid "Item %s will be provisioned by MultiFlexi after payment"
 msgstr ""
 
 #: src/ClientZone/orderplugins/Common.php:37
@@ -545,12 +579,6 @@ msgstr ""
 #: src/ClientZone/orderplugins/WebHosting.php:60
 #: src/ClientZone/orderplugins/MailHosting.php:68
 msgid "Please enter a valid domain"
-msgstr ""
-
-#: src/ClientZone/orderplugins/WebHosting.php:89
-#: src/ClientZone/orderplugins/MailHosting.php:109
-#, php-format
-msgid "Item %s will be provisioned by MultiFlexi after payment"
 msgstr ""
 
 #: src/ClientZone/orderplugins/VoIPcredit.php:41
@@ -946,7 +974,7 @@ msgstr ""
 msgid "Browse catalog"
 msgstr ""
 
-#: src/ClientZone/ui/CartForm.php:56 src/contract.php:80
+#: src/ClientZone/ui/CartForm.php:56 src/contract.php:104
 msgid "Total"
 msgstr ""
 
@@ -1506,51 +1534,99 @@ msgstr ""
 msgid "Back to my contact"
 msgstr ""
 
-#: src/contract.php:34
+#: src/contract.php:37
+msgid "The form expired, please try again"
+msgstr ""
+
+#: src/contract.php:39
+msgid "Confirm the withdrawal first"
+msgstr ""
+
+#: src/contract.php:46
+#, php-format
+msgid "You have withdrawn from %d product(s). The last billed day is %s."
+msgstr ""
+
+#: src/contract.php:55
+msgid "The withdrawal could not be saved, please contact us."
+msgstr ""
+
+#: src/contract.php:61
 msgid "Service"
 msgstr ""
 
-#: src/contract.php:42
+#: src/contract.php:69
 msgid "Description"
 msgstr ""
 
-#: src/contract.php:43
+#: src/contract.php:70
 msgid "Contract type"
 msgstr ""
 
-#: src/contract.php:47
+#: src/contract.php:74
 msgid "Signed on"
 msgstr ""
 
-#: src/contract.php:48
+#: src/contract.php:75
 msgid "Billing frequency (months)"
 msgstr ""
 
-#: src/contract.php:59
+#: src/contract.php:86
 msgid "Contract"
 msgstr ""
 
-#: src/contract.php:62
+#: src/contract.php:89
 msgid "Products on this contract"
 msgstr ""
 
-#: src/contract.php:72
+#: src/contract.php:94
 msgid "This contract has no products yet."
 msgstr ""
 
-#: src/contract.php:77
+#: src/contract.php:101
 msgid "Product"
 msgstr ""
 
-#: src/contract.php:78
+#: src/contract.php:102
 msgid "Quantity"
 msgstr ""
 
-#: src/contract.php:79
+#: src/contract.php:103
 msgid "Unit price"
 msgstr ""
 
-#: src/contract.php:100
+#: src/contract.php:114
+msgid "Withdraw from this product"
+msgstr ""
+
+#: src/contract.php:122
+msgid "ended"
+msgstr ""
+
+#: src/contract.php:131
+msgid ""
+"Withdrawing ends the billing of the chosen products. Invoices already issued "
+"stay due; the last billed day is the end of the period that has been "
+"invoiced already."
+msgstr ""
+
+#: src/contract.php:134
+msgid "I confirm that I withdraw from the chosen products"
+msgstr ""
+
+#: src/contract.php:136
+msgid "Withdraw from chosen products"
+msgstr ""
+
+#: src/contract.php:137
+msgid "Withdraw from the whole contract"
+msgstr ""
+
+#: src/contract.php:141
+msgid "There is nothing left to withdraw from on this contract."
+msgstr ""
+
+#: src/contract.php:145
 msgid "Back to my services"
 msgstr ""
 

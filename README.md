@@ -23,6 +23,11 @@ Vlastnosti
  * Po objednání vznikají v AbraFlexi doklady (faktura / záloha / objednávka)
  * Historie objednávek a faktur (DataTables)
  * Zobrazení PDF, stažení ISDOC, odeslání dokladu e-mailem
+ * **Odstoupení od smlouvy** (`contract.php`): zákazník v detailu smlouvy vybere
+   produkty nebo celou smlouvu; produktům se nastaví konec platnosti
+   (`platiDoData`, u celé smlouvy i `smlouvaDo`), takže další faktury
+   generované ze smlouvy už tyto položky neobsahují. Poslední fakturovaný den je
+   konec již zafakturovaného období, jinak dnešek. Vystavené faktury zůstávají k úhradě.
  * GDPR správa kontaktních údajů (`mycontact.php`)
  * Hashování hesel kontaktů v AbraFlexi (volitelné přes `.env`)
 
