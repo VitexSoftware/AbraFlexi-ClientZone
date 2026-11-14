@@ -295,9 +295,9 @@ class Registration
         $url = rtrim($baseUrl, '/').'/verifyemail.php?t='.$token;
         $mail = new \Ease\Mailer($email, Shared::appName().' — '._('Confirm your e-mail address'));
         $mail->setMailHeaders(['From' => (string) Shared::cfg('SEND_MAILS_FROM', Shared::cfg('EMAIL_FROM', ''))]);
-        $mail->addItem(_('To finish the registration open this link:')."\n");
-        $mail->addItem($url."\n");
-        $mail->addItem("\n".sprintf(_('The link is valid for %d hours.'), self::TOKEN_TTL / 3600)."\n");
+        $mail->addText(_('To finish the registration open this link:')."\n");
+        $mail->addText($url."\n");
+        $mail->addText("\n".sprintf(_('The link is valid for %d hours.'), self::TOKEN_TTL / 3600)."\n");
 
         return (bool) $mail->send();
     }

@@ -60,16 +60,16 @@ if ($formOK && $oPage->isPosted()) {
                 $mailTo,
                 \Ease\Shared::appName().' '._('Changed password'),
             );
-            $email->addItem(sprintf(
+            $email->addText(sprintf(
                 _('Dear user %s, your password was changed to'),
                 $oUser->getUserLogin(),
             ).":\n");
-            $email->addItem(_('Password').': '.$plainPass."\n");
+            $email->addText(_('Password').': '.$plainPass."\n");
 
             $loginUrl = ($_SERVER['REQUEST_SCHEME'] ?? 'https').'://'
                 .($_SERVER['HTTP_HOST'] ?? 'localhost')
                 .dirname(\Ease\WebPage::getUri()).'/login.php';
-            $email->addItem("\n$loginUrl\n");
+            $email->addText("\n$loginUrl\n");
             $email->send();
         }
     }

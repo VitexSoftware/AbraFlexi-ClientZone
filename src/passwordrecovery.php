@@ -27,14 +27,14 @@ if ($isPost && $userEmail !== '') {
                     \Ease\Shared::appName().' — '._('New password'),
                 );
                 $email->setMailHeaders(['From' => (string) \Ease\Shared::cfg('EMAIL_FROM')]);
-                $email->addItem(_("Sign On informations was changed:\n"));
-                $email->addItem(_('Username').': '.$customer->getUserLogin()."\n");
-                $email->addItem(_('Password').': '.$newPassword."\n");
+                $email->addText(_("Sign On informations was changed:\n"));
+                $email->addText(_('Username').': '.$customer->getUserLogin()."\n");
+                $email->addText(_('Password').': '.$newPassword."\n");
                 $loginUrl = ($_SERVER['REQUEST_SCHEME'] ?? 'https').'://'
                     .($_SERVER['HTTP_HOST'] ?? 'localhost')
                     .dirname((string) parse_url($_SERVER['REQUEST_URI'] ?? '/login.php', \PHP_URL_PATH))
                     .'/login.php';
-                $email->addItem("\n".$loginUrl."\n");
+                $email->addText("\n".$loginUrl."\n");
                 $email->send();
                 $success = true;
                 $oPage->addStatusMessage(

@@ -143,7 +143,7 @@ if ($posted && $action === Registration::STEP_EMAIL) {
                                 sprintf(_('New clientzone account: %s'), $username),
                             );
                             $info->setMailHeaders(['From' => (string) \Ease\Shared::cfg('SEND_MAILS_FROM')]);
-                            $info->addItem(_('New Customer').': '.$username."\n");
+                            $info->addText(_('New Customer').': '.$username."\n");
                             $info->send();
                         }
 
