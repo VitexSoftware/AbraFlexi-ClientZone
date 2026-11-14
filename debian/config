@@ -9,6 +9,12 @@ ask() {
     db_go || true
 }
 
+# Optional values: asked only when the debconf priority is set low
+ask_optional() {
+    db_input low "clientzone/$1" || true
+    db_go || true
+}
+
 ask WEBUSER
 
 ask ABRAFLEXI_URL
@@ -28,6 +34,15 @@ ask EASE_EMAILTO
 ask SUPPRESS_EMAILS
 ask ALLOW_REGISTER
 ask REGISTER_USERNAME_IS_EMAIL
+ask_optional SUPPLIER_NAME
+ask_optional SUPPLIER_IC
+ask_optional SUPPLIER_DIC
+ask_optional SUPPLIER_EMAIL
+ask_optional SUPPLIER_PHONE
+ask_optional SUPPLIER_WEB
+ask_optional SUPPLIER_STREET
+ask_optional SUPPLIER_CITY
+ask_optional SUPPLIER_ZIP
 ask REGISTER_VERIFY_EMAIL
 ask CLIENTZONE_URL
 ask SHOW_PRICELIST

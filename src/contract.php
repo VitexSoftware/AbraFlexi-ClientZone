@@ -52,7 +52,8 @@ if ($oPage->isPosted() && $oPage->getRequestValue('action') === 'withdraw') {
         } catch (\InvalidArgumentException $exc) {
             $oPage->addStatusMessage($exc->getMessage(), 'warning');
         } catch (\AbraFlexi\Exception $exc) {
-            $oPage->addStatusMessage(_('The withdrawal could not be saved, please contact us.'), 'error');
+            $contact = Supplier::load()->contactLine();
+            $oPage->addStatusMessage(_('The withdrawal could not be saved, please contact us.').($contact !== '' ? ' '.$contact : ''), 'error');
         }
     }
 }

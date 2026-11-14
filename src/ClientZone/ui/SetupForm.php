@@ -63,6 +63,60 @@ class SetupForm extends \AbraFlexi\ui\TWB5\ConnectionForm
             _('Show pricelist of items with "eshop" flag or label')
         );
         $this->addInput(
+            new \Ease\Html\InputTextTag('SUPPLIER_NAME', \Ease\Shared::cfg('SUPPLIER_NAME', '')),
+            _('Supplier name'),
+            null,
+            _('Used when AbraFlexi does not provide the supplier details (e.g. the user may not read them)')
+        );
+        $this->addInput(
+            new \Ease\Html\InputTextTag('SUPPLIER_IC', \Ease\Shared::cfg('SUPPLIER_IC', '')),
+            _('Supplier ID number (IČO)'),
+            null,
+            null
+        );
+        $this->addInput(
+            new \Ease\Html\InputTextTag('SUPPLIER_DIC', \Ease\Shared::cfg('SUPPLIER_DIC', '')),
+            _('Supplier VAT number (DIČ)'),
+            null,
+            null
+        );
+        $this->addInput(
+            new \Ease\Html\InputEmailTag('SUPPLIER_EMAIL', \Ease\Shared::cfg('SUPPLIER_EMAIL', '')),
+            _('Supplier e-mail'),
+            null,
+            _('Where the supplier is notified about contract changes')
+        );
+        $this->addInput(
+            new \Ease\Html\InputTextTag('SUPPLIER_PHONE', \Ease\Shared::cfg('SUPPLIER_PHONE', '')),
+            _('Supplier phone'),
+            null,
+            null
+        );
+        $this->addInput(
+            new \Ease\Html\InputTextTag('SUPPLIER_WEB', \Ease\Shared::cfg('SUPPLIER_WEB', '')),
+            _('Supplier web'),
+            null,
+            null
+        );
+        $this->addInput(
+            new \Ease\Html\InputTextTag('SUPPLIER_STREET', \Ease\Shared::cfg('SUPPLIER_STREET', '')),
+            _('Supplier street'),
+            null,
+            null
+        );
+        $this->addInput(
+            new \Ease\Html\InputTextTag('SUPPLIER_CITY', \Ease\Shared::cfg('SUPPLIER_CITY', '')),
+            _('Supplier city'),
+            null,
+            null
+        );
+        $this->addInput(
+            new \Ease\Html\InputTextTag('SUPPLIER_ZIP', \Ease\Shared::cfg('SUPPLIER_ZIP', '')),
+            _('Supplier postal code'),
+            null,
+            null
+        );
+        $this->addInput(
             new \Ease\Html\SelectTag('ABRAFLEXI_PASSWORD_HASH', [
                 'plain' => _('Plaintext'),
                 'sha256' => 'sha256',

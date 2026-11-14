@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@vitexsoftware.cz\n"
-"POT-Creation-Date: 2026-11-14 16:13+0100\n"
+"POT-Creation-Date: 2026-11-14 16:51+0100\n"
 "PO-Revision-Date: 2026-10-21 10:02+0200\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: \n"
@@ -284,7 +284,7 @@ msgstr "Tento e-mail zatím neznáme. Řekněte nám něco o vaší firmě."
 
 #: src/newcustomer.php:224 src/ClientZone/ContractLister.php:36
 #: src/ClientZone/ui/AddressForm.php:32 src/ClientZone/ui/UserForm.php:30
-#: src/ClientZone/ui/KontaktForm.php:30 src/contract.php:68
+#: src/ClientZone/ui/KontaktForm.php:30 src/contract.php:69
 msgid "Name"
 msgstr "Jméno"
 
@@ -370,7 +370,7 @@ msgstr "Adresa"
 
 #: src/ClientZone/ReceivedInvoiceLister.php:28
 #: src/ClientZone/InvoiceLister.php:26 src/ClientZone/ui/AddressForm.php:30
-#: src/ClientZone/OrderLister.php:26 src/contract.php:100
+#: src/ClientZone/OrderLister.php:26 src/contract.php:101
 msgid "Code"
 msgstr "Kód"
 
@@ -391,7 +391,7 @@ msgstr "Splatnost"
 
 #: src/ClientZone/ReceivedInvoiceLister.php:32
 #: src/ClientZone/ContractLister.php:39 src/ClientZone/InvoiceLister.php:30
-#: src/ClientZone/OrderLister.php:30 src/contract.php:71
+#: src/ClientZone/OrderLister.php:30 src/contract.php:72
 msgid "Status"
 msgstr "Stav"
 
@@ -461,21 +461,21 @@ msgstr "%s přidáno do košíku"
 msgid "%s chnged in cart"
 msgstr "%s změněno v košíku"
 
-#: src/ClientZone/ContractLister.php:35 src/contract.php:67
+#: src/ClientZone/ContractLister.php:35 src/contract.php:68
 msgid "Contract number"
 msgstr "Číslo smlouvy"
 
-#: src/ClientZone/ContractLister.php:37 src/contract.php:72
-#: src/contract.php:105
+#: src/ClientZone/ContractLister.php:37 src/contract.php:73
+#: src/contract.php:106
 msgid "Valid from"
 msgstr "Platnost od"
 
-#: src/ClientZone/ContractLister.php:38 src/contract.php:73
-#: src/contract.php:106
+#: src/ClientZone/ContractLister.php:38 src/contract.php:74
+#: src/contract.php:107
 msgid "Valid to"
 msgstr "Platnost do"
 
-#: src/ClientZone/ContractLister.php:40 src/contract.php:76
+#: src/ClientZone/ContractLister.php:40 src/contract.php:77
 msgid "Last change"
 msgstr "Poslední změna"
 
@@ -926,14 +926,60 @@ msgid "Show pricelist of items with \"eshop\" flag or label"
 msgstr "Zobrazit ceník položek s příznakem nebo štítkem \"eshop\""
 
 #: src/ClientZone/ui/SetupForm.php:67
+msgid "Supplier name"
+msgstr "Název dodavatele"
+
+#: src/ClientZone/ui/SetupForm.php:69
+msgid ""
+"Used when AbraFlexi does not provide the supplier details (e.g. the user may "
+"not read them)"
+msgstr "Použije se, když údaje dodavatele neposkytuje AbraFlexi (např. uživatel je nesmí číst)"
+
+#: src/ClientZone/ui/SetupForm.php:73
+msgid "Supplier ID number (IČO)"
+msgstr "IČO dodavatele"
+
+#: src/ClientZone/ui/SetupForm.php:79
+msgid "Supplier VAT number (DIČ)"
+msgstr "DIČ dodavatele"
+
+#: src/ClientZone/ui/SetupForm.php:85
+msgid "Supplier e-mail"
+msgstr "E-mail dodavatele"
+
+#: src/ClientZone/ui/SetupForm.php:87
+msgid "Where the supplier is notified about contract changes"
+msgstr "Kam se dodavateli oznamují změny smluv"
+
+#: src/ClientZone/ui/SetupForm.php:91
+msgid "Supplier phone"
+msgstr "Telefon dodavatele"
+
+#: src/ClientZone/ui/SetupForm.php:97
+msgid "Supplier web"
+msgstr "Web dodavatele"
+
+#: src/ClientZone/ui/SetupForm.php:103
+msgid "Supplier street"
+msgstr "Ulice dodavatele"
+
+#: src/ClientZone/ui/SetupForm.php:109
+msgid "Supplier city"
+msgstr "Město dodavatele"
+
+#: src/ClientZone/ui/SetupForm.php:115
+msgid "Supplier postal code"
+msgstr "PSČ dodavatele"
+
+#: src/ClientZone/ui/SetupForm.php:121
 msgid "Plaintext"
 msgstr "Prostý text"
 
-#: src/ClientZone/ui/SetupForm.php:73
+#: src/ClientZone/ui/SetupForm.php:127
 msgid "Contact password hashing"
 msgstr "Hashování hesel kontaktů"
 
-#: src/ClientZone/ui/SetupForm.php:75
+#: src/ClientZone/ui/SetupForm.php:129
 msgid "Store AbraFlexi contact passwords hashed (recommended) or as plaintext"
 msgstr ""
 "Ukládat hesla kontaktů v AbraFlexi hašovaně (doporučeno) nebo jako prostý "
@@ -981,7 +1027,7 @@ msgstr "Košík je prázdný"
 msgid "Browse catalog"
 msgstr "Procházet katalog"
 
-#: src/ClientZone/ui/CartForm.php:56 src/contract.php:104
+#: src/ClientZone/ui/CartForm.php:56 src/contract.php:105
 msgid "Total"
 msgstr "Celkem"
 
@@ -1469,12 +1515,12 @@ msgstr "Heslo nastaveno"
 msgid "Password set failed"
 msgstr "Nastavení hesla selhalo"
 
-#: src/ClientZone/Configurator.php:242
+#: src/ClientZone/Configurator.php:251
 #, php-format
 msgid "Configuration file %s was saved"
 msgstr "Konfigurační soubor %s byl uložen"
 
-#: src/ClientZone/Configurator.php:246
+#: src/ClientZone/Configurator.php:255
 #, php-format
 msgid "Configuration file %s was not saved"
 msgstr "Konfigurační soubor %s nebyl uložen"
@@ -1546,9 +1592,8 @@ msgid "Back to my contact"
 msgstr "Zpět na můj kontakt"
 
 #: src/contract.php:37
-#, fuzzy
 msgid "The form expired, please try again"
-msgstr "Přihlášení se nezdařilo. Zkuste to prosím znovu."
+msgstr "Platnost formuláře vypršela, zkuste to prosím znovu"
 
 #: src/contract.php:39
 msgid "Confirm the withdrawal first"
@@ -1559,86 +1604,89 @@ msgstr "Nejdříve potvrďte odstoupení"
 msgid "You have withdrawn from %d product(s). The last billed day is %s."
 msgstr "Odstoupili jste od %d produktů. Poslední fakturovaný den je %s."
 
-#: src/contract.php:55
+#: src/contract.php:56
 msgid "The withdrawal could not be saved, please contact us."
 msgstr "Odstoupení se nepodařilo uložit, kontaktujte nás prosím."
 
-#: src/contract.php:61
+#: src/contract.php:62
 msgid "Service"
 msgstr "Služba"
 
-#: src/contract.php:69
+#: src/contract.php:70
 msgid "Description"
 msgstr "Popis"
 
-#: src/contract.php:70
+#: src/contract.php:71
 msgid "Contract type"
 msgstr "Typ smlouvy"
 
-#: src/contract.php:74
+#: src/contract.php:75
 msgid "Signed on"
 msgstr "Podepsáno"
 
-#: src/contract.php:75
+#: src/contract.php:76
 msgid "Billing frequency (months)"
 msgstr "Frekvence fakturace (měsíce)"
 
-#: src/contract.php:86
+#: src/contract.php:87
 msgid "Contract"
 msgstr "Smlouva"
 
-#: src/contract.php:89
+#: src/contract.php:90
 msgid "Products on this contract"
 msgstr "Produkty na této smlouvě"
 
-#: src/contract.php:94
+#: src/contract.php:95
 msgid "This contract has no products yet."
 msgstr "Tato smlouva zatím nemá žádné produkty."
 
-#: src/contract.php:101
+#: src/contract.php:102
 msgid "Product"
 msgstr "Produkt"
 
-#: src/contract.php:102
+#: src/contract.php:103
 msgid "Quantity"
 msgstr "Množství"
 
-#: src/contract.php:103
+#: src/contract.php:104
 msgid "Unit price"
 msgstr "Jednotková cena"
 
-#: src/contract.php:114
+#: src/contract.php:115
 msgid "Withdraw from this product"
 msgstr "Odstoupit od tohoto produktu"
 
-#: src/contract.php:122
+#: src/contract.php:123
 msgid "ended"
 msgstr "ukončeno"
 
-#: src/contract.php:131
+#: src/contract.php:132
 msgid ""
 "Withdrawing ends the billing of the chosen products. Invoices already issued "
 "stay due; the last billed day is the end of the period that has been "
 "invoiced already."
-msgstr "Odstoupením se ukončí fakturace vybraných produktů. Již vystavené faktury zůstávají k úhradě; poslední fakturovaný den je konec již zafakturovaného období."
+msgstr ""
+"Odstoupením se ukončí fakturace vybraných produktů. Již vystavené faktury "
+"zůstávají k úhradě; poslední fakturovaný den je konec již zafakturovaného "
+"období."
 
-#: src/contract.php:134
+#: src/contract.php:135
 msgid "I confirm that I withdraw from the chosen products"
 msgstr "Potvrzuji, že odstupuji od vybraných produktů"
 
-#: src/contract.php:136
+#: src/contract.php:137
 msgid "Withdraw from chosen products"
 msgstr "Odstoupit od vybraných produktů"
 
-#: src/contract.php:137
+#: src/contract.php:138
 msgid "Withdraw from the whole contract"
 msgstr "Odstoupit od celé smlouvy"
 
-#: src/contract.php:141
+#: src/contract.php:142
 msgid "There is nothing left to withdraw from on this contract."
 msgstr "Na této smlouvě už není od čeho odstoupit."
 
-#: src/contract.php:145
+#: src/contract.php:146
 msgid "Back to my services"
 msgstr "Zpět na moje služby"
 

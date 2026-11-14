@@ -178,3 +178,57 @@ Template: clientzone/SUBREG_PASSWORD
 Type: password
 Description: Subreg API password
  Password for the Subreg registrar API.
+
+Template: clientzone/SUPPLIER_NAME
+Type: string
+Default:
+Description: Supplier name
+ Used only when AbraFlexi does not provide the supplier details (the integration user may not read them). Leave empty to use what AbraFlexi provides.
+
+Template: clientzone/SUPPLIER_IC
+Type: string
+Default:
+Description: Supplier ID number (IČO)
+ Used only when AbraFlexi does not provide the supplier details (the integration user may not read them). Leave empty to use what AbraFlexi provides.
+
+Template: clientzone/SUPPLIER_DIC
+Type: string
+Default:
+Description: Supplier VAT number (DIČ)
+ Used only when AbraFlexi does not provide the supplier details (the integration user may not read them). Leave empty to use what AbraFlexi provides.
+
+Template: clientzone/SUPPLIER_EMAIL
+Type: string
+Default:
+Description: Supplier e-mail
+ Used only when AbraFlexi does not provide the supplier details (the integration user may not read them). Leave empty to use what AbraFlexi provides.
+
+Template: clientzone/SUPPLIER_PHONE
+Type: string
+Default:
+Description: Supplier phone
+ Used only when AbraFlexi does not provide the supplier details (the integration user may not read them). Leave empty to use what AbraFlexi provides.
+
+Template: clientzone/SUPPLIER_WEB
+Type: string
+Default:
+Description: Supplier web
+ Used only when AbraFlexi does not provide the supplier details (the integration user may not read them). Leave empty to use what AbraFlexi provides.
+
+Template: clientzone/SUPPLIER_STREET
+Type: string
+Default:
+Description: Supplier street
+ Used only when AbraFlexi does not provide the supplier details (the integration user may not read them). Leave empty to use what AbraFlexi provides.
+
+Template: clientzone/SUPPLIER_CITY
+Type: string
+Default:
+Description: Supplier city
+ Used only when AbraFlexi does not provide the supplier details (the integration user may not read them). Leave empty to use what AbraFlexi provides.
+
+Template: clientzone/SUPPLIER_ZIP
+Type: string
+Default:
+Description: Supplier postal code
+ Used only when AbraFlexi does not provide the supplier details (the integration user may not read them). Leave empty to use what AbraFlexi provides.

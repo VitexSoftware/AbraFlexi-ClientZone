@@ -1,3 +1,16 @@
+abraflexi-clientzone (2.7.0) unstable; urgency=medium
+
+  * Supplier details (the company the accounting unit is kept for) can be
+    configured: SUPPLIER_NAME, SUPPLIER_IC, SUPPLIER_DIC, SUPPLIER_EMAIL,
+    SUPPLIER_PHONE, SUPPLIER_WEB, SUPPLIER_STREET, SUPPLIER_CITY, SUPPLIER_ZIP
+    (setup page, debconf at low priority, /etc .env). AbraFlexi's own values
+    (evidence nastaveni) win; the configuration fills what AbraFlexi does not
+    provide, e.g. when the integration user may not read nastaveni.
+  * New ClientZone\Supplier class; the supplier contact is shown when the
+    contract withdrawal cannot be saved.
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Sat, 14 Nov 2026 16:52:20 +0100
+
 abraflexi-clientzone (2.6.0) unstable; urgency=medium
 
   * Contract detail: the customer can withdraw from chosen products or from the

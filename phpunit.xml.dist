@@ -7,6 +7,9 @@
         <testsuite name="registration">
             <directory>tests/Registration</directory>
         </testsuite>
+        <testsuite name="supplier">
+            <directory>tests/Supplier</directory>
+        </testsuite>
         <testsuite name="contract">
             <directory>tests/Contract</directory>
         </testsuite>

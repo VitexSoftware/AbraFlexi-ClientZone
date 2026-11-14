@@ -31,6 +31,35 @@ Vlastnosti
  * GDPR správa kontaktních údajů (`mycontact.php`)
  * Hashování hesel kontaktů v AbraFlexi (volitelné přes `.env`)
 
+Údaje dodavatele
+----------------
+
+Dodavatel je firma, na kterou je v AbraFlexi vedena účetní jednotka. Její údaje
+jsou v evidenci `nastaveni`, ale uživatel, pod kterým ClientZone do AbraFlexi
+přistupuje, je číst nemusí (`You don't have permission to this action`).
+Chybějící údaje proto lze nastavit v konfiguraci (`.env`, stránka `setup.php`,
+debconf s nízkou prioritou). **Údaj z AbraFlexi má vždy přednost**, konfigurace
+doplní jen to, co AbraFlexi neposkytlo.
+
+| Volba | Význam | Sloupec v `nastaveni` |
+|---|---|---|
+| `SUPPLIER_NAME` | název | `nazFirmy` |
+| `SUPPLIER_IC` | IČO | `ic` |
+| `SUPPLIER_DIC` | DIČ | `dic` |
+| `SUPPLIER_EMAIL` | e-mail (kam se oznamují změny smluv) | `email` |
+| `SUPPLIER_PHONE` | telefon | `tel`, jinak `mobil` |
+| `SUPPLIER_WEB` | web | `www` |
+| `SUPPLIER_STREET`, `SUPPLIER_CITY`, `SUPPLIER_ZIP` | adresa | `ulice`, `mesto`, `psc` |
+
+```bash
+SUPPLIER_NAME="Vítězslav Dvořák"
+SUPPLIER_EMAIL="finance@vitexsoftware.cz"
+```
+
+V kódu: `\ClientZone\Supplier::load()->get('email')`. Prázdná hodnota znamená, že údaj
+nezná ani AbraFlexi, ani konfigurace; volající se s tím musí vyrovnat (např. upozornění
+dodavateli přeskočit a zapsat varování).
+
 Moduly pro zpracování objednaných položek
 =========================================
 
