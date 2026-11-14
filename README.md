@@ -31,6 +31,15 @@ Vlastnosti
  * GDPR správa kontaktních údajů (`mycontact.php`)
  * Hashování hesel kontaktů v AbraFlexi (volitelné přes `.env`)
 
+Jazyk zákazníka
+---------------
+
+Jazyk zvolený v ClientZone určuje jazyk další komunikace se zákazníkem (smlouvy,
+uvítací e-mail s přístupem do MultiFlexi). Protože adresář v AbraFlexi nemá
+sloupec pro jazyk, ukládá se při registraci jako **štítek firmy** `LANG_CS`,
+`LANG_EN`, ... (štítek se podle potřeby založí). Jazyk, který už firma má
+(např. nastavil obchodník), se pozdější registrací nepřepíše. Čtení: `\ClientZone\CustomerLanguage::fromLabels()`.
+
 Údaje dodavatele
 ----------------
 

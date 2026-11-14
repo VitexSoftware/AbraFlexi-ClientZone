@@ -1,3 +1,13 @@
+abraflexi-clientzone (2.8.0) unstable; urgency=medium
+
+  * The language chosen in ClientZone is remembered in AbraFlexi as the label
+    LANG_xx (LANG_CS, LANG_EN, ...) of the customer's company, set when the
+    customer registers. Everything sent to the customer afterwards (contracts,
+    the welcome e-mail with the access to MultiFlexi) can follow it. A language
+    already set on an existing company is not overwritten.
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Sat, 14 Nov 2026 21:32:19 +0100
+
 abraflexi-clientzone (2.7.0) unstable; urgency=medium
 
   * Supplier details (the company the accounting unit is kept for) can be

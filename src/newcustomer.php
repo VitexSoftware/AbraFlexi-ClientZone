@@ -113,6 +113,8 @@ if ($posted && $action === Registration::STEP_EMAIL) {
                     'username' => $username,
                     'contactId' => $found['contact']['id'] ?? null,
                     'companyId' => $found['company']['id'] ?? null,
+                    // The verification link may be opened elsewhere: carry the chosen language in the token
+                    'lang' => CustomerLanguage::current(),
                     'passwordFields' => Customer::passwordWriteFields($password),
                 ] + ($session['company'] ?? []);
 

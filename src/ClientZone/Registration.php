@@ -185,6 +185,7 @@ class Registration
             }
 
             $customer->addStatusMessage(_('User account created'), 'success');
+            self::rememberLanguage((int) $company['id'], CustomerLanguage::fromLocale($data['lang'] ?? null));
 
             return $customer;
         }
@@ -206,12 +207,17 @@ class Registration
             return null;
         }
 
+        // The language chosen at the registration decides the language of everything sent later
+        $language = CustomerLanguage::fromLocale($data['lang'] ?? null);
+        CustomerLanguage::ensureLabel($language);
+
         $customer->adresar->setData([
             'email' => $email,
             'nazev' => $data['nazev'],
             'ic' => $data['ic'] ?? '',
             'dic' => $data['dic'] ?? '',
             'tel' => $data['tel'] ?? '',
+            'stitky' => CustomerLanguage::withLanguage(null, $language),
         ]);
 
         if (!$customer->adresar->sync()) {
@@ -315,6 +321,26 @@ class Registration
         }
 
         return hash_hkdf('sha256', trim((string) Shared::cfg('REGISTRATION_SECRET')), 32, 'clientzone-registration-token');
+    }
+
+    /**
+     * Remember the language of an existing company, unless it already has one:
+     * a language set by a salesman is not overwritten by a later registration.
+     */
+    private static function rememberLanguage(int $companyId, string $language): void
+    {
+        $adresar = new \AbraFlexi\Adresar();
+        $adresar->throwException = false;
+        $rows = $adresar->getColumnsFromAbraFlexi(['id', 'stitky'], ['id' => $companyId]);
+        $row = \is_array($rows) ? (array) ($rows[0] ?? []) : [];
+
+        if ($row === [] || CustomerLanguage::fromLabels($row['stitky'] ?? null) !== null) {
+            return;
+        }
+
+        if (CustomerLanguage::ensureLabel($language)) {
+            $adresar->insertToAbraFlexi(['id' => $companyId, 'stitky' => CustomerLanguage::withLanguage($row['stitky'] ?? null, $language)]);
+        }
     }
 
     /**
