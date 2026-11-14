@@ -324,6 +324,31 @@ class Registration
     }
 
     /**
+     * Was the registration this link belongs to already finished?
+     *
+     * The link may be used twice (a mail scanner, a second click): then the account exists
+     * with the login from the link and the customer only has to sign in.
+     *
+     * @param array<string, mixed> $data data of the link
+     */
+    public static function alreadyConfirmed(array $data): bool
+    {
+        $found = self::lookup((string) ($data['email'] ?? ''));
+
+        return $found['state'] === self::STATE_TAKEN && self::loginMatches($found['contact'], (string) ($data['username'] ?? ''));
+    }
+
+    /**
+     * Does the contact have the login?
+     *
+     * @param null|array<string, mixed> $contact contact row with "username"
+     */
+    public static function loginMatches(?array $contact, string $username): bool
+    {
+        return $contact !== null && $username !== '' && strcasecmp(trim((string) ($contact['username'] ?? '')), trim($username)) === 0;
+    }
+
+    /**
      * Remember the language of an existing company, unless it already has one:
      * a language set by a salesman is not overwritten by a later registration.
      */

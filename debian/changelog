@@ -1,3 +1,16 @@
+abraflexi-clientzone (2.8.1) unstable; urgency=medium
+
+  * E-mail confirmation no longer finishes the registration when the link is
+    merely opened: mail scanners (e.g. Microsoft Safe Links) open every link,
+    used up the confirmation and the customer then saw "Registration failed".
+    Opening the link shows a button, the customer's own confirmation (POST)
+    finishes it. A link used twice for an account that already exists leads
+    to the sign in instead of an error.
+  * Registration, new customer notice and password mails: Ease\Mailer has
+    addText(), not addItem().
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Sat, 14 Nov 2026 23:17:46 +0100
+
 abraflexi-clientzone (2.8.0) unstable; urgency=medium
 
   * The language chosen in ClientZone is remembered in AbraFlexi as the label
