@@ -20,6 +20,11 @@ class MailHosting extends \ClientZone\OrderPlugin
 
     public $productCode = 'HOSTING_MAIL';
 
+    /**
+     * Paid for: every period until the contract ends.
+     */
+    public ?string $billing = \ClientZone\BillingKind::RECURRING;
+
     public function __construct()
     {
         $this->name = _('Mail hosting');

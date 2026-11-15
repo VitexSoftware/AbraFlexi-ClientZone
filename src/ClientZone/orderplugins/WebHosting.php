@@ -20,6 +20,11 @@ class WebHosting extends \ClientZone\OrderPlugin
 
     public $productCode = 'HOSTING_WEB';
 
+    /**
+     * Paid for: every period until the contract ends.
+     */
+    public ?string $billing = \ClientZone\BillingKind::RECURRING;
+
     public function __construct()
     {
         $this->name = _('Web hosting');

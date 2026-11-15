@@ -28,8 +28,10 @@ class Pricelist extends \Ease\Html\DivTag
 
         $order = new \ClientZone\OrderItem();
         $orderable = [];
+        $pluginBilling = [];
         foreach ($order->plugins as $pluginName => $plugin) {
             $orderable[$plugin->productCode] = $pluginName;
+            $pluginBilling[$plugin->productCode] = $plugin->billing;
         }
 
         if (count($labels)) {
@@ -70,6 +72,7 @@ class Pricelist extends \Ease\Html\DivTag
             } else {
                 $item['service'] = 'Common&kod='.$item['kod'];
             }
+            $item['billing'] = $pluginBilling[$item['kod']] ?? null;
             $grid->addItem($this->productCard($item));
         }
     }
@@ -83,7 +86,11 @@ class Pricelist extends \Ease\Html\DivTag
         $this->pricer->setDataValue('nazev', $item['nazev'] ?? '');
 
         $priceEx = (float) ($item['cenaZaklBezDph'] ?? 0);
-        $priceInc = (float) ($item['cenaZaklVcDph'] ?? round($priceEx * 1.21));
+        $priceInc = \ClientZone\ProductDetail::priceWithVat(
+            $priceEx,
+            (float) ($item['szbDph'] ?? 0),
+            isset($item['cenaZaklVcDph']) ? (float) $item['cenaZaklVcDph'] : null,
+        );
 
         $card = new \Ease\Html\DivTag(null, ['class' => 'cz-product reveal']);
 
@@ -98,7 +105,21 @@ class Pricelist extends \Ease\Html\DivTag
             htmlspecialchars((string) ($item['kod'] ?? '')),
             ['class' => 'cz-product-sku'],
         ));
-        $body->addItem(new \Ease\Html\H3Tag((string) ($item['nazev'] ?? '')));
+        $detailUrl = 'product.php?kod='.rawurlencode(\ClientZone\Searcher::plainCode((string) ($item['kod'] ?? '')));
+        $body->addItem(new \Ease\Html\H3Tag(new \Ease\Html\ATag($detailUrl, (string) ($item['nazev'] ?? ''), ['class' => 'text-reset text-decoration-none'])));
+
+        // Once or again and again: the customer decides on it
+        $unit = \ClientZone\BillingKind::plainCode((string) ($item['mj1'] ?? ''));
+        $kind = \ClientZone\BillingKind::determine(
+            (string) ($item['typZasobyK'] ?? ''),
+            $unit,
+            $item['stitky'] ?? null,
+            $item['billing'] ?? null,
+        );
+        $body->addItem(new \Ease\Html\SpanTag(
+            \ClientZone\BillingKind::label($kind),
+            ['class' => 'badge mb-2 '.\ClientZone\BillingKind::badgeClass($kind)],
+        ));
 
         $price = $body->addItem(new \Ease\Html\DivTag(null, ['class' => 'cz-product-price']));
         $price->addItem(new \Ease\Html\SpanTag(
@@ -115,6 +136,11 @@ class Pricelist extends \Ease\Html\DivTag
             $orderUrl = $isAnon
                 ? 'login.php?backurl='.urlencode('orderform.php?service='.$item['service'])
                 : 'orderform.php?service='.$item['service'];
+            $body->addItem(new \Ease\Html\ATag(
+                $detailUrl,
+                _('Detail'),
+                ['class' => 'btn btn-line cz-product-cta me-2'],
+            ));
             $body->addItem(new \Ease\Html\ATag(
                 $orderUrl,
                 _('Order Now').' <span class="arrow">→</span>',

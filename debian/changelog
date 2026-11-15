@@ -1,3 +1,21 @@
+abraflexi-clientzone (2.9.0) unstable; urgency=medium
+
+  * Product detail page (product.php?kod=CODE): description, price with and
+    without VAT, unit, type, and above all how the product is paid for - a
+    one-time purchase, or a regularly invoiced service (invoiced again every
+    month/year until the contract ends) - and what happens after the order.
+    Only products the shop sells (labels ESHOP and AKTIVNI) can be shown.
+  * The catalog cards show the same badge and link to the detail; search
+    results link to it too.
+  * How a product is paid for is decided by the label RECURRING or ONETIME of
+    the pricelist item, else by the order plugin, else by the unit (a month or
+    a year means regular invoicing) and the stock type. A service in hours or
+    gigabytes is only "service": nothing more is promised.
+  * The price with VAT is counted from the VAT rate of the item (AbraFlexi may
+    deliver it equal to the price without VAT for an item entered without VAT).
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Sun, 15 Nov 2026 11:03:05 +0100
+
 abraflexi-clientzone (2.8.2) unstable; urgency=medium
 
   * Search works again: it called getColumnsFromFlexibee(), a method the

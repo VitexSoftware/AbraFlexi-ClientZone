@@ -23,6 +23,11 @@ class MultiFlexi extends \ClientZone\OrderPlugin
 
     public $productCode = 'MULTIFLEXI';
 
+    /**
+     * Paid for: every period until the contract ends.
+     */
+    public ?string $billing = \ClientZone\BillingKind::RECURRING;
+
     public function __construct()
     {
         $this->name = _('MultiFlexi (SaaS)');

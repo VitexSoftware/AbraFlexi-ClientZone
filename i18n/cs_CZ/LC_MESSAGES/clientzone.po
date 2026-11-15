@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@vitexsoftware.cz\n"
-"POT-Creation-Date: 2026-11-15 10:33+0100\n"
+"POT-Creation-Date: 2026-11-15 11:02+0100\n"
 "PO-Revision-Date: 2026-10-21 10:02+0200\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: \n"
@@ -125,7 +125,7 @@ msgstr "Můj účet"
 msgid "Password change"
 msgstr "Změna hesla"
 
-#: src/pricelist.php:15 src/ClientZone/ui/Pricelist.php:50
+#: src/pricelist.php:15 src/ClientZone/ui/Pricelist.php:52
 #: src/ClientZone/ui/MainMenu.php:31 src/search.php:20
 msgid "Catalog"
 msgstr "Katalog"
@@ -379,7 +379,8 @@ msgstr "Adresa"
 
 #: src/ClientZone/ReceivedInvoiceLister.php:28
 #: src/ClientZone/InvoiceLister.php:26 src/ClientZone/ui/AddressForm.php:30
-#: src/ClientZone/OrderLister.php:26 src/contract.php:101 src/search.php:42
+#: src/ClientZone/OrderLister.php:26 src/product.php:88 src/contract.php:101
+#: src/search.php:42
 msgid "Code"
 msgstr "Kód"
 
@@ -509,27 +510,27 @@ msgstr "Faktura"
 msgid "Unhandled type of item"
 msgstr "Neznámý druh položky"
 
-#: src/ClientZone/orderplugins/MultiFlexi.php:28
-#: src/ClientZone/orderplugins/MultiFlexi.php:82
+#: src/ClientZone/orderplugins/MultiFlexi.php:33
+#: src/ClientZone/orderplugins/MultiFlexi.php:87
 msgid "MultiFlexi (SaaS)"
 msgstr ""
 
-#: src/ClientZone/orderplugins/MultiFlexi.php:46
+#: src/ClientZone/orderplugins/MultiFlexi.php:51
 msgid "Instances"
 msgstr ""
 
-#: src/ClientZone/orderplugins/MultiFlexi.php:48
+#: src/ClientZone/orderplugins/MultiFlexi.php:53
 msgid "Number of MultiFlexi instances"
 msgstr ""
 
-#: src/ClientZone/orderplugins/MultiFlexi.php:69
+#: src/ClientZone/orderplugins/MultiFlexi.php:74
 #, fuzzy
 msgid "Please enter at least 1 instance"
 msgstr "Zadejte prosím kredit alespoň %s"
 
-#: src/ClientZone/orderplugins/MultiFlexi.php:96
-#: src/ClientZone/orderplugins/WebHosting.php:89
-#: src/ClientZone/orderplugins/MailHosting.php:109
+#: src/ClientZone/orderplugins/MultiFlexi.php:101
+#: src/ClientZone/orderplugins/WebHosting.php:94
+#: src/ClientZone/orderplugins/MailHosting.php:114
 #, php-format
 msgid "Item %s will be provisioned by MultiFlexi after payment"
 msgstr "Položka %s bude po zaplacení zřízena systémem MultiFlexi"
@@ -575,136 +576,136 @@ msgstr "Vaše poznámka ka objednávané položce"
 msgid "Producet with code %s does not exist"
 msgstr "Produkt s kódem %s neexistuje"
 
-#: src/ClientZone/orderplugins/WebHosting.php:25
-#: src/ClientZone/orderplugins/WebHosting.php:77
+#: src/ClientZone/orderplugins/WebHosting.php:30
+#: src/ClientZone/orderplugins/WebHosting.php:82
 msgid "Web hosting"
 msgstr "Webhosting"
 
-#: src/ClientZone/orderplugins/WebHosting.php:39
-#: src/ClientZone/orderplugins/MailHosting.php:39
+#: src/ClientZone/orderplugins/WebHosting.php:44
+#: src/ClientZone/orderplugins/MailHosting.php:44
 msgid "Domain"
 msgstr "Doména"
 
-#: src/ClientZone/orderplugins/WebHosting.php:41
+#: src/ClientZone/orderplugins/WebHosting.php:46
 msgid "Domain the web hosting will serve"
 msgstr "Doména, kterou bude webhosting obsluhovat"
 
-#: src/ClientZone/orderplugins/WebHosting.php:60
-#: src/ClientZone/orderplugins/MailHosting.php:68
+#: src/ClientZone/orderplugins/WebHosting.php:65
+#: src/ClientZone/orderplugins/MailHosting.php:73
 msgid "Please enter a valid domain"
 msgstr "Zadejte prosím platnou doménu"
 
-#: src/ClientZone/orderplugins/VoIPcredit.php:41
-#: src/ClientZone/orderplugins/VoIPcredit.php:269
+#: src/ClientZone/orderplugins/VoIPcredit.php:46
+#: src/ClientZone/orderplugins/VoIPcredit.php:274
 msgid "VoIP Credit"
 msgstr "VoIP Kredit"
 
-#: src/ClientZone/orderplugins/VoIPcredit.php:66
-#: src/ClientZone/orderplugins/DomainCredit.php:57
+#: src/ClientZone/orderplugins/VoIPcredit.php:71
+#: src/ClientZone/orderplugins/DomainCredit.php:62
 msgid "Required Credit Value"
 msgstr "Požadovaná hodnota kreditu"
 
-#: src/ClientZone/orderplugins/VoIPcredit.php:66
+#: src/ClientZone/orderplugins/VoIPcredit.php:71
 msgid "with VAT"
 msgstr "s DPH"
 
-#: src/ClientZone/orderplugins/VoIPcredit.php:68
+#: src/ClientZone/orderplugins/VoIPcredit.php:73
 msgid "Your price"
 msgstr "Vaše cena"
 
-#: src/ClientZone/orderplugins/VoIPcredit.php:68
+#: src/ClientZone/orderplugins/VoIPcredit.php:73
 msgid "without VAT"
 msgstr "bez DPH"
 
-#: src/ClientZone/orderplugins/VoIPcredit.php:87
+#: src/ClientZone/orderplugins/VoIPcredit.php:92
 #, php-format
 msgid "%d characters minimum"
 msgstr "minimálně %d znaků"
 
-#: src/ClientZone/orderplugins/VoIPcredit.php:90
+#: src/ClientZone/orderplugins/VoIPcredit.php:95
 msgid "For Number"
 msgstr "Pro číslo"
 
-#: src/ClientZone/orderplugins/VoIPcredit.php:92
+#: src/ClientZone/orderplugins/VoIPcredit.php:97
 msgid "Telephone number you requested to pay"
 msgstr "Telefoní číslo které hodláte zaplatit"
 
-#: src/ClientZone/orderplugins/VoIPcredit.php:113
-#: src/ClientZone/orderplugins/DomainCredit.php:79
+#: src/ClientZone/orderplugins/VoIPcredit.php:118
+#: src/ClientZone/orderplugins/DomainCredit.php:84
 msgid "Please enter Requested Credit"
 msgstr "Prosím zadejte požadovaný kredit"
 
-#: src/ClientZone/orderplugins/VoIPcredit.php:119
-#: src/ClientZone/orderplugins/DomainCredit.php:85
+#: src/ClientZone/orderplugins/VoIPcredit.php:124
+#: src/ClientZone/orderplugins/DomainCredit.php:90
 #, php-format
 msgid "Please enter at least %s Credit"
 msgstr "Zadejte prosím kredit alespoň %s"
 
-#: src/ClientZone/orderplugins/VoIPcredit.php:136
+#: src/ClientZone/orderplugins/VoIPcredit.php:141
 msgid "VoIP Number not set"
 msgstr "VoIP číslo nebylo zadáno"
 
-#: src/ClientZone/orderplugins/VoIPcredit.php:142
+#: src/ClientZone/orderplugins/VoIPcredit.php:147
 msgid "IPEX library is not available"
 msgstr "Knihovna IPEX není k dispozici"
 
-#: src/ClientZone/orderplugins/VoIPcredit.php:154
-#: src/ClientZone/orderplugins/VoIPcredit.php:167
+#: src/ClientZone/orderplugins/VoIPcredit.php:159
+#: src/ClientZone/orderplugins/VoIPcredit.php:172
 #, php-format
 msgid "VoIP Number %s is not registered"
 msgstr "VoIP číslo %s není registrováno"
 
-#: src/ClientZone/orderplugins/VoIPcredit.php:177
+#: src/ClientZone/orderplugins/VoIPcredit.php:182
 #, php-format
 msgid "Cannot add credit to VoIP Number %s"
 msgstr "Nelze dobít kredit na VoIP číslo %s"
 
-#: src/ClientZone/orderplugins/VoIPcredit.php:186
-#: src/ClientZone/OrderPlugin.php:103
+#: src/ClientZone/orderplugins/VoIPcredit.php:191
+#: src/ClientZone/OrderPlugin.php:109
 msgid "Please sign in to order item"
 msgstr "Pro objednání položky se prosím přihlaste"
 
-#: src/ClientZone/orderplugins/VoIPcredit.php:210
+#: src/ClientZone/orderplugins/VoIPcredit.php:215
 #, php-format
 msgid "VoIP Number %s does not belong to you"
 msgstr "VoIP číslo %s vám nepatří"
 
-#: src/ClientZone/orderplugins/VoIPcredit.php:284
+#: src/ClientZone/orderplugins/VoIPcredit.php:289
 #, php-format
 msgid "Item %s will be settled by abraflexi-voip-credit after payment"
 msgstr "Položka %s bude po zaplacení zpracována modulem abraflexi-voip-credit"
 
-#: src/ClientZone/orderplugins/MailHosting.php:25
-#: src/ClientZone/orderplugins/MailHosting.php:97
+#: src/ClientZone/orderplugins/MailHosting.php:30
+#: src/ClientZone/orderplugins/MailHosting.php:102
 msgid "Mail hosting"
 msgstr "Mailhosting"
 
-#: src/ClientZone/orderplugins/MailHosting.php:41
+#: src/ClientZone/orderplugins/MailHosting.php:46
 msgid "Domain the mailboxes will belong to"
 msgstr "Doména, do které budou schránky patřit"
 
-#: src/ClientZone/orderplugins/MailHosting.php:46
+#: src/ClientZone/orderplugins/MailHosting.php:51
 msgid "Mailboxes"
 msgstr "Schránky"
 
-#: src/ClientZone/orderplugins/MailHosting.php:48
+#: src/ClientZone/orderplugins/MailHosting.php:53
 msgid "Number of mailboxes requested"
 msgstr "Požadovaný počet schránek"
 
-#: src/ClientZone/orderplugins/MailHosting.php:79
+#: src/ClientZone/orderplugins/MailHosting.php:84
 msgid "Please enter at least one mailbox"
 msgstr "Zadejte prosím alespoň jednu schránku"
 
-#: src/ClientZone/orderplugins/DomainCredit.php:37
-#: src/ClientZone/orderplugins/DomainCredit.php:106
+#: src/ClientZone/orderplugins/DomainCredit.php:42
+#: src/ClientZone/orderplugins/DomainCredit.php:111
 msgid "Domain Credit"
 msgstr "Kredit domény"
 
-#: src/ClientZone/orderplugins/DomainCredit.php:59
+#: src/ClientZone/orderplugins/DomainCredit.php:64
 msgid "Amount of Credit you requested"
 msgstr "Kolik kreditu požadujete"
 
-#: src/ClientZone/orderplugins/DomainCredit.php:119
+#: src/ClientZone/orderplugins/DomainCredit.php:124
 #, php-format
 msgid "Item %s will be settled by abraflexi-domain-credit after payment"
 msgstr ""
@@ -1072,7 +1073,8 @@ msgstr "Požadovaná služba"
 msgid "Enter details"
 msgstr "Vlož detaily"
 
-#: src/ClientZone/ui/OrderFormHtml.php:50 src/ClientZone/ui/Pricelist.php:120
+#: src/ClientZone/ui/OrderFormHtml.php:50 src/ClientZone/ui/Pricelist.php:146
+#: src/product.php:110
 msgid "Order Now"
 msgstr "Objednej nyní"
 
@@ -1357,22 +1359,27 @@ msgstr "%s dnů po splatnosti"
 msgid "%s records with label %s"
 msgstr "%s záznamů se štítkem %s nalezeno"
 
-#: src/ClientZone/ui/Pricelist.php:49
+#: src/ClientZone/ui/Pricelist.php:51
 msgid "Our products"
 msgstr "Naše produkty"
 
-#: src/ClientZone/ui/Pricelist.php:52
+#: src/ClientZone/ui/Pricelist.php:54
 #, php-format
 msgid "%s products"
 msgstr "%s produktů"
 
-#: src/ClientZone/ui/Pricelist.php:58
+#: src/ClientZone/ui/Pricelist.php:60
 msgid "No products are available right now."
 msgstr "Momentálně nejsou k dispozici žádné produkty."
 
-#: src/ClientZone/ui/Pricelist.php:109 src/ClientZone/Searcher.php:200
+#: src/ClientZone/ui/Pricelist.php:130 src/ClientZone/Searcher.php:194
+#: src/product.php:61
 msgid "excl. VAT"
 msgstr "bez DPH"
+
+#: src/ClientZone/ui/Pricelist.php:141
+msgid "Detail"
+msgstr "Detail"
 
 #: src/ClientZone/ui/RightsForm.php:22
 msgid "Uživatel"
@@ -1497,11 +1504,28 @@ msgstr "Nový kontakt"
 msgid "Issued"
 msgstr "Vystaveno"
 
-#: src/ClientZone/OrderPlugin.php:89
+#: src/ClientZone/ProductDetail.php:94 src/ClientZone/BillingKind.php:113
+#: src/contract.php:62
+msgid "Service"
+msgstr "Služba"
+
+#: src/ClientZone/ProductDetail.php:95
+msgid "Goods"
+msgstr "Zboží"
+
+#: src/ClientZone/ProductDetail.php:96
+msgid "Material"
+msgstr "Materiál"
+
+#: src/ClientZone/ProductDetail.php:97
+msgid "Fee"
+msgstr "Poplatek"
+
+#: src/ClientZone/OrderPlugin.php:95
 msgid "Product not specified"
 msgstr "Produkt nebyl zvolen"
 
-#: src/ClientZone/OrderPlugin.php:119
+#: src/ClientZone/OrderPlugin.php:125
 #, php-format
 msgid "Item %s was settled without action handled in OrderPlugin code"
 msgstr "Položka %s byla zaplacena bez akce v kódu objednávkového pluginu"
@@ -1526,6 +1550,44 @@ msgstr "Heslo nastaveno"
 msgid "Password set failed"
 msgstr "Nastavení hesla selhalo"
 
+#: src/ClientZone/BillingKind.php:111
+msgid "Regularly invoiced service"
+msgstr "Pravidelně fakturovaná služba"
+
+#: src/ClientZone/BillingKind.php:112
+msgid "One-time purchase"
+msgstr "Jednorázový nákup"
+
+#: src/ClientZone/BillingKind.php:126
+#, php-format
+msgid ""
+"You will be invoiced again for every %s until you end the contract. The "
+"price is for one %s."
+msgstr ""
+"Budeme vám fakturovat opakovaně za každý %s, dokud smlouvu neukončíte. Cena "
+"platí za jeden %s."
+
+#: src/ClientZone/BillingKind.php:127
+msgid "You will be invoiced regularly until you end the contract."
+msgstr "Budeme vám fakturovat pravidelně, dokud smlouvu neukončíte."
+
+#: src/ClientZone/BillingKind.php:128
+msgid "You pay once. Nothing is invoiced again afterwards."
+msgstr "Platíte jednou. Poté se již nic znovu nefakturuje."
+
+#: src/ClientZone/BillingKind.php:130
+#, php-format
+msgid ""
+"A service invoiced by the unit (%s). How often it is invoiced is agreed when "
+"it is ordered."
+msgstr ""
+"Služba účtovaná podle jednotky (%s). Jak často se fakturuje, se dohodne při "
+"objednání."
+
+#: src/ClientZone/BillingKind.php:131
+msgid "A service. How often it is invoiced is agreed when it is ordered."
+msgstr "Služba. Jak často se fakturuje, se dohodne při objednání."
+
 #: src/ClientZone/Configurator.php:251
 #, php-format
 msgid "Configuration file %s was saved"
@@ -1544,6 +1606,69 @@ msgstr "Přidat"
 #: src/ClientZone/DataGrid.php:438
 msgid "Je třeba označit nějaké řádky"
 msgstr "Je třeba označit nějaké řádky"
+
+#: src/product.php:19
+msgid "Product not found"
+msgstr "Produkt nenalezen"
+
+#: src/product.php:20
+msgid "This product is not in the catalog."
+msgstr "Tento produkt není v katalogu."
+
+#: src/product.php:21 src/product.php:113
+msgid "Back to the catalog"
+msgstr "Zpět do katalogu"
+
+#: src/product.php:71 src/contract.php:70
+msgid "Description"
+msgstr "Popis"
+
+#: src/product.php:78
+msgid "What happens after you order"
+msgstr "Co se stane po objednání"
+
+#: src/product.php:80
+msgid ""
+"We issue a proforma invoice for your order. It is dealt with after you pay "
+"it."
+msgstr ""
+"K objednávce vystavíme zálohovou fakturu. Objednávka se vyřizuje po jejím "
+"uhrazení."
+
+#: src/product.php:81
+msgid ""
+"Your order is received by our salesman, who will contact you about the "
+"details."
+msgstr ""
+"Vaši objednávku přijme náš obchodník, který se vám ozve kvůli podrobnostem."
+
+#: src/product.php:84
+msgid "Details"
+msgstr "Podrobnosti"
+
+#: src/product.php:89
+msgid "Type"
+msgstr "Typ"
+
+#: src/product.php:90
+msgid "Invoiced"
+msgstr "Fakturace"
+
+#: src/product.php:91
+msgid "Unit"
+msgstr "Jednotka"
+
+#: src/product.php:92
+msgid "Price excl. VAT"
+msgstr "Cena bez DPH"
+
+#: src/product.php:93
+msgid "VAT"
+msgstr "DPH"
+
+#: src/product.php:94
+msgid "Price incl. VAT"
+msgstr "Cena s DPH"
 
 #: src/changepassword.php:25
 msgid "Please enter new password"
@@ -1618,14 +1743,6 @@ msgstr "Odstoupili jste od %d produktů. Poslední fakturovaný den je %s."
 #: src/contract.php:56
 msgid "The withdrawal could not be saved, please contact us."
 msgstr "Odstoupení se nepodařilo uložit, kontaktujte nás prosím."
-
-#: src/contract.php:62
-msgid "Service"
-msgstr "Služba"
-
-#: src/contract.php:70
-msgid "Description"
-msgstr "Popis"
 
 #: src/contract.php:71
 msgid "Contract type"
@@ -2160,9 +2277,6 @@ msgstr "Přijaté faktury jsou dostupné pouze pro odběratele-dodavatele"
 
 #~ msgid "Price without VAT"
 #~ msgstr "Cena bez daně"
-
-#~ msgid "Price with VAT"
-#~ msgstr "Cena s daní"
 
 #, php-format
 #~ msgid "History table %s is not empty"

@@ -23,6 +23,11 @@ class VoIPcredit extends \ClientZone\OrderPlugin
     public $productCode = 'KREDIT_VOIP';
 
     /**
+     * Paid for: once (a credit is topped up).
+     */
+    public ?string $billing = \ClientZone\BillingKind::ONE_TIME;
+
+    /**
      * Minimal requested credit (with VAT), overridden from cenik cenaZakl.
      */
     public float $minCredit = 200.0;

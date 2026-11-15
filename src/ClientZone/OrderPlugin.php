@@ -27,6 +27,12 @@ abstract class OrderPlugin extends \Ease\Sand
     public $productCode = null;
 
     /**
+     * How the product is paid for: BillingKind::RECURRING or BillingKind::ONE_TIME,
+     * null when the pricelist item decides (see BillingKind::determine).
+     */
+    public ?string $billing = null;
+
+    /**
      * Extra form field definitions.
      *
      * @var array

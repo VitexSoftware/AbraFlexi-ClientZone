@@ -23,6 +23,11 @@ class DomainCredit extends \ClientZone\OrderPlugin
     public $productCode = 'KREDIT_DOMENA';
 
     /**
+     * Paid for: once (a credit is topped up).
+     */
+    public ?string $billing = \ClientZone\BillingKind::ONE_TIME;
+
+    /**
      * Offer only to customers with ext:subreg:…
      */
     public ?string $reqExtPrefix = 'subreg';

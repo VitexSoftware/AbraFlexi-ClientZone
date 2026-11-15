@@ -40,6 +40,28 @@ sloupec pro jazyk, ukládá se při registraci jako **štítek firmy** `LANG_CS`
 `LANG_EN`, ... (štítek se podle potřeby založí). Jazyk, který už firma má
 (např. nastavil obchodník), se pozdější registrací nepřepíše. Čtení: `\ClientZone\CustomerLanguage::fromLabels()`.
 
+Detail produktu a způsob platby
+-------------------------------
+
+Katalog odkazuje na samostatnou stránku `product.php?kod=KÓD` s podrobnostmi o
+produktu. Zákazník na ní hlavně vidí, **jak se za produkt platí**:
+
+ * **Jednorázový nákup** - platí se jednou (zboží, materiál, poplatek, kredit),
+ * **Pravidelně fakturovaná služba** - fakturuje se znovu za každé období (měsíc, rok),
+   dokud se smlouva neukončí,
+ * **Služba** - fakturuje se podle jednotky (hodina, GB), víc se neslibuje.
+
+Způsob se určuje v tomto pořadí (první, co něco říká, vyhrává):
+
+ 1. **štítek položky ceníku** `RECURRING` nebo `ONETIME` (nejjasnější, nastaví obchodník),
+ 2. **order plugin** produktu (`$billing` - např. MULTIFLEXI je pravidelná služba, `KREDIT_DOMENA` jednorázový kredit),
+ 3. **jednotka** služby: období (`MESIC`, `ROK`, ...) znamená pravidelnou fakturaci,
+ 4. **typ zásoby**: zboží, materiál a poplatek se kupují jednou.
+
+Typ „Služba“ sám o sobě nestačí (měsíční schránka i hodina školení jsou služby).
+Proto u pravidelné služby vyplňte v ceníku **jednotku** (období), ať zákazník ví, za co platí cenu.
+Zobrazují se jen položky se štítky `ESHOP` a `AKTIVNI`.
+
 Údaje dodavatele
 ----------------
 

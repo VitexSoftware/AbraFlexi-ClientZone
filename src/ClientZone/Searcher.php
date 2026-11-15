@@ -178,12 +178,6 @@ class Searcher
      */
     private function pricelist(string $cleanTerm): array
     {
-        $plugins = [];
-
-        foreach ((new OrderItem())->plugins as $pluginName => $plugin) {
-            $plugins[$plugin->productCode] = $pluginName;
-        }
-
         $pricer = new \AbraFlexi\Cenik();
         $pricer->throwException = false;
         $rows = $pricer->getColumnsFromAbraFlexi(
@@ -198,7 +192,7 @@ class Searcher
                 'code' => $code,
                 'name' => (string) ($row['nazev'] ?? ''),
                 'info' => number_format((float) ($row['cenaZaklBezDph'] ?? 0), 2, ',', ' ').' '._('excl. VAT'),
-                'url' => 'orderform.php?service='.self::orderService($code, $plugins),
+                'url' => 'product.php?kod='.rawurlencode($code),
             ];
         }
 
