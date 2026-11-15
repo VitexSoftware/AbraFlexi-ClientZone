@@ -25,7 +25,8 @@ if ($product === null) {
     exit;
 }
 
-$oPage->addToHeader(new ui\PageTop($product['name']));
+// The name comes from AbraFlexi: neither the title nor the heading escapes it
+$oPage->addToHeader(new ui\PageTop(htmlspecialchars($product['name'])));
 
 $kind = $product['kind'];
 $unitName = $product['unitName'];
@@ -42,7 +43,7 @@ $left->addItem(new ui\ProductImageThumbnail($pricer, ['class' => 'cz-product-img
 // Description, price, the way it is paid for
 $right = $row->addItem(new \Ease\Html\DivTag(null, ['class' => 'col-md-8']));
 $right->addItem(new \Ease\Html\DivTag(htmlspecialchars($product['code']), ['class' => 'cz-product-sku']));
-$right->addItem(new \Ease\Html\H1Tag($product['name']));
+$right->addItem(new \Ease\Html\H1Tag(htmlspecialchars($product['name'])));
 
 $right->addItem(new \Ease\Html\SpanTag(
     BillingKind::label($kind),

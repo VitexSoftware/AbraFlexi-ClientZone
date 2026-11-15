@@ -97,6 +97,9 @@ class SearcherTest extends TestCase
     {
         $this->assertSame('MultiFlexi', Searcher::orderService('MULTIFLEXI', ['MULTIFLEXI' => 'MultiFlexi']));
         $this->assertSame('Common&kod=MFAPP-LITE', Searcher::orderService('MFAPP-LITE', ['MULTIFLEXI' => 'MultiFlexi']));
+        // a code with a space or a character that has a meaning in an address stays one parameter
+        $this->assertSame('Common&kod=HOUSING%20DISK', Searcher::orderService('HOUSING DISK', []));
+        $this->assertSame('Common&kod=A%26B%3Dc', Searcher::orderService('A&B=c', []));
     }
 
     public function testCodePrefixIsRemoved(): void

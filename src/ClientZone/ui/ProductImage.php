@@ -19,7 +19,8 @@ class ProductImage extends \Ease\Html\ImgTag
     {
         parent::__construct(
             'prdimg.php?type='.$type.'&id='.$product->getMyKey(),
-            (string) ($product->getDataValue('nazev') ?? ''),
+            // the name comes from AbraFlexi and Ease does not escape attributes
+            htmlspecialchars((string) ($product->getDataValue('nazev') ?? ''), \ENT_QUOTES),
             $tagProperties,
         );
     }

@@ -106,7 +106,7 @@ class Pricelist extends \Ease\Html\DivTag
             ['class' => 'cz-product-sku'],
         ));
         $detailUrl = 'product.php?kod='.rawurlencode(\ClientZone\Searcher::plainCode((string) ($item['kod'] ?? '')));
-        $body->addItem(new \Ease\Html\H3Tag(new \Ease\Html\ATag($detailUrl, (string) ($item['nazev'] ?? ''), ['class' => 'text-reset text-decoration-none'])));
+        $body->addItem(new \Ease\Html\H3Tag(new \Ease\Html\ATag($detailUrl, htmlspecialchars((string) ($item['nazev'] ?? '')), ['class' => 'text-reset text-decoration-none'])));
 
         // Once or again and again: the customer decides on it
         $unit = \ClientZone\BillingKind::plainCode((string) ($item['mj1'] ?? ''));

@@ -132,7 +132,7 @@ class Searcher
      */
     public static function orderService(string $code, array $plugins): string
     {
-        return $plugins[$code] ?? 'Common&kod='.$code;
+        return $plugins[$code] ?? 'Common&kod='.rawurlencode($code);
     }
 
     /**
