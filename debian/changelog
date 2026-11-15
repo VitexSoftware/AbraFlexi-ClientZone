@@ -1,3 +1,13 @@
+abraflexi-clientzone (2.10.0) unstable; urgency=medium
+
+  * The page of an issued invoice (document.php) shows, above the PDF, the due
+    date and what is left to pay, and for an invoice that is past its due date
+    the days it is overdue and the dates of the reminders sent (1st, 2nd, 3rd,
+    as filled by abraflexi-reminder). An invoice that was not reminded says so
+    and shows no made-up dates.
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Sun, 15 Nov 2026 11:58:29 +0100
+
 abraflexi-clientzone (2.9.2) unstable; urgency=medium
 
   * The dashboard showed "1st reminder" and "2nd reminder" with today's date

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@vitexsoftware.cz\n"
-"POT-Creation-Date: 2026-11-15 11:02+0100\n"
+"POT-Creation-Date: 2026-11-15 11:58+0100\n"
 "PO-Revision-Date: 2026-10-21 10:02+0200\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: \n"
@@ -379,7 +379,7 @@ msgstr "Adresa"
 
 #: src/ClientZone/ReceivedInvoiceLister.php:28
 #: src/ClientZone/InvoiceLister.php:26 src/ClientZone/ui/AddressForm.php:30
-#: src/ClientZone/OrderLister.php:26 src/product.php:88 src/contract.php:101
+#: src/ClientZone/OrderLister.php:26 src/product.php:89 src/contract.php:101
 #: src/search.php:42
 msgid "Code"
 msgstr "Kód"
@@ -395,7 +395,7 @@ msgid "Currency"
 msgstr "Měna"
 
 #: src/ClientZone/ReceivedInvoiceLister.php:31
-#: src/ClientZone/InvoiceLister.php:29
+#: src/ClientZone/InvoiceLister.php:29 src/document.php:48
 msgid "Due date"
 msgstr "Splatnost"
 
@@ -425,6 +425,18 @@ msgstr "Zobraz"
 #: src/ClientZone/ui/OrderListingItem.php:37
 msgid "Settled"
 msgstr "Uhrazeno"
+
+#: src/ClientZone/InvoiceStatus.php:121
+msgid "1st reminder"
+msgstr "1. upomínka"
+
+#: src/ClientZone/InvoiceStatus.php:122
+msgid "2nd reminder"
+msgstr "2. upomínka"
+
+#: src/ClientZone/InvoiceStatus.php:123
+msgid "3rd reminder"
+msgstr "3. upomínka"
 
 #: src/ClientZone/ContractWithdrawal.php:146
 msgid "Choose at least one product to withdraw from"
@@ -1074,7 +1086,7 @@ msgid "Enter details"
 msgstr "Vlož detaily"
 
 #: src/ClientZone/ui/OrderFormHtml.php:50 src/ClientZone/ui/Pricelist.php:146
-#: src/product.php:110
+#: src/product.php:111
 msgid "Order Now"
 msgstr "Objednej nyní"
 
@@ -1373,7 +1385,7 @@ msgid "No products are available right now."
 msgstr "Momentálně nejsou k dispozici žádné produkty."
 
 #: src/ClientZone/ui/Pricelist.php:130 src/ClientZone/Searcher.php:194
-#: src/product.php:61
+#: src/product.php:62
 msgid "excl. VAT"
 msgstr "bez DPH"
 
@@ -1538,15 +1550,15 @@ msgstr "chybějící heslo"
 msgid "Contact not found after authentication"
 msgstr "Po ověření nebyl kontakt nalezen"
 
-#: src/ClientZone/Customer.php:622
+#: src/ClientZone/Customer.php:627
 msgid "Cannot change password: no user ID"
 msgstr "Heslo nelze změnit: chybí ID uživatele"
 
-#: src/ClientZone/Customer.php:634
+#: src/ClientZone/Customer.php:639
 msgid "Password set"
 msgstr "Heslo nastaveno"
 
-#: src/ClientZone/Customer.php:650
+#: src/ClientZone/Customer.php:655
 msgid "Password set failed"
 msgstr "Nastavení hesla selhalo"
 
@@ -1615,19 +1627,19 @@ msgstr "Produkt nenalezen"
 msgid "This product is not in the catalog."
 msgstr "Tento produkt není v katalogu."
 
-#: src/product.php:21 src/product.php:113
+#: src/product.php:21 src/product.php:114
 msgid "Back to the catalog"
 msgstr "Zpět do katalogu"
 
-#: src/product.php:71 src/contract.php:70
+#: src/product.php:72 src/contract.php:70
 msgid "Description"
 msgstr "Popis"
 
-#: src/product.php:78
+#: src/product.php:79
 msgid "What happens after you order"
 msgstr "Co se stane po objednání"
 
-#: src/product.php:80
+#: src/product.php:81
 msgid ""
 "We issue a proforma invoice for your order. It is dealt with after you pay "
 "it."
@@ -1635,38 +1647,38 @@ msgstr ""
 "K objednávce vystavíme zálohovou fakturu. Objednávka se vyřizuje po jejím "
 "uhrazení."
 
-#: src/product.php:81
+#: src/product.php:82
 msgid ""
 "Your order is received by our salesman, who will contact you about the "
 "details."
 msgstr ""
 "Vaši objednávku přijme náš obchodník, který se vám ozve kvůli podrobnostem."
 
-#: src/product.php:84
+#: src/product.php:85
 msgid "Details"
 msgstr "Podrobnosti"
 
-#: src/product.php:89
+#: src/product.php:90
 msgid "Type"
 msgstr "Typ"
 
-#: src/product.php:90
+#: src/product.php:91
 msgid "Invoiced"
 msgstr "Fakturace"
 
-#: src/product.php:91
+#: src/product.php:92
 msgid "Unit"
 msgstr "Jednotka"
 
-#: src/product.php:92
+#: src/product.php:93
 msgid "Price excl. VAT"
 msgstr "Cena bez DPH"
 
-#: src/product.php:93
+#: src/product.php:94
 msgid "VAT"
 msgstr "DPH"
 
-#: src/product.php:94
+#: src/product.php:95
 msgid "Price incl. VAT"
 msgstr "Cena s DPH"
 
@@ -2058,6 +2070,26 @@ msgstr "Mé faktury"
 msgid "Received invoices are available only for supplier-customers"
 msgstr "Přijaté faktury jsou dostupné pouze pro odběratele-dodavatele"
 
+#: src/document.php:52
+msgid "Left to pay"
+msgstr "Zbývá uhradit"
+
+#: src/document.php:58
+#, php-format
+msgid "Overdue by %d day"
+msgid_plural "Overdue by %d days"
+msgstr[0] "Po splatnosti %d den"
+msgstr[1] "Po splatnosti %d dny"
+msgstr[2] "Po splatnosti %d dní"
+
+#: src/document.php:61
+msgid "Reminders sent"
+msgstr "Odeslané upomínky"
+
+#: src/document.php:62
+msgid "No reminder has been sent yet."
+msgstr "Zatím nebyla odeslána žádná upomínka."
+
 #, php-format
 #~ msgid "%d occurencies of %s found"
 #~ msgstr "%d výskytů %s nalezeno"
@@ -2400,9 +2432,6 @@ msgstr "Přijaté faktury jsou dostupné pouze pro odběratele-dodavatele"
 
 #~ msgid "Remind send disbled"
 #~ msgstr "Odesílání pohledávek zakázáno"
-
-#~ msgid "Remind %d already sent"
-#~ msgstr "Upomínka  %d  byla již odeslána"
 
 #~ msgid "No debts to remind"
 #~ msgstr "Žádne pohledávky k upomenutí"

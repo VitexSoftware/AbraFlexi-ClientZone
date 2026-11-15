@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: abraflexi-clientzone\n"
 "Report-Msgid-Bugs-To: info@vitexsoftware.cz\n"
-"POT-Creation-Date: 2026-11-15 11:02+0100\n"
+"POT-Creation-Date: 2026-11-15 11:58+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,6 +16,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: src/about.php:15 src/about.php:19 src/ClientZone/ui/PageBottom.php:60
 msgid "About"
@@ -376,7 +377,7 @@ msgstr ""
 
 #: src/ClientZone/ReceivedInvoiceLister.php:28
 #: src/ClientZone/InvoiceLister.php:26 src/ClientZone/ui/AddressForm.php:30
-#: src/ClientZone/OrderLister.php:26 src/product.php:88 src/contract.php:101
+#: src/ClientZone/OrderLister.php:26 src/product.php:89 src/contract.php:101
 #: src/search.php:42
 msgid "Code"
 msgstr ""
@@ -392,7 +393,7 @@ msgid "Currency"
 msgstr ""
 
 #: src/ClientZone/ReceivedInvoiceLister.php:31
-#: src/ClientZone/InvoiceLister.php:29
+#: src/ClientZone/InvoiceLister.php:29 src/document.php:48
 msgid "Due date"
 msgstr ""
 
@@ -421,6 +422,18 @@ msgstr ""
 #: src/ClientZone/InvoiceLister.php:74
 #: src/ClientZone/ui/OrderListingItem.php:37
 msgid "Settled"
+msgstr ""
+
+#: src/ClientZone/InvoiceStatus.php:121
+msgid "1st reminder"
+msgstr ""
+
+#: src/ClientZone/InvoiceStatus.php:122
+msgid "2nd reminder"
+msgstr ""
+
+#: src/ClientZone/InvoiceStatus.php:123
+msgid "3rd reminder"
 msgstr ""
 
 #: src/ClientZone/ContractWithdrawal.php:146
@@ -1065,7 +1078,7 @@ msgid "Enter details"
 msgstr ""
 
 #: src/ClientZone/ui/OrderFormHtml.php:50 src/ClientZone/ui/Pricelist.php:146
-#: src/product.php:110
+#: src/product.php:111
 msgid "Order Now"
 msgstr ""
 
@@ -1364,7 +1377,7 @@ msgid "No products are available right now."
 msgstr ""
 
 #: src/ClientZone/ui/Pricelist.php:130 src/ClientZone/Searcher.php:194
-#: src/product.php:61
+#: src/product.php:62
 msgid "excl. VAT"
 msgstr ""
 
@@ -1525,15 +1538,15 @@ msgstr ""
 msgid "Contact not found after authentication"
 msgstr ""
 
-#: src/ClientZone/Customer.php:622
+#: src/ClientZone/Customer.php:627
 msgid "Cannot change password: no user ID"
 msgstr ""
 
-#: src/ClientZone/Customer.php:634
+#: src/ClientZone/Customer.php:639
 msgid "Password set"
 msgstr ""
 
-#: src/ClientZone/Customer.php:650
+#: src/ClientZone/Customer.php:655
 msgid "Password set failed"
 msgstr ""
 
@@ -1598,55 +1611,55 @@ msgstr ""
 msgid "This product is not in the catalog."
 msgstr ""
 
-#: src/product.php:21 src/product.php:113
+#: src/product.php:21 src/product.php:114
 msgid "Back to the catalog"
 msgstr ""
 
-#: src/product.php:71 src/contract.php:70
+#: src/product.php:72 src/contract.php:70
 msgid "Description"
 msgstr ""
 
-#: src/product.php:78
+#: src/product.php:79
 msgid "What happens after you order"
 msgstr ""
 
-#: src/product.php:80
+#: src/product.php:81
 msgid ""
 "We issue a proforma invoice for your order. It is dealt with after you pay "
 "it."
 msgstr ""
 
-#: src/product.php:81
+#: src/product.php:82
 msgid ""
 "Your order is received by our salesman, who will contact you about the "
 "details."
 msgstr ""
 
-#: src/product.php:84
+#: src/product.php:85
 msgid "Details"
 msgstr ""
 
-#: src/product.php:89
+#: src/product.php:90
 msgid "Type"
 msgstr ""
 
-#: src/product.php:90
+#: src/product.php:91
 msgid "Invoiced"
 msgstr ""
 
-#: src/product.php:91
+#: src/product.php:92
 msgid "Unit"
 msgstr ""
 
-#: src/product.php:92
+#: src/product.php:93
 msgid "Price excl. VAT"
 msgstr ""
 
-#: src/product.php:93
+#: src/product.php:94
 msgid "VAT"
 msgstr ""
 
-#: src/product.php:94
+#: src/product.php:95
 msgid "Price incl. VAT"
 msgstr ""
 
@@ -2030,4 +2043,23 @@ msgstr ""
 
 #: src/myreceivedinvoices.php:22
 msgid "Received invoices are available only for supplier-customers"
+msgstr ""
+
+#: src/document.php:52
+msgid "Left to pay"
+msgstr ""
+
+#: src/document.php:58
+#, php-format
+msgid "Overdue by %d day"
+msgid_plural "Overdue by %d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/document.php:61
+msgid "Reminders sent"
+msgstr ""
+
+#: src/document.php:62
+msgid "No reminder has been sent yet."
 msgstr ""

@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@vitexsoftware.cz\n"
-"POT-Creation-Date: 2026-11-15 11:02+0100\n"
+"POT-Creation-Date: 2026-11-15 11:58+0100\n"
 "PO-Revision-Date: 2026-10-21 10:02+0200\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: \n"
@@ -382,7 +382,7 @@ msgstr "Address"
 
 #: src/ClientZone/ReceivedInvoiceLister.php:28
 #: src/ClientZone/InvoiceLister.php:26 src/ClientZone/ui/AddressForm.php:30
-#: src/ClientZone/OrderLister.php:26 src/product.php:88 src/contract.php:101
+#: src/ClientZone/OrderLister.php:26 src/product.php:89 src/contract.php:101
 #: src/search.php:42
 msgid "Code"
 msgstr "Code"
@@ -398,7 +398,7 @@ msgid "Currency"
 msgstr "Currency"
 
 #: src/ClientZone/ReceivedInvoiceLister.php:31
-#: src/ClientZone/InvoiceLister.php:29
+#: src/ClientZone/InvoiceLister.php:29 src/document.php:48
 msgid "Due date"
 msgstr "Due date"
 
@@ -428,6 +428,21 @@ msgstr "Show"
 #: src/ClientZone/ui/OrderListingItem.php:37
 msgid "Settled"
 msgstr "Settled"
+
+#: src/ClientZone/InvoiceStatus.php:121
+#, fuzzy
+msgid "1st reminder"
+msgstr "1st reminder: %s"
+
+#: src/ClientZone/InvoiceStatus.php:122
+#, fuzzy
+msgid "2nd reminder"
+msgstr "2nd reminder: %s"
+
+#: src/ClientZone/InvoiceStatus.php:123
+#, fuzzy
+msgid "3rd reminder"
+msgstr "2nd reminder: %s"
 
 #: src/ClientZone/ContractWithdrawal.php:146
 msgid "Choose at least one product to withdraw from"
@@ -1074,7 +1089,7 @@ msgid "Enter details"
 msgstr "Enter details"
 
 #: src/ClientZone/ui/OrderFormHtml.php:50 src/ClientZone/ui/Pricelist.php:146
-#: src/product.php:110
+#: src/product.php:111
 msgid "Order Now"
 msgstr "Order Now"
 
@@ -1373,7 +1388,7 @@ msgid "No products are available right now."
 msgstr "No products are available right now."
 
 #: src/ClientZone/ui/Pricelist.php:130 src/ClientZone/Searcher.php:194
-#: src/product.php:61
+#: src/product.php:62
 msgid "excl. VAT"
 msgstr "excl. VAT"
 
@@ -1538,15 +1553,15 @@ msgstr "missing password"
 msgid "Contact not found after authentication"
 msgstr "Contact not found after authentication"
 
-#: src/ClientZone/Customer.php:622
+#: src/ClientZone/Customer.php:627
 msgid "Cannot change password: no user ID"
 msgstr "Cannot change password: no user ID"
 
-#: src/ClientZone/Customer.php:634
+#: src/ClientZone/Customer.php:639
 msgid "Password set"
 msgstr "Password set"
 
-#: src/ClientZone/Customer.php:650
+#: src/ClientZone/Customer.php:655
 msgid "Password set failed"
 msgstr "Password set failed"
 
@@ -1612,60 +1627,60 @@ msgstr "Product not specified"
 msgid "This product is not in the catalog."
 msgstr ""
 
-#: src/product.php:21 src/product.php:113
+#: src/product.php:21 src/product.php:114
 #, fuzzy
 msgid "Back to the catalog"
 msgstr "Back to cart"
 
-#: src/product.php:71 src/contract.php:70
+#: src/product.php:72 src/contract.php:70
 msgid "Description"
 msgstr "Description"
 
-#: src/product.php:78
+#: src/product.php:79
 #, fuzzy
 msgid "What happens after you order"
 msgstr "%s for your order"
 
-#: src/product.php:80
+#: src/product.php:81
 msgid ""
 "We issue a proforma invoice for your order. It is dealt with after you pay "
 "it."
 msgstr ""
 
-#: src/product.php:81
+#: src/product.php:82
 msgid ""
 "Your order is received by our salesman, who will contact you about the "
 "details."
 msgstr ""
 
-#: src/product.php:84
+#: src/product.php:85
 #, fuzzy
 msgid "Details"
 msgstr "Enter details"
 
-#: src/product.php:89
+#: src/product.php:90
 msgid "Type"
 msgstr ""
 
-#: src/product.php:90
+#: src/product.php:91
 #, fuzzy
 msgid "Invoiced"
 msgstr "Invoice"
 
-#: src/product.php:91
+#: src/product.php:92
 msgid "Unit"
 msgstr ""
 
-#: src/product.php:92
+#: src/product.php:93
 #, fuzzy
 msgid "Price excl. VAT"
 msgstr "excl. VAT"
 
-#: src/product.php:93
+#: src/product.php:94
 msgid "VAT"
 msgstr ""
 
-#: src/product.php:94
+#: src/product.php:95
 #, fuzzy
 msgid "Price incl. VAT"
 msgstr "excl. VAT"
@@ -2055,6 +2070,27 @@ msgstr "My Invoices"
 msgid "Received invoices are available only for supplier-customers"
 msgstr "Received invoices are available only for supplier-customers"
 
+#: src/document.php:52
+#, fuzzy
+msgid "Left to pay"
+msgstr "Orders to pay"
+
+#: src/document.php:58
+#, php-format
+msgid "Overdue by %d day"
+msgid_plural "Overdue by %d days"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/document.php:61
+#, fuzzy
+msgid "Reminders sent"
+msgstr "Remind %d already sent"
+
+#: src/document.php:62
+msgid "No reminder has been sent yet."
+msgstr ""
+
 #, php-format
 #~ msgid "%d occurencies of %s found"
 #~ msgstr "%d occurencies of %s found"
@@ -2322,10 +2358,6 @@ msgstr "Received invoices are available only for supplier-customers"
 
 #~ msgid "Remind send disbled"
 #~ msgstr "Remind send disbled"
-
-#, php-format
-#~ msgid "Remind %d already sent"
-#~ msgstr "Remind %d already sent"
 
 #~ msgid "No debts to remind"
 #~ msgstr "No debts to remind"
