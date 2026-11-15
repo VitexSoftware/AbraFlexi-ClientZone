@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: abraflexi-clientzone\n"
 "Report-Msgid-Bugs-To: info@vitexsoftware.cz\n"
-"POT-Creation-Date: 2026-11-14 23:17+0100\n"
+"POT-Creation-Date: 2026-11-15 10:33+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -123,7 +123,7 @@ msgid "Password change"
 msgstr ""
 
 #: src/pricelist.php:15 src/ClientZone/ui/Pricelist.php:50
-#: src/ClientZone/ui/MainMenu.php:31
+#: src/ClientZone/ui/MainMenu.php:31 src/search.php:20
 msgid "Catalog"
 msgstr ""
 
@@ -281,7 +281,7 @@ msgstr ""
 
 #: src/newcustomer.php:226 src/ClientZone/ContractLister.php:36
 #: src/ClientZone/ui/AddressForm.php:32 src/ClientZone/ui/UserForm.php:30
-#: src/ClientZone/ui/KontaktForm.php:30 src/contract.php:69
+#: src/ClientZone/ui/KontaktForm.php:30 src/contract.php:69 src/search.php:42
 msgid "Name"
 msgstr ""
 
@@ -376,7 +376,7 @@ msgstr ""
 
 #: src/ClientZone/ReceivedInvoiceLister.php:28
 #: src/ClientZone/InvoiceLister.php:26 src/ClientZone/ui/AddressForm.php:30
-#: src/ClientZone/OrderLister.php:26 src/contract.php:101
+#: src/ClientZone/OrderLister.php:26 src/contract.php:101 src/search.php:42
 msgid "Code"
 msgstr ""
 
@@ -1361,7 +1361,7 @@ msgstr ""
 msgid "No products are available right now."
 msgstr ""
 
-#: src/ClientZone/ui/Pricelist.php:109
+#: src/ClientZone/ui/Pricelist.php:109 src/ClientZone/Searcher.php:200
 msgid "excl. VAT"
 msgstr ""
 
@@ -1416,11 +1416,11 @@ msgstr ""
 msgid "New order"
 msgstr ""
 
-#: src/ClientZone/ui/MainMenu.php:37
+#: src/ClientZone/ui/MainMenu.php:37 src/search.php:22
 msgid "My orders"
 msgstr ""
 
-#: src/ClientZone/ui/MainMenu.php:38
+#: src/ClientZone/ui/MainMenu.php:38 src/search.php:21
 msgid "My invoices"
 msgstr ""
 
@@ -1749,18 +1749,27 @@ msgstr ""
 msgid "Spoje.Net"
 msgstr ""
 
-#: src/search.php:18
+#: src/search.php:17
 msgid "Search results"
 msgstr ""
 
-#: src/search.php:31
+#: src/search.php:27
 #, php-format
-msgid "%d occurencies of %s found"
+msgid "Type at least %d characters to search."
 msgstr ""
 
-#: src/search.php:66
+#: src/search.php:35
 #, php-format
-msgid "Search for %s results in %s"
+msgid "Nothing found for %s."
+msgstr ""
+
+#: src/search.php:42
+msgid "Info"
+msgstr ""
+
+#: src/search.php:50
+#, php-format
+msgid "%s: %d found"
 msgstr ""
 
 #: src/orderform.php:13

@@ -1,3 +1,14 @@
+abraflexi-clientzone (2.8.2) unstable; urgency=medium
+
+  * Search works again: it called getColumnsFromFlexibee(), a method the
+    current php-abraflexi no longer has, and ended with a fatal error. It now
+    looks in the catalog (items labelled ESHOP and AKTIVNI) and, for a signed in
+    customer, in the invoices and orders of the customer's company only.
+  * The search term is reduced to harmless characters before it enters the
+    AbraFlexi filter (a quote in it used to change the filter).
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Sun, 15 Nov 2026 10:33:44 +0100
+
 abraflexi-clientzone (2.8.1) unstable; urgency=medium
 
   * E-mail confirmation no longer finishes the registration when the link is

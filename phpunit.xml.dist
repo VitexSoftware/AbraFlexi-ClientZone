@@ -10,6 +10,9 @@
         <testsuite name="language">
             <directory>tests/Language</directory>
         </testsuite>
+        <testsuite name="search">
+            <directory>tests/Search</directory>
+        </testsuite>
         <testsuite name="supplier">
             <directory>tests/Supplier</directory>
         </testsuite>

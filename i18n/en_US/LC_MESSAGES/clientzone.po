@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@vitexsoftware.cz\n"
-"POT-Creation-Date: 2026-11-14 23:17+0100\n"
+"POT-Creation-Date: 2026-11-15 10:33+0100\n"
 "PO-Revision-Date: 2026-10-21 10:02+0200\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: \n"
@@ -126,7 +126,7 @@ msgid "Password change"
 msgstr "Password change"
 
 #: src/pricelist.php:15 src/ClientZone/ui/Pricelist.php:50
-#: src/ClientZone/ui/MainMenu.php:31
+#: src/ClientZone/ui/MainMenu.php:31 src/search.php:20
 msgid "Catalog"
 msgstr "Catalog"
 
@@ -286,7 +286,7 @@ msgstr "We do not know this e-mail yet. Tell us about your company."
 
 #: src/newcustomer.php:226 src/ClientZone/ContractLister.php:36
 #: src/ClientZone/ui/AddressForm.php:32 src/ClientZone/ui/UserForm.php:30
-#: src/ClientZone/ui/KontaktForm.php:30 src/contract.php:69
+#: src/ClientZone/ui/KontaktForm.php:30 src/contract.php:69 src/search.php:42
 msgid "Name"
 msgstr "Name"
 
@@ -382,7 +382,7 @@ msgstr "Address"
 
 #: src/ClientZone/ReceivedInvoiceLister.php:28
 #: src/ClientZone/InvoiceLister.php:26 src/ClientZone/ui/AddressForm.php:30
-#: src/ClientZone/OrderLister.php:26 src/contract.php:101
+#: src/ClientZone/OrderLister.php:26 src/contract.php:101 src/search.php:42
 msgid "Code"
 msgstr "Code"
 
@@ -1370,7 +1370,7 @@ msgstr "%s products"
 msgid "No products are available right now."
 msgstr "No products are available right now."
 
-#: src/ClientZone/ui/Pricelist.php:109
+#: src/ClientZone/ui/Pricelist.php:109 src/ClientZone/Searcher.php:200
 msgid "excl. VAT"
 msgstr "excl. VAT"
 
@@ -1427,11 +1427,11 @@ msgstr "Cell"
 msgid "New order"
 msgstr "New order"
 
-#: src/ClientZone/ui/MainMenu.php:37
+#: src/ClientZone/ui/MainMenu.php:37 src/search.php:22
 msgid "My orders"
 msgstr "My orders"
 
-#: src/ClientZone/ui/MainMenu.php:38
+#: src/ClientZone/ui/MainMenu.php:38 src/search.php:21
 msgid "My invoices"
 msgstr "My invoices"
 
@@ -1765,19 +1765,28 @@ msgstr "Please check your mailbox for new password"
 msgid "Spoje.Net"
 msgstr "Spoje.Net"
 
-#: src/search.php:18
+#: src/search.php:17
 msgid "Search results"
 msgstr "Search results"
 
-#: src/search.php:31
-#, php-format
-msgid "%d occurencies of %s found"
-msgstr "%d occurencies of %s found"
+#: src/search.php:27
+#, fuzzy, php-format
+msgid "Type at least %d characters to search."
+msgstr "At least 8 characters"
 
-#: src/search.php:66
+#: src/search.php:35
 #, php-format
-msgid "Search for %s results in %s"
-msgstr "Search for %s results in %s"
+msgid "Nothing found for %s."
+msgstr ""
+
+#: src/search.php:42
+msgid "Info"
+msgstr ""
+
+#: src/search.php:50
+#, fuzzy, php-format
+msgid "%s: %d found"
+msgstr "%s items found"
 
 #: src/orderform.php:13
 msgid "Please sign in to place an order"
@@ -1928,6 +1937,14 @@ msgstr "My Invoices"
 #: src/myreceivedinvoices.php:22
 msgid "Received invoices are available only for supplier-customers"
 msgstr "Received invoices are available only for supplier-customers"
+
+#, php-format
+#~ msgid "%d occurencies of %s found"
+#~ msgstr "%d occurencies of %s found"
+
+#, php-format
+#~ msgid "Search for %s results in %s"
+#~ msgstr "Search for %s results in %s"
 
 #~ msgid "After registering, you will be prompted to order service."
 #~ msgstr "After registering, you will be prompted to order service."

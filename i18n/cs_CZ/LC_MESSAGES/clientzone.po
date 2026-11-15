@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: info@vitexsoftware.cz\n"
-"POT-Creation-Date: 2026-11-14 23:17+0100\n"
+"POT-Creation-Date: 2026-11-15 10:33+0100\n"
 "PO-Revision-Date: 2026-10-21 10:02+0200\n"
 "Last-Translator: Vítězslav Dvořák <info@vitexsoftware.cz>\n"
 "Language-Team: \n"
@@ -126,7 +126,7 @@ msgid "Password change"
 msgstr "Změna hesla"
 
 #: src/pricelist.php:15 src/ClientZone/ui/Pricelist.php:50
-#: src/ClientZone/ui/MainMenu.php:31
+#: src/ClientZone/ui/MainMenu.php:31 src/search.php:20
 msgid "Catalog"
 msgstr "Katalog"
 
@@ -284,9 +284,9 @@ msgstr "Tento e-mail zatím neznáme. Řekněte nám něco o vaší firmě."
 
 #: src/newcustomer.php:226 src/ClientZone/ContractLister.php:36
 #: src/ClientZone/ui/AddressForm.php:32 src/ClientZone/ui/UserForm.php:30
-#: src/ClientZone/ui/KontaktForm.php:30 src/contract.php:69
+#: src/ClientZone/ui/KontaktForm.php:30 src/contract.php:69 src/search.php:42
 msgid "Name"
-msgstr "Jméno"
+msgstr "Název"
 
 #: src/newcustomer.php:226 src/newcustomer.php:244
 msgid "Requied"
@@ -379,7 +379,7 @@ msgstr "Adresa"
 
 #: src/ClientZone/ReceivedInvoiceLister.php:28
 #: src/ClientZone/InvoiceLister.php:26 src/ClientZone/ui/AddressForm.php:30
-#: src/ClientZone/OrderLister.php:26 src/contract.php:101
+#: src/ClientZone/OrderLister.php:26 src/contract.php:101 src/search.php:42
 msgid "Code"
 msgstr "Kód"
 
@@ -1370,7 +1370,7 @@ msgstr "%s produktů"
 msgid "No products are available right now."
 msgstr "Momentálně nejsou k dispozici žádné produkty."
 
-#: src/ClientZone/ui/Pricelist.php:109
+#: src/ClientZone/ui/Pricelist.php:109 src/ClientZone/Searcher.php:200
 msgid "excl. VAT"
 msgstr "bez DPH"
 
@@ -1427,11 +1427,11 @@ msgstr "Mobilní číslo"
 msgid "New order"
 msgstr "Nová objednávka"
 
-#: src/ClientZone/ui/MainMenu.php:37
+#: src/ClientZone/ui/MainMenu.php:37 src/search.php:22
 msgid "My orders"
 msgstr "Mé objednávky"
 
-#: src/ClientZone/ui/MainMenu.php:38
+#: src/ClientZone/ui/MainMenu.php:38 src/search.php:21
 msgid "My invoices"
 msgstr "Mé faktury"
 
@@ -1768,19 +1768,28 @@ msgstr "Prosíme zkontrolujte svou poštu pro nové heslo"
 msgid "Spoje.Net"
 msgstr "Spoje.Net"
 
-#: src/search.php:18
+#: src/search.php:17
 msgid "Search results"
 msgstr "Výsledky vyhledávání"
 
-#: src/search.php:31
+#: src/search.php:27
 #, php-format
-msgid "%d occurencies of %s found"
-msgstr "%d výskytů %s nalezeno"
+msgid "Type at least %d characters to search."
+msgstr "Pro hledání zadejte alespoň %d znaky."
 
-#: src/search.php:66
+#: src/search.php:35
 #, php-format
-msgid "Search for %s results in %s"
-msgstr "Hledám %s v %s"
+msgid "Nothing found for %s."
+msgstr "Pro %s nebylo nic nalezeno."
+
+#: src/search.php:42
+msgid "Info"
+msgstr "Informace"
+
+#: src/search.php:50
+#, php-format
+msgid "%s: %d found"
+msgstr "%s: nalezeno %d"
 
 #: src/orderform.php:13
 msgid "Please sign in to place an order"
@@ -1931,6 +1940,14 @@ msgstr "Mé faktury"
 #: src/myreceivedinvoices.php:22
 msgid "Received invoices are available only for supplier-customers"
 msgstr "Přijaté faktury jsou dostupné pouze pro odběratele-dodavatele"
+
+#, php-format
+#~ msgid "%d occurencies of %s found"
+#~ msgstr "%d výskytů %s nalezeno"
+
+#, php-format
+#~ msgid "Search for %s results in %s"
+#~ msgstr "Hledám %s v %s"
 
 #~ msgid "After registering, you will be prompted to order service."
 #~ msgstr "Po registraci vám bude nabídnuta objednávka služeb"
