@@ -1,3 +1,13 @@
+abraflexi-clientzone (2.9.2) unstable; urgency=medium
+
+  * The dashboard showed "1st reminder" and "2nd reminder" with today's date
+    on an invoice that has no reminders: AbraFlexi delivers an empty date as an
+    object with today's date and the flag isNull, which Customer::dateToIso()
+    took for a real date. An empty date is empty now; the reminders are shown
+    only after abraflexi-reminder fills them.
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Sun, 15 Nov 2026 11:55:30 +0100
+
 abraflexi-clientzone (2.9.1) unstable; urgency=medium
 
   * The MultiFlexi order plugin (product MULTIFLEXI) was not shipped by any

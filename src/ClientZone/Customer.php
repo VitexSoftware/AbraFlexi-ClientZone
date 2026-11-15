@@ -580,6 +580,11 @@ class Customer extends \AbraFlexi\Bricks\Customer
         if ($value === null || $value === '' || $value === false) {
             return null;
         }
+        // An empty date of AbraFlexi comes as a Date object that carries today's date and the flag isNull:
+        // it must not be shown as a real date (an invoice does not have its reminders on the day it is issued)
+        if ($value instanceof \AbraFlexi\Date && $value->isNull) {
+            return null;
+        }
         if ($value instanceof \DateTimeInterface) {
             return $value->format('Y-m-d');
         }
