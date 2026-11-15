@@ -1,3 +1,12 @@
+abraflexi-clientzone (2.9.1) unstable; urgency=medium
+
+  * The MultiFlexi order plugin (product MULTIFLEXI) was not shipped by any
+    package, so the shop ordered MULTIFLEXI as a common item. It is now in
+    abraflexi-clientzone-vitexsoftware, together with the other VitexSoftware
+    plugins (install that package on a shop that sells them).
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Sun, 15 Nov 2026 11:31:59 +0100
+
 abraflexi-clientzone (2.9.0) unstable; urgency=medium
 
   * Product detail page (product.php?kod=CODE): description, price with and

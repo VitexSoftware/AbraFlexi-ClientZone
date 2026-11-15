@@ -51,4 +51,4 @@ Section: web
 Priority: optional
 Description: VitexSoftware service order plugins for AbraFlexi ClientZone
  Order plugins for ordering VitexSoftware hosted services (web hosting,
- e-mail hosting) through AbraFlexi ClientZone.
+ e-mail hosting, MultiFlexi SaaS) through AbraFlexi ClientZone.

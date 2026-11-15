@@ -1,2 +1,3 @@
 src/ClientZone/orderplugins/WebHosting.php	usr/share/abraflexi-clientzone/ClientZone/orderplugins
 src/ClientZone/orderplugins/MailHosting.php	usr/share/abraflexi-clientzone/ClientZone/orderplugins
+src/ClientZone/orderplugins/MultiFlexi.php	usr/share/abraflexi-clientzone/ClientZone/orderplugins
