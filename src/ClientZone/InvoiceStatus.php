@@ -29,7 +29,7 @@ final class InvoiceStatus
     /**
      * Columns of the invoice the status needs.
      */
-    public const COLUMNS = ['id', 'kod', 'datSplat', 'sumCelkem', 'zbyvaUhradit', 'stavUhrK', 'storno', 'mena', 'datUp1', 'datUp2', 'datSmir'];
+    public const COLUMNS = ['id', 'kod', 'datSplat', 'sumCelkem', 'zbyvaUhradit', 'stavUhrK', 'storno', 'mena', 'typDokl', 'datUp1', 'datUp2', 'datSmir'];
 
     /**
      * Reminder dates by the level of the reminder.
@@ -38,6 +38,19 @@ final class InvoiceStatus
 
     private function __construct()
     {
+    }
+
+    /**
+     * Is it a proforma (advance) invoice? It is not a debt: it is paid to start with, nobody is reminded of it.
+     *
+     * @param array<string, mixed> $invoice
+     * @param string               $proformaCode code of the proforma document type (ABRAFLEXI_PROFORMA_DOCTYPE)
+     */
+    public static function isProforma(array $invoice, string $proformaCode): bool
+    {
+        $type = Searcher::plainCode((string) ($invoice['typDokl'] ?? ''));
+
+        return $type !== '' && mb_strtoupper($type) === mb_strtoupper(trim($proformaCode));
     }
 
     /**

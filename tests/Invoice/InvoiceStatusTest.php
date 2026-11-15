@@ -102,6 +102,23 @@ class InvoiceStatusTest extends TestCase
         $this->assertSame([['level' => 2, 'date' => '09.12.2026']], InvoiceStatus::reminders($this->invoice(['datUp2' => '2026-12-09+01:00'])));
     }
 
+    public function testProformaIsRecognizedByTheConfiguredType(): void
+    {
+        $this->assertTrue(InvoiceStatus::isProforma($this->invoice(['typDokl' => 'code:ZÁLOHA']), 'ZÁLOHA'));
+        $this->assertTrue(InvoiceStatus::isProforma($this->invoice(['typDokl' => 'code:záloha']), 'ZÁLOHA'));
+        $this->assertFalse(InvoiceStatus::isProforma($this->invoice(['typDokl' => 'code:FAKTURA']), 'ZÁLOHA'));
+        $this->assertFalse(InvoiceStatus::isProforma($this->invoice(), 'ZÁLOHA'));
+        $this->assertFalse(InvoiceStatus::isProforma($this->invoice(['typDokl' => '']), ''));
+    }
+
+    public function testCreditNoteHasNothingToPay(): void
+    {
+        $creditNote = $this->invoice(['zbyvaUhradit' => '-500.0']);
+
+        $this->assertFalse(InvoiceStatus::isUnpaid($creditNote));
+        $this->assertFalse(InvoiceStatus::isOverdue($creditNote, $this->today()));
+    }
+
     public function testEveryLevelHasALabel(): void
     {
         $this->assertNotSame('', InvoiceStatus::reminderLabel(1));

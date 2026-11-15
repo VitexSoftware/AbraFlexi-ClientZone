@@ -39,7 +39,9 @@ if ($document->getEvidence() === 'faktura-vydana') {
     $rows = $document->getColumnsFromAbraFlexi(InvoiceStatus::COLUMNS, ['id' => (int) $document->getMyKey()]);
     $invoice = \is_array($rows) ? (array) (current($rows) ?: []) : [];
     $today = new \DateTimeImmutable('today');
-    $overdue = InvoiceStatus::isOverdue($invoice, $today);
+    // A proforma invoice is paid to start with, it is not a debt that becomes overdue or is reminded
+    $proforma = InvoiceStatus::isProforma($invoice, (string) \Ease\Shared::cfg('ABRAFLEXI_PROFORMA_DOCTYPE', 'ZALOHA'));
+    $overdue = !$proforma && InvoiceStatus::isOverdue($invoice, $today);
     $due = Customer::formatDate($invoice['datSplat'] ?? null);
     $currency = trim(\AbraFlexi\Functions::uncode((string) ($invoice['mena'] ?? 'CZK')));
     $lines = [];

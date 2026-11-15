@@ -5,6 +5,9 @@ abraflexi-clientzone (2.10.0) unstable; urgency=medium
     the days it is overdue and the dates of the reminders sent (1st, 2nd, 3rd,
     as filled by abraflexi-reminder). An invoice that was not reminded says so
     and shows no made-up dates.
+  * Only issued invoices get this overview. A proforma (advance) invoice is
+    not a debt, so it is never shown as overdue or reminded; a credit note has
+    nothing to pay. Other documents (orders, contracts) are shown as before.
 
  -- Vítězslav Dvořák <info@vitexsoftware.cz>  Sun, 15 Nov 2026 11:58:29 +0100
 
