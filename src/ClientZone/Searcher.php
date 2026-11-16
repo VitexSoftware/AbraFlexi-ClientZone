@@ -180,8 +180,10 @@ class Searcher
     {
         $pricer = new \AbraFlexi\Cenik();
         $pricer->throwException = false;
+        // The full record: AbraFlexi counts the price (cenaZaklBezDph) only there, a list of columns
+        // gives it as 0
         $rows = $pricer->getColumnsFromAbraFlexi(
-            ['id', 'kod', 'nazev', 'cenaZaklBezDph'],
+            'full',
             [self::pricelistCondition($cleanTerm), 'limit' => self::LIMIT],
         );
         $found = [];
@@ -191,7 +193,7 @@ class Searcher
             $found[] = [
                 'code' => $code,
                 'name' => (string) ($row['nazev'] ?? ''),
-                'info' => number_format((float) ($row['cenaZaklBezDph'] ?? 0), 2, ',', ' ').' '._('excl. VAT'),
+                'info' => ProductDetail::formatPrice((float) ($row['cenaZaklBezDph'] ?? 0)).' '._('excl. VAT'),
                 'url' => 'product.php?kod='.rawurlencode($code),
             ];
         }

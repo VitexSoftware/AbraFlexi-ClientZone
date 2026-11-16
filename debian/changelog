@@ -1,3 +1,11 @@
+abraflexi-clientzone (2.10.2) unstable; urgency=medium
+
+  * Search: the catalog results show the real price (AbraFlexi counts it only in
+    the full record; a list of columns gave 0,00) and in the same format as the
+    catalog ("32,00 Kč bez DPH").
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Mon, 16 Nov 2026 01:48:47 +0100
+
 abraflexi-clientzone (2.10.1) unstable; urgency=medium
 
   * Product image popup works on the price list (jQuery is loaded before the
