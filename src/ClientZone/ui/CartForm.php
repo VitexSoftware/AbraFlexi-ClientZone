@@ -79,7 +79,15 @@ class CartForm extends \Ease\Html\DivTag
             'class' => 'cz-cart-thumb',
         ]));
         $meta = $row->addItem(new \Ease\Html\DivTag(null, ['class' => 'cz-cart-meta']));
-        $meta->addItem(new \Ease\Html\DivTag((string) $cartItem['nazev'], ['class' => 'cz-cart-name']));
+        // The name leads to the product detail (the code of the pricelist item is in `cenik`).
+        $kod = \ClientZone\Searcher::plainCode((string) ($cartItem['cenik'] ?? ''));
+        $name = htmlspecialchars((string) $cartItem['nazev']);
+        $meta->addItem(new \Ease\Html\DivTag(
+            $kod !== ''
+                ? new \Ease\Html\ATag('product.php?kod='.rawurlencode($kod), $name, ['class' => 'text-reset'])
+                : $name,
+            ['class' => 'cz-cart-name'],
+        ));
         $meta->addItem(new \Ease\Html\DivTag(
             sprintf(_('Qty: %s'), $qty == floor($qty) ? (string) (int) $qty : (string) $qty),
             ['class' => 'dim'],

@@ -30,10 +30,14 @@ class ProductImageThumbnail extends \Ease\Html\ATag
         $imager = new \ClientZone\ProductImager($this->product['id']);
         if ($imager->imageExists('image', 'jpg') || $imager->imageExists('image',
                 'png') || $imager->imageExists('image', 'svg')) {
+            // The plugin needs jQuery loaded before it; without it the script fails and the link opens the image page instead.
+            \Ease\Part::jQueryze();
             $this->includeJavaScript('js/jquery.magnific-popup.min.js');
             $this->includeCss('css/magnific-popup.css');
-            $this->addTagClass('ajax-popup-link');
-            $this->addJavaScript("$('.ajax-popup-link').magnificPopup({type:'ajax'});");
+            // The link points at the picture itself: the popup shows it enlarged, and without JavaScript the browser opens just the picture.
+            $this->setTagProperties(['href' => 'prdimg.php?type=image&id='.rawurlencode((string) $this->product['id'])]);
+            $this->addTagClass('image-popup-link');
+            $this->addJavaScript("$('.image-popup-link').magnificPopup({type:'image', closeOnContentClick:true});");
         }
 
         parent::finalize();

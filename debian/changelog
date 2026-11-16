@@ -1,3 +1,17 @@
+abraflexi-clientzone (2.10.1) unstable; urgency=medium
+
+  * Product image popup works on the price list (jQuery is loaded before the
+    Magnific Popup plugin).
+  * Product card: the product name is the link to the detail (no Detail
+    button) and the billing kind is shown under the order button.
+  * Cart: the product name links to the detail; the image popup shows the
+    picture itself (type image) instead of loading a whole page.
+  * MultiFlexi order: no instances input; the order item uses the existing
+    label API (labels MultiFlexi and SaaS do not exist in AbraFlexi and made
+    the checkout fail).
+
+ -- Vítězslav Dvořák <cybervitexus@gmail.com>  Sun, 15 Nov 2026 12:30:00 +0100
+
 abraflexi-clientzone (2.10.0) unstable; urgency=medium
 
   * The page of an issued invoice (document.php) shows, above the PDF, the due

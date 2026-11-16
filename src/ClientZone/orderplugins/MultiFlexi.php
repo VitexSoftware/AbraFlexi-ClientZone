@@ -34,59 +34,22 @@ class MultiFlexi extends \ClientZone\OrderPlugin
     }
 
     /**
-     * @param \ClientZone\ui\OrderFormHtml $form
-     *
-     * @return \ClientZone\ui\OrderFormHtml
-     */
-    public function formFields($form)
-    {
-        parent::formFields($form);
-
-        $form->addInput(
-            new \Ease\Html\InputNumberTag(
-                'quantity',
-                $form->order->getDataValue('quantity') ?: 1,
-                ['min' => '1', 'step' => '1', 'required' => 'required'],
-            ),
-            _('Instances'),
-            '1',
-            _('Number of MultiFlexi instances'),
-        );
-
-        return $form;
-    }
-
-    /**
      * @param \ClientZone\OrderItem $order
      */
     public function controlFields($order): bool
     {
-        return parent::controlFields($order)
-            && $this->checkLogin()
-            && $this->checkQuantity($order->getDataValue('quantity'));
-    }
-
-    public function checkQuantity(mixed $quantity): bool
-    {
-        $value = (int) $quantity;
-
-        if ($value < 1) {
-            $this->addStatusMessage(_('Please enter at least 1 instance'), 'warning');
-
-            return false;
-        }
-
-        return true;
+        return parent::controlFields($order) && $this->checkLogin();
     }
 
     public function processFields($order): array
     {
         $orderItemData = parent::processFields($order);
-        $quantity = (int) ($order->getDataValue('quantity') ?: 1);
-        $orderItemData['mnozMj'] = (float) $quantity;
-        $orderItemData['nazev'] = _('MultiFlexi (SaaS)').': '.$quantity.'x';
+        // One service per order: the number of instances is not chosen here.
+        $orderItemData['mnozMj'] = 1.0;
+        $orderItemData['nazev'] = _('MultiFlexi (SaaS)');
         $orderItemData['typZasobyK'] = 'typZasoby.poplatek';
-        $orderItemData['stitky'] = 'MultiFlexi,SaaS';
+        // Only labels that exist in AbraFlexi (as the other plugins): 'MultiFlexi' and 'SaaS' do not, and AbraFlexi refuses the document.
+        $orderItemData['stitky'] = 'API';
 
         return $orderItemData;
     }

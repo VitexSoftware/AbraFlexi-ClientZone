@@ -108,7 +108,7 @@ class Pricelist extends \Ease\Html\DivTag
         $detailUrl = 'product.php?kod='.rawurlencode(\ClientZone\Searcher::plainCode((string) ($item['kod'] ?? '')));
         $body->addItem(new \Ease\Html\H3Tag(new \Ease\Html\ATag($detailUrl, htmlspecialchars((string) ($item['nazev'] ?? '')), ['class' => 'text-reset text-decoration-none'])));
 
-        // Once or again and again: the customer decides on it
+        // Once or again and again: the customer decides on it (shown under the order button)
         $unit = \ClientZone\BillingKind::plainCode((string) ($item['mj1'] ?? ''));
         $kind = \ClientZone\BillingKind::determine(
             (string) ($item['typZasobyK'] ?? ''),
@@ -116,11 +116,6 @@ class Pricelist extends \Ease\Html\DivTag
             $item['stitky'] ?? null,
             $item['billing'] ?? null,
         );
-        $body->addItem(new \Ease\Html\SpanTag(
-            \ClientZone\BillingKind::label($kind),
-            ['class' => 'badge mb-2 '.\ClientZone\BillingKind::badgeClass($kind)],
-        ));
-
         $price = $body->addItem(new \Ease\Html\DivTag(null, ['class' => 'cz-product-price']));
         $price->addItem(new \Ease\Html\SpanTag(
             $this->formatPrice($priceInc),
@@ -137,16 +132,16 @@ class Pricelist extends \Ease\Html\DivTag
                 ? 'login.php?backurl='.urlencode('orderform.php?service='.$item['service'])
                 : 'orderform.php?service='.$item['service'];
             $body->addItem(new \Ease\Html\ATag(
-                $detailUrl,
-                _('Detail'),
-                ['class' => 'btn btn-line cz-product-cta me-2'],
-            ));
-            $body->addItem(new \Ease\Html\ATag(
                 $orderUrl,
                 _('Order Now').' <span class="arrow">→</span>',
                 ['class' => 'btn btn-primary cz-product-cta'],
             ));
         }
+
+        $body->addItem(new \Ease\Html\DivTag(new \Ease\Html\SpanTag(
+            \ClientZone\BillingKind::label($kind),
+            ['class' => 'badge '.\ClientZone\BillingKind::badgeClass($kind)],
+        ), ['class' => 'mt-2']));
 
         return $card;
     }
