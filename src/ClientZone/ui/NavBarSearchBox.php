@@ -27,27 +27,32 @@ class NavBarSearchBox extends \Ease\TWB5\Form
                 'class' => 'd-flex align-items-center ms-2 me-2',
                 'role' => 'search',
             ],
-            ['class' => 'input-group input-group-sm'],
         );
 
         $term = \Ease\WebPage::singleton()->getRequestValue('search', 'string');
-        $this->addItem(new \Ease\Html\InputTextTag('search', $term, [
+        $group = new \Ease\Html\DivTag(null, ['class' => 'input-group input-group-sm flex-nowrap']);
+        $group->addItem(new \Ease\Html\InputTextTag('search', $term, [
             'class' => 'form-control typeahead',
             'placeholder' => _('Search'),
             'aria-label' => _('Search'),
             'autocomplete' => 'off',
-            'style' => 'min-width: 180px; max-width: 280px;',
         ]));
-        $this->addItem(new \Ease\Html\ButtonTag(
+        $group->addItem(new \Ease\Html\ButtonTag(
             '<i class="fa fa-search" aria-hidden="true"></i>',
             ['type' => 'submit', 'class' => 'btn btn-line btn-sm', 'title' => _('Search')],
         ));
+        $this->addItem($group);
     }
 
     public function finalize(): void
     {
         parent::finalize();
         $page = \Ease\WebPage::singleton();
+        $page->addCss(<<<'CSS'
+form[role=search] { flex-wrap: nowrap; white-space: nowrap; }
+.input-group > .twitter-typeahead { flex: 1 1 auto; width: 1%; min-width: 180px; max-width: 280px; display: flex !important; }
+.input-group > .twitter-typeahead .form-control { width: 100%; border-top-right-radius: 0; border-bottom-right-radius: 0; }
+CSS);
         $page->includeJavaScript('js/handlebars.js');
         $page->includeJavaScript('js/typeahead.bundle.js');
         $page->addJavaScript(<<<'JS'
