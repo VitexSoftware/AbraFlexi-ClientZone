@@ -198,6 +198,38 @@ class Customer extends \AbraFlexi\Bricks\Customer
     }
 
     /**
+     * Ease\User::__sleep() drops $userID and $kontakt, so after unserialize
+     * the inherited getUserID() returns 0. Recover the id from session data,
+     * or reload the contact by login.
+     */
+    public function getUserID(): int
+    {
+        if (!empty($this->userID)) {
+            return (int) $this->userID;
+        }
+
+        $id = $this->getDataValue('id');
+
+        if (empty($id)) {
+            $login = $this->getUserLogin();
+
+            if ($login !== '') {
+                $kontakt = new \AbraFlexi\Kontakt();
+                $kontakt->loadFromAbraFlexi([$this->loginColumn => $login]);
+                $id = $kontakt->getMyKey();
+            }
+        }
+
+        if (!empty($id)) {
+            $this->setDataValue('id', $id);
+
+            return (int) $id;
+        }
+
+        return (int) parent::getUserID();
+    }
+
+    /**
      * Persist firma + login into session data after parent marks the user logged in.
      * setFirma() must run after parent::loginSuccess() — it resets $kontakt.
      */
@@ -213,6 +245,12 @@ class Customer extends \AbraFlexi\Bricks\Customer
         }
         if (!empty($firma)) {
             $this->setDataValue('firma', $firma);
+        }
+
+        $contactId = $kontakt->getMyKey();
+
+        if (!empty($contactId)) {
+            $this->setDataValue('id', $contactId);
         }
 
         $result = parent::loginSuccess();
@@ -629,7 +667,7 @@ class Customer extends \AbraFlexi\Bricks\Customer
             return false;
         }
 
-        $kontakt = $this->getKontakt();
+        $kontakt = new \AbraFlexi\Kontakt();
         $kontakt->insertToAbraFlexi(array_merge([
             'id' => $userID,
             'username' => $this->getUserLogin(),
