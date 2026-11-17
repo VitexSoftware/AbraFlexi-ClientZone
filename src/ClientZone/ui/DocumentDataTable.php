@@ -34,4 +34,21 @@ class DocumentDataTable extends \AbraFlexi\ui\DataTables\DataTable
             'class' => $engine::class,
         ]);
     }
+
+    /**
+     * Default page length is 50 rows. The parent hardcodes the DataTables
+     * options (and its tableCode() hook is void), so inject pageLength here.
+     *
+     * @param array $columns
+     *
+     * @return string
+     */
+    public function javaScript($columns)
+    {
+        return str_replace(
+            '"lengthMenu":',
+            '"pageLength": 50, "lengthMenu":',
+            (string) parent::javaScript($columns),
+        );
+    }
 }
