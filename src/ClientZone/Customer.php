@@ -210,7 +210,9 @@ class Customer extends \AbraFlexi\Bricks\Customer
 
         $id = $this->getDataValue('id');
 
-        if (empty($id)) {
+        // Look the contact up by login only for an authenticated session —
+        // never resolve an identity from unauthenticated input (e.g. password recovery).
+        if (empty($id) && $this->isLogged()) {
             $login = $this->getUserLogin();
 
             if ($login !== '') {
