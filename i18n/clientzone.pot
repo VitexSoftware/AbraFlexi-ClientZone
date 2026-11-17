@@ -2063,3 +2063,7 @@ msgstr ""
 #: src/document.php:62
 msgid "No reminder has been sent yet."
 msgstr ""
+
+#: src/ClientZone/InvoiceLister.php:27 src/ClientZone/OrderLister.php:27
+msgid "Document type"
+msgstr ""

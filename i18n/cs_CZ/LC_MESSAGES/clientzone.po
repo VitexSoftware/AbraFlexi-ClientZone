@@ -2866,3 +2866,7 @@ msgstr "Zatím nebyla odeslána žádná upomínka."
 
 #~ msgid "Quick actions"
 #~ msgstr "Rychlé akce"
+
+#: src/ClientZone/InvoiceLister.php:27 src/ClientZone/OrderLister.php:27
+msgid "Document type"
+msgstr "Typ dokladu"

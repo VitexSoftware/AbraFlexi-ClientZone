@@ -24,6 +24,7 @@ class InvoiceLister extends \AbraFlexi\FakturaVydana
     {
         return [
             ['name' => 'kod', 'type' => 'text', 'label' => _('Code')],
+            ['name' => 'typDokl', 'type' => 'text', 'label' => _('Document type')],
             ['name' => 'sumCelkem', 'type' => 'text', 'label' => _('Amount')],
             ['name' => 'mena', 'type' => 'text', 'label' => _('Currency')],
             ['name' => 'datSplat', 'type' => 'text', 'label' => _('Due date')],
@@ -51,6 +52,10 @@ class InvoiceLister extends \AbraFlexi\FakturaVydana
                 '<strong>'.\htmlspecialchars($kod, \ENT_QUOTES).'</strong>',
                 ['title' => _('Show')],
             ),
+            'typDokl' => \htmlspecialchars(
+                str_replace('code:', '', OrderListingItem::relationShowAs($dataRowRaw['typDokl'] ?? null)),
+                \ENT_QUOTES,
+            ),
             'sumCelkem' => \htmlspecialchars((string) ($dataRowRaw['sumCelkem'] ?? ''), \ENT_QUOTES),
             'mena' => \htmlspecialchars(
                 isset($dataRowRaw['mena'])
@@ -67,7 +72,7 @@ class InvoiceLister extends \AbraFlexi\FakturaVydana
         if ($cancelled) {
             $row['stavUhrK'] = (string) new \Ease\TWB5\Badge(_('Cancelled'), 'secondary');
             // Cancelled documents stay listed, but greyed out and without a due-date label.
-            foreach (['kod', 'sumCelkem', 'mena', 'datSplat'] as $cell) {
+            foreach (['kod', 'typDokl', 'sumCelkem', 'mena', 'datSplat'] as $cell) {
                 $row[$cell] = '<span class="text-muted">'.$row[$cell].'</span>';
             }
         } elseif ($stavUhr !== '' && str_contains($stavUhr, 'stavUhr.uhrazeno')) {

@@ -24,6 +24,7 @@ class OrderLister extends \AbraFlexi\ObjednavkaPrijata
     {
         return [
             ['name' => 'kod', 'type' => 'text', 'label' => _('Code')],
+            ['name' => 'typDokl', 'type' => 'text', 'label' => _('Document type')],
             ['name' => 'sumCelkem', 'type' => 'text', 'label' => _('Amount')],
             ['name' => 'mena', 'type' => 'text', 'label' => _('Currency')],
             ['name' => 'datVyst', 'type' => 'text', 'label' => _('Issued')],
@@ -49,6 +50,10 @@ class OrderLister extends \AbraFlexi\ObjednavkaPrijata
                 'document.php?id='.$id.'&evidence='.$evidence,
                 '<strong>'.\htmlspecialchars($kod, \ENT_QUOTES).'</strong>',
                 ['title' => _('Show')],
+            ),
+            'typDokl' => \htmlspecialchars(
+                str_replace('code:', '', OrderListingItem::relationShowAs($dataRowRaw['typDokl'] ?? null)),
+                \ENT_QUOTES,
             ),
             'sumCelkem' => \htmlspecialchars((string) ($dataRowRaw['sumCelkem'] ?? ''), \ENT_QUOTES),
             'mena' => \htmlspecialchars(
