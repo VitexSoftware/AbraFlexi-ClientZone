@@ -105,9 +105,14 @@ class OrderItem extends \AbraFlexi\RW
             }
             $pluginName = str_replace('.php', '', $entry);
             $className = '\\ClientZone\\orderplugins\\'.$pluginName;
-            /** @var OrderPlugin $plugin */
-            $plugin = new $className();
-            $plugins[$pluginName] = $plugin;
+            try {
+                /** @var OrderPlugin $plugin */
+                $plugin = new $className();
+                $plugins[$pluginName] = $plugin;
+            } catch (\Throwable $exc) {
+                // Extension plugin with a missing dependency must not break the core
+                error_log('ClientZone: order plugin '.$pluginName.' skipped: '.$exc->getMessage());
+            }
         }
         $d->close();
 

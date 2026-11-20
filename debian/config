@@ -50,15 +50,6 @@ ask PROD_CAT
 ask DEBUG
 ask EASE_LOGGER
 
-ask IPEX_URL
-ask IPEX_LOGIN
-ask IPEX_PASSWORD
-
-ask SUBREG_LOCATION
-ask SUBREG_URI
-ask SUBREG_LOGIN
-ask SUBREG_PASSWORD
-
 ENV_DIR="/etc/abraflexi-client-zone"
 ENV_FILE="${ENV_DIR}/.env"
 

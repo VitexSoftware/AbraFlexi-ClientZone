@@ -13,11 +13,10 @@ require_once '/usr/share/php/EaseTWB5WidgetsAbraFlexi/autoload.php';
 require_once '/usr/share/php/EaseHtmlWidgets/autoload.php';
 require_once '/usr/share/php/AbraFlexiUiDataTables/autoload.php';
 
-if (is_readable('/usr/share/php/IPEXB2B/autoload.php')) {
-    require_once '/usr/share/php/IPEXB2B/autoload.php';
-}
-if (is_readable('/usr/share/php/Subreg/autoload.php')) {
-    require_once '/usr/share/php/Subreg/autoload.php';
+// Extension packages (abraflexi-clientzone-ipex, -subreg, ...) ship an
+// autoloader fragment here; the core does not depend on their libraries.
+foreach (glob('/usr/share/abraflexi-clientzone/extensions/autoload-*.php') ?: [] as $extensionAutoload) {
+    require_once $extensionAutoload;
 }
 
 spl_autoload_register(function (string $class): void {

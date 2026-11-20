@@ -28,6 +28,7 @@ override_dh_install:
 	    -e "s|__DIR__.'/../../vendor/autoload.php'|'/usr/share/abraflexi-clientzone/autoload.php'|" \
 	    -e "s|__DIR__.'/../../i18n'|'/usr/share/locale'|" \
 	    -e "s|__DIR__.'/../../.env'|'/etc/abraflexi-client-zone/.env'|" \
+	    -e "s|__DIR__.'/../../conf.d|'/etc/abraflexi-client-zone/conf.d|" \
 	    $(PKG_ROOT)/includes/Init.php
 	sed -i \
 	    -e "s|__DIR__.'/../../.env'|'/etc/abraflexi-client-zone/.env'|" \

@@ -9,6 +9,7 @@ declare(strict_types=1);
  *   vendor/autoload.php → /usr/share/abraflexi-clientzone/autoload.php
  *   i18n               → /usr/share/locale
  *   .env               → /etc/abraflexi-client-zone/.env
+ *   conf.d             → /etc/abraflexi-client-zone/conf.d
  *
  * @author Vítězslav Dvořák <info@vitexsoftware.cz>
  * @copyright  2017-2026 VitexSoftware v.s.cz
@@ -40,6 +41,11 @@ Shared::init(
     __DIR__.'/../../.env',
     false,
 );
+
+// Drop-in configuration shipped by extension packages (abraflexi-clientzone-ipex, -subreg, ...)
+foreach (glob(__DIR__.'/../../conf.d/*.env') ?: [] as $extensionEnv) {
+    Shared::singleton()->loadConfig($extensionEnv, true);
+}
 
 // Display name must be fixed before session keys / flash messages use appName().
 if (Shared::cfg('EASE_APPNAME') === null || Shared::cfg('EASE_APPNAME') === '') {

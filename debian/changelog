@@ -1,3 +1,16 @@
+abraflexi-clientzone (2.11.0) unstable; urgency=medium
+
+  * Spoje.Net specific features are installed from separate packages:
+    abraflexi-clientzone-ipex (VoIP credit) and abraflexi-clientzone-subreg
+    (domain credit). abraflexi-clientzone-spojenet is now a metapackage.
+  * The core package no longer depends on php-spojenet-ipex-b2b and
+    php-spojenet-subreg and no longer asks for IPEX/Subreg credentials; the
+    extension packages ask on their own and write
+    /etc/abraflexi-client-zone/conf.d/<extension>.env, read by Init.
+  * A broken order plugin (missing library) is skipped instead of failing.
+
+ -- Vítězslav Dvořák <info@vitexsoftware.cz>  Wed, 18 Nov 2026 20:00:00 +0100
+
 abraflexi-clientzone (2.10.2) unstable; urgency=medium
 
   * Search: the catalog results show the real price (AbraFlexi counts it only in

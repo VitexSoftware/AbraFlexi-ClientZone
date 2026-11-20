@@ -65,13 +65,6 @@ class Configurator extends \Ease\Brick
         "SUPPLIER_STREET" => 'string',
         "SUPPLIER_CITY" => 'string',
         "SUPPLIER_ZIP" => 'string',
-        "IPEX_URL" => 'string',
-        "IPEX_LOGIN" => 'string',
-        "IPEX_PASSWORD" => 'string',
-        "SUBREG_LOCATION" => 'string',
-        "SUBREG_URI" => 'string',
-        "SUBREG_LOGIN" => 'string',
-        "SUBREG_PASSWORD" => 'string',
     ];
 
     /**

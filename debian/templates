@@ -139,46 +139,6 @@ Default: SKLAD
 Description: Default stock / warehouse
  AbraFlexi sklad code used when creating documents.
 
-Template: clientzone/IPEX_URL
-Type: string
-Default: https://restapi.ipex.cz
-Description: IPEX B2B API URL
- Base URL of the IPEX REST API (VoIP credit validation).
-
-Template: clientzone/IPEX_LOGIN
-Type: string
-Default: 
-Description: IPEX API login
- Username for the IPEX B2B API.
-
-Template: clientzone/IPEX_PASSWORD
-Type: password
-Description: IPEX API password
- Password for the IPEX B2B API.
-
-Template: clientzone/SUBREG_LOCATION
-Type: string
-Default: https://soap.subreg.cz/cmd.php
-Description: Subreg API location
- Subreg SOAP command endpoint URL.
-
-Template: clientzone/SUBREG_URI
-Type: string
-Default: https://soap.subreg.cz/soap
-Description: Subreg SOAP URI
- Subreg SOAP service URI.
-
-Template: clientzone/SUBREG_LOGIN
-Type: string
-Default: 
-Description: Subreg API login
- Username for the Subreg registrar API.
-
-Template: clientzone/SUBREG_PASSWORD
-Type: password
-Description: Subreg API password
- Password for the Subreg registrar API.
-
 Template: clientzone/SUPPLIER_NAME
 Type: string
 Default:

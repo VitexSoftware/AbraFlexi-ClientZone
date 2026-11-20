@@ -1,0 +1,16 @@
+Template: clientzone/IPEX_URL
+Type: string
+Default: https://restapi.ipex.cz
+Description: IPEX B2B API URL
+ Base URL of the IPEX REST API (VoIP credit validation).
+
+Template: clientzone/IPEX_LOGIN
+Type: string
+Default: 
+Description: IPEX API login
+ Username for the IPEX B2B API.
+
+Template: clientzone/IPEX_PASSWORD
+Type: password
+Description: IPEX API password
+ Password for the IPEX B2B API.
